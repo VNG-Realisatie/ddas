@@ -8,7 +8,7 @@ De kern van het informatiemodel Schuldhulpverlening bestaat uit een Schuldhulptr
 
 Eén of meer Schuldhulporganisaties leveren het Schuldhulptraject aan de client(en). Vaak zijn er naast de gemeente ook andere partijen die betrokken zijn bij onderdelen van het Schuldhulptraject.
 
-[![Hoofdindeling](/images/image7.png)](/images/image7.png)
+[![Hoofdindeling](images/image7.png)](images/image7.png)
 
 Figuur 2 Hoofdindeling Schuldhulpverlening
 
@@ -18,7 +18,7 @@ Een Client is altijd een Ingeschreven Persoon, zoals bekend in de BRP (Basisregi
 
 Het procesdeel van het informatiemodel is gebaseerd op het NVVK-Referentieproces (zie paragraaf 1.4) en geeft uitwerking van de processen die in het kader van een Schuldhulptraject kunnen voorkomen.
 
-[![Proces Schuldhulpverlening](/images/image8.png)](/images/image8.png)
+[![Proces Schuldhulpverlening](images/image8.png)](images/image8.png)
 
 Figuur 3 Proces Schuldhulpverlening
 
@@ -30,7 +30,7 @@ Daarnaast kan een Schuldhulptraject een Plan van aanpak hebben en een Uitstroomr
 
 Binnen het Informatiemodel Schuldhulpverlening worden de volgende objecttypen vastgelegd rond de Client in het kader van een Schuldhulptraject. In Figuur 4 zijn deze uitgewerkt.
 
-[![Client Schuldhulpverlening](/images/image9.png)](/images/image9.png)
+[![Client Schuldhulpverlening](images/image9.png)](images/image9.png)
 
 Figuur 4 Informatiemodel Client
 
@@ -42,7 +42,7 @@ In het kader van de Schuldhulpverlening heeft een Client een Leefstituatie. In d
 
 In het informatiemodel Schuldhulpverlening worden de volgende objecttypen en relaties vastgelegd over de schuldhulp verlenende organisatie, deze zijn in Figuur 5 uitgewerkt.
 
-[![Schuldhulpverlenende organisatie](/images/image10.png)](/images/image10.png)
+[![Schuldhulpverlenende organisatie](images/image10.png)](images/image10.png)
 
 Figuur 5 Schuldhulpverlenende Organisatie
 

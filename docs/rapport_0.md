@@ -22,7 +22,7 @@ In dit document worden zowel het informatiemodel als het uitwisselmodel beschrev
 
 Als uitgangspunt voor het informatiemodel schuldhulpverlening is het proces dat door de NVVK is beschreven genomen. Schuldhulpverleners binnen Nederland werken conform dit proces.
 
-[![NVVK-referentieproces](/images/image6.jpeg)](/images/image6.jpeg)
+[![NVVK-referentieproces](images/image6.jpeg)](images/image6.jpeg)
 
 Figuur 1 NVVK Proceschema
 
