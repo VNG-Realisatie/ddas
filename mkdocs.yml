@@ -11,8 +11,8 @@ extra:
 
 nav:
   - Home: index.md
-  - Uitwisselpecificatie: rapport_3.md
-  - Achterliggend Informatiemodel:
+  - Uitwisselspecificatie: uitwisselspecificatie.md
+  - Informatiemodel:
     - Hoofdlijnen: rapport_1.md
     - Detailspecificatie: rapport_2.md
   - Achtergrond DDAS: rapport_0.md
@@ -33,7 +33,7 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.magiclink
   - markdown_include.include:
-      base_path: /
+      base_path: docs
 
 extra_css:
   - stylesheets/extra.css
