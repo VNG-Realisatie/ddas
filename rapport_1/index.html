@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://ddas-api.nl/rapport_1/">
       
       
-        <link rel="prev" href="../rapport_3/">
+        <link rel="prev" href="../uitwisselspecificatie/">
       
       
         <link rel="next" href="../rapport_2/">
@@ -223,11 +223,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../rapport_3/" class="md-nav__link">
+      <a href="../uitwisselspecificatie/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Uitwisselpecificatie
+    Uitwisselspecificatie
   </span>
   
 
@@ -259,7 +259,7 @@
             
   
   <span class="md-ellipsis">
-    Achterliggend Informatiemodel
+    Informatiemodel
   </span>
   
 
@@ -269,7 +269,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Achterliggend Informatiemodel
+            Informatiemodel
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -335,27 +335,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proces-schuldhulpverlening" class="md-nav__link">
+  <a href="#processen" class="md-nav__link">
     <span class="md-ellipsis">
-      Proces Schuldhulpverlening
+      Processen
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
+  <a href="#clienten" class="md-nav__link">
     <span class="md-ellipsis">
-      Client
+      Cliënten
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#schuldhulpverlenende-organisatie" class="md-nav__link">
+  <a href="#organisaties" class="md-nav__link">
     <span class="md-ellipsis">
-      Schuldhulpverlenende organisatie
+      Organisaties
     </span>
   </a>
   
@@ -454,27 +454,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proces-schuldhulpverlening" class="md-nav__link">
+  <a href="#processen" class="md-nav__link">
     <span class="md-ellipsis">
-      Proces Schuldhulpverlening
+      Processen
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
+  <a href="#clienten" class="md-nav__link">
     <span class="md-ellipsis">
-      Client
+      Cliënten
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#schuldhulpverlenende-organisatie" class="md-nav__link">
+  <a href="#organisaties" class="md-nav__link">
     <span class="md-ellipsis">
-      Schuldhulpverlenende organisatie
+      Organisaties
     </span>
   </a>
   
@@ -503,19 +503,19 @@
 <p><a href="../images/image7.png"><img alt="Hoofdindeling" src="../images/image7.png" /></a></p>
 <p>Figuur 2 Hoofdindeling Schuldhulpverlening</p>
 <p>Een Client is altijd een Ingeschreven Persoon, zoals bekend in de BRP (Basisregistratie Personen), en heeft de kenmerken die daar zijn vastgelegd, zoals: BSN, voornaam, achternaam, geboortedatum en adres. Voor een client geldt echter wel dat niet op alle momenten in het proces al deze gegevens beschikbaar hoeven te zijn. Een Schuldhulporganisatie is een Niet Natuurlijk Persoon (bedrijf, instelling of overheidsorganisatie) en heeft hiervan ook de kenmerken, zoals: naam, rechtsvorm, kvk-nummer en adres.</p>
-<h2 id="proces-schuldhulpverlening">Proces Schuldhulpverlening</h2>
+<h2 id="processen">Processen</h2>
 <p>Het procesdeel van het informatiemodel is gebaseerd op het NVVK-Referentieproces (zie paragraaf 1.4) en geeft uitwerking van de processen die in het kader van een Schuldhulptraject kunnen voorkomen.</p>
 <p><a href="../images/image8.png"><img alt="Proces Schuldhulpverlening" src="../images/image8.png" /></a></p>
 <p>Figuur 3 Proces Schuldhulpverlening</p>
 <p>Een Schuldhulptraject kan de volgende fasen bevatten: Aanmelding, Intake, Stabilisatie, Schuldregeling, Oplossing en Nazorg. Daarnaast kan het meerdere soorten begeleiding bevatten. Als een Schuldhulptraject een van de volgende zaken bevat: Aanmelding, Intake, Stabilisatie, Schuldregeling, Oplossing of Nazorg, dan impliceert dat de volgorde zoals weergegeven in Figuur 3. Een Schuldhulptraject kan maar één Oplossing hebben, maar er zijn verschillende oplossingen mogelijk, deze zijn vastgelegd in EnumOplossingssoort. De verschillende soorten mogelijke Begeleiding zijn gespecificeerd in EnumBegeleidingssoort.</p>
 <p>Daarnaast kan een Schuldhulptraject een Plan van aanpak hebben en een Uitstroomreden. Als er een Uitstroomreden is dan is het Schuldhulptraject beëindigd. Een lijst met de mogelijke uitstroomredenen is vastgelegd in EnumUitstroomreden. Binnen een Schuldhulptraject kunnen meerdere Crisisinterventies plaatsvinden, en er kunnen meerdere Mortuaria onderdeel van zijn.</p>
-<h2 id="client">Client</h2>
+<h2 id="clienten">Cliënten</h2>
 <p>Binnen het Informatiemodel Schuldhulpverlening worden de volgende objecttypen vastgelegd rond de Client in het kader van een Schuldhulptraject. In Figuur 4 zijn deze uitgewerkt.</p>
 <p><a href="../images/image9.png"><img alt="Client Schuldhulpverlening" src="../images/image9.png" /></a></p>
 <p>Figuur 4 Informatiemodel Client</p>
 <p>Allereerst maakt een Client onderdeel uit van een Huishouden. Dat kan een eenpersoonshuishouden zijn of een huishouden dat met meerdere Natuurlijke Personen wordt gedeeld. De verschillende soorten mogelijke huishoudens (Particulier huishouden of Institutioneel Huishouden) zijn vastgelegd in EnumHuishoudenssoort.</p>
 <p>In het kader van de Schuldhulpverlening heeft een Client een Leefstituatie. In de tijd kan een Client slechts één vastgelegde Leefstituatie hebben. Na elkaar in de tijd kunnen dat meerdere vastgelegde Leefstituaties zijn. De Leefstituatie kent een volgende objecttypen: informatie over: een mogelijke partner of partners uit het verleden, het inkomen, een mogelijke koopwoning en een mogelijk ondernemerschap. Daarnaast zijn de schulden van de Client van groot belang. Een Client kan meerdere schulden hebben, en ieder van die schulden is bij een Schuldeiser. Een schuldeiser is een Rechtspersoon, dus kan een Natuurlijk Persoon zijn of een Niet Natuurlijk Persoon. De verschillende soorten mogelijke schulden zijn vastgelegd in EnumSchuldensoort en de verschillende soorten mogelijke schuldeisers zijn vastgelegd in EnumSchuleisersoort.</p>
-<h2 id="schuldhulpverlenende-organisatie">Schuldhulpverlenende organisatie</h2>
+<h2 id="organisaties">Organisaties</h2>
 <p>In het informatiemodel Schuldhulpverlening worden de volgende objecttypen en relaties vastgelegd over de schuldhulp verlenende organisatie, deze zijn in Figuur 5 uitgewerkt.</p>
 <p><a href="../images/image10.png"><img alt="Schuldhulpverlenende organisatie" src="../images/image10.png" /></a></p>
 <p>Figuur 5 Schuldhulpverlenende Organisatie</p>
