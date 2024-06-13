@@ -1,0 +1,37 @@
+site_name: Data Delen Armoede en Schulden (DDAS)
+site_description: De uitwisselspecificatie voor de Data Delen Armoede en Schulden (DDAS) API
+site_author: Arjen Brienen
+site_url: https://ddas-api.nl
+theme:
+  language: nl # (1)!
+  name: material
+extra:
+  version:
+    provider: mike
+
+nav:
+  - Home: index.md
+  - Uitwisselpecificatie: rapport_3.md
+  - Achterliggend Informatiemodel:
+    - Hoofdlijnen: rapport_1.md
+    - Detailspecificatie: rapport_2.md
+  - Achtergrond DDAS: rapport_0.md
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.mark
+  - pymdownx.tasklist
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.caret
+  - pymdownx.magiclink
+
+extra_css:
+  - stylesheets/extra.css

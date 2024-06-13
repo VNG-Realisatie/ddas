@@ -1,2 +1,2 @@
 # ddas
-DataDelen Armoede en Schulden (DDAS) Uitwisselspecificatie
+Data Delen Armoede en Schulden (DDAS) Uitwisselspecificatie
