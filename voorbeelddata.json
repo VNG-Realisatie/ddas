@@ -1,0 +1,957 @@
+{
+    "aanleverperiodeStartdatum": "2023-01-01",
+    "aanleverperiodeEinddatum": "2023-12-31",
+    "aanleverende_organisatie": {
+        "naam": "Schuldhulporganisatie X",
+        "contactpersonen": [
+            {
+                "email": "contactpersoon1@example.com",
+                "naam": "Jan Jansen",
+                "telefoonnummer": "0612345678"
+            },
+            {
+                "email": "contactpersoon2@example.com",
+                "naam": "Piet Pietersen",
+                "telefoonnummer": "0687654321"
+            }
+        ]
+    },
+    "schuldhulptrajecten": [
+        {
+            "einddatum": "2023-12-31",
+            "naam": "Traject 1",
+            "omschrijving": "Omschrijving van traject 1",
+            "startdatum": "2023-01-10",
+            "toekenningsdatum": "2023-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 50000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-01-15",
+                "startdatum": "2023-01-01"
+            },
+            "intake": {
+                "einddatum": "2023-01-20",
+                "startdatum": "2023-01-15",
+                "toelatingsbeschikking": "2023-01-18"
+            },
+            "stabilisatie": {
+                "einddatum": "2023-06-30",
+                "startdatum": "2023-02-01"
+            },
+            "schuldregeling": {
+                "afgewezen": "2023-07-01",
+                "datum": "2023-06-15",
+                "datumVerzoekDwangakkoord": "2023-06-20",
+                "dwangakkoord": true,
+                "ingetrokken": "2023-07-10",
+                "toegekend": "Schuldregeling A"
+            },
+            "oplossing": {
+                "einddatum": "2023-11-30",
+                "soort": "Betalingsregeling",
+                "startdatum": "2023-08-01",
+                "oplossingssoort": {
+                    "soort": "Betalingsregeling"
+                }
+            },
+            "nazorg": {
+                "einddatum": "2024-01-01",
+                "startdatum": "2023-12-01"
+            },
+            "begeleiding": [
+                {
+                    "einddatum": "2023-10-30",
+                    "soort": "Budgetcoaching",
+                    "startdatum": "2023-03-01",
+                    "begeleidingssoort": {
+                        "soort": "Budgetcoaching"
+                    }
+                }
+            ],
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "123456789",
+                    "postcode": "1234AB",
+                    "geboortedatum": "1990-01-01",
+                    "geslacht": "M",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-01-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 30000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 1,
+                                    "inkomstenbron": 1,
+                                    "nettoBedrag": 25000,
+                                    "startdatum": "2023-01-01"
+                                }
+                            ],
+                            "koopwoning": [
+                                {
+                                    "einddatum": "2023-12-31",
+                                    "startdatum": "2023-01-01",
+                                    "waarde": 200000
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-01-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-01-01",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Bank A",
+                                        "peildatum": "2023-01-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 20000,
+                                    "peildatum": "2023-01-01",
+                                    "soort": "Energie, water, gemeentelijke belastingen en telecom",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Energieleverancier B",
+                                        "peildatum": "2023-01-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-01-01",
+                                    "soort": "Zorg",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Zorgverzekeraar C",
+                                        "peildatum": "2023-01-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-08-31",
+            "naam": "Traject 2",
+            "omschrijving": "Omschrijving van traject 2",
+            "startdatum": "2023-02-01",
+            "toekenningsdatum": "2023-01-25",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "aanmelding": {
+                "crisisinterventie": false,
+                "einddatum": "2023-02-05",
+                "startdatum": "2023-01-20"
+            },
+            "intake": {
+                "einddatum": "2023-02-10",
+                "startdatum": "2023-02-05",
+                "toelatingsbeschikking": "2023-02-08"
+            },
+            "stabilisatie": {
+                "einddatum": "2023-04-30",
+                "startdatum": "2023-02-15"
+            },
+            "schuldregeling": {
+                "datum": "2023-05-15",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling B"
+            },
+            "oplossing": {
+                "einddatum": "2023-07-31",
+                "soort": "Schuldbemiddeling",
+                "startdatum": "2023-06-01",
+                "oplossingssoort": {
+                    "soort": "Schuldbemiddeling"
+                }
+            },
+            "nazorg": {
+                "einddatum": "2023-09-30",
+                "startdatum": "2023-08-01"
+            },
+            "begeleiding": [
+                {
+                    "einddatum": "2023-07-15",
+                    "soort": "Budgetbeheer",
+                    "startdatum": "2023-03-01",
+                    "begeleidingssoort": {
+                        "soort": "Budgetbeheer"
+                    }
+                }
+            ],
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "987654321",
+                    "postcode": "5678CD",
+                    "geboortedatum": "1985-05-10",
+                    "geslacht": "V",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-02-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 25000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 2,
+                                    "inkomstenbron": 2,
+                                    "nettoBedrag": 20000,
+                                    "startdatum": "2023-02-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-02-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 10000,
+                                    "peildatum": "2023-02-01",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Bank D",
+                                        "peildatum": "2023-02-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-02-01",
+                                    "soort": "Publiek (Belastingdienst, Dienst Toeslagen,CJIB etc)",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Belastingdienst",
+                                        "peildatum": "2023-02-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-06-30",
+            "naam": "Traject 3",
+            "omschrijving": "Omschrijving van traject 3",
+            "startdatum": "2023-03-01",
+            "toekenningsdatum": "2023-02-20",
+            "totaalSchuldbedragBijAanvangSchuld": 30000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-03-05",
+                "startdatum": "2023-02-25"
+            },
+            "intake": {
+                "einddatum": "2023-03-10",
+                "startdatum": "2023-03-05",
+                "toelatingsbeschikking": "2023-03-08"
+            },
+            "schuldregeling": {
+                "datum": "2023-05-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling C"
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "123123123",
+                    "postcode": "9101EF",
+                    "geboortedatum": "1975-03-15",
+                    "geslacht": "M",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-03-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 35000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 1,
+                                    "inkomstenbron": 1,
+                                    "nettoBedrag": 30000,
+                                    "startdatum": "2023-03-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-03-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 20000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Energie, water, gemeentelijke belastingen en telecom",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Waterbedrijf E",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 10000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Zorg",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Ziekenhuis F",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-05-31",
+            "naam": "Traject 4",
+            "omschrijving": "Omschrijving van traject 4",
+            "startdatum": "2023-01-20",
+            "toekenningsdatum": "2023-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "aanmelding": {
+                "crisisinterventie": false,
+                "einddatum": "2023-01-25",
+                "startdatum": "2023-01-15"
+            },
+            "intake": {
+                "einddatum": "2023-01-30",
+                "startdatum": "2023-01-25",
+                "toelatingsbeschikking": "2023-01-28"
+            },
+            "schuldregeling": {
+                "datum": "2023-04-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling D"
+            },
+            "oplossing": {
+                "einddatum": "2023-05-31",
+                "soort": "Herfinanciering",
+                "startdatum": "2023-04-15",
+                "oplossingssoort": {
+                    "soort": "Herfinanciering"
+                }
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "456456456",
+                    "postcode": "5678GH",
+                    "geboortedatum": "1980-07-20",
+                    "geslacht": "V",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-01-20",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 20000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 3,
+                                    "inkomstenbron": 2,
+                                    "nettoBedrag": 18000,
+                                    "startdatum": "2023-01-20"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-01-20",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 10000,
+                                    "peildatum": "2023-01-20",
+                                    "soort": "Energie, water, gemeentelijke belastingen en telecom",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Energiebedrijf G",
+                                        "peildatum": "2023-01-20"
+                                    }
+                                },
+                                {
+                                    "bedrag": 5000,
+                                    "peildatum": "2023-01-20",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Privé Lening H",
+                                        "peildatum": "2023-01-20"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-11-30",
+            "naam": "Traject 5",
+            "omschrijving": "Omschrijving van traject 5",
+            "startdatum": "2023-04-01",
+            "toekenningsdatum": "2023-03-20",
+            "totaalSchuldbedragBijAanvangSchuld": 40000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-04-05",
+                "startdatum": "2023-03-25"
+            },
+            "intake": {
+                "einddatum": "2023-04-10",
+                "startdatum": "2023-04-05",
+                "toelatingsbeschikking": "2023-04-08"
+            },
+            "stabilisatie": {
+                "einddatum": "2023-09-30",
+                "startdatum": "2023-05-01"
+            },
+            "schuldregeling": {
+                "datum": "2023-10-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling E"
+            },
+            "nazorg": {
+                "einddatum": "2024-01-31",
+                "startdatum": "2023-12-01"
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "789789789",
+                    "postcode": "3456IJ",
+                    "geboortedatum": "1970-12-30",
+                    "geslacht": "M",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-04-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 45000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 1,
+                                    "inkomstenbron": 1,
+                                    "nettoBedrag": 40000,
+                                    "startdatum": "2023-04-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-04-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 25000,
+                                    "peildatum": "2023-04-01",
+                                    "soort": "Publiek (Belastingdienst, Dienst Toeslagen,CJIB etc)",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Belastingdienst",
+                                        "peildatum": "2023-04-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-04-01",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Kredietverstrekker I",
+                                        "peildatum": "2023-04-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-07-31",
+            "naam": "Traject 6",
+            "omschrijving": "Omschrijving van traject 6",
+            "startdatum": "2023-03-01",
+            "toekenningsdatum": "2023-02-20",
+            "totaalSchuldbedragBijAanvangSchuld": 35000,
+            "aanmelding": {
+                "crisisinterventie": false,
+                "einddatum": "2023-03-05",
+                "startdatum": "2023-02-25"
+            },
+            "intake": {
+                "einddatum": "2023-03-10",
+                "startdatum": "2023-03-05",
+                "toelatingsbeschikking": "2023-03-08"
+            },
+            "schuldregeling": {
+                "datum": "2023-06-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling F"
+            },
+            "oplossing": {
+                "einddatum": "2023-07-31",
+                "soort": "Saneringskrediet",
+                "startdatum": "2023-06-15",
+                "oplossingssoort": {
+                    "soort": "Saneringskrediet"
+                }
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "112233445",
+                    "postcode": "8765KL",
+                    "geboortedatum": "1990-11-11",
+                    "geslacht": "M",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-03-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 35000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 2,
+                                    "inkomstenbron": 2,
+                                    "nettoBedrag": 30000,
+                                    "startdatum": "2023-03-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-03-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 20000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Bank J",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Zorg",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Ziekenhuis K",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-09-30",
+            "naam": "Traject 7",
+            "omschrijving": "Omschrijving van traject 7",
+            "startdatum": "2023-05-01",
+            "toekenningsdatum": "2023-04-20",
+            "totaalSchuldbedragBijAanvangSchuld": 45000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-05-05",
+                "startdatum": "2023-04-25"
+            },
+            "intake": {
+                "einddatum": "2023-05-10",
+                "startdatum": "2023-05-05",
+                "toelatingsbeschikking": "2023-05-08"
+            },
+            "stabilisatie": {
+                "einddatum": "2023-09-30",
+                "startdatum": "2023-06-01"
+            },
+            "schuldregeling": {
+                "datum": "2023-08-15",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling G"
+            },
+            "nazorg": {
+                "einddatum": "2023-11-30",
+                "startdatum": "2023-10-01"
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "334455667",
+                    "postcode": "6543OP",
+                    "geboortedatum": "1985-04-04",
+                    "geslacht": "V",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-05-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 40000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 3,
+                                    "inkomstenbron": 2,
+                                    "nettoBedrag": 35000,
+                                    "startdatum": "2023-05-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-05-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 30000,
+                                    "peildatum": "2023-05-01",
+                                    "soort": "Energie, water, gemeentelijke belastingen en telecom",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Telecombedrijf L",
+                                        "peildatum": "2023-05-01",
+                                    }
+                                },
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-05-01",
+                                    "soort": "Zorg",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Ziekenhuis M",
+                                        "peildatum": "2023-05-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-08-31",
+            "naam": "Traject 8",
+            "omschrijving": "Omschrijving van traject 8",
+            "startdatum": "2023-03-01",
+            "toekenningsdatum": "2023-02-15",
+            "totaalSchuldbedragBijAanvangSchuld": 50000,
+            "aanmelding": {
+                "crisisinterventie": false,
+                "einddatum": "2023-03-05",
+                "startdatum": "2023-02-25"
+            },
+            "intake": {
+                "einddatum": "2023-03-10",
+                "startdatum": "2023-03-05",
+                "toelatingsbeschikking": "2023-03-08"
+            },
+            "schuldregeling": {
+                "datum": "2023-06-01",
+                "dwangakkoord": true,
+                "toegekend": "Schuldregeling H"
+            },
+            "oplossing": {
+                "einddatum": "2023-08-31",
+                "soort": "Betalingsregeling",
+                "startdatum": "2023-07-01",
+                "oplossingssoort": {
+                    "soort": "Betalingsregeling"
+                }
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "998877665",
+                    "postcode": "4567QW",
+                    "geboortedatum": "1977-06-22",
+                    "geslacht": "M",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-03-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 45000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 1,
+                                    "inkomstenbron": 2,
+                                    "nettoBedrag": 40000,
+                                    "startdatum": "2023-03-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-03-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 30000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Publiek (Belastingdienst, Dienst Toeslagen,CJIB etc)",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "CJIB",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 20000,
+                                    "peildatum": "2023-03-01",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Kredietmaatschappij N",
+                                        "peildatum": "2023-03-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-05-31",
+            "naam": "Traject 9",
+            "omschrijving": "Omschrijving van traject 9",
+            "startdatum": "2023-01-10",
+            "toekenningsdatum": "2023-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-01-15",
+                "startdatum": "2023-01-01"
+            },
+            "intake": {
+                "einddatum": "2023-01-20",
+                "startdatum": "2023-01-15",
+                "toelatingsbeschikking": "2023-01-18"
+            },
+            "schuldregeling": {
+                "datum": "2023-04-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling I"
+            },
+            "oplossing": {
+                "einddatum": "2023-05-31",
+                "soort": "Herfinanciering",
+                "startdatum": "2023-04-15",
+                "oplossingssoort": {
+                    "soort": "Herfinanciering"
+                }
+            },
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "556677889",
+                    "postcode": "1098HG",
+                    "geboortedatum": "1992-12-25",
+                    "geslacht": "V",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-01-10",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 30000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 2,
+                                    "inkomstenbron": 1,
+                                    "nettoBedrag": 25000,
+                                    "startdatum": "2023-01-10"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-01-10",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 15000,
+                                    "peildatum": "2023-01-10",
+                                    "soort": "Overig",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Privé Lening O",
+                                        "peildatum": "2023-01-10"
+                                    }
+                                },
+                                {
+                                    "bedrag": 5000,
+                                    "peildatum": "2023-01-10",
+                                    "soort": "Energie, water, gemeentelijke belastingen en telecom",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Energiebedrijf P",
+                                        "peildatum": "2023-01-10"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "einddatum": "2023-12-31",
+            "naam": "Traject 10",
+            "omschrijving": "Omschrijving van traject 10",
+            "startdatum": "2023-06-01",
+            "toekenningsdatum": "2023-05-20",
+            "totaalSchuldbedragBijAanvangSchuld": 60000,
+            "aanmelding": {
+                "crisisinterventie": true,
+                "einddatum": "2023-06-05",
+                "startdatum": "2023-05-25"
+            },
+            "intake": {
+                "einddatum": "2023-06-10",
+                "startdatum": "2023-06-05",
+                "toelatingsbeschikking": "2023-06-08"
+            },
+            "stabilisatie": {
+                "einddatum": "2023-11-30",
+                "startdatum": "2023-07-01"
+            },
+            "schuldregeling": {
+                "datum": "2023-10-01",
+                "dwangakkoord": false,
+                "toegekend": "Schuldregeling J"
+            },
+            "oplossing": {
+                "einddatum": "2023-12-31",
+                "soort": "Saneringskrediet",
+                "startdatum": "2023-11-01",
+                "oplossingssoort": {
+                    "soort": "Saneringskrediet"
+                }
+            },
+            "nazorg": {
+                "einddatum": "2024-02-28",
+                "startdatum": "2024-01-01"
+            },
+            "begeleiding": [
+                {
+                    "einddatum": "2023-10-30",
+                    "soort": "Beschermingsbewind",
+                    "startdatum": "2023-08-01",
+                    "begeleidingssoort": {
+                        "soort": "Beschermingsbewind"
+                    }
+                }
+            ],
+            "client": [
+                {
+                    "gezagsdragerbekend": true,
+                    "ondernemer": false,
+                    "bsn": "443322110",
+                    "postcode": "9087NM",
+                    "geboortedatum": "1988-02-14",
+                    "geslacht": "V",
+                    "leefsituatie": [
+                        {
+                            "datumGeldigTot": "2023-12-31",
+                            "datumGeldigVanaf": "2023-06-01",
+                            "inkomen": [
+                                {
+                                    "brutoBedrag": 60000,
+                                    "einddatum": "2023-12-31",
+                                    "inkomenscategorie": 1,
+                                    "inkomstenbron": 1,
+                                    "nettoBedrag": 50000,
+                                    "startdatum": "2023-06-01"
+                                }
+                            ],
+                            "partner": [
+                                {
+                                    "datumTot": "2023-12-31",
+                                    "datumVanaf": "2023-06-01",
+                                    "getrouwdOfGeregistreerdPartner": true,
+                                    "samenwonend": true
+                                }
+                            ],
+                            "schulden": [
+                                {
+                                    "bedrag": 40000,
+                                    "peildatum": "2023-06-01",
+                                    "soort": "Zorg",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Ziekenhuis Q",
+                                        "peildatum": "2023-06-01"
+                                    }
+                                },
+                                {
+                                    "bedrag": 20000,
+                                    "peildatum": "2023-06-01",
+                                    "soort": "Publiek (Belastingdienst, Dienst Toeslagen,CJIB etc)",
+                                    "zakelijkeSchuld": false,
+                                    "schuldeiser": {
+                                        "naam": "Belastingdienst",
+                                        "peildatum": "2023-06-01"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

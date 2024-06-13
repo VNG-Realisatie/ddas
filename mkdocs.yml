@@ -32,6 +32,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.caret
   - pymdownx.magiclink
+  - markdown_include.include:
+      base_path: /
 
 extra_css:
   - stylesheets/extra.css
