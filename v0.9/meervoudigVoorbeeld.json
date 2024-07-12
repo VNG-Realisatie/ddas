@@ -1,0 +1,526 @@
+{
+    "startdatumLevering": "2023-01-01",
+    "einddatumLevering": "2023-12-31",
+    "aanleverdatumEnTijd": "2023-01-01T12:00:00Z",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie ABC",
+          "KvK-nummer": "12345678",
+          "postcode": "1234AB",
+          "gemeentecode": "001",
+          "contactpersonen": [
+            {
+              "email": "contact@schuldhulpabc.nl",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 1",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 5000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "1",
+                "Huisnummertoevoeging": "A",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 1000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Zorg",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Zorgverzekeraar XYZ",
+                          "kvknummer": "87654321",
+                          "postcode": "5678CD",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 2",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 3000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1990-01-01",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678EF",
+                "Huisnummer": "2",
+                "Huisnummertoevoeging": "B",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 2000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Publiek",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Belastingdienst",
+                          "kvknummer": "11223344",
+                          "postcode": "1122AA",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 3",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 7000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Beschermingsbewind",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "112233445",
+                "Geboortedatum": "1975-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "9876GH",
+                "Huisnummer": "3",
+                "Huisnummertoevoeging": "C",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 1500,
+                        "peildatum": "2023-01-01",
+                        "soort": "Nuts",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Energieleverancier",
+                          "kvknummer": "99887766",
+                          "postcode": "3344BB",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 4",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 2500,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetbeheer",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "554433221",
+                "Geboortedatum": "1985-01-01",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "7765JK",
+                "Huisnummer": "4",
+                "Huisnummertoevoeging": "D",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 1800,
+                        "peildatum": "2023-01-01",
+                        "soort": "Overig",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Leningverstrekker",
+                          "kvknummer": "55443322",
+                          "postcode": "9988FF",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 5",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 4500,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Lange Termijn Begeleiding (DFD)",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "223344556",
+                "Geboortedatum": "1995-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "4455LM",
+                "Huisnummer": "5",
+                "Huisnummertoevoeging": "E",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 1200,
+                        "peildatum": "2023-01-01",
+                        "soort": "Zorg",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Zorgverzekeraar ABC",
+                          "kvknummer": "33445566",
+                          "postcode": "7788CC",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 6",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 8000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "998877665",
+                "Geboortedatum": "1987-01-01",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5566NP",
+                "Huisnummer": "6",
+                "Huisnummertoevoeging": "F",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 3000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Publiek",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Gemeente",
+                          "kvknummer": "44332211",
+                          "postcode": "1122CC",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 7",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 9000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "443322110",
+                "Geboortedatum": "1993-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "9988TU",
+                "Huisnummer": "7",
+                "Huisnummertoevoeging": "G",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 2000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Nuts",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Waterbedrijf",
+                          "kvknummer": "33221100",
+                          "postcode": "5566DD",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 8",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 11000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetbeheer",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "667788990",
+                "Geboortedatum": "1970-01-01",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "4455WX",
+                "Huisnummer": "8",
+                "Huisnummertoevoeging": "H",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 4000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Overig",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Kredietverstrekker",
+                          "kvknummer": "44556677",
+                          "postcode": "6677EE",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 9",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 9500,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "556677889",
+                "Geboortedatum": "1983-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1122YZ",
+                "Huisnummer": "9",
+                "Huisnummertoevoeging": "I",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 3500,
+                        "peildatum": "2023-01-01",
+                        "soort": "Publiek",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Gemeente",
+                          "kvknummer": "55667788",
+                          "postcode": "8899DD",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing 10",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 6000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetbeheer",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "445566778",
+                "Geboortedatum": "1992-01-01",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3344UV",
+                "Huisnummer": "10",
+                "Huisnummertoevoeging": "J",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 5000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Nuts",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Gasbedrijf",
+                          "kvknummer": "22334455",
+                          "postcode": "3344GG",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

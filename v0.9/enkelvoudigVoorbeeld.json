@@ -1,0 +1,124 @@
+{
+    "startdatumLevering": "2023-01-01",
+    "einddatumLevering": "2023-12-31",
+    "aanleverdatumEnTijd": "2023-01-01T12:00:00Z",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie ABC",
+          "KvK-nummer": "12345678",
+          "postcode": "1234AB",
+          "gemeentecode": "001",
+          "contactpersonen": [
+            {
+              "email": "contact@schuldhulpabc.nl",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2023-12-31",
+            "omschrijving": "Hulptraject voor schuldaflossing",
+            "startdatum": "2023-01-01",
+            "toekenningsdatum": "2023-01-01",
+            "totaalSchuldbedragBijAanvangSchuld": 5000,
+            "gemeentecode": "001",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2023-12-31",
+                "soort": "Budgetcoaching",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "1",
+                "Huisnummertoevoeging": "A",
+                "leefsituatie": [
+                  {
+                    "datumGeldigTot": "2023-12-31",
+                    "datumGeldigVanaf": "2023-01-01",
+                    "schulden": [
+                      {
+                        "bedrag": 1000,
+                        "peildatum": "2023-01-01",
+                        "soort": "Zorg",
+                        "zakelijkeSchuld": false,
+                        "schuldeiser": {
+                          "naam": "Zorgverzekeraar XYZ",
+                          "kvknummer": "87654321",
+                          "postcode": "5678CD",
+                          "privepersoon": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "crisisinterventies": [
+              {
+                "einddatum": "2023-12-31",
+                "startdatum": "2023-01-01"
+              }
+            ],
+            "intake": {
+              "einddatum": "2023-01-15",
+              "startdatum": "2023-01-01",
+              "toelatingsbeschikking": "2023-01-15"
+            },
+            "moratoria": [
+              {
+                "datumAanvraag": "2023-02-01",
+                "datumGoedkeuring": "2023-02-15",
+                "einddatum": "2023-08-01",
+                "startdatum": "2023-02-15"
+              }
+            ],
+            "nazorg": {
+              "einddatum": "2024-01-01",
+              "startdatum": "2023-12-31"
+            },
+            "oplossing": {
+              "einddatum": "2023-12-31",
+              "soort": "Schuldbemiddeling",
+              "startdatum": "2023-01-01"
+            },
+            "planVanAanpak": {
+              "datumAfronding": "2023-01-15"
+            },
+            "schuldregeling": {
+              "afgewezen": "2023-01-20",
+              "datum": "2023-01-01",
+              "datumVerzoekDwangakkoord": "2023-01-10",
+              "dwangakkoord": true,
+              "ingetrokken": "2023-01-25",
+              "toegekend": "2023-02-01"
+            },
+            "uitstroom": {
+              "datum": "2023-12-31",
+              "omschrijving": "Traject succesvol afgerond",
+              "reden": "Afgerond"
+            },
+            "stabilisatie": {
+              "einddatum": "2023-12-31",
+              "startdatum": "2023-01-01"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

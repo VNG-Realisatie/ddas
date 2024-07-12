@@ -8,17 +8,17 @@ De kern van het informatiemodel Schuldhulpverlening bestaat uit een Schuldhulptr
 
 Eén of meer Schuldhulporganisaties leveren het Schuldhulptraject aan de client(en). Vaak zijn er naast de gemeente ook andere partijen die betrokken zijn bij onderdelen van het Schuldhulptraject.
 
-[![Hoofdindeling](images/image7.png)](images/image7.png)
+[![Hoofdindeling](images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)](images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)
 
 Figuur 2 Hoofdindeling Schuldhulpverlening
 
-Een Client is altijd een Ingeschreven Persoon, zoals bekend in de BRP (Basisregistratie Personen), en heeft de kenmerken die daar zijn vastgelegd, zoals: BSN, voornaam, achternaam, geboortedatum en adres. Voor een client geldt echter wel dat niet op alle momenten in het proces al deze gegevens beschikbaar hoeven te zijn. Een Schuldhulporganisatie is een Niet Natuurlijk Persoon (bedrijf, instelling of overheidsorganisatie) en heeft hiervan ook de kenmerken, zoals: naam, rechtsvorm, kvk-nummer en adres.
+Een Client is altijd een Ingeschreven Persoon, zoals bekend in de BRP (Basisregistratie Personen), en heeft de kenmerken die daar zijn vastgelegd. Voor een client geldt echter wel dat niet op alle momenten in het proces al deze gegevens beschikbaar hoeven te zijn. Een Schuldhulporganisatie is een Niet Natuurlijk Persoon (bedrijf, instelling of overheidsorganisatie) en heeft hiervan ook de kenmerken.
 
 ## Processen
 
 Het procesdeel van het informatiemodel is gebaseerd op het NVVK-Referentieproces (zie paragraaf 1.4) en geeft uitwerking van de processen die in het kader van een Schuldhulptraject kunnen voorkomen.
 
-[![Proces Schuldhulpverlening](images/image8.png)](images/image8.png)
+[![Proces Schuldhulpverlening](images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)](images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)
 
 Figuur 3 Proces Schuldhulpverlening
 
@@ -28,21 +28,21 @@ Daarnaast kan een Schuldhulptraject een Plan van aanpak hebben en een Uitstroomr
 
 ## Cliënten
 
-Binnen het Informatiemodel Schuldhulpverlening worden de volgende objecttypen vastgelegd rond de Client in het kader van een Schuldhulptraject. In Figuur 4 zijn deze uitgewerkt.
+Binnen het Informatiemodel Schuldhulpverlening worden de volgende objecttypen vastgelegd rond de Client in het kader van een Schuldhulptraject. Van een client worden niet alle vastgelegde attributen uit de BRP overgenomen. Alleen die attributen worden gebruikt die noodzakelijk zijn om de client te identificeren: BSN en door het geval deze niet beschikbaar is: geboortedatum, geslacht, postcode, huisnummer en huisnummertoevoeging. In Figuur 4 zijn deze uitgewerkt.
 
-[![Client Schuldhulpverlening](images/image9.png)](images/image9.png)
+[![Client Schuldhulpverlening](images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)](images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)
 
 Figuur 4 Informatiemodel Client
 
 Allereerst maakt een Client onderdeel uit van een Huishouden. Dat kan een eenpersoonshuishouden zijn of een huishouden dat met meerdere Natuurlijke Personen wordt gedeeld. De verschillende soorten mogelijke huishoudens (Particulier huishouden of Institutioneel Huishouden) zijn vastgelegd in EnumHuishoudenssoort.
 
-In het kader van de Schuldhulpverlening heeft een Client een Leefstituatie. In de tijd kan een Client slechts één vastgelegde Leefstituatie hebben. Na elkaar in de tijd kunnen dat meerdere vastgelegde Leefstituaties zijn. De Leefstituatie kent een volgende objecttypen: informatie over: een mogelijke partner of partners uit het verleden, het inkomen, een mogelijke koopwoning en een mogelijk ondernemerschap. Daarnaast zijn de schulden van de Client van groot belang. Een Client kan meerdere schulden hebben, en ieder van die schulden is bij een Schuldeiser. Een schuldeiser is een Rechtspersoon, dus kan een Natuurlijk Persoon zijn of een Niet Natuurlijk Persoon. De verschillende soorten mogelijke schulden zijn vastgelegd in EnumSchuldensoort en de verschillende soorten mogelijke schuldeisers zijn vastgelegd in EnumSchuleisersoort.
+In het kader van de Schuldhulpverlening heeft een Client een Leefstituatie. In de tijd kan een Client slechts één vastgelegde Leefstituatie hebben. Na elkaar in de tijd kunnen dat meerdere vastgelegde Leefstituaties zijn. De Leefstituatie kent een volgende objecttypen: informatie over: een mogelijke partner of partners uit het verleden, het inkomen, een mogelijke koopwoning en een mogelijk ondernemerschap. Daarnaast zijn de schulden van de Client van groot belang. Een Client kan meerdere schulden hebben, en ieder van die schulden is bij een Schuldeiser. Een schuldeiser is een Rechtspersoon, dus kan een Natuurlijk Persoon zijn of een Niet Natuurlijk Persoon. De verschillende soorten mogelijke schulden zijn vastgelegd in EnumSchuldensoort en de verschillende soorten mogelijke schuldeisers zijn vastgelegd in EnumSchuleisersoort. Een schuldhulptraject vindt altijd plaats onder verantwoordelijkheid van een gemeente.
 
 ## Organisaties
 
-In het informatiemodel Schuldhulpverlening worden de volgende objecttypen en relaties vastgelegd over de schuldhulp verlenende organisatie, deze zijn in Figuur 5 uitgewerkt.
+In het informatiemodel Schuldhulpverlening worden de volgende objecttypen en relaties vastgelegd over de schuldhulp verlenende organisatie. Van een organisatie worden niet alle kenmerken zoals vastgelegd in de NHR overgenomen, alleen kvk-nummer, naam en als het een gemeente betreft de gemeentecode, deze zijn in Figuur 5 uitgewerkt.
 
-[![Schuldhulpverlenende organisatie](images/image10.png)](images/image10.png)
+[![Schuldhulpverlenende organisatie](images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)](images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)
 
 Figuur 5 Schuldhulpverlenende Organisatie
 
