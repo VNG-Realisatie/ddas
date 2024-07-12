@@ -1,0 +1,2939 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="De uitwisselspecificatie voor de Data Delen Armoede en Schulden (DDAS) API">
+      
+      
+        <meta name="author" content="Arjen Brienen">
+      
+      
+        <link rel="canonical" href="https://ddas-api.nl/latest/rapport_2/">
+      
+      
+        <link rel="prev" href="../rapport_1/">
+      
+      
+        <link rel="next" href="../rapport_0/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Detailspecificatie - Data Delen Armoede en Schulden (DDAS)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objecttypen-model-schuldhulpverlening" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-header__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Delen Armoede en Schulden (DDAS)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Detailspecificatie
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-nav__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Data Delen Armoede en Schulden (DDAS)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uitwisselspecificatie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uitwisselspecificatie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Informatiemodel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Informatiemodel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hoofdlijnen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Detailspecificatie
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Detailspecificatie
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objecttypen-model-schuldhulpverlening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objecttypen Model Schuldhulpverlening
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objecttypen Model Schuldhulpverlening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanmelding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanmelding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begeleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Begeleiding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begeleidingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Begeleidingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contactpersoon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contactpersoon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crisisinterventie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crisisinterventie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inkomen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inkomen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leefsituatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leefsituatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moratorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moratorium
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nazorg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nazorg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ondernemer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ondernemer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#planvanaanpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      PlanVanAanpak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuld" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuld
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldeiser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldeiser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldhulporganisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldhulporganisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldhulptraject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldhulptraject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldregeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldregeling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stabilisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitstroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitstroom
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#woningbezit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Woningbezit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsnp-traject" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSNP-traject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsnp-verklaring" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSNP-verklaring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumeraties-model-schuldhulpverlening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumeraties Model Schuldhulpverlening
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enumeraties Model Schuldhulpverlening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumbegeleidingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumBegeleidingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumhuishoudenssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumHuishoudenssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumoplossingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumOplossingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumschuldensoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumSchuldensoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumuitstroomreden" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumUitstroomreden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumwoningbezit" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumWoningbezit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geslacht" class="md-nav__link">
+    <span class="md-ellipsis">
+      geslacht
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport_0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achtergrond DDAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objecttypen-model-schuldhulpverlening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objecttypen Model Schuldhulpverlening
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objecttypen Model Schuldhulpverlening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanmelding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanmelding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begeleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Begeleiding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begeleidingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Begeleidingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contactpersoon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contactpersoon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crisisinterventie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crisisinterventie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inkomen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inkomen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leefsituatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leefsituatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moratorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moratorium
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nazorg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nazorg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ondernemer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ondernemer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#planvanaanpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      PlanVanAanpak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuld" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuld
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldeiser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldeiser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldhulporganisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldhulporganisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldhulptraject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldhulptraject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldregeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldregeling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stabilisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitstroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitstroom
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#woningbezit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Woningbezit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsnp-traject" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSNP-traject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsnp-verklaring" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSNP-verklaring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumeraties-model-schuldhulpverlening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumeraties Model Schuldhulpverlening
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enumeraties Model Schuldhulpverlening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumbegeleidingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumBegeleidingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumhuishoudenssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumHuishoudenssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumoplossingssoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumOplossingssoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumschuldensoort" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumSchuldensoort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumuitstroomreden" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumUitstroomreden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumwoningbezit" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnumWoningbezit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geslacht" class="md-nav__link">
+    <span class="md-ellipsis">
+      geslacht
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Detailspecificatie</h1>
+
+<h2 id="objecttypen-model-schuldhulpverlening">Objecttypen Model Schuldhulpverlening</h2>
+<h3 id="aanmelding">Aanmelding</h3>
+<p>Het objecttype Aanmelding kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Aanmelding</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Moment dat een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/kennisbank-detail/2021/04/13/Module-Aanmelding">https://www.nvvk.nl/kennisbank-detail/2021/04/13/Module-Aanmelding</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Aanmelding:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">crisisinterventie</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening. Volgens de Wgs gaat het in elk geval om de volgende situaties: ■ gedwongen woningontruiming; ■ be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming; ■ opzegging of ontbinding van de zorgverzekering. Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals: ■ aangekondigde boedelverkoop of verkoop van de eigen woning; ■ loon- of bankbeslag; ■ een faillissementsaanvraag. En voor ondernemers: ■ beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt; ■ opzegging van het bankkrediet."</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="begeleiding">Begeleiding</h3>
+<p>Het objecttype Begeleiding kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Begeleiding</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Begeleiding voor clienten in het kader van schuldhulpdienstverlening, die kan bestaan uit: 1. budgetbeheer 2. beschermingsbewind 3. budgetcoaching</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/ons-werkveld/gedragscodes-en-modules">https://www.nvvk.nl/ons-werkveld/gedragscodes-en-modules</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Begeleiding:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">Enumeratie: "EnumBegeleidingssoort"</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="begeleidingssoort">Begeleidingssoort</h3>
+<p>Het objecttype Begeleidingssoort kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Begeleidingssoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Soort begeleiding in het kader van schuldhulpverlening</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Begeleidingssoort:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">BegeleidingsoortEnum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="client">Client</h3>
+<p>Het objecttype Client kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Client</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente binnen de sociaal domein.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Client:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Burgerservicenummer</td>
+<td style="text-align: left;">AN9</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Geboortedatum</td>
+<td style="text-align: left;">AN22</td>
+<td style="text-align: left;">De datum waarop de ander natuurljjk persoon is geboren.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Geslachtsaanduiding</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Huisnummer</td>
+<td style="text-align: left;">AN5</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Huisnummertoevoeging</td>
+<td style="text-align: left;">AN4</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Postcode</td>
+<td style="text-align: left;">AN6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contactpersoon">Contactpersoon</h3>
+<p>Het objecttype Contactpersoon kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Contactpersoon</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Contactpersoon van een organisatie</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Contactpersoon:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">email</td>
+<td style="text-align: left;">email</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">naam</td>
+<td style="text-align: left;">AN200</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">telefoonnummer</td>
+<td style="text-align: left;">AN200</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="crisisinterventie">Crisisinterventie</h3>
+<p>Het objecttype Crisisinterventie kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Crisisinterventie</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening. Volgens de Wgs gaat het in elk geval om de volgende situaties: ■ gedwongen woningontruiming; ■ be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming; ■ opzegging of ontbinding van de zorgverzekering. Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals: ■ aangekondigde boedelverkoop of verkoop van de eigen woning; ■ loon- of bankbeslag; ■ een faillissementsaanvraag. En voor ondernemers: ■ beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt; ■ opzegging van het bankkrediet.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Crisisinterventie:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inkomen">Inkomen</h3>
+<p>Het objecttype Inkomen kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Inkomen</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Inkomen dat door een persoon wordt verworven uit verschillende mogelijke inkomstenbronnen: inkomen uit arbeid, inkomen uit eigen onderneming, uitkering inkomensverzekeringen en uitkering sociale voorzieningen (m.u.v. kinderbijslag en kindgebonden budget). Premies inkomensverzekeringen (m.u.v. premies voor volksverzekeringen) zijn hierop in mindering gebracht.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Inkomen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">brutoBedrag</td>
+<td style="text-align: left;">Bedrag</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">inkomenscategorie</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">inkomstenbron</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">nettoBedrag</td>
+<td style="text-align: left;">Bedrag</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="intake">Intake</h3>
+<p>Het objecttype Intake kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Intake</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel evenwicht te bereiken.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/kennisbank-detail/2021/04/15/Module-Intake">https://www.nvvk.nl/kennisbank-detail/2021/04/15/Module-Intake</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Intake:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">toelatingsbeschikking</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Een beschikking met het besluit over de toegang tot schuldhulpverlening. Een toelatingsbeschikking is voorzien van een Plan van Aanpak op hoofdlijnen. Van de toelatingsbeschikking wordt de datum dat deze is afgegeven vastgelegd.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leefsituatie">Leefsituatie</h3>
+<p>Het objecttype Leefsituatie kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Leefsituatie</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Leefsituatie is de combinatie van factoren zoals schulden, ondernemerschap, aanwezigheid van een partner, en inkomen, die samen de sociale en economische omstandigheden van een individu bepalen. Deze wordt in het kader van schuldhulpverlening gebruikt om alle relevante zaken van clienten aan te koppelen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Leefsituatie:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">datumGeldigTot</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">datumGeldigVanaf</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="moratorium">Moratorium</h3>
+<p>Het objecttype Moratorium kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Moratorium</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Het gaat hier om de datum waarop een verzoek tot een moratorium (ex art. 287 b Fw) is ingediend bij de rechter.  Er kan een verzoek tot een moratorium bij de rechter worden gedaan om te voorkomen dat een schuldeiser zijn specifieke inningsmogelijkheden gebruikt, terwijl een aanvraag voor een minnelijke schuldregeling in behandeling is. Het moratorium is bedoeld om het minnelijke traject te kunnen voortzetten.  Het moratorium kan in de volgende situaties worden ingezet: - gedwongen woningontruiming; - be&#235;indiging van de levering van gas, water elektriciteit of stadsverwarming; - opzegging dan wel ontbinding van de zorgverzekering.  Het moratorium duurt maximaal zes maanden.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Moratorium:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">datumAanvraag</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">datumGoedkeuring</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nazorg">Nazorg</h3>
+<p>Het objecttype Nazorg kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Nazorg</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Ondersteuning die een persoon ontvangt n&#225; een schuldregelingstraject, om zo bij de start van een schuldenvrij leven zelfredzaamheid verder te bevorderen &#233;n recidive (terugval) te voorkomen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401">https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Nazorg:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ondernemer">Ondernemer</h3>
+<p>Het objecttype Ondernemer kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Ondernemer</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een ondernemer is een individu die die goederen of diensten levert aan anderen om winst te maken.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://ondernemersplein.kvk.nl/inschrijven-bij-kvk/">https://ondernemersplein.kvk.nl/inschrijven-bij-kvk/</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Ondernemer:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="oplossing">Oplossing</h3>
+<p>Het objecttype Oplossing kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Oplossing</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">De Oplossing beschrijft in 4 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:  - submodule Herfinanciering; - submodule Betalingsregeling; - submodule Saneringskrediet; - submodule Schuldbemiddeling.  Het kan ook gaan om een 0%-aanbod</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/l/library/download/urn:uuid:eba70d82-a0a0-40c4-9dd2-4c4aee7f0ed9/nvvk-module-12-oplossingen-221219.pdf">https://www.nvvk.nl/l/library/download/urn:uuid:eba70d82-a0a0-40c4-9dd2-4c4aee7f0ed9/nvvk-module-12-oplossingen-221219.pdf</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Oplossing:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk eindigt. Dit kan zijn na de formele afgesproken periode of een voortijdige beeindiging.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">Enumeratie: "EnumOplossingssoort"</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk start na goedkeuring van de aanvraag.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="oplossingssoort">Oplossingssoort</h3>
+<p>Het objecttype Oplossingssoort kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Oplossingssoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">De soort oplossing in het kader van Schuldhulpverlening</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Oplossingssoort:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">SchuldregelingsoortEnum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="partner">Partner</h3>
+<p>Het objecttype Partner kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Partner</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een partner is een persoon met wie iemand een romantische en vaak langdurige relatie heeft, gebaseerd op wederzijdse liefde, steun en commitment.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Partner:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Burgerservicenummer</td>
+<td style="text-align: left;">AN9</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Geboortedatum</td>
+<td style="text-align: left;">AN22</td>
+<td style="text-align: left;">De datum waarop de ander natuurljjk persoon is geboren.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Geslachtsaanduiding</td>
+<td style="text-align: left;">Enumeratie: "geslacht"</td>
+<td style="text-align: left;">Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Huisnummer</td>
+<td style="text-align: left;">AN5</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Huisnummertoevoeging</td>
+<td style="text-align: left;">AN4</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Postcode</td>
+<td style="text-align: left;">AN6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="planvanaanpak">PlanVanAanpak</h3>
+<p>Het objecttype PlanVanAanpak kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">PlanVanAanpak</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een document waarin in elk geval het volgende staat: ■ de hulpvraag van de persoon; ■ de voorgestelde ondersteuning; ■ eventueel de organisatie(s) waarnaar je hebt doorverwezen; ■ de voorwaarden voor schuldhulpverlening (bijvoorbeeld dat de persoon geen nieuwe schulden mag maken).  De hoogte van beslagvrije voet voor de persoon (zie artikel 4a:5 van de Wgs) moet in acht worden genomen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype PlanVanAanpak:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">datumAfronding</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schuld">Schuld</h3>
+<p>Het objecttype Schuld kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Schuld</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een schuld is een financi&#235;le verplichting waarbij een persoon nu of in de toekomst een bedrag moet betalen aan een derde. In het kader van schuldhulpverlening wordt over een schuld gesproken als de persoon niet aan deze verplichting kan voldoen. .</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Schuld:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">bedrag</td>
+<td style="text-align: left;">Bedrag</td>
+<td style="text-align: left;">Bedrag in hele euro's nauwkeurig</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">peildatum</td>
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;">Peildatum dat de schuld is vastgesteld.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">Enumeratie: "EnumSchuldensoort"</td>
+<td style="text-align: left;">De soort schuld</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">zakelijkeSchuld</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">Betreft het een zakelijke schuld</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schuldeiser">Schuldeiser</h3>
+<p>Het objecttype Schuldeiser kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Schuldeiser</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een schuldeiser is bedrijf of persoon die recht heeft op een prestatie van een ander, de schuldenaar. In de meeste gevallen is de prestatie het betalen van geld. Dit geldbedrag is dan de schuld die de schuldenaar aan de schuldeiser moet betalen. De schuld is meestal het gevolg van het niet nakomen van een verplichting uit een overeenkomst tussen de partijen. De schuldeiser kan de schuldenaar dwingen om de schuld te voldoen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.ris-rijkschroeff.nl/Kennisbank/Verbintenissenrecht/Schuldeiser">https://www.ris-rijkschroeff.nl/Kennisbank/Verbintenissenrecht/Schuldeiser</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Schuldeiser:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">kvknummer</td>
+<td style="text-align: left;">AN20</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">naam</td>
+<td style="text-align: left;">AN200</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">Naam</td>
+<td style="text-align: left;">AN200</td>
+<td style="text-align: left;">De benaming van het SUBJECT</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">postcode</td>
+<td style="text-align: left;">AN6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">privepersoon</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schuldhulporganisatie">Schuldhulporganisatie</h3>
+<p>Het objecttype Schuldhulporganisatie kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Schuldhulporganisatie</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een schuldhulporganisatie is een instantie die individuen en gezinnen helpt met het beheren, verminderen en oplossen van hun schulden door middel van advies, begeleiding en bemiddeling.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Schuldhulporganisatie:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">(Statutaire) Naam</td>
+<td style="text-align: left;">AN500</td>
+<td style="text-align: left;">Naam van de niet-natuurlijke persoon zoals deze is vastgelegd in de statuten (rechtspersoon) of in de vennootschapsovereenkomst is overeengekomen (Vennootschap onder firma of Commanditaire vennootschap).</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">gemeentecode</td>
+<td style="text-align: left;">AN2</td>
+<td style="text-align: left;">De gemeentecode als de aanleverende organisatie een gemeente is.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">KvK-nummer</td>
+<td style="text-align: left;">AN8</td>
+<td style="text-align: left;">Landelijk uniek identificerend administratienummer van een MAATSCHAPPELIJKE ACTIVITEIT behorend bij een SUBJECT zoals toegewezen door de Kamer van Koophandel (KvK).</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">postcode</td>
+<td style="text-align: left;">AN6</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schuldhulptraject">Schuldhulptraject</h3>
+<p>Het objecttype Schuldhulptraject kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Schuldhulptraject</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Samenstel van achtereenvolgens uit te voeren en onderling samenhangende deelhandelingen of van opeenvolgende stadia in een proces, voorgesteld als een route die via opeenvolgende bestemmingen naar de eindbestemming voert.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Schuldhulptraject:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">gemeentecode</td>
+<td style="text-align: left;">AN2</td>
+<td style="text-align: left;">De gemeentecode van de gemeente onder wiens verantwoordelijkheid het schuldhulptraject wordt uitgevoerd.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">omschrijving</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">toekenningsdatum</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">totaalSchuldbedragBijAanvangSchuld</td>
+<td style="text-align: left;">Bedrag</td>
+<td style="text-align: left;">Bedrag in hele euro's nauwkeurig voor elke schuld die meegaat in de schuldregeling. Per schuldeiser kunnen er meerdere openstaande schulden zijn. Deze afzonderlijk meenemen.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schuldregeling">Schuldregeling</h3>
+<p>Het objecttype Schuldregeling kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Schuldregeling</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">De schuldregeling heeft als doel een overeenkomst te sluiten tussen iemand met problematische schulden en zijn schuldeisers. Op basis van eventueel ingezet vermogen en de berekende afloscapaciteit (of op andere wijze vastgestelde minimale afdracht) lost de schuldenaar in maximaal 18 maanden zo veel mogelijk van de schuld af. Daarna schelden de schuldeisers de rest van hun vordering kwijt. Voordat de schuldregeling start, sluit je een schuldregelingsovereenkomst met de schuldenaar. Daarin staan de rechten en plichten van beide partijen. Een schuldregeling kan met een saneringskrediet of een schuldbemiddeling gerealiseerd worden. Als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregeling, informeer je de schuldenaar over mogelijke vervolgstappen, zoals het aanvragen van een dwangakkoord (artikel 287a Fw) of toelating tot de Wsnp.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/kennisbank-detail/2022/04/20/Module-Schuldregeling">https://www.nvvk.nl/kennisbank-detail/2022/04/20/Module-Schuldregeling</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Schuldregeling:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">afgewezen</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Datum waarop afwijzingheeft plaatgevonden. Leeg betekent: (nog) geen afwijzing plaatgevonden</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">datum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Datum dat schuldregeling is ingediend.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">datumVerzoekDwangakkoord</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">dwangakkoord</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">ingetrokken</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Datum waarop schuldregeling is ingetrokken. Leeg betekent: (nog) geen intrekking plaatgevonden</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">toegekend</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;">Datum waarop toekenning heeft plaatgevonden. Leeg betekent: (nog) geen toekenning plaatgevonden</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stabilisatie">Stabilisatie</h3>
+<p>Het objecttype Stabilisatie kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Stabilisatie</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van werkzaamheden uit het integrale plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst. In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financi&#235;le probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"><a href="https://www.nvvk.nl/kennisbank-detail/2021/08/16/Module-Stabilisatie">https://www.nvvk.nl/kennisbank-detail/2021/08/16/Module-Stabilisatie</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Stabilisatie:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uitstroom">Uitstroom</h3>
+<p>Het objecttype Uitstroom kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Uitstroom</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Motivatie voor uitstroom</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Uitstroom:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">datum</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">omschrijving</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">reden</td>
+<td style="text-align: left;">Enumeratie: "EnumUitstroomreden"</td>
+<td style="text-align: left;">Reden dat de hulpverlening op enig moment na aanmelding bij schuldhulpverlening eindigt.</td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="woningbezit">Woningbezit</h3>
+<p>Het objecttype Woningbezit kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Woningbezit</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een koopwoning is een woning die eigendom is van een individu of een entiteit, die het heeft gekocht en waarvoor meestal een hypotheek is afgesloten.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype Woningbezit:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">soort</td>
+<td style="text-align: left;">Enumeratie: "EnumWoningbezit"</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wsnp-traject">WSNP-traject</h3>
+<p>Het objecttype WSNP-traject kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">WSNP-traject</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een WSNP-traject (Wet schuldsanering natuurlijke personen) is een wettelijk regeling in Nederland waarmee individuen met problematische schulden via een saneringsplan onder toezicht van een bewindvoerder hun schulden kunnen aflossen en na drie jaar een schone lei kunnen krijgen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype WSNP-traject:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">datumGoedkeuring</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">datumVerzoek</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">einddatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+<tr>
+<td style="text-align: left;">startdatum</td>
+<td style="text-align: left;">Datum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Nee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wsnp-verklaring">WSNP-verklaring</h3>
+<p>Het objecttype WSNP-verklaring kent de volgende eigenschappen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Eigenschap</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">WSNP-verklaring</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">Een WSNP-verklaring is een officieel document dat bevestigt dat een persoon toegelaten is tot de Wet Schuldsanering Natuurlijke Personen (WSNP) om hun schulden onder toezicht van een bewindvoerder af te lossen.</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Attributen van objecttype WSNP-verklaring:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribuut</th>
+<th style="text-align: left;">Datatype</th>
+<th style="text-align: left;">Omschrijving</th>
+<th style="text-align: left;">Verplicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumeraties-model-schuldhulpverlening">Enumeraties Model Schuldhulpverlening</h2>
+<h3 id="enumbegeleidingssoort">EnumBegeleidingssoort</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumBegeleidingssoort kent de volgende waarden:</p>
+<ul>
+<li><strong>Budgetcoaching</strong>: Het bijbrengen van financi&#235;le kennis en vaardigheden zodat een persoon in staat is om zijn eigen geldzaken zelfstandig te regelen (al dan niet met medewerking van derden). </li>
+<li><strong>Budgetbeheer</strong>: Het beheren van de inkomsten en het verrichten van betalingen. Dit met als doel om vaste lasten op tijd te betalen om zo te voorkomen dat schulden en betalingsachterstanden ontstaan en/of oplopen.</li>
+<li><strong>Beschermingsbewind</strong>: Beschermingsbewind is een wettelijke maatregel die bedoeld is om iemands financi&#235;le belangen, volledig of gedeeltelijk, te beschermen als diegene daar zelf niet toe in staat is. Het is bedoeld voor meerderjarigen die niet in staat zijn om hun eigen vermogen te beheren doordat ze:
+■ een lichamelijke of geestelijke beperking hebben;
+■ hun bezit (dreigen te) verkwisten of problematische schulden hebben.</li>
+</ul>
+<p>De kantonrechter beslist of iemand beschermingsbewind nodig heeft. Na uitspraak van de kantonrechter wordt
+een bewindvoerder verantwoordelijk om  alle handelingen te verrichten die
+aan een goed bewind bijdragen en om betrokkene in en buiten rechte te
+vertegenwoordigen.
+* <strong>Lange Termijn Begeleiding (DFD)</strong>: <font color="#1e1d3a">Het doel van Duurzame Financi&#235;le Dienstverlening (DFD) is om de inkomsten en uitgaven van een inwoner in evenwicht te brengen als de schulden (nog) niet duurzaam opgelost kunnen worden.</font></p>
+<p>De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumBegeleidingssoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumhuishoudenssoort">EnumHuishoudenssoort</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumHuishoudenssoort kent de volgende waarden:</p>
+<ul>
+<li><strong>Particulier Huishouden</strong>: <Geen Definities></li>
+<li><strong>Instituuttioneel Huishouden</strong>: <Geen Definities></li>
+</ul>
+<p>De enumeratie EnumHuishoudenssoort heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumHuishoudenssoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumoplossingssoort">EnumOplossingssoort</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumOplossingssoort kent de volgende waarden:</p>
+<ul>
+<li><strong>Betalingsregeling</strong>: Het volledig (100%) betalen van de vordering(en) in een aantal termijnen.</li>
+<li><strong>Herfinanciering</strong>: Een financieringsovereenkomst waarmee de vastgestelde vordering(en) ineens en volledig (100%) wordt/worden voldaan.</li>
+<li><strong>Saneringskrediet</strong>: Het ineens afkopen van de totale schuldenlast tegen finale kwijting, op basis van betaling van een percentage van de totale schuldenlast.De afbetaling aan de schuldeisers is ineens en wordt gedaan met een krediet. De afsluiting van een saneringskrediet gaat via de eigen organisatie als dat een gemeentelijke of andere kredietbank is of de schuldhulpverlener bemiddelt naar een (gemeentelijke) kredietbank, een reguliere bank of een andere financieringsmogelijkheid (bijv. priv&#233;persoon of werkgever), die vervolgens het saneringskrediet verstrekt.</li>
+<li><strong>Schuldbemiddeling</strong>: Het gedeeltelijk, in termijnen terugbetalen van de totale schuldenlast naar draagkracht, tegen finale kwijting.</li>
+<li><strong>0%-aanbod</strong>: <Geen Definities></li>
+</ul>
+<p>De enumeratie EnumOplossingssoort heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumOplossingssoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumschuldensoort">EnumSchuldensoort</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumSchuldensoort kent de volgende waarden:</p>
+<ul>
+<li><strong>Zorg</strong>: 
+Mogelijke zorgkosten omvatten premies ziektskostenverzekering, kosten eigen bijdragen, en niet verzekerde zorg zoals voor: fysiotherapie, psychologische hulp, tandartszorg, hulpmiddelen en kraamzorg.</li>
+<li><strong>Publiek</strong>: Kosten voor: Belastingdienst, Dienst Toeslagen, Gemeentebelastingen, CJIB etc</li>
+<li><strong>Nuts</strong>: Nutsvoorzieningen zijn essenti&#235;le diensten zoals water, gas, elektriciteit, en riolering die worden geleverd aan huishoudens en bedrijven voor dagelijks gebruik.</li>
+<li><strong>Overig</strong>: <Geen Definities></li>
+</ul>
+<p>De enumeratie EnumSchuldensoort heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumSchuldensoort</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumuitstroomreden">EnumUitstroomreden</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumUitstroomreden kent de volgende waarden:</p>
+<ul>
+<li><strong>Overleden</strong>: Client is overleden</li>
+<li><strong>Verhuisd</strong>: Client is verhuisd naar een andere gemeente</li>
+<li><strong>Nietverschenen</strong>: Client is niet verschenen</li>
+<li><strong>Ingetrokken</strong>: Client trekt aanvraag in</li>
+<li><strong>Niet passend</strong>: Dienstverlening niet (meer) passend</li>
+<li><strong>Overig</strong>: <Geen Definities></li>
+<li><strong>Voldoet niet</strong>: Client voldoet niet aan verplichtingen</li>
+<li><strong>Afgerond</strong>: Schuldtraject positief doorlopen en afgerond</li>
+<li><strong>Zelf</strong>: Client heeft schulden zelf geregeld</li>
+</ul>
+<p>De enumeratie EnumUitstroomreden heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumUitstroomreden</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumwoningbezit">EnumWoningbezit</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie EnumWoningbezit kent de volgende waarden:</p>
+<ul>
+<li><strong>Eigen Woning</strong>: <Geen Definities></li>
+<li><strong>Huurwoning</strong>: <Geen Definities></li>
+<li><strong>Huurwoning geen huurtoeslag</strong>: <Geen Definities></li>
+<li><strong>Huurwoning wel huurtoeslag</strong>: <Geen Definities></li>
+</ul>
+<p>De enumeratie EnumWoningbezit heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">EnumWoningbezit</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="geslacht">geslacht</h3>
+<p>Geen Definitie</p>
+<p>Het enumeratie geslacht kent de volgende waarden:</p>
+<ul>
+<li><strong>Man</strong>: <Geen Definities></li>
+<li><strong>Vrouw</strong>: <Geen Definities></li>
+<li><strong>Onbekend</strong>: <Geen Definities></li>
+<li><strong>Leeg</strong>: <Geen Definities></li>
+</ul>
+<p>De enumeratie geslacht heeft de volgende kenmerken:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Kenmerk</th>
+<th style="text-align: left;">Waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">geslacht</td>
+</tr>
+<tr>
+<td style="text-align: left;">definitie</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">bron</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
