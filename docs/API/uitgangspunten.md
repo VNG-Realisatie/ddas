@@ -22,107 +22,100 @@ Het koppelvlak moet voldoen aan de volgende wetten, afspraken en standaarden: 
 
 De volgende keuzes zijn gemaakt: 
 
-- Gebruik Digikoppeling REST profiel
-
-  Rationale:
-
+- **Gebruik Digikoppeling REST profiel**
+  
+  *Rationale*
+  
   - Dit profiel is het minst complexe profiel voor API's en past het beste bij een stelsel waar veel partijen aan deelnemen en in eigen tempo kunnen aansluiten.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - Alle leverende deelnemers dienen een API conform het REST profiel beschikbaar te stellen.
-
+  
   - Omdat het Digikoppeling REST profiel nog geen keuze heeft gemaakt voor signing en encryptie, moet hier expliciet een keuze in gemaakt worden.
 
-
-- Gebruik JWS voor signen
-
-  Rationale:
-
+- **Gebruik JWS voor signen**
+  
+  *Rationale*
+  
   - Omdat het REST profiel van Digikopeling (nog) geen standaard voor signen heeft vastgesteld, moet er eentje gekozen worden.
-
+  
   - JWS is een breed gebruikte standaard met een grote community die het onderhoud ervan verzekert.
-
+  
   - De Digikoppeling standaard noemt [JWS als mogelijke optie](https://gitdocumentatie.logius.nl/publicatie/dk/restapi/#bijlage-gebruik-van-signing-encryptie-in-de-context-van-http-rest-api) (JSON Web Signature).
+  
+  *Implicaties*
+  
+  - *nog uitzoeken (ook hoe FSC hiermee omgaat)*
 
-  Implicaties:
-
-  - *Alle deelnemers moeten een JWT service inrichten, waar andere deelnemers een [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token) kunnen ophalen om het bericht te signen. (nog uitzoeken)*
-
-
-- Gebruik JWE voor encryptie *(NB: als encryptie vereist is - DPIA is nog in wording)*
-
-  Rationale:
-
+- **Gebruik JWE voor encryptie *(NB: als encryptie vereist is - DPIA is nog in wording)***
+  
+  *Rationale*
+  
   - Omdat het REST profiel van Digikopeling (nog) geen standaard voor encryptie heeft vastgesteld, moet er eentje gekozen worden.
-
+  
   - JWE is een breed gebruikte standaard met een grote community die het onderhoud ervan verzekert.
-
+  
   - De Digikoppeling standaard noemt [JWE als mogelijke optie](https://gitdocumentatie.logius.nl/publicatie/dk/restapi/#bijlage-gebruik-van-signing-encryptie-in-de-context-van-http-rest-api).
+  
+  *Implicaties*
+  
+  - *nog uitzoeken (ook hoe FSC hiermee omgaat)*
 
-  Implicaties:
-
-  - *Alle deelnemers moeten een JWT service inrichten, waar andere deelnemers een [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token) kunnen ophalen om het bericht te versleutelen. (nog uitzoeken)*
-
-
-- Federatieve Services Communicatie voor de architectuur - [FSC](https://docs.fsc.nlx.io/introduction)
-
-  Rationale:
-
+- **Federatieve Services Communicatie voor de architectuur - [FSC](https://docs.fsc.nlx.io/introduction)**
+  
+  *Rationale*
+  
   - Deze architectuur is de standaard voor 1-op-1 koppelingen voor gemeenten. Hoewel de standaard nog niet heel breed gebruikt wordt, is dit wel de standaard voor de toekomst.
-
+  
   - Er bestaat een referentie implementatie die het ontwikkelen van de API sterk vereenvoudigd. Verder is er bij VNG Realisatie (waar de standaard is ontwikkeld) kennis die gebruikt kan worden.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - Alle deelnemers dienen de FSC componenten te installeren en in te richten. Er bestaat een algemene referentie implementatie, maar om de inrichting verder te vereenvoudigen is het aan te raden om een specifieke referentie implementatie aan te bieden voor DDAS.
 
-
-- JSON formaat voor berichten 
-
-  Rationale:
-
+- **JSON formaat voor berichten**
+  
+  *Rationale*
+  
   - Het informatiemodel en het uitwisselmodel voor DDAS zijn in het JSON formaat ontwikkeld. Het is het eenvoudigst als de berichten dan ook in JSON formaat uitgewisseld worden.
-
+  
   - JSON is goed leesbaar voor mensen, maar toch voldoende klein om ook grotere berichten uit te kunnen wisselen.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - De gegevens moeten in JSON formaat uitgewisseld worden.
 
-
-- Gebruik Diginetwerk voor transport
-
-  Rationale:
-
+- **Gebruik Diginetwerk voor transport**
+  
+  *Rationale*
+  
   - Het Diginetwerk is een gesloten netwerk waar alleen overheidsorganisaties toegang toe hebben. Dit beperkt de risico's van onbevoegde toegang tot de gegevens enorm.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - Alle deelnemers moeten toegang tot het Diginetwerk hebben of krijgen. Dit vereist toegang via een [koppelnetwerkaanbieder](https://www.logius.nl/domeinen/infrastructuur/diginetwerk/aansluiten).
 
-
-- Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie
-
-  Rationale:
-
+- **Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie**
+  
+  *Rationale*
+  
   - Voor identicatie, authenticatie, signen en encryptie is een middel nodig dat door het stelsel vertrouwd wordt (de "Trusted Third Party"). PKIoverheid certificaten worden door de Nederlandse overheid uitgegeven, die daarmee de Trusted Third Party voor DDAS wordt.
-
+  
   - PKIoverheid certificaten worden door Logius (namens de rijksoverheid) uitgegeven en beheerd. Er is daarom geen organisatie nodig om certificaten voor het DDAS stelsel te beheren.
-
+  
   - PKIoverheid certificaten kunnen voor veel  diensten binnen de overheid gebruikt worden. De investering is daarom niet alleen voor DDAS, maar ook voor eventuele andere diensten die de deelnemer afneemt.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - Alle deelnemers moeten een PKIoverheid certificaat hebben of krijgen. NB: Het is niet altijd mogelijk om een PKIoverheid certificaat dat al in gebruik is, te hergebruiken.
 
-
-- Beveiligingsniveau BBN2 (NB: DPIA is nog in wording) 
-
-  Rationale:
-
+- **Beveiligingsniveau BBN2** (NB: DPIA is nog in wording) 
+  
+  *Rationale*
+  
   - In de DPIA wordt dit vereist.
-
-  Implicaties:
-
+  
+  *Implicaties*
+  
   - De BIO maatregelen moeten gericht zijn op het behalen van het beveiligingsniveau BBN2.
