@@ -15,6 +15,18 @@ nav:
   - Informatiemodel:
     - Hoofdlijnen: rapport_1.md
     - Detailspecificatie: rapport_2.md
+  - API:
+    - Inleiding: API/readme.md
+    - Uitgangspunten: API/uitgangspunten.md
+    - Transportlaag: API/transport.md
+    - Authenticatie: API/iam.md
+    - Signing en encryptie: API/signing-encryptie.md
+    - Berichten: API/berichten.md
+    - Niet functionele eisen: API/non-functionals.md
+    - Aanleverprotocol: API/aanleverprotocol.md
+    - Aansluitprotocol: API/aansluitprotocol.md
+    - Beheer van de specificatie: API/beheer-specificatie.md
+
   - Achtergrond DDAS: rapport_0.md
 
 markdown_extensions:
