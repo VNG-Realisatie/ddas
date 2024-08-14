@@ -1,8 +1,6 @@
-# Inleiding
+Dit is de koppelvlakspecificatie voor de API waarmee schuldhulporganisaties gegevens beschikbaarstellen aan het CBS.
+Dit is een product van het [programma DDAS] (https://www.divosa.nl/projecten/data-delen-over-armoede-en-schulden). De API is gebaseerd op het [informatie- en uitwisselmodel] (https://brienen.github.io/ddas/latest/) en de OAS beschrijving van de API is op [Github](https://github.com/brienen/ddas/blob/Goverts-Place/API-v0.0.3/DDAS_opzetje_v0.0.3.yaml) gepubliceerd.
 
-Het einddoel van het project “Datadelen op Armoede en Schulden” is om de betrokken partners in het domein gezamenlijk regie te laten voeren op de informatievoorziening over schulden en armoede om op die manier hoge kwaliteit en beschikbaarheid van data te garanderen. Om dat te bereiken gaan we de uitvraag van schuldhulpdata bij gemeenten sterk vereenvoudigen, verbeteren en borgen.
-Eén van de middelen om de uitvraag te verbeteren is het ontwikkelen van een API-structuur en een API-werkwijze. Deze koppelvlakspecificatie geeft invulling aan de API-structuur en -werkwijze.
-De koppelvlakspecificatie beschrijft de wijze waarop de gewenste gegevens op een veilige en robuuste manier beschikbaar gesteld kunnen worden. Deze specificatie gaat niet specifiek in op de inhoud en betekenis van de gewenste gegevens. Hiervoor wordt verwezen naar het informatiemodel [].
-De technische uitwerking van de berichten die in deze koppelvlakspecificatie beschreven worden is in OAS3 formaat te vinden … [publiceren OAS specificaties op Github?]
-NB: de huidige versie bevat de vragen, verzamelde antwoorden en voorstellen waar een keuze in gemaakt moet worden. Met deze keuzes wordt het document in volgende versies uitgewerkt.
-Deze specificatie wordt, na afstemming met de betrokken partijen, vastgesteld door de stuurgroep. Na vaststelling kunnen wijzigingsverzoeken bij het programma DDAS ingediend worden. Indien nodig volgt dan een aangepaste versie, die opnieuw door de stuurgroep vastgesteld wordt.
+Naast de uitgangspunten en de technische specificatie bevat dit document een beschrijving van de niet-functionele eisen (beschikbaarheid, performance). Ook worden het aanleverprotocol (welke stappen worden doorlopen als gegevens opgehaald worden) en het aansluitprotocol (hoe kan een organisatie deelnemer worden) beschreven. Ten slotte wordt het beheer van de specificatie zelf beschreven.
+
+***In de huidige versie staan nog diverse vraagstukken en de keuzes die gemaakt worden, moeten nog worden bevestigd. Het document dient daarom vooral als basis voor de discussie om tot een definitieve specificatie te komen, en er kunnen geen rechten aan dit document ontleend worden.***
