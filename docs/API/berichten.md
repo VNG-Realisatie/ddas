@@ -1,5 +1,8 @@
 # Berichten
 
+De technische beschrijving van de API is in een OAS3-bestand beschreven. Deze is hier te vinden: https://github.com/brienen/ddas/blob/Goverts-Place/API-v0.0.3/DDAS_opzetje_v0.0.3.yaml
+Hieronder worden de berichten die daar technisch beschreven zijn, toegelicht.
+
 ## Vraagbericht (request)
 
 Request zoals dat door CBS naar de schuldhulpverlener gestuurd wordt. Alleen een POST request: alleen opvragen gegevens, geen mutaties. Bij GET zitten de parameters in de URL, waardoor mogelijk cache gegevens gebruikt worden, als de parameters niet wijzigen - daarom liever een POST.
@@ -14,7 +17,6 @@ Voorstel voor parameters die meegestuurd kunnen worden (allemaal optioneel): 
 
 - Gemeente (default alle – alleen relevant als over meer dan 1 gemeente gegevens aangeleverd worden) 
 
-Technische uitwerking in OAS3 - volgt nog.
 
 ## Antwoordbericht (response)
 
