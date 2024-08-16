@@ -1,4 +1,6 @@
-# Inleiding
+# API specificatie
+
+## Inleiding
 
 Dit document bevat de koppelvlakspecificatie voor de API waarmee schuldhulporganisaties gegevens beschikbaarstellen aan het CBS.
 Dit is een product van het [programma DDAS](https://www.divosa.nl/projecten/data-delen-over-armoede-en-schulden). Het [informatie- en uitwisselmodel](https://brienen.github.io/ddas/latest/) dat gebruikt wordt, is niet volledig opgenomen in deze specificatie. De OAS beschrijving van de API wordt binnenkort gepubliceerd ([conceptversie is hier te vinden](https://github.com/Govert-Claus/DDAS-API/blob/main/v0.1/DDAS_opzetje_v0.0.3.yaml)).
@@ -7,9 +9,10 @@ Naast de uitgangspunten en de technische specificatie bevat dit document een bes
 
 ***In de huidige versie staan nog diverse vraagstukken en de keuzes die gemaakt worden, moeten nog worden bevestigd. Het document dient daarom vooral als basis voor de discussie om tot een definitieve specificatie te komen, en er kunnen geen rechten aan dit document ontleend worden.***
 
-# Uitgangpunten
 
-## Kaders
+## Uitgangpunten
+
+### Kaders
 
 Het koppelvlak moet voldoen aan de volgende wetten, afspraken en standaarden: 
 
@@ -27,7 +30,7 @@ Het koppelvlak moet voldoen aan de volgende wetten, afspraken en standaarden: 
 
 - [Wet op het Centraal Bureau voor de Statistiek](https://wetten.overheid.nl/BWBR0015926/2022-03-02) 
 
-## Keuzes
+### Keuzes
 
 De volgende keuzes zijn gemaakt: 
 
@@ -137,7 +140,7 @@ De volgende keuzes zijn gemaakt: 
   - De BIO maatregelen moeten gericht zijn op het behalen van het beveiligingsniveau BBN2.
 
 
-# Transportlaag
+## Transportlaag
 
 Hoe ziet de technische uitwisseling van berichten eruit. 
 
@@ -150,7 +153,7 @@ Vragen: 
 - Gebruik van PKIo certificaten voor authenticatie op basis van het [Nederlandse profiel van OAuth](https://gitdocumentatie.logius.nl/publicatie/api/oauth/)? Het is de vraag of alle partijen een PKIo certificaat mogen aanvragen. Als dit niet mogelijk is, moet een “trust anchor” gevonden worden: de autoriteit die certificaten kan uitgeven, die door alle betrokken partijen vertrouwd worden. 
 
 
-# Identificatie, Authenticatie en Autorisatie
+## Identificatie, Authenticatie en Autorisatie
 
 Hoe worden de schuldhulpverleners (gegevensleveranciers) geïdentificeerd? (o.b.v. (sub)OIN?) Als niet alle betrokken partijen een (sub)OIN kunnen krijgen, moet een systematiek gevonden worden om alle partijen uniek te kunnen identificeren. 
 
@@ -159,22 +162,22 @@ Hoe worden systemen geauthenticeerd? (obv PKIo certificaten? Als dat niet kan: w
 Autorisatie lijkt niet heel spannend: er zal waarschijnlijk maar één service komen met een vaste set gegevens, waar maar één partij (CBS) toegang toe zal krijgen. Als fijnmaziger autorisatie nodig is, dan bestaat er een voorkeur voor PBAC (Policy Base Authorisation Control). De autorisatie wordt dan bepaald op basis van beleidsregels, zoals “organisatie X krijgt toegang tot gegeven G als de organisatie overeenkomst O getekend heeft en het gegeven is vrijgegeven door autoriteit A”. Dan is de vraag wie deze beleidsregels vaststelt en wie ze beheert. 
 
 
-# Signing en Versleuteling
+## Signing en Versleuteling
 
 NB: De Digikoppeling standaard voor REST-API heeft (nog) geen standaard voor signing en encryptie vastgesteld. Daarom voorstel om JWT te gebruiken en dus eerst een JWT aan te vragen, die daarna bij het request wordt meegestuurd. Eventueel kunnen hierbij protocollen van de FSC standaard toegepast worden. 
 
-## Signing
+### Signing
 
 Voorstel: Signing op basis van JWS in een JWT conform de [FSC standaard](https://commonground.gitlab.io/standards/fsc/core/draft-fsc-core-00.html#signatures). 
 
-## Versleuteling (Encryptie)
+### Versleuteling (Encryptie)
 
 Is versleuteling nodig? (zou uit DPIA moeten komen – ik vermoed dat het nodig is) 
 
 Voorstel: Versleuteling op basis van JWE in een JWT met PKIo certificaten. NB: ook hier geldt dat als niet alle betrokken partijen PKIo certificaten kunnen aanvragen, er een Trust Anchor nodig is die vertrouwde certificaten kan uitgeven. 
 
 
-# Berichten
+## Berichten
 
 De technische beschrijving van de API is het volgende OAS3-bestand beschreven. Hiervan is ook een [downloadbare versie](https://github.com/brienen/ddas/blob/Goverts-Place/API-v0.0.3/DDAS_opzetje_v0.0.3.yaml) van.
 ```
@@ -183,7 +186,7 @@ De technische beschrijving van de API is het volgende OAS3-bestand beschreven. H
 ```
 Hieronder worden de berichten die daar technisch beschreven zijn, toegelicht.
 
-## Vraagbericht (request)
+### Vraagbericht (request)
 
 Dit is het vraagbericht zoals dat door CBS naar de schuldhulpverlener gestuurd wordt. Alleen een POST request: alleen opvragen gegevens, geen mutaties. Bij GET zitten de parameters in de URL, waardoor mogelijk cache gegevens gebruikt worden, als de parameters niet wijzigen - daarom liever een POST.
 
@@ -198,7 +201,7 @@ Voorstel voor parameters die meegestuurd kunnen worden (allemaal optioneel):
 - Gemeente (default alle – alleen relevant als over meer dan 1 gemeente gegevens aangeleverd worden)
 
 
-## Antwoordbericht (response)
+### Antwoordbericht (response)
 
 Dit is het antwoordbericht van de schuldhulpverlener met de gewenste gegevens in JSON formaat.
 
@@ -213,21 +216,21 @@ Mogelijke responses:
 - Foutberichten moeten nog bepaald worden - waarschijnlijk 401 (unauthorized), 404 (not found), 500 (internal server error) en 503 (service unavailable)
 
 
-# Niet functionele eisen
+## Niet functionele eisen
 
-## Beschikbaarheid
+### Beschikbaarheid
 
 Niet kritische toepassing: geen hoge beschikbaarheid vereist. 
 
 Afstemmen met CBS: wanneer willen zij gegevens verzamelen? Dan zou de beschikbaarheid wat hoger moeten zijn. BV: tijdens kantooruren  
 
-## Performance
+### Performance
 
 Geen afhankelijkheden in het primaire proces: geen hoge performance vereist. 
 
 Wordt gebruik van cache toegestaan (volgens mij moet dat kunnen)? Onder welke voorwaarden? 
 
-## Monitoring
+### Monitoring
 
 Verantwoordelijkheid voor monitoring ligt bij partij die verantwoording hierover moet afleggen. Welke verantwoording verwacht het programma of SZW? 
 
@@ -246,7 +249,7 @@ Voor CBS: 
 - Aantal en soort responses
 
 
-# Aanleverprotocol
+## Aanleverprotocol
 
 Stappen bij het aanleveren van gegevens: 
 
@@ -271,7 +274,7 @@ Stappen bij het aanleveren van gegevens: 
 NB: Als er bij deze stappen algoritmen gebruikt worden, moeten deze voldoen aan de Europese AI-verordening (definitieve tekst nog niet gevonden) en aangemeld worden bij het [Algoritmeregister van de Nederlandse overheid](https://algoritmes.overheid.nl/nl).
 
 
-# Aansluitprotocol
+## Aansluitprotocol
 
 Iedere schuldhulpverleningsorganisatie of gemeente (hierna: "deelnemer") die gegevens beschikbaar gaat stellen aan CBS, moet het aansluitprotocol doorlopen. Dit protocol valt onder verantwoordelijkheid van het programma DDAS. Voor vragen hierover kan altijd contact opgenomen worden met [contactadres].
 
@@ -303,8 +306,6 @@ De stappen die de deelnemer moet doorlopen, zijn:
 
 - Indien er geen blokkerende bevindingen zijn, krijgt de deelnemer vrijgave van de stelselbeheer (DDAS of CBS?) en wordt de API in de productieomgeving ingericht en beschikbaar gesteld.
 
--
-
 - CBS voert de deelnemer op in de management module van FSC, zodat de API bevraagd wordt bij het ophalen van alle gegevens.
 
 Ten behoeve van de testen stelt DDAS een set testgegevens beschikbaar [wie maakt deze set? waar komt dit te staan?].
@@ -312,13 +313,13 @@ Ten behoeve van de testen stelt DDAS een set testgegevens beschikbaar [wie maakt
 Voor ondersteuning bij de aansluiting is een referentie implementatie en documentatie beschikbaar [waar?] en kan contact opgenomen worden met [contactadres]. Als er bij de aansluiting bevindingen zijn, die niet door de deelnemer opgelost kunnen worden, kan een wijzigingsverzoek ingediend worden.
 
 
-# Beheer van de specificatie
+## Beheer van de specificatie
 
 De koppelvlakspecificatie is onderhevig aan wijzigingen: de technologie ontwikkelt zich, er zijn mogelijk andere gegevens nodig, de samenwerking tussen de betrokken partijen kan wijzigen, etc. Om deze wijzigingen op een betrouwbare en juiste manier te verwerken in de specificatie, is een wijzigingsproces ingericht. Dit wijzigingsproces valt onder verantwoordelijkheid van de stuurgroep DDAS en wordt uitgevoerd door het programma DDAS, zolang het programma DDAS actief is. Daarna wordt het overgedragen aan een nog aan te wijzen organisatie. Voor het beoordelen van wijzigingsverzoeken wordt een beheeroverleg samengesteld, met afgevaardigden van de betrokken partijen, onder voorzitterschap van het programma DDAS. Dit beheeroverleg komt periodiek bijeen om wijzigingsverzoeken te beoordelen en eventueel verder uit te werken.
 
 Het streven is om maximaal eenmaal per jaar een nieuw release van de koppelvlakspecificatie uit te brengen.
 
-## Indienen wijzigingsverzoek
+### Indienen wijzigingsverzoek
 
 Wijzigingsverzoeken worden verzameld via [nog in te vullen]. Alle betrokken partijen mogen wijzigingsverzoeken indienen. Er is geen template voor het indienen van een wijzigingsverzoek, maar het verzoek moet in elk geval de volgende informatie bevatten: 
 
@@ -336,13 +337,13 @@ Als het aantal wijzigingsverzoeken groot wordt of de afhandeling daarvan complex
 
 Dit systeem moet zo openbaar mogelijk zijn, om zo transparant mogelijk te zijn over de afhandeling van verzoeken en om te voorkomen dat dezelfde wijzigingsverzoeken meerdere malen ingediend worden.
 
-## Afhandelen wijzigingsverzoek
+### Afhandelen wijzigingsverzoek
 
 Het wijzigingsverzoek wordt door het programma DDAS geanalyseerd, waarbij vastgesteld wordt welke onderdelen van de specificatie geraakt worden en wat de geschatte impact is op de specificatie, de techniek, de processen en de betrokken partijen. Tevens wordt ingeschat wat de randvoorwaarden, kosten en doorlooptijd van de gewenste wijziging zouden zijn. Dit leidt tot een voorstel voor de verdere afhandeling: of, hoe en wanneer dit wijzigingsverzoek doorgevoerd wordt. 
 
 Het wijzigingsverzoek met de analyse van het programma DDAS worden besproken in het (nog in te richten) beheeroverleg DDAS. Als alle betrokken partijen akkoord gaan met de voorgestelde afhandeling, wordt deze afhandeling gevolgd (d.w.z. inplannen voor een release, via noodprocedure eerder doorvoeren, of afwijzen van het verzoek). 
 
-## Releaseproces
+### Releaseproces
 
 Wijzigingen die doorgevoerd moeten worden, worden zoveel mogelijk via een release in productie gebracht. Het streven is om maximaal eenmaal per jaar een release door te voeren. De stappen die hiervoor doorlopen worden zijn:
 
@@ -356,17 +357,17 @@ Wijzigingen die doorgevoerd moeten worden, worden zoveel mogelijk via een releas
 
 - Livegang nieuwe release
 
-## Releasenummering
+### Releasenummering
 
 Ieder release wordt aangeduid met een releasenummer. Deze krijgt de vorm X.Y, waarbij X het "major" nummer is en Y het "minor" nummer. Voor testreleases kan een derde nummer toegevoegd worden; het zogenaamde "patch" nummer. In de productieomgeving wordt geen patch nummer gebruikt.
 
 Als een release via het reguliere releaseproces naar productie gaat, dan krijgt deze een nieuw major nummer en het minor nummer 0 (bv. "1.0"). Als er via de noodprocedure een release doorgevoerd wordt, dan blijft het major nummer hetzelfde, maar wordt het minor nummer opgehoogd (bv. "1.1").
 
-## Vrijgaveprocedure en afwijkingsverzoeken
+### Vrijgaveprocedure en afwijkingsverzoeken
 
 Er is geen "vrijgave" van deelnemers voor een release nodig. Als de specificatie complexer wordt kan de stuurgroep DDAS besluiten om een vrijgaveprocedure in te richten. De deelnemer moet dan aan de hand van een set testscenario's aantonen te voldoen aan de nieuwe specificaties. Als dit succesvol is, dan krijgt de deelnemer vrijgave voor de nieuwe release. Als dit niet succesvol is, dan kan de deelnemer een afwijkingsverzoek indienen bij het programma DDAS en toch gegevens blijven aanbieden. Een afwijkingsverzoek wordt alleen geaccepteerd als dit de rapporten van CBS niet compromitteert. In het afwijkingsverzoek wordt altijd aangegeven hoe lang de afwijking geldig mag blijven.
 
-## Noodprocedure
+### Noodprocedure
 
 Het kan gebeuren dat een wijziging niet kan wachten op een gepland release, maar sneller doorgevoerd moet worden. De stuurgoep DDAS kan dan op advies van het beheeroverleg, een noodprocedure aanroepen.
 
@@ -374,6 +375,6 @@ Het beheeroverleg adviseert de stuurgroep welke stappen genomen moeten worden en
 
 De release die hiermee ontstaat krijgt geen nieuw "major" versienummer, maar een nieuw "minor" nummer (zie ook "releasenummering").
 
-## Escalatie
+### Escalatie
 
 Als de partijen het niet eens worden, wordt het verzoek geëscaleerd naar de stuurgroep DDAS. Als het behandelen van het verzoek niet kan wachten tot het eerstvolgende overleg van de stuurgroep, worden de stuurgroepleden schriftelijk om hun oordeel gevraagd.
