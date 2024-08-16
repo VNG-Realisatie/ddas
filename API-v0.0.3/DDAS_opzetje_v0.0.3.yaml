@@ -19,7 +19,7 @@ servers:
 paths:
   /gegevens:
     post:
-      summary: Gegevens beschikbaar stellen
+      summary: Schuldhulpverleningsgegevens beschikbaar stellen
       description: Dit endpoint ontvangt een periode en eventueel een schuldhulporganisatie en retourneert schuldhulpverleningsgegevens over die periode en schuldhulporganisatie.
       security:
         - OAuth2: [read_gegevens]
@@ -51,7 +51,7 @@ paths:
                 - aanleverperiodeEinddatum
       responses:
         '200':
-          description: Gegevens succesvol ontvangen
+          description: Verzoek succesvol verwerkt
           content:
             application/jose:
               schema:
@@ -75,7 +75,7 @@ paths:
                     'schuldhulptrajecten': [ ... ]
                   }
                   ```
-                $ref: '#/components/schemas/DDAS-gegevens'
+                $ref: '#/components/schemas/Schuldhulptrajecten'
         '400':
           description: Ongeldige invoer
           content:
@@ -104,7 +104,7 @@ components:
           type: array
           items:
             type: string
-    DDAS-gegevens:
+    Schuldhulptrajecten:
       type: object
       description: Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld
         worden tussen de verschillende partijen.
