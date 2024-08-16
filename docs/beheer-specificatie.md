@@ -58,7 +58,7 @@ Het kan gebeuren dat een wijziging niet kan wachten op een gepland release, maar
 
 Het beheeroverleg adviseert de stuurgroep welke stappen genomen moeten worden en in welk tempo deze doorlopen moeten worden. Als de stuurgroep hiermee akkoord gaat, voert het programma DDAS de regie op de uitvoering van de stappen.
 
-De release die hiermee ontstaat krijgt geen nieuw "major" versienummer, maar een nieuw "minor" nummer (zie ook "releasenummering").
+De release die hiermee ontstaat krijgt geen nieuw "major" versienummer, maar een nieuw "minor" nummer (zie ook [Releasenummering](#releasenummering)).
 
 ## Escalatie
 
