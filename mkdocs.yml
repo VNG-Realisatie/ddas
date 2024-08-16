@@ -16,6 +16,8 @@ nav:
     - Detailspecificatie: rapport_2.md
   - Uitwisselspecificatie: uitwisselspecificatie.md
   - API: apispecificatie.md
+  - Gebruik API: protocol.md
+  - Beheer: beheer-specificatie.md
   - Achtergrond DDAS: rapport_0.md
 
 markdown_extensions:

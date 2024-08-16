@@ -1,4 +1,6 @@
-# Aansluitprotocol
+# Gebruik van de specificatie
+
+## Aansluitprotocol
 
 Iedere schuldhulpverleningsorganisatie of gemeente (hierna: "deelnemer") die gegevens beschikbaar gaat stellen aan CBS, moet het aansluitprotocol doorlopen. Dit protocol valt onder verantwoordelijkheid van het programma DDAS. Voor vragen hierover kan altijd contact opgenomen worden met [contactadres].
 
@@ -30,10 +32,33 @@ De stappen die de deelnemer moet doorlopen, zijn:
 
 - Indien er geen blokkerende bevindingen zijn, krijgt de deelnemer vrijgave van de stelselbeheer (DDAS of CBS?) en wordt de API in de productieomgeving ingericht en beschikbaar gesteld.
 
--
-
 - CBS voert de deelnemer op in de management module van FSC, zodat de API bevraagd wordt bij het ophalen van alle gegevens.
 
 Ten behoeve van de testen stelt DDAS een set testgegevens beschikbaar [wie maakt deze set? waar komt dit te staan?].
 
 Voor ondersteuning bij de aansluiting is een referentie implementatie en documentatie beschikbaar [waar?] en kan contact opgenomen worden met [contactadres]. Als er bij de aansluiting bevindingen zijn, die niet door de deelnemer opgelost kunnen worden, kan een wijzigingsverzoek ingediend worden.
+
+
+## Aanleverprotocol
+
+Stappen bij het aanleveren van gegevens: 
+
+- CBS roept systeem van schuldhulpverlener (gegevensleverancier) aan om JWT voor signing en encryptie te krijgen 
+
+- CBS roept API van de gegevensleverancier aan (eventueel met parameters) 
+
+- CBS controleert response technisch (signing, viruscontrole, berichtformaat) 
+
+- CBS controleert response functioneel (verplichte velden, vreemde waarden, etc.)
+
+- CBS stuurt een verwerkingsverslag naar de gegevensleverancier
+
+- Indien OK, dan worden de gegevens ingelezen in de database 
+
+- CBS loopt alle gerapporteerde trajecten af en combineert trajecten van dezelfde BSN tot één “traject” 
+
+- Bij het combineren wordt de volledigheid en kwaliteit van de gegevens gecontroleerd – op basis daarvan krijgt het traject een "betrouwbaarheidsindicator"" 
+
+- CBS genereert de gewenste rapporten 
+
+*NB: Als er bij deze stappen algoritmen gebruikt worden, moeten deze voldoen aan de Europese AI-verordening (definitieve tekst nog niet gevonden) en aangemeld worden bij het [Algoritmeregister van de Nederlandse overheid](https://algoritmes.overheid.nl/nl).*
