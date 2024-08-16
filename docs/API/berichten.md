@@ -1,13 +1,17 @@
 # Berichten
 
-De technische beschrijving van de API is in een OAS3-bestand beschreven. Deze is hier te vinden: https://github.com/brienen/ddas/blob/Goverts-Place/API-v0.0.3/DDAS_opzetje_v0.0.3.yaml
+De technische beschrijving van de API is het volgende OAS3-bestand beschreven. Hiervan is ook een [downloadbare versie](https://github.com/brienen/ddas/blob/Goverts-Place/API-v0.0.3/DDAS_opzetje_v0.0.3.yaml) van.
+```
+{!../API-v0.0.3/DDAS_opzetje_v0.0.3.yaml!}
+
+```
 Hieronder worden de berichten die daar technisch beschreven zijn, toegelicht.
 
 ## Vraagbericht (request)
 
-Request zoals dat door CBS naar de schuldhulpverlener gestuurd wordt. Alleen een POST request: alleen opvragen gegevens, geen mutaties. Bij GET zitten de parameters in de URL, waardoor mogelijk cache gegevens gebruikt worden, als de parameters niet wijzigen - daarom liever een POST.
+Dit is het vraagbericht zoals dat door CBS naar de schuldhulpverlener gestuurd wordt. Alleen een POST request: alleen opvragen gegevens, geen mutaties. Bij GET zitten de parameters in de URL, waardoor mogelijk cache gegevens gebruikt worden, als de parameters niet wijzigen - daarom liever een POST.
 
-NB: In een JWT voor signen en versleutelen (als versleutelen nodig is – met een BSN in het bericht zou dat waarschijnlijk moeten).
+NB: Dit bericht wordt in een JWT verwerkt, voor signen en versleutelen (als versleutelen nodig is – met een BSN in het bericht zou dat waarschijnlijk moeten).
 
 Voorstel voor parameters die meegestuurd kunnen worden (allemaal optioneel):
 
@@ -20,13 +24,13 @@ Voorstel voor parameters die meegestuurd kunnen worden (allemaal optioneel):
 
 ## Antwoordbericht (response)
 
-Response van de schuldhulpverlener met de gewenste gegevens in JSON formaat.
+Dit is het antwoordbericht van de schuldhulpverlener met de gewenste gegevens in JSON formaat.
 
-Als versleutelen nodig is, in een JWE vorm (versleuteld in een JWT).
+Als versleutelen nodig is, in een JWT vorm (versleuteld conform JWE).
 
-Payload zoals gedefinieerd door [uitwisselspecificatie](https://brienen.github.io/ddas/latest/uitwisselspecificatie/)!
+Payload is gebaseerd op [uitwisselspecificatie](https://brienen.github.io/ddas/latest/uitwisselspecificatie/)!
 
-Responses:
+Mogelijke responses:
 
 - 200: bericht goed verwerkt (met payload)
 
