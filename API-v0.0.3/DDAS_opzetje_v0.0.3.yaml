@@ -75,7 +75,7 @@ paths:
                     'schuldhulptrajecten': [ ... ]
                   }
                   ```
-                $ref: '#/components/schemas/Schuldhulptrajecten'
+                $ref: '#/components/schemas/Uitwisselmodel'
         '400':
           description: Ongeldige invoer
           content:
@@ -104,7 +104,7 @@ components:
           type: array
           items:
             type: string
-    Schuldhulptrajecten:
+    Uitwisselmodel:
       type: object
       description: Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld
         worden tussen de verschillende partijen.
