@@ -15,7 +15,7 @@ nav:
     - Hoofdlijnen: rapport_1.md
     - Detailspecificatie: rapport_2.md
   - Uitwisselspecificatie: uitwisselspecificatie.md
-  - API: api.md
+  - API: apispecificatie.md
   - Achtergrond DDAS: rapport_0.md
 
 markdown_extensions:
