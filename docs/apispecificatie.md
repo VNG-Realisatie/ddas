@@ -78,7 +78,7 @@ De volgende keuzes zijn gemaakt: 
   - *nog uitzoeken (ook hoe FSC hiermee omgaat)*
 
 
-**Federatieve Services Communicatie voor de architectuur - [FSC](https://docs.fsc.nlx.io/introduction)**
+**Federatieve Services Connectiviteit voor de architectuur - [FSC](https://docs.fsc.nlx.io/introduction)**
 
   *Rationale*
 
