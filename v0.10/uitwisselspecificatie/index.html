@@ -723,21 +723,6 @@
                                             },
                                             &quot;Huisnummertoevoeging&quot;: {
                                                 &quot;type&quot;: &quot;string&quot;
-                                            },
-                                            &quot;leefsituatie&quot;: {
-                                                &quot;type&quot;: &quot;array&quot;,
-                                                &quot;items&quot;: {
-                                                    &quot;type&quot;: &quot;object&quot;,
-                                                    &quot;description&quot;: &quot;Leefsituatie is de combinatie van factoren zoals schulden, ondernemerschap, aanwezigheid van een partner, en inkomen, die samen de sociale en economische omstandigheden van een individu bepalen. Deze wordt in het kader van schuldhulpverlening gebruikt om alle relevante zaken van clienten aan te koppelen.&quot;,
-                                                    &quot;properties&quot;: {
-                                                        &quot;datumGeldigTot&quot;: {
-                                                            &quot;$ref&quot;: &quot;#/$defs/datum&quot;
-                                                        },
-                                                        &quot;datumGeldigVanaf&quot;: {
-                                                            &quot;$ref&quot;: &quot;#/$defs/datum&quot;
-                                                        }
-                                                    }
-                                                }
                                             }
                                         }
                                     }
@@ -998,52 +983,6 @@
             &quot;type&quot;: &quot;integer&quot;,
             &quot;description&quot;: &quot;Een geldbedrag in hele euros nauwkweurig.&quot;
         },
-        &quot;geslacht&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Man&quot;,
-                &quot;Vrouw&quot;,
-                &quot;Onbekend&quot;,
-                &quot;Leeg&quot;
-            ]
-        },
-        &quot;EnumBeschikkingssooort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Afwijzingsbeschikking&quot;,
-                &quot;Toewijzingsbeschikking&quot;,
-                &quot;Beeindigingsbeschikking&quot;
-            ]
-        },
-        &quot;EnumSchuldensoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Zorg&quot;,
-                &quot;Publiek&quot;,
-                &quot;Nuts&quot;,
-                &quot;Overig&quot;
-            ]
-        },
-        &quot;EnumOplossingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Betalingsregeling&quot;,
-                &quot;Herfinanciering&quot;,
-                &quot;Saneringskrediet&quot;,
-                &quot;Schuldbemiddeling&quot;,
-                &quot;0%-aanbod&quot;
-            ]
-        },
-        &quot;EnumBegeleidingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Budgetcoaching&quot;,
-                &quot;Budgetbeheer&quot;,
-                &quot;Beschermingsbewind&quot;,
-                &quot;Lange Termijn Begeleiding (DFD)&quot;,
-                &quot;Budgetbegeleiding&quot;
-            ]
-        },
         &quot;EnumUitstroomreden&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
@@ -1057,6 +996,52 @@
                 &quot;Afgerond&quot;,
                 &quot;Zelf&quot;
             ]
+        },
+        &quot;geslacht&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Man&quot;,
+                &quot;Vrouw&quot;,
+                &quot;Onbekend&quot;,
+                &quot;Leeg&quot;
+            ]
+        },
+        &quot;EnumOplossingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Betalingsregeling&quot;,
+                &quot;Herfinanciering&quot;,
+                &quot;Saneringskrediet&quot;,
+                &quot;Schuldbemiddeling&quot;,
+                &quot;0%-aanbod&quot;
+            ]
+        },
+        &quot;EnumSchuldensoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Zorg&quot;,
+                &quot;Publiek&quot;,
+                &quot;Nuts&quot;,
+                &quot;Overig&quot;
+            ]
+        },
+        &quot;EnumBeschikkingssooort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Afwijzingsbeschikking&quot;,
+                &quot;Toewijzingsbeschikking&quot;,
+                &quot;Beeindigingsbeschikking&quot;
+            ]
+        },
+        &quot;EnumBegeleidingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Budgetcoaching&quot;,
+                &quot;Budgetbeheer&quot;,
+                &quot;Beschermingsbewind&quot;,
+                &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                &quot;Budgetbegeleiding&quot;
+            ]
         }
     }
 }
@@ -1064,7 +1049,156 @@
 <h2 id="voorbeelden">Voorbeelden</h2>
 <h3 id="enkelvoudig-voorbeeld">Enkelvoudig voorbeeld</h3>
 <p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/enkelvoudigVoorbeeld.json">downloaden</a>.</p>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>{
+    &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+    &quot;$id&quot;: &quot;https://raw.githubusercontent.com/brienen/ddas/main/v0.10/json_schema_Uitwisselmodel.json&quot;,
+    &quot;title&quot;: &quot;Uitwisselmodel&quot;,
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.&quot;,
+    &quot;startdatumLevering&quot;: &quot;2023-01-01&quot;,
+    &quot;einddatumLevering&quot;: &quot;2023-12-31&quot;,
+    &quot;aanleverdatumEnTijd&quot;: &quot;2023-12-31T15:30:00Z&quot;,
+    &quot;codeGegevensleverancier&quot;: &quot;GL123456&quot;,
+    &quot;leveringen&quot;: [
+        {
+            &quot;teller&quot;: 1,
+            &quot;aanleverende_organisatie&quot;: {
+                &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie X&quot;,
+                &quot;KvK-nummer&quot;: &quot;12345678&quot;,
+                &quot;postcode&quot;: &quot;1234AB&quot;,
+                &quot;gemeentecode&quot;: &quot;GM001&quot;,
+                &quot;contactpersonen&quot;: [
+                    {
+                        &quot;email&quot;: &quot;contactpersoon1@shv.nl&quot;,
+                        &quot;functietitel&quot;: &quot;Schuldhulpverlener&quot;,
+                        &quot;naam&quot;: &quot;Jan Jansen&quot;,
+                        &quot;telefoonnummer&quot;: &quot;0612345678&quot;
+                    }
+                ]
+            },
+            &quot;schuldhulptrajecten&quot;: [
+                {
+                    &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject om schulden af te lossen&quot;,
+                    &quot;startdatum&quot;: &quot;2023-01-10&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-01-05&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 10000,
+                    &quot;gemeentecode&quot;: &quot;GM001&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-01-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-01&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                            &quot;soort&quot;: &quot;Budgetbeheer&quot;,
+                            &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;987654321&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1980-05-01&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;5678CD&quot;,
+                            &quot;Huisnummer&quot;: &quot;10&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;A&quot;,
+                            &quot;leefsituatie&quot;: [
+                                {
+                                    &quot;datumGeldigTot&quot;: &quot;2023-12-31&quot;,
+                                    &quot;datumGeldigVanaf&quot;: &quot;2023-01-01&quot;
+                                }
+                            ]
+                        }
+                    ],
+                    &quot;crisisinterventies&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-01-15&quot;,
+                            &quot;startdatum&quot;: &quot;2023-01-01&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-01-20&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-01-25&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-10&quot;
+                    },
+                    &quot;moratoria&quot;: [
+                        {
+                            &quot;datumAanvraag&quot;: &quot;2023-03-01&quot;,
+                            &quot;datumGoedkeuring&quot;: &quot;2023-03-10&quot;,
+                            &quot;einddatum&quot;: &quot;2023-09-01&quot;,
+                            &quot;startdatum&quot;: &quot;2023-03-15&quot;
+                        }
+                    ],
+                    &quot;nazorg&quot;: {
+                        &quot;einddatum&quot;: &quot;2024-01-31&quot;,
+                        &quot;startdatum&quot;: &quot;2024-01-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                        &quot;soort&quot;: &quot;Saneringskrediet&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;vtlb&quot;: 2000
+                    },
+                    &quot;planVanAanpak&quot;: {
+                        &quot;datumAfronding&quot;: &quot;2023-02-01&quot;
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 5000,
+                            &quot;peildatum&quot;: &quot;2023-01-10&quot;,
+                            &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Zorgverzekeraar A&quot;,
+                                &quot;kvknummer&quot;: &quot;12345678&quot;,
+                                &quot;postcode&quot;: &quot;1234AB&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 5000,
+                            &quot;peildatum&quot;: &quot;2023-01-10&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;87654321&quot;,
+                                &quot;postcode&quot;: &quot;5678CD&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;afgewezen&quot;: null,
+                        &quot;datum&quot;: &quot;2023-06-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-06-10&quot;,
+                        &quot;dwangakkoord&quot;: true,
+                        &quot;ingetrokken&quot;: null,
+                        &quot;toegekend&quot;: &quot;2023-06-20&quot;
+                    },
+                    &quot;voorlopigeVoorzieningen&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-07-31&quot;,
+                            &quot;startdatum&quot;: &quot;2023-06-01&quot;
+                        }
+                    ],
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-12-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    },
+                    &quot;stabilisatie&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                    }
+                }
+            ]
+        }
+    ]
+}
 </code></pre></div>
 <h3 id="meervoudig-voorbeeld">Meervoudig voorbeeld</h3>
 <p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/meervoudigVoorbeeld.json">downloaden</a>.</p>
