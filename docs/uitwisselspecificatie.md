@@ -2,14 +2,14 @@
 
 ## Inleiding
 
-De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in [JSON-schema](https://json-schema.org) gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het [informatiemodel schuldhulpverlening](./rapport_1.md).
+De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in [JSON-schema](https://json-schema.org) gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het [informatiemodel schuldhulpverlening](./Hoofdlijnen_Model Schuldhulpverlening.md).
 
 De uitwisselspecificatie kent de volgende opbouw: 
 
 1. Op het hoofdniveau is het Uitwisselmodel gedefinieerd met een aantal attributen opgenomen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;
 2. Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, **mits daar natuurlijk toestemming voor is afgegeven**. 
-3. Op het derde niveau wordt per levering de aanleverende [schuldhulporganisatie](./rapport_1.md/#organisaties) met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er petr levering steeds door precies één schuldhulporganisatie gegevens wordenn aangeleverd. 
-4. Op detailniveau wordt een aantal schuldhultrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het [procesmodel](./rapport_1.md/#processen), en de [client(en)](./rapport_1.md/#clienten) die het betreft, met hun leefsituatie. Per client worden de schulden opgegeven. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.
+3. Op het derde niveau wordt per levering de aanleverende [schuldhulporganisatie](./Hoofdlijnen_Model Schuldhulpverlening.md/#organisaties) met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er petr levering steeds door precies één schuldhulporganisatie gegevens wordenn aangeleverd. 
+4. Op detailniveau wordt een aantal schuldhultrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het [procesmodel](./Hoofdlijnen_Model Schuldhulpverlening.md/#processen), en de [client(en)](./Hoofdlijnen_Model Schuldhulpverlening.md/#clienten) die het betreft, met hun leefsituatie. Per client worden de schulden opgegeven. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.
 
 Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. 
 

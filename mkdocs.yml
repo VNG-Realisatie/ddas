@@ -13,9 +13,9 @@ nav:
   - Home: index.md
   - Uitwisselspecificatie: uitwisselspecificatie.md
   - Informatiemodel:
-    - Hoofdlijnen: rapport_1.md
-    - Detailspecificatie: rapport_2.md
-  - Achtergrond DDAS: rapport_0.md
+    - Hoofdlijnen: "Hoofdlijnen_Model Schuldhulpverlening.md"
+    - Detailspecificatie: "Detail_Model Schuldhulpverlening.md"
+  - Achtergrond DDAS: Achtergrond.md
 
 markdown_extensions:
   - pymdownx.superfences
