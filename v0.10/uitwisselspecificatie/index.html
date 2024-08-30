@@ -554,13 +554,18 @@
 
 <h1 id="uitwisselmodel">Uitwisselmodel</h1>
 <h2 id="inleiding">Inleiding</h2>
-<p>De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in <a href="https://json-schema.org">JSON-schema</a> gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/">informatiemodel schuldhulpverlening</a>.</p>
+<p>De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in <a href="https://json-schema.org">JSON-schema</a> gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/">informatiemodel schuldhulpverlening</a>. </p>
 <p>De uitwisselspecificatie kent de volgende opbouw: </p>
 <ol>
 <li>Op het hoofdniveau is het Uitwisselmodel gedefinieerd met een aantal attributen opgenomen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;</li>
 <li>Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, <strong>mits daar natuurlijk toestemming voor is afgegeven</strong>. </li>
-<li>Op het derde niveau wordt per levering de aanleverende <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#organisaties">schuldhulporganisatie</a> met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er petr levering steeds door precies één schuldhulporganisatie gegevens wordenn aangeleverd. </li>
+<li>Op het derde niveau wordt per levering de aanleverende <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#organisaties">schuldhulporganisatie</a> met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er petr levering steeds door precies één schuldhulporganisatie gegevens wordenn aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.</li>
 <li>Op detailniveau wordt een aantal schuldhultrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#processen">procesmodel</a>, en de <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#clienten">client(en)</a> die het betreft, met hun leefsituatie. Per client worden de schulden opgegeven. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.</li>
+</ol>
+<p>Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzelfde traject betreffen. De trajecten worden dan uitgebreid met de nieuwe gegevens. Het gaat om hetzelfde traject als:</p>
+<ol>
+<li>Er overlap is in de looptijd; EN</li>
+<li>Het dezelfde clienten betreft (clienten kunnen maar 1 traject tegelijk hebben gedurende 1 periode. Wel kunnen zij sequentieel meerdere trajecten hebben)</li>
 </ol>
 <p>Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. </p>
 <h2 id="uitwisselspecificatie">Uitwisselspecificatie</h2>
@@ -739,6 +744,17 @@
                                             &quot;startdatum&quot;: {
                                                 &quot;$ref&quot;: &quot;#/$defs/datum&quot;
                                             }
+                                        }
+                                    }
+                                },
+                                &quot;informatieEnAdvies&quot;: {
+                                    &quot;type&quot;: &quot;object&quot;,
+                                    &quot;properties&quot;: {
+                                        &quot;einddatum&quot;: {
+                                            &quot;$ref&quot;: &quot;#/$defs/datum&quot;
+                                        },
+                                        &quot;startdatum&quot;: {
+                                            &quot;$ref&quot;: &quot;#/$defs/datum&quot;
                                         }
                                     }
                                 },
@@ -983,29 +999,6 @@
             &quot;type&quot;: &quot;integer&quot;,
             &quot;description&quot;: &quot;Een geldbedrag in hele euros nauwkweurig.&quot;
         },
-        &quot;EnumUitstroomreden&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Overleden&quot;,
-                &quot;Verhuisd&quot;,
-                &quot;Nietverschenen&quot;,
-                &quot;Ingetrokken&quot;,
-                &quot;Niet passend&quot;,
-                &quot;Overig&quot;,
-                &quot;Voldoet niet&quot;,
-                &quot;Afgerond&quot;,
-                &quot;Zelf&quot;
-            ]
-        },
-        &quot;geslacht&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Man&quot;,
-                &quot;Vrouw&quot;,
-                &quot;Onbekend&quot;,
-                &quot;Leeg&quot;
-            ]
-        },
         &quot;EnumOplossingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
@@ -1042,6 +1035,29 @@
                 &quot;Lange Termijn Begeleiding (DFD)&quot;,
                 &quot;Budgetbegeleiding&quot;
             ]
+        },
+        &quot;geslacht&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Man&quot;,
+                &quot;Vrouw&quot;,
+                &quot;Onbekend&quot;,
+                &quot;Leeg&quot;
+            ]
+        },
+        &quot;EnumUitstroomreden&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Overleden&quot;,
+                &quot;Verhuisd&quot;,
+                &quot;Nietverschenen&quot;,
+                &quot;Ingetrokken&quot;,
+                &quot;Niet passend&quot;,
+                &quot;Overig&quot;,
+                &quot;Voldoet niet&quot;,
+                &quot;Afgerond&quot;,
+                &quot;Zelf&quot;
+            ]
         }
     }
 }
@@ -1050,11 +1066,6 @@
 <h3 id="enkelvoudig-voorbeeld">Enkelvoudig voorbeeld</h3>
 <p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/enkelvoudigVoorbeeld.json">downloaden</a>.</p>
 <div class="highlight"><pre><span></span><code>{
-    &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
-    &quot;$id&quot;: &quot;https://raw.githubusercontent.com/brienen/ddas/main/v0.10/json_schema_Uitwisselmodel.json&quot;,
-    &quot;title&quot;: &quot;Uitwisselmodel&quot;,
-    &quot;type&quot;: &quot;object&quot;,
-    &quot;description&quot;: &quot;Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.&quot;,
     &quot;startdatumLevering&quot;: &quot;2023-01-01&quot;,
     &quot;einddatumLevering&quot;: &quot;2023-12-31&quot;,
     &quot;aanleverdatumEnTijd&quot;: &quot;2023-12-31T15:30:00Z&quot;,
@@ -1103,13 +1114,7 @@
                             &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
                             &quot;Postcode&quot;: &quot;5678CD&quot;,
                             &quot;Huisnummer&quot;: &quot;10&quot;,
-                            &quot;Huisnummertoevoeging&quot;: &quot;A&quot;,
-                            &quot;leefsituatie&quot;: [
-                                {
-                                    &quot;datumGeldigTot&quot;: &quot;2023-12-31&quot;,
-                                    &quot;datumGeldigVanaf&quot;: &quot;2023-01-01&quot;
-                                }
-                            ]
+                            &quot;Huisnummertoevoeging&quot;: &quot;A&quot;
                         }
                     ],
                     &quot;crisisinterventies&quot;: [
@@ -1172,11 +1177,9 @@
                         }
                     ],
                     &quot;schuldregeling&quot;: {
-                        &quot;afgewezen&quot;: null,
                         &quot;datum&quot;: &quot;2023-06-01&quot;,
                         &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-06-10&quot;,
                         &quot;dwangakkoord&quot;: true,
-                        &quot;ingetrokken&quot;: null,
                         &quot;toegekend&quot;: &quot;2023-06-20&quot;
                     },
                     &quot;voorlopigeVoorzieningen&quot;: [
@@ -1202,15 +1205,1056 @@
 </code></pre></div>
 <h3 id="meervoudig-voorbeeld">Meervoudig voorbeeld</h3>
 <p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/meervoudigVoorbeeld.json">downloaden</a>.</p>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>{
+    &quot;startdatumLevering&quot;: &quot;2023-01-01&quot;,
+    &quot;einddatumLevering&quot;: &quot;2023-12-31&quot;,
+    &quot;aanleverdatumEnTijd&quot;: &quot;2023-12-31T23:59:59Z&quot;,
+    &quot;codeGegevensleverancier&quot;: &quot;GL987654&quot;,
+    &quot;leveringen&quot;: [
+        {
+            &quot;teller&quot;: 1,
+            &quot;aanleverende_organisatie&quot;: {
+                &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie X&quot;,
+                &quot;KvK-nummer&quot;: &quot;12345678&quot;,
+                &quot;postcode&quot;: &quot;1234AB&quot;,
+                &quot;gemeentecode&quot;: &quot;GM001&quot;,
+                &quot;contactpersonen&quot;: [
+                    {
+                        &quot;email&quot;: &quot;jan.jansen@schuldhulporganisatiex.nl&quot;,
+                        &quot;functietitel&quot;: &quot;Schuldhulpverlener&quot;,
+                        &quot;naam&quot;: &quot;Jan Jansen&quot;,
+                        &quot;telefoonnummer&quot;: &quot;0612345678&quot;
+                    }
+                ]
+            },
+            &quot;schuldhulptrajecten&quot;: [
+                {
+                    &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 1&quot;,
+                    &quot;startdatum&quot;: &quot;2023-01-10&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-01-05&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 20000,
+                    &quot;gemeentecode&quot;: &quot;GM001&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-01-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-01&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                            &quot;soort&quot;: &quot;Budgetbeheer&quot;,
+                            &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;987654321&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1980-05-01&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;5678CD&quot;,
+                            &quot;Huisnummer&quot;: &quot;10&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;A&quot;
+                        }
+                    ],
+                    &quot;crisisinterventies&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-01-15&quot;,
+                            &quot;startdatum&quot;: &quot;2023-01-01&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-01-20&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-01-25&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-10&quot;
+                    },
+                    &quot;moratoria&quot;: [
+                        {
+                            &quot;datumAanvraag&quot;: &quot;2023-03-01&quot;,
+                            &quot;datumGoedkeuring&quot;: &quot;2023-03-10&quot;,
+                            &quot;einddatum&quot;: &quot;2023-09-01&quot;,
+                            &quot;startdatum&quot;: &quot;2023-03-15&quot;
+                        }
+                    ],
+                    &quot;nazorg&quot;: {
+                        &quot;einddatum&quot;: &quot;2024-01-31&quot;,
+                        &quot;startdatum&quot;: &quot;2024-01-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                        &quot;soort&quot;: &quot;Saneringskrediet&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;vtlb&quot;: 2000
+                    },
+                    &quot;planVanAanpak&quot;: {
+                        &quot;datumAfronding&quot;: &quot;2023-02-01&quot;
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 10000,
+                            &quot;peildatum&quot;: &quot;2023-01-10&quot;,
+                            &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Zorgverzekeraar A&quot;,
+                                &quot;kvknummer&quot;: &quot;87654321&quot;,
+                                &quot;postcode&quot;: &quot;1234AB&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 10000,
+                            &quot;peildatum&quot;: &quot;2023-01-10&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;12345678&quot;,
+                                &quot;postcode&quot;: &quot;5678CD&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-06-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-06-10&quot;,
+                        &quot;dwangakkoord&quot;: true,
+                        &quot;toegekend&quot;: &quot;2023-06-20&quot;
+                    },
+                    &quot;voorlopigeVoorzieningen&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-07-31&quot;,
+                            &quot;startdatum&quot;: &quot;2023-06-01&quot;
+                        }
+                    ],
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-12-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    },
+                    &quot;stabilisatie&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-08-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 2&quot;,
+                    &quot;startdatum&quot;: &quot;2023-02-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-01-25&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 25000,
+                    &quot;gemeentecode&quot;: &quot;GM001&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-02-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-20&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-07-15&quot;,
+                            &quot;soort&quot;: &quot;Beschermingsbewind&quot;,
+                            &quot;startdatum&quot;: &quot;2023-03-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;123456789&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1975-07-15&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                            &quot;Postcode&quot;: &quot;7890EF&quot;,
+                            &quot;Huisnummer&quot;: &quot;20&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-02-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-02-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                    },
+                    &quot;nazorg&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-09-30&quot;,
+                        &quot;startdatum&quot;: &quot;2023-09-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-08-31&quot;,
+                        &quot;soort&quot;: &quot;Betalingsregeling&quot;,
+                        &quot;startdatum&quot;: &quot;2023-05-01&quot;,
+                        &quot;vtlb&quot;: 1500
+                    },
+                    &quot;planVanAanpak&quot;: {
+                        &quot;datumAfronding&quot;: &quot;2023-02-20&quot;
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 15000,
+                            &quot;peildatum&quot;: &quot;2023-02-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Bank B&quot;,
+                                &quot;kvknummer&quot;: &quot;34567890&quot;,
+                                &quot;postcode&quot;: &quot;3456GH&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 10000,
+                            &quot;peildatum&quot;: &quot;2023-02-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;45678901&quot;,
+                                &quot;postcode&quot;: &quot;4567IJ&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;afgewezen&quot;: &quot;2023-05-10&quot;,
+                        &quot;datum&quot;: &quot;2023-04-01&quot;,
+                        &quot;dwangakkoord&quot;: false
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-08-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Niet afgerond&quot;,
+                        &quot;reden&quot;: &quot;Ingetrokken&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-07-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 3&quot;,
+                    &quot;startdatum&quot;: &quot;2023-03-15&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-03-10&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 30000,
+                    &quot;gemeentecode&quot;: &quot;GM002&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-03-20&quot;,
+                        &quot;startdatum&quot;: &quot;2023-03-01&quot;
+                    },
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-03-25&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;startdatum&quot;: &quot;2023-03-15&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-07-31&quot;,
+                        &quot;soort&quot;: &quot;Herfinanciering&quot;,
+                        &quot;startdatum&quot;: &quot;2023-05-01&quot;,
+                        &quot;vtlb&quot;: 1800
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 20000,
+                            &quot;peildatum&quot;: &quot;2023-03-15&quot;,
+                            &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Zorgverzekeraar C&quot;,
+                                &quot;kvknummer&quot;: &quot;56789012&quot;,
+                                &quot;postcode&quot;: &quot;5678KL&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 10000,
+                            &quot;peildatum&quot;: &quot;2023-03-15&quot;,
+                            &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Energieleverancier D&quot;,
+                                &quot;kvknummer&quot;: &quot;67890123&quot;,
+                                &quot;postcode&quot;: &quot;6789MN&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-06-01&quot;,
+                        &quot;dwangakkoord&quot;: false,
+                        &quot;toegekend&quot;: &quot;2023-06-15&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 4&quot;,
+                    &quot;startdatum&quot;: &quot;2023-06-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-05-20&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 45000,
+                    &quot;gemeentecode&quot;: &quot;GM002&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-06-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-05-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-10-01&quot;,
+                            &quot;soort&quot;: &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                            &quot;startdatum&quot;: &quot;2023-07-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;234567890&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1990-10-10&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;2345NO&quot;,
+                            &quot;Huisnummer&quot;: &quot;30&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;B&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-06-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Beeindigingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-06-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-06-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                        &quot;soort&quot;: &quot;Schuldbemiddeling&quot;,
+                        &quot;startdatum&quot;: &quot;2023-08-01&quot;,
+                        &quot;vtlb&quot;: 2200
+                    },
+                    &quot;planVanAanpak&quot;: {
+                        &quot;datumAfronding&quot;: &quot;2023-07-01&quot;
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 25000,
+                            &quot;peildatum&quot;: &quot;2023-06-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Privé Lening E&quot;,
+                                &quot;kvknummer&quot;: &quot;78901234&quot;,
+                                &quot;postcode&quot;: &quot;7890PQ&quot;,
+                                &quot;privepersoon&quot;: true
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 20000,
+                            &quot;peildatum&quot;: &quot;2023-06-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;89012345&quot;,
+                                &quot;postcode&quot;: &quot;8901RS&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;afgewezen&quot;: &quot;2023-09-01&quot;,
+                        &quot;datum&quot;: &quot;2023-08-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-09-05&quot;,
+                        &quot;dwangakkoord&quot;: true
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-10-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Traject beëindigd zonder resultaat&quot;,
+                        &quot;reden&quot;: &quot;Ingetrokken&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 5&quot;,
+                    &quot;startdatum&quot;: &quot;2023-04-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-03-20&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 60000,
+                    &quot;gemeentecode&quot;: &quot;GM003&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-04-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-03-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                            &quot;soort&quot;: &quot;Beschermingsbewind&quot;,
+                            &quot;startdatum&quot;: &quot;2023-06-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;345678901&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1985-12-25&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                            &quot;Postcode&quot;: &quot;3456UV&quot;,
+                            &quot;Huisnummer&quot;: &quot;40&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-04-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-04-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                        &quot;soort&quot;: &quot;Saneringskrediet&quot;,
+                        &quot;startdatum&quot;: &quot;2023-07-01&quot;,
+                        &quot;vtlb&quot;: 2400
+                    },
+                    &quot;planVanAanpak&quot;: {
+                        &quot;datumAfronding&quot;: &quot;2023-05-01&quot;
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 30000,
+                            &quot;peildatum&quot;: &quot;2023-04-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Ziekenhuis F&quot;,
+                                &quot;kvknummer&quot;: &quot;90123456&quot;,
+                                &quot;postcode&quot;: &quot;9012WX&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 30000,
+                            &quot;peildatum&quot;: &quot;2023-04-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Energieleverancier G&quot;,
+                                &quot;kvknummer&quot;: &quot;01234567&quot;,
+                                &quot;postcode&quot;: &quot;0123YZ&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-09-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-09-15&quot;,
+                        &quot;dwangakkoord&quot;: true,
+                        &quot;toegekend&quot;: &quot;2023-10-01&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-12-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-09-30&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 6&quot;,
+                    &quot;startdatum&quot;: &quot;2023-05-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-04-20&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 40000,
+                    &quot;gemeentecode&quot;: &quot;GM004&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-05-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-08-31&quot;,
+                            &quot;soort&quot;: &quot;Budgetcoaching&quot;,
+                            &quot;startdatum&quot;: &quot;2023-06-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;456789012&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1995-07-15&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;4567QR&quot;,
+                            &quot;Huisnummer&quot;: &quot;50&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;C&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-05-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Beeindigingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-05-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-05-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-09-30&quot;,
+                        &quot;soort&quot;: &quot;Herfinanciering&quot;,
+                        &quot;startdatum&quot;: &quot;2023-07-01&quot;,
+                        &quot;vtlb&quot;: 2000
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 25000,
+                            &quot;peildatum&quot;: &quot;2023-05-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Privé Lening H&quot;,
+                                &quot;kvknummer&quot;: &quot;23456789&quot;,
+                                &quot;postcode&quot;: &quot;2345ST&quot;,
+                                &quot;privepersoon&quot;: true
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 15000,
+                            &quot;peildatum&quot;: &quot;2023-05-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;34567890&quot;,
+                                &quot;postcode&quot;: &quot;3456UV&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-08-01&quot;,
+                        &quot;dwangakkoord&quot;: false,
+                        &quot;ingetrokken&quot;: &quot;2023-09-01&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-09-30&quot;,
+                        &quot;omschrijving&quot;: &quot;Traject beëindigd zonder resultaat&quot;,
+                        &quot;reden&quot;: &quot;Nietverschenen&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 7&quot;,
+                    &quot;startdatum&quot;: &quot;2023-07-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-06-15&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 50000,
+                    &quot;gemeentecode&quot;: &quot;GM004&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-07-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-06-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                            &quot;soort&quot;: &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                            &quot;startdatum&quot;: &quot;2023-08-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;567890123&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1975-03-05&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                            &quot;Postcode&quot;: &quot;5678WX&quot;,
+                            &quot;Huisnummer&quot;: &quot;60&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-07-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-07-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-07-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                        &quot;soort&quot;: &quot;Schuldbemiddeling&quot;,
+                        &quot;startdatum&quot;: &quot;2023-09-01&quot;,
+                        &quot;vtlb&quot;: 2500
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 30000,
+                            &quot;peildatum&quot;: &quot;2023-07-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Waterbedrijf I&quot;,
+                                &quot;kvknummer&quot;: &quot;34567890&quot;,
+                                &quot;postcode&quot;: &quot;3456UV&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 20000,
+                            &quot;peildatum&quot;: &quot;2023-07-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Privé Lening J&quot;,
+                                &quot;kvknummer&quot;: &quot;45678901&quot;,
+                                &quot;postcode&quot;: &quot;4567WX&quot;,
+                                &quot;privepersoon&quot;: true
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-09-01&quot;,
+                        &quot;dwangakkoord&quot;: false,
+                        &quot;toegekend&quot;: &quot;2023-10-01&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-11-30&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 8&quot;,
+                    &quot;startdatum&quot;: &quot;2023-08-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-07-20&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 55000,
+                    &quot;gemeentecode&quot;: &quot;GM005&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: true,
+                        &quot;einddatum&quot;: &quot;2023-08-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-07-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-12-01&quot;,
+                            &quot;soort&quot;: &quot;Budgetcoaching&quot;,
+                            &quot;startdatum&quot;: &quot;2023-09-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;678901234&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1980-11-20&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;6789YZ&quot;,
+                            &quot;Huisnummer&quot;: &quot;70&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-08-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-08-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-08-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-12-31&quot;,
+                        &quot;soort&quot;: &quot;0%-aanbod&quot;,
+                        &quot;startdatum&quot;: &quot;2023-10-01&quot;,
+                        &quot;vtlb&quot;: 2600
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 25000,
+                            &quot;peildatum&quot;: &quot;2023-08-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;CJIB&quot;,
+                                &quot;kvknummer&quot;: &quot;67890123&quot;,
+                                &quot;postcode&quot;: &quot;6789MN&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 30000,
+                            &quot;peildatum&quot;: &quot;2023-08-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Bank K&quot;,
+                                &quot;kvknummer&quot;: &quot;78901234&quot;,
+                                &quot;postcode&quot;: &quot;7890PQ&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-11-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-11-15&quot;,
+                        &quot;dwangakkoord&quot;: true,
+                        &quot;toegekend&quot;: &quot;2023-12-01&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-12-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-06-30&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 9&quot;,
+                    &quot;startdatum&quot;: &quot;2023-04-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-03-25&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 15000,
+                    &quot;gemeentecode&quot;: &quot;GM006&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-04-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-03-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-06-01&quot;,
+                            &quot;soort&quot;: &quot;Budgetbeheer&quot;,
+                            &quot;startdatum&quot;: &quot;2023-05-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;789012345&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1970-05-15&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                            &quot;Postcode&quot;: &quot;7890AB&quot;,
+                            &quot;Huisnummer&quot;: &quot;80&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;D&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-04-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-04-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-06-30&quot;,
+                        &quot;soort&quot;: &quot;Saneringskrediet&quot;,
+                        &quot;startdatum&quot;: &quot;2023-05-01&quot;,
+                        &quot;vtlb&quot;: 1400
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 5000,
+                            &quot;peildatum&quot;: &quot;2023-04-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Zorgverzekeraar L&quot;,
+                                &quot;kvknummer&quot;: &quot;89012345&quot;,
+                                &quot;postcode&quot;: &quot;8901RS&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 10000,
+                            &quot;peildatum&quot;: &quot;2023-04-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Energieleverancier M&quot;,
+                                &quot;kvknummer&quot;: &quot;90123456&quot;,
+                                &quot;postcode&quot;: &quot;9012WX&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-05-01&quot;,
+                        &quot;dwangakkoord&quot;: false,
+                        &quot;toegekend&quot;: &quot;2023-05-15&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-06-30&quot;,
+                        &quot;omschrijving&quot;: &quot;Schuldhulpverlening succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    }
+                },
+                {
+                    &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                    &quot;omschrijving&quot;: &quot;Traject 10&quot;,
+                    &quot;startdatum&quot;: &quot;2023-07-01&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-06-20&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 35000,
+                    &quot;gemeentecode&quot;: &quot;GM006&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-07-05&quot;,
+                        &quot;startdatum&quot;: &quot;2023-06-25&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-10-01&quot;,
+                            &quot;soort&quot;: &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                            &quot;startdatum&quot;: &quot;2023-08-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;890123456&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1980-09-25&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;8901RS&quot;,
+                            &quot;Huisnummer&quot;: &quot;90&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;E&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-07-10&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Beeindigingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-07-15&quot;,
+                        &quot;startdatum&quot;: &quot;2023-07-01&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                        &quot;soort&quot;: &quot;Betalingsregeling&quot;,
+                        &quot;startdatum&quot;: &quot;2023-09-01&quot;,
+                        &quot;vtlb&quot;: 1700
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 20000,
+                            &quot;peildatum&quot;: &quot;2023-07-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Bank N&quot;,
+                                &quot;kvknummer&quot;: &quot;01234567&quot;,
+                                &quot;postcode&quot;: &quot;0123YZ&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 15000,
+                            &quot;peildatum&quot;: &quot;2023-07-01&quot;,
+                            &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Energieleverancier O&quot;,
+                                &quot;kvknummer&quot;: &quot;12345678&quot;,
+                                &quot;postcode&quot;: &quot;1234AB&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;afgewezen&quot;: &quot;2023-09-01&quot;,
+                        &quot;datum&quot;: &quot;2023-08-01&quot;,
+                        &quot;datumVerzoekDwangakkoord&quot;: &quot;2023-09-15&quot;,
+                        &quot;dwangakkoord&quot;: true
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-10-31&quot;,
+                        &quot;omschrijving&quot;: &quot;Traject beëindigd zonder resultaat&quot;,
+                        &quot;reden&quot;: &quot;Ingetrokken&quot;
+                    }
+                }
+            ]
+        }
+    ]
+}
 </code></pre></div>
 <h3 id="samenloop-voorbeeld">Samenloop voorbeeld</h3>
 <p>Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpverlenende partij heeft uitbesteed. In een dergelijk geval worden er door meerdere schuldhulpverleners aanleveringen gedaan over dezelfde clienten in dezelfde periode. Onderstaand twee voorbeeld JSON-bestanden conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Deze voorbeeld kun je ook <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/samenloopVoorbeeldDeel1.json">downloaden deel 1</a> en <a href="https://raw.githubusercontent.com/brienen/ddas/main/v0.10/samenloopVoorbeeldDeel2.json">downloaden deel 2</a>.</p>
 <h4 id="samenloop-bestand-1">Samenloop bestand 1</h4>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>{
+    &quot;startdatumLevering&quot;: &quot;2023-01-01&quot;,
+    &quot;einddatumLevering&quot;: &quot;2023-12-31&quot;,
+    &quot;aanleverdatumEnTijd&quot;: &quot;2023-12-31T23:59:59Z&quot;,
+    &quot;codeGegevensleverancier&quot;: &quot;SL001&quot;,
+    &quot;leveringen&quot;: [
+        {
+            &quot;teller&quot;: 1,
+            &quot;aanleverende_organisatie&quot;: {
+                &quot;(Statutaire) Naam&quot;: &quot;Samenloop Organisatie A&quot;,
+                &quot;KvK-nummer&quot;: &quot;11112222&quot;,
+                &quot;postcode&quot;: &quot;1111AA&quot;,
+                &quot;gemeentecode&quot;: &quot;GM111&quot;,
+                &quot;contactpersonen&quot;: [
+                    {
+                        &quot;email&quot;: &quot;info@organisatiea.nl&quot;,
+                        &quot;functietitel&quot;: &quot;Coördinator&quot;,
+                        &quot;naam&quot;: &quot;Peter Janssen&quot;,
+                        &quot;telefoonnummer&quot;: &quot;0612345678&quot;
+                    }
+                ]
+            },
+            &quot;schuldhulptrajecten&quot;: [
+                {
+                    &quot;einddatum&quot;: &quot;2023-09-30&quot;,
+                    &quot;omschrijving&quot;: &quot;Samenloop Traject 1&quot;,
+                    &quot;startdatum&quot;: &quot;2023-01-15&quot;,
+                    &quot;toekenningsdatum&quot;: &quot;2023-01-10&quot;,
+                    &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 30000,
+                    &quot;gemeentecode&quot;: &quot;GM111&quot;,
+                    &quot;aanmelding&quot;: {
+                        &quot;crisisinterventie&quot;: false,
+                        &quot;einddatum&quot;: &quot;2023-01-20&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-10&quot;
+                    },
+                    &quot;begeleiding&quot;: [
+                        {
+                            &quot;einddatum&quot;: &quot;2023-08-31&quot;,
+                            &quot;soort&quot;: &quot;Budgetcoaching&quot;,
+                            &quot;startdatum&quot;: &quot;2023-02-01&quot;
+                        }
+                    ],
+                    &quot;client&quot;: [
+                        {
+                            &quot;Burgerservicenummer&quot;: &quot;123456789&quot;,
+                            &quot;Geboortedatum&quot;: &quot;1985-05-15&quot;,
+                            &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                            &quot;Postcode&quot;: &quot;1234AB&quot;,
+                            &quot;Huisnummer&quot;: &quot;12&quot;,
+                            &quot;Huisnummertoevoeging&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;intake&quot;: {
+                        &quot;beschikkingsdatum&quot;: &quot;2023-01-25&quot;,
+                        &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                        &quot;einddatum&quot;: &quot;2023-02-01&quot;,
+                        &quot;startdatum&quot;: &quot;2023-01-15&quot;
+                    },
+                    &quot;oplossing&quot;: {
+                        &quot;einddatum&quot;: &quot;2023-09-30&quot;,
+                        &quot;soort&quot;: &quot;Saneringskrediet&quot;,
+                        &quot;startdatum&quot;: &quot;2023-04-01&quot;,
+                        &quot;vtlb&quot;: 2500
+                    },
+                    &quot;schulden&quot;: [
+                        {
+                            &quot;bedrag&quot;: 15000,
+                            &quot;peildatum&quot;: &quot;2023-01-15&quot;,
+                            &quot;schuldsoort&quot;: &quot;Publiek&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Belastingdienst&quot;,
+                                &quot;kvknummer&quot;: &quot;99998888&quot;,
+                                &quot;postcode&quot;: &quot;2222BB&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        },
+                        {
+                            &quot;bedrag&quot;: 15000,
+                            &quot;peildatum&quot;: &quot;2023-01-15&quot;,
+                            &quot;schuldsoort&quot;: &quot;Overig&quot;,
+                            &quot;zakelijkeSchuld&quot;: false,
+                            &quot;schuldeiser&quot;: {
+                                &quot;naam&quot;: &quot;Bank X&quot;,
+                                &quot;kvknummer&quot;: &quot;77776666&quot;,
+                                &quot;postcode&quot;: &quot;3333CC&quot;,
+                                &quot;privepersoon&quot;: false
+                            }
+                        }
+                    ],
+                    &quot;schuldregeling&quot;: {
+                        &quot;datum&quot;: &quot;2023-05-01&quot;,
+                        &quot;dwangakkoord&quot;: false,
+                        &quot;toegekend&quot;: &quot;2023-06-01&quot;
+                    },
+                    &quot;uitstroom&quot;: {
+                        &quot;datum&quot;: &quot;2023-09-30&quot;,
+                        &quot;omschrijving&quot;: &quot;Traject succesvol afgerond&quot;,
+                        &quot;reden&quot;: &quot;Afgerond&quot;
+                    }
+                }
+            ]
+        }
+    ]
+}
 </code></pre></div>
 <h4 id="samenloop-bestand-2">Samenloop bestand 2</h4>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>{
+  &quot;startdatumLevering&quot;: &quot;2023-01-01&quot;,
+  &quot;einddatumLevering&quot;: &quot;2023-12-31&quot;,
+  &quot;aanleverdatumEnTijd&quot;: &quot;2023-12-31T23:59:59Z&quot;,
+  &quot;codeGegevensleverancier&quot;: &quot;SL002&quot;,
+  &quot;leveringen&quot;: [
+      {
+          &quot;teller&quot;: 2,
+          &quot;aanleverende_organisatie&quot;: {
+              &quot;(Statutaire) Naam&quot;: &quot;Samenloop Organisatie B&quot;,
+              &quot;KvK-nummer&quot;: &quot;22223333&quot;,
+              &quot;postcode&quot;: &quot;2222CC&quot;,
+              &quot;gemeentecode&quot;: &quot;GM222&quot;,
+              &quot;contactpersonen&quot;: [
+                  {
+                      &quot;email&quot;: &quot;contact@organisatieb.nl&quot;,
+                      &quot;functietitel&quot;: &quot;Schuldhulpverlener&quot;,
+                      &quot;naam&quot;: &quot;Marieke de Vries&quot;,
+                      &quot;telefoonnummer&quot;: &quot;0623456789&quot;
+                  }
+              ]
+          },
+          &quot;schuldhulptrajecten&quot;: [
+              {
+                  &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                  &quot;omschrijving&quot;: &quot;Samenloop Traject 2&quot;,
+                  &quot;startdatum&quot;: &quot;2023-03-10&quot;,
+                  &quot;toekenningsdatum&quot;: &quot;2023-03-01&quot;,
+                  &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 45000,
+                  &quot;gemeentecode&quot;: &quot;GM222&quot;,
+                  &quot;aanmelding&quot;: {
+                      &quot;crisisinterventie&quot;: true,
+                      &quot;einddatum&quot;: &quot;2023-03-15&quot;,
+                      &quot;startdatum&quot;: &quot;2023-03-05&quot;
+                  },
+                  &quot;begeleiding&quot;: [
+                      {
+                          &quot;einddatum&quot;: &quot;2023-10-31&quot;,
+                          &quot;soort&quot;: &quot;Beschermingsbewind&quot;,
+                          &quot;startdatum&quot;: &quot;2023-04-01&quot;
+                      }
+                  ],
+                  &quot;client&quot;: [
+                      {
+                          &quot;Burgerservicenummer&quot;: &quot;987654321&quot;,
+                          &quot;Geboortedatum&quot;: &quot;1990-08-10&quot;,
+                          &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                          &quot;Postcode&quot;: &quot;4567DE&quot;,
+                          &quot;Huisnummer&quot;: &quot;34&quot;,
+                          &quot;Huisnummertoevoeging&quot;: &quot;B&quot;
+                      }
+                  ],
+                  &quot;intake&quot;: {
+                      &quot;beschikkingsdatum&quot;: &quot;2023-03-20&quot;,
+                      &quot;beschikkingssoort&quot;: &quot;Toewijzingsbeschikking&quot;,
+                      &quot;einddatum&quot;: &quot;2023-03-25&quot;,
+                      &quot;startdatum&quot;: &quot;2023-03-10&quot;
+                  },
+                  &quot;oplossing&quot;: {
+                      &quot;einddatum&quot;: &quot;2023-11-30&quot;,
+                      &quot;soort&quot;: &quot;Betalingsregeling&quot;,
+                      &quot;startdatum&quot;: &quot;2023-07-01&quot;,
+                      &quot;vtlb&quot;: 3000
+                  },
+                  &quot;schulden&quot;: [
+                      {
+                          &quot;bedrag&quot;: 20000,
+                          &quot;peildatum&quot;: &quot;2023-03-10&quot;,
+                          &quot;schuldsoort&quot;: &quot;Zorg&quot;,
+                          &quot;zakelijkeSchuld&quot;: false,
+                          &quot;schuldeiser&quot;: {
+                              &quot;naam&quot;: &quot;Ziekenhuis Y&quot;,
+                              &quot;kvknummer&quot;: &quot;66665555&quot;,
+                              &quot;postcode&quot;: &quot;6666DD&quot;,
+                              &quot;privepersoon&quot;: false
+                          }
+                      },
+                      {
+                          &quot;bedrag&quot;: 25000,
+                          &quot;peildatum&quot;: &quot;2023-03-10&quot;,
+                          &quot;schuldsoort&quot;: &quot;Nuts&quot;,
+                          &quot;zakelijkeSchuld&quot;: false,
+                          &quot;schuldeiser&quot;: {
+                              &quot;naam&quot;: &quot;Energieleverancier Z&quot;,
+                              &quot;kvknummer&quot;: &quot;55554444&quot;,
+                              &quot;postcode&quot;: &quot;5555EE&quot;,
+                              &quot;privepersoon&quot;: false
+                          }
+                      }
+                  ],
+                  &quot;schuldregeling&quot;: {
+                      &quot;datum&quot;: &quot;2023-09-01&quot;,
+                      &quot;dwangakkoord&quot;: false,
+                      &quot;toegekend&quot;: &quot;2023-10-01&quot;
+                  },
+                  &quot;uitstroom&quot;: {
+                      &quot;datum&quot;: &quot;2023-11-30&quot;,
+                      &quot;omschrijving&quot;: &quot;Traject succesvol afgerond&quot;,
+                      &quot;reden&quot;: &quot;Afgerond&quot;
+                  }
+              }
+          ]
+      }
+  ]
+}
 </code></pre></div>
 
 
