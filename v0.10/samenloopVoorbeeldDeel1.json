@@ -1,0 +1,105 @@
+{
+    "startdatumLevering": "2023-01-01",
+    "einddatumLevering": "2023-12-31",
+    "aanleverdatumEnTijd": "2023-12-31T23:59:59Z",
+    "codeGegevensleverancier": "SL001",
+    "leveringen": [
+        {
+            "teller": 1,
+            "aanleverende_organisatie": {
+                "(Statutaire) Naam": "Samenloop Organisatie A",
+                "KvK-nummer": "11112222",
+                "postcode": "1111AA",
+                "gemeentecode": "GM111",
+                "contactpersonen": [
+                    {
+                        "email": "info@organisatiea.nl",
+                        "functietitel": "Coördinator",
+                        "naam": "Peter Janssen",
+                        "telefoonnummer": "0612345678"
+                    }
+                ]
+            },
+            "schuldhulptrajecten": [
+                {
+                    "einddatum": "2023-09-30",
+                    "omschrijving": "Samenloop Traject 1",
+                    "startdatum": "2023-01-15",
+                    "toekenningsdatum": "2023-01-10",
+                    "totaalSchuldbedragBijAanvangSchuld": 30000,
+                    "gemeentecode": "GM111",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-01-20",
+                        "startdatum": "2023-01-10"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-08-31",
+                            "soort": "Budgetcoaching",
+                            "startdatum": "2023-02-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "123456789",
+                            "Geboortedatum": "1985-05-15",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "1234AB",
+                            "Huisnummer": "12",
+                            "Huisnummertoevoeging": ""
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-01-25",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-02-01",
+                        "startdatum": "2023-01-15"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-09-30",
+                        "soort": "Saneringskrediet",
+                        "startdatum": "2023-04-01",
+                        "vtlb": 2500
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 15000,
+                            "peildatum": "2023-01-15",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Belastingdienst",
+                                "kvknummer": "99998888",
+                                "postcode": "2222BB",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 15000,
+                            "peildatum": "2023-01-15",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Bank X",
+                                "kvknummer": "77776666",
+                                "postcode": "3333CC",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-05-01",
+                        "dwangakkoord": false,
+                        "toegekend": "2023-06-01"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-09-30",
+                        "omschrijving": "Traject succesvol afgerond",
+                        "reden": "Afgerond"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -37,7 +37,7 @@ class DDASPluginUitwisselmodel(Plugin):
         for clazz in kopie.classes:
             lst_assoc = [assoc for assoc in clazz.uitgaande_associaties]
             for association in lst_assoc:
-                if str(association.name).strip() in ["resulteert in", "dienstverlening", "voert traject uit", "soort"]:
+                if str(association.name).strip() in ["resulteert in", "dienstverlening", "voert traject uit", "soort", "heeft financiele situatie"]:
                     clazz.uitgaande_associaties.remove(association)
 
         # Now remove classes 'project', 'projectsoort' en 'notariele status'
@@ -71,9 +71,14 @@ class DDASPluginUitwisselmodel(Plugin):
         aanleverdatumEnTijd = Attribute(
             id=util.getEAGuid(), name="aanleverdatumEnTijd", schema_id=schema_to.schema_id, primitive="datumtijd"
         )
+        codeGegevensleverancier = Attribute(
+            id=util.getEAGuid(), name="codeGegevensleverancier", schema_id=schema_to.schema_id, primitive="AN8", definitie=(
+                "Code van de gegevensleverancier (softwareleverancier of hosting partij) die de gegevens voor 1 of meer partijen levert.")
+        )
         uitwisselmodel.attributes.append(startdatumLevering)
         uitwisselmodel.attributes.append(einddatumLevering)
         uitwisselmodel.attributes.append(aanleverdatumEnTijd)
+        uitwisselmodel.attributes.append(codeGegevensleverancier)
 
         # Add the class Levering
         levering = Class(

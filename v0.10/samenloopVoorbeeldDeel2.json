@@ -1,0 +1,105 @@
+{
+  "startdatumLevering": "2023-01-01",
+  "einddatumLevering": "2023-12-31",
+  "aanleverdatumEnTijd": "2023-12-31T23:59:59Z",
+  "codeGegevensleverancier": "SL002",
+  "leveringen": [
+      {
+          "teller": 2,
+          "aanleverende_organisatie": {
+              "(Statutaire) Naam": "Samenloop Organisatie B",
+              "KvK-nummer": "22223333",
+              "postcode": "2222CC",
+              "gemeentecode": "GM222",
+              "contactpersonen": [
+                  {
+                      "email": "contact@organisatieb.nl",
+                      "functietitel": "Schuldhulpverlener",
+                      "naam": "Marieke de Vries",
+                      "telefoonnummer": "0623456789"
+                  }
+              ]
+          },
+          "schuldhulptrajecten": [
+              {
+                  "einddatum": "2023-11-30",
+                  "omschrijving": "Samenloop Traject 2",
+                  "startdatum": "2023-03-10",
+                  "toekenningsdatum": "2023-03-01",
+                  "totaalSchuldbedragBijAanvangSchuld": 45000,
+                  "gemeentecode": "GM222",
+                  "aanmelding": {
+                      "crisisinterventie": true,
+                      "einddatum": "2023-03-15",
+                      "startdatum": "2023-03-05"
+                  },
+                  "begeleiding": [
+                      {
+                          "einddatum": "2023-10-31",
+                          "soort": "Beschermingsbewind",
+                          "startdatum": "2023-04-01"
+                      }
+                  ],
+                  "client": [
+                      {
+                          "Burgerservicenummer": "987654321",
+                          "Geboortedatum": "1990-08-10",
+                          "Geslachtsaanduiding": "Vrouw",
+                          "Postcode": "4567DE",
+                          "Huisnummer": "34",
+                          "Huisnummertoevoeging": "B"
+                      }
+                  ],
+                  "intake": {
+                      "beschikkingsdatum": "2023-03-20",
+                      "beschikkingssoort": "Toewijzingsbeschikking",
+                      "einddatum": "2023-03-25",
+                      "startdatum": "2023-03-10"
+                  },
+                  "oplossing": {
+                      "einddatum": "2023-11-30",
+                      "soort": "Betalingsregeling",
+                      "startdatum": "2023-07-01",
+                      "vtlb": 3000
+                  },
+                  "schulden": [
+                      {
+                          "bedrag": 20000,
+                          "peildatum": "2023-03-10",
+                          "schuldsoort": "Zorg",
+                          "zakelijkeSchuld": false,
+                          "schuldeiser": {
+                              "naam": "Ziekenhuis Y",
+                              "kvknummer": "66665555",
+                              "postcode": "6666DD",
+                              "privepersoon": false
+                          }
+                      },
+                      {
+                          "bedrag": 25000,
+                          "peildatum": "2023-03-10",
+                          "schuldsoort": "Nuts",
+                          "zakelijkeSchuld": false,
+                          "schuldeiser": {
+                              "naam": "Energieleverancier Z",
+                              "kvknummer": "55554444",
+                              "postcode": "5555EE",
+                              "privepersoon": false
+                          }
+                      }
+                  ],
+                  "schuldregeling": {
+                      "datum": "2023-09-01",
+                      "dwangakkoord": false,
+                      "toegekend": "2023-10-01"
+                  },
+                  "uitstroom": {
+                      "datum": "2023-11-30",
+                      "omschrijving": "Traject succesvol afgerond",
+                      "reden": "Afgerond"
+                  }
+              }
+          ]
+      }
+  ]
+}

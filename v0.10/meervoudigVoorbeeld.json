@@ -1,0 +1,834 @@
+{
+    "startdatumLevering": "2023-01-01",
+    "einddatumLevering": "2023-12-31",
+    "aanleverdatumEnTijd": "2023-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL987654",
+    "leveringen": [
+        {
+            "teller": 1,
+            "aanleverende_organisatie": {
+                "(Statutaire) Naam": "Schuldhulporganisatie X",
+                "KvK-nummer": "12345678",
+                "postcode": "1234AB",
+                "gemeentecode": "GM001",
+                "contactpersonen": [
+                    {
+                        "email": "jan.jansen@schuldhulporganisatiex.nl",
+                        "functietitel": "Schuldhulpverlener",
+                        "naam": "Jan Jansen",
+                        "telefoonnummer": "0612345678"
+                    }
+                ]
+            },
+            "schuldhulptrajecten": [
+                {
+                    "einddatum": "2023-12-31",
+                    "omschrijving": "Traject 1",
+                    "startdatum": "2023-01-10",
+                    "toekenningsdatum": "2023-01-05",
+                    "totaalSchuldbedragBijAanvangSchuld": 20000,
+                    "gemeentecode": "GM001",
+                    "aanmelding": {
+                        "crisisinterventie": true,
+                        "einddatum": "2023-01-15",
+                        "startdatum": "2023-01-01"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-11-30",
+                            "soort": "Budgetbeheer",
+                            "startdatum": "2023-02-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "987654321",
+                            "Geboortedatum": "1980-05-01",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "5678CD",
+                            "Huisnummer": "10",
+                            "Huisnummertoevoeging": "A"
+                        }
+                    ],
+                    "crisisinterventies": [
+                        {
+                            "einddatum": "2023-01-15",
+                            "startdatum": "2023-01-01"
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-01-20",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-01-25",
+                        "startdatum": "2023-01-10"
+                    },
+                    "moratoria": [
+                        {
+                            "datumAanvraag": "2023-03-01",
+                            "datumGoedkeuring": "2023-03-10",
+                            "einddatum": "2023-09-01",
+                            "startdatum": "2023-03-15"
+                        }
+                    ],
+                    "nazorg": {
+                        "einddatum": "2024-01-31",
+                        "startdatum": "2024-01-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-12-31",
+                        "soort": "Saneringskrediet",
+                        "startdatum": "2023-04-01",
+                        "vtlb": 2000
+                    },
+                    "planVanAanpak": {
+                        "datumAfronding": "2023-02-01"
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 10000,
+                            "peildatum": "2023-01-10",
+                            "schuldsoort": "Zorg",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Zorgverzekeraar A",
+                                "kvknummer": "87654321",
+                                "postcode": "1234AB",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 10000,
+                            "peildatum": "2023-01-10",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Belastingdienst",
+                                "kvknummer": "12345678",
+                                "postcode": "5678CD",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-06-01",
+                        "datumVerzoekDwangakkoord": "2023-06-10",
+                        "dwangakkoord": true,
+                        "toegekend": "2023-06-20"
+                    },
+                    "voorlopigeVoorzieningen": [
+                        {
+                            "einddatum": "2023-07-31",
+                            "startdatum": "2023-06-01"
+                        }
+                    ],
+                    "uitstroom": {
+                        "datum": "2023-12-31",
+                        "omschrijving": "Schuldhulpverlening succesvol afgerond",
+                        "reden": "Afgerond"
+                    },
+                    "stabilisatie": {
+                        "einddatum": "2023-04-01",
+                        "startdatum": "2023-02-01"
+                    }
+                },
+                {
+                    "einddatum": "2023-08-31",
+                    "omschrijving": "Traject 2",
+                    "startdatum": "2023-02-01",
+                    "toekenningsdatum": "2023-01-25",
+                    "totaalSchuldbedragBijAanvangSchuld": 25000,
+                    "gemeentecode": "GM001",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-02-05",
+                        "startdatum": "2023-01-20"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-07-15",
+                            "soort": "Beschermingsbewind",
+                            "startdatum": "2023-03-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "123456789",
+                            "Geboortedatum": "1975-07-15",
+                            "Geslachtsaanduiding": "Vrouw",
+                            "Postcode": "7890EF",
+                            "Huisnummer": "20",
+                            "Huisnummertoevoeging": ""
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-02-10",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-02-15",
+                        "startdatum": "2023-02-01"
+                    },
+                    "nazorg": {
+                        "einddatum": "2023-09-30",
+                        "startdatum": "2023-09-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-08-31",
+                        "soort": "Betalingsregeling",
+                        "startdatum": "2023-05-01",
+                        "vtlb": 1500
+                    },
+                    "planVanAanpak": {
+                        "datumAfronding": "2023-02-20"
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 15000,
+                            "peildatum": "2023-02-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Bank B",
+                                "kvknummer": "34567890",
+                                "postcode": "3456GH",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 10000,
+                            "peildatum": "2023-02-01",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Belastingdienst",
+                                "kvknummer": "45678901",
+                                "postcode": "4567IJ",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "afgewezen": "2023-05-10",
+                        "datum": "2023-04-01",
+                        "dwangakkoord": false
+                    },
+                    "uitstroom": {
+                        "datum": "2023-08-31",
+                        "omschrijving": "Niet afgerond",
+                        "reden": "Ingetrokken"
+                    }
+                },
+                {
+                    "einddatum": "2023-07-31",
+                    "omschrijving": "Traject 3",
+                    "startdatum": "2023-03-15",
+                    "toekenningsdatum": "2023-03-10",
+                    "totaalSchuldbedragBijAanvangSchuld": 30000,
+                    "gemeentecode": "GM002",
+                    "aanmelding": {
+                        "crisisinterventie": true,
+                        "einddatum": "2023-03-20",
+                        "startdatum": "2023-03-01"
+                    },
+                    "intake": {
+                        "beschikkingsdatum": "2023-03-25",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-04-01",
+                        "startdatum": "2023-03-15"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-07-31",
+                        "soort": "Herfinanciering",
+                        "startdatum": "2023-05-01",
+                        "vtlb": 1800
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 20000,
+                            "peildatum": "2023-03-15",
+                            "schuldsoort": "Zorg",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Zorgverzekeraar C",
+                                "kvknummer": "56789012",
+                                "postcode": "5678KL",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 10000,
+                            "peildatum": "2023-03-15",
+                            "schuldsoort": "Nuts",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Energieleverancier D",
+                                "kvknummer": "67890123",
+                                "postcode": "6789MN",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-06-01",
+                        "dwangakkoord": false,
+                        "toegekend": "2023-06-15"
+                    }
+                },
+                {
+                    "einddatum": "2023-10-31",
+                    "omschrijving": "Traject 4",
+                    "startdatum": "2023-06-01",
+                    "toekenningsdatum": "2023-05-20",
+                    "totaalSchuldbedragBijAanvangSchuld": 45000,
+                    "gemeentecode": "GM002",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-06-05",
+                        "startdatum": "2023-05-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-10-01",
+                            "soort": "Lange Termijn Begeleiding (DFD)",
+                            "startdatum": "2023-07-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "234567890",
+                            "Geboortedatum": "1990-10-10",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "2345NO",
+                            "Huisnummer": "30",
+                            "Huisnummertoevoeging": "B"
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-06-10",
+                        "beschikkingssoort": "Beeindigingsbeschikking",
+                        "einddatum": "2023-06-15",
+                        "startdatum": "2023-06-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-10-31",
+                        "soort": "Schuldbemiddeling",
+                        "startdatum": "2023-08-01",
+                        "vtlb": 2200
+                    },
+                    "planVanAanpak": {
+                        "datumAfronding": "2023-07-01"
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 25000,
+                            "peildatum": "2023-06-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Privé Lening E",
+                                "kvknummer": "78901234",
+                                "postcode": "7890PQ",
+                                "privepersoon": true
+                            }
+                        },
+                        {
+                            "bedrag": 20000,
+                            "peildatum": "2023-06-01",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Belastingdienst",
+                                "kvknummer": "89012345",
+                                "postcode": "8901RS",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "afgewezen": "2023-09-01",
+                        "datum": "2023-08-01",
+                        "datumVerzoekDwangakkoord": "2023-09-05",
+                        "dwangakkoord": true
+                    },
+                    "uitstroom": {
+                        "datum": "2023-10-31",
+                        "omschrijving": "Traject beëindigd zonder resultaat",
+                        "reden": "Ingetrokken"
+                    }
+                },
+                {
+                    "einddatum": "2023-12-31",
+                    "omschrijving": "Traject 5",
+                    "startdatum": "2023-04-01",
+                    "toekenningsdatum": "2023-03-20",
+                    "totaalSchuldbedragBijAanvangSchuld": 60000,
+                    "gemeentecode": "GM003",
+                    "aanmelding": {
+                        "crisisinterventie": true,
+                        "einddatum": "2023-04-05",
+                        "startdatum": "2023-03-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-11-30",
+                            "soort": "Beschermingsbewind",
+                            "startdatum": "2023-06-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "345678901",
+                            "Geboortedatum": "1985-12-25",
+                            "Geslachtsaanduiding": "Vrouw",
+                            "Postcode": "3456UV",
+                            "Huisnummer": "40",
+                            "Huisnummertoevoeging": ""
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-04-10",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-04-15",
+                        "startdatum": "2023-04-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-12-31",
+                        "soort": "Saneringskrediet",
+                        "startdatum": "2023-07-01",
+                        "vtlb": 2400
+                    },
+                    "planVanAanpak": {
+                        "datumAfronding": "2023-05-01"
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 30000,
+                            "peildatum": "2023-04-01",
+                            "schuldsoort": "Zorg",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Ziekenhuis F",
+                                "kvknummer": "90123456",
+                                "postcode": "9012WX",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 30000,
+                            "peildatum": "2023-04-01",
+                            "schuldsoort": "Nuts",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Energieleverancier G",
+                                "kvknummer": "01234567",
+                                "postcode": "0123YZ",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-09-01",
+                        "datumVerzoekDwangakkoord": "2023-09-15",
+                        "dwangakkoord": true,
+                        "toegekend": "2023-10-01"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-12-31",
+                        "omschrijving": "Schuldhulpverlening succesvol afgerond",
+                        "reden": "Afgerond"
+                    }
+                },
+                {
+                    "einddatum": "2023-09-30",
+                    "omschrijving": "Traject 6",
+                    "startdatum": "2023-05-01",
+                    "toekenningsdatum": "2023-04-20",
+                    "totaalSchuldbedragBijAanvangSchuld": 40000,
+                    "gemeentecode": "GM004",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-05-05",
+                        "startdatum": "2023-04-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-08-31",
+                            "soort": "Budgetcoaching",
+                            "startdatum": "2023-06-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "456789012",
+                            "Geboortedatum": "1995-07-15",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "4567QR",
+                            "Huisnummer": "50",
+                            "Huisnummertoevoeging": "C"
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-05-10",
+                        "beschikkingssoort": "Beeindigingsbeschikking",
+                        "einddatum": "2023-05-15",
+                        "startdatum": "2023-05-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-09-30",
+                        "soort": "Herfinanciering",
+                        "startdatum": "2023-07-01",
+                        "vtlb": 2000
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 25000,
+                            "peildatum": "2023-05-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Privé Lening H",
+                                "kvknummer": "23456789",
+                                "postcode": "2345ST",
+                                "privepersoon": true
+                            }
+                        },
+                        {
+                            "bedrag": 15000,
+                            "peildatum": "2023-05-01",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Belastingdienst",
+                                "kvknummer": "34567890",
+                                "postcode": "3456UV",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-08-01",
+                        "dwangakkoord": false,
+                        "ingetrokken": "2023-09-01"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-09-30",
+                        "omschrijving": "Traject beëindigd zonder resultaat",
+                        "reden": "Nietverschenen"
+                    }
+                },
+                {
+                    "einddatum": "2023-11-30",
+                    "omschrijving": "Traject 7",
+                    "startdatum": "2023-07-01",
+                    "toekenningsdatum": "2023-06-15",
+                    "totaalSchuldbedragBijAanvangSchuld": 50000,
+                    "gemeentecode": "GM004",
+                    "aanmelding": {
+                        "crisisinterventie": true,
+                        "einddatum": "2023-07-05",
+                        "startdatum": "2023-06-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-10-31",
+                            "soort": "Lange Termijn Begeleiding (DFD)",
+                            "startdatum": "2023-08-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "567890123",
+                            "Geboortedatum": "1975-03-05",
+                            "Geslachtsaanduiding": "Vrouw",
+                            "Postcode": "5678WX",
+                            "Huisnummer": "60",
+                            "Huisnummertoevoeging": ""
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-07-10",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-07-15",
+                        "startdatum": "2023-07-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-11-30",
+                        "soort": "Schuldbemiddeling",
+                        "startdatum": "2023-09-01",
+                        "vtlb": 2500
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 30000,
+                            "peildatum": "2023-07-01",
+                            "schuldsoort": "Nuts",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Waterbedrijf I",
+                                "kvknummer": "34567890",
+                                "postcode": "3456UV",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 20000,
+                            "peildatum": "2023-07-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Privé Lening J",
+                                "kvknummer": "45678901",
+                                "postcode": "4567WX",
+                                "privepersoon": true
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-09-01",
+                        "dwangakkoord": false,
+                        "toegekend": "2023-10-01"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-11-30",
+                        "omschrijving": "Schuldhulpverlening succesvol afgerond",
+                        "reden": "Afgerond"
+                    }
+                },
+                {
+                    "einddatum": "2023-12-31",
+                    "omschrijving": "Traject 8",
+                    "startdatum": "2023-08-01",
+                    "toekenningsdatum": "2023-07-20",
+                    "totaalSchuldbedragBijAanvangSchuld": 55000,
+                    "gemeentecode": "GM005",
+                    "aanmelding": {
+                        "crisisinterventie": true,
+                        "einddatum": "2023-08-05",
+                        "startdatum": "2023-07-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-12-01",
+                            "soort": "Budgetcoaching",
+                            "startdatum": "2023-09-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "678901234",
+                            "Geboortedatum": "1980-11-20",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "6789YZ",
+                            "Huisnummer": "70",
+                            "Huisnummertoevoeging": ""
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-08-10",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-08-15",
+                        "startdatum": "2023-08-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-12-31",
+                        "soort": "0%-aanbod",
+                        "startdatum": "2023-10-01",
+                        "vtlb": 2600
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 25000,
+                            "peildatum": "2023-08-01",
+                            "schuldsoort": "Publiek",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "CJIB",
+                                "kvknummer": "67890123",
+                                "postcode": "6789MN",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 30000,
+                            "peildatum": "2023-08-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Bank K",
+                                "kvknummer": "78901234",
+                                "postcode": "7890PQ",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-11-01",
+                        "datumVerzoekDwangakkoord": "2023-11-15",
+                        "dwangakkoord": true,
+                        "toegekend": "2023-12-01"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-12-31",
+                        "omschrijving": "Schuldhulpverlening succesvol afgerond",
+                        "reden": "Afgerond"
+                    }
+                },
+                {
+                    "einddatum": "2023-06-30",
+                    "omschrijving": "Traject 9",
+                    "startdatum": "2023-04-01",
+                    "toekenningsdatum": "2023-03-25",
+                    "totaalSchuldbedragBijAanvangSchuld": 15000,
+                    "gemeentecode": "GM006",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-04-05",
+                        "startdatum": "2023-03-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-06-01",
+                            "soort": "Budgetbeheer",
+                            "startdatum": "2023-05-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "789012345",
+                            "Geboortedatum": "1970-05-15",
+                            "Geslachtsaanduiding": "Vrouw",
+                            "Postcode": "7890AB",
+                            "Huisnummer": "80",
+                            "Huisnummertoevoeging": "D"
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-04-10",
+                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "einddatum": "2023-04-15",
+                        "startdatum": "2023-04-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-06-30",
+                        "soort": "Saneringskrediet",
+                        "startdatum": "2023-05-01",
+                        "vtlb": 1400
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 5000,
+                            "peildatum": "2023-04-01",
+                            "schuldsoort": "Zorg",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Zorgverzekeraar L",
+                                "kvknummer": "89012345",
+                                "postcode": "8901RS",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 10000,
+                            "peildatum": "2023-04-01",
+                            "schuldsoort": "Nuts",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Energieleverancier M",
+                                "kvknummer": "90123456",
+                                "postcode": "9012WX",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "datum": "2023-05-01",
+                        "dwangakkoord": false,
+                        "toegekend": "2023-05-15"
+                    },
+                    "uitstroom": {
+                        "datum": "2023-06-30",
+                        "omschrijving": "Schuldhulpverlening succesvol afgerond",
+                        "reden": "Afgerond"
+                    }
+                },
+                {
+                    "einddatum": "2023-10-31",
+                    "omschrijving": "Traject 10",
+                    "startdatum": "2023-07-01",
+                    "toekenningsdatum": "2023-06-20",
+                    "totaalSchuldbedragBijAanvangSchuld": 35000,
+                    "gemeentecode": "GM006",
+                    "aanmelding": {
+                        "crisisinterventie": false,
+                        "einddatum": "2023-07-05",
+                        "startdatum": "2023-06-25"
+                    },
+                    "begeleiding": [
+                        {
+                            "einddatum": "2023-10-01",
+                            "soort": "Lange Termijn Begeleiding (DFD)",
+                            "startdatum": "2023-08-01"
+                        }
+                    ],
+                    "client": [
+                        {
+                            "Burgerservicenummer": "890123456",
+                            "Geboortedatum": "1980-09-25",
+                            "Geslachtsaanduiding": "Man",
+                            "Postcode": "8901RS",
+                            "Huisnummer": "90",
+                            "Huisnummertoevoeging": "E"
+                        }
+                    ],
+                    "intake": {
+                        "beschikkingsdatum": "2023-07-10",
+                        "beschikkingssoort": "Beeindigingsbeschikking",
+                        "einddatum": "2023-07-15",
+                        "startdatum": "2023-07-01"
+                    },
+                    "oplossing": {
+                        "einddatum": "2023-10-31",
+                        "soort": "Betalingsregeling",
+                        "startdatum": "2023-09-01",
+                        "vtlb": 1700
+                    },
+                    "schulden": [
+                        {
+                            "bedrag": 20000,
+                            "peildatum": "2023-07-01",
+                            "schuldsoort": "Overig",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Bank N",
+                                "kvknummer": "01234567",
+                                "postcode": "0123YZ",
+                                "privepersoon": false
+                            }
+                        },
+                        {
+                            "bedrag": 15000,
+                            "peildatum": "2023-07-01",
+                            "schuldsoort": "Nuts",
+                            "zakelijkeSchuld": false,
+                            "schuldeiser": {
+                                "naam": "Energieleverancier O",
+                                "kvknummer": "12345678",
+                                "postcode": "1234AB",
+                                "privepersoon": false
+                            }
+                        }
+                    ],
+                    "schuldregeling": {
+                        "afgewezen": "2023-09-01",
+                        "datum": "2023-08-01",
+                        "datumVerzoekDwangakkoord": "2023-09-15",
+                        "dwangakkoord": true
+                    },
+                    "uitstroom": {
+                        "datum": "2023-10-31",
+                        "omschrijving": "Traject beëindigd zonder resultaat",
+                        "reden": "Ingetrokken"
+                    }
+                }
+            ]
+        }
+    ]
+}

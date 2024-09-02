@@ -97,7 +97,7 @@ Het objecttype Contactpersoon kent de volgende eigenschappen:
 | Eigenschap | Waarde |
 | :--- | :------ |
 | name | Contactpersoon |
-| definitie | Contactpersoon van een organisatie |
+| definitie | Contactpersoon van de organisatie waarvan de gegevens worden aangeleverd. |
 | bron |  |
 | version | 1.0 |
 
@@ -107,6 +107,7 @@ Attributen van objecttype Contactpersoon:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | email | email |  | Nee |
+| functietitel | AN200 |  | Nee |
 | naam | AN200 |  | Nee |
 | telefoonnummer | AN200 |  | Nee |
 
@@ -130,6 +131,27 @@ Attributen van objecttype Crisisinterventie:
 | :--- | :--- | :--- | :--- |
 | einddatum | datum |  | Nee |
 | startdatum | datum |  | Nee |
+
+
+
+### InformatieEnAdvies
+
+Het objecttype InformatieEnAdvies kent de volgende eigenschappen:
+
+| Eigenschap | Waarde |
+| :--- | :------ |
+| name | InformatieEnAdvies |
+| definitie |  |
+| bron |  |
+| version | 1.0 |
+
+
+Attributen van objecttype InformatieEnAdvies:
+
+| Attribuut | Datatype | Omschrijving | Verplicht |
+| :--- | :--- | :--- | :--- |
+| einddatum | Datum |  | Nee |
+| startdatum | Datum |  | Nee |
 
 
 
@@ -174,9 +196,10 @@ Attributen van objecttype Intake:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
+| beschikkingsdatum | Datum | De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking.  | Nee |
+| beschikkingssoort | Enumeratie: "EnumBeschikkingssooort" |  | Nee |
 | einddatum | Datum | De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking.  | Nee |
 | startdatum | Datum | Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.    | Nee |
-| toelatingsbeschikking | Datum | Een beschikking met het besluit over de toegang tot schuldhulpverlening. Een toelatingsbeschikking is voorzien van een Plan van Aanpak op hoofdlijnen. Van de toelatingsbeschikking wordt de datum dat deze is afgegeven vastgelegd. | Nee |
 
 
 
@@ -231,7 +254,7 @@ Het objecttype Nazorg kent de volgende eigenschappen:
 | Eigenschap | Waarde |
 | :--- | :------ |
 | name | Nazorg |
-| definitie | Ondersteuning die een persoon ontvangt n&#225; een schuldregelingstraject, om zo bij de start van een schuldenvrij leven zelfredzaamheid verder te bevorderen &#233;n recidive (terugval) te voorkomen.  |
+| definitie | Ondersteuning die een persoon ontvangt n&#225; een schuldhulptraject, om zo bij de start van een schuldenvrij leven zelfredzaamheid verder te bevorderen &#233;n recidive (terugval) te voorkomen. |
 | bron | [https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401](https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401) |
 | version | 1.0 |
 
@@ -273,7 +296,7 @@ Het objecttype Oplossing kent de volgende eigenschappen:
 | Eigenschap | Waarde |
 | :--- | :------ |
 | name | Oplossing |
-| definitie | De Oplossing beschrijft in 4 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:  - submodule Herfinanciering; - submodule Betalingsregeling; - submodule Saneringskrediet; - submodule Schuldbemiddeling.  Het kan ook gaan om een 0%-aanbod |
+| definitie | De Oplossing beschrijft in 5 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:  - submodule Herfinanciering; - submodule Betalingsregeling; - submodule Saneringskrediet; - submodule Schuldbemiddeling. Het kan ook gaan om een 0%-aanbod |
 | bron | [https://www.nvvk.nl/l/library/download/urn:uuid:eba70d82-a0a0-40c4-9dd2-4c4aee7f0ed9/nvvk-module-12-oplossingen-221219.pdf](https://www.nvvk.nl/l/library/download/urn:uuid:eba70d82-a0a0-40c4-9dd2-4c4aee7f0ed9/nvvk-module-12-oplossingen-221219.pdf) |
 | version | 1.0 |
 
@@ -285,6 +308,7 @@ Attributen van objecttype Oplossing:
 | einddatum | Datum | Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk eindigt. Dit kan zijn na de formele afgesproken periode of een voortijdige beeindiging. | Nee |
 | soort | Enumeratie: "EnumOplossingssoort" |  | Nee |
 | startdatum | Datum | Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk start na goedkeuring van de aanvraag. | Nee |
+| vtlb | Bedrag | Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud. | Nee |
 
 
 
@@ -371,7 +395,7 @@ Attributen van objecttype Schuld:
 | :--- | :--- | :--- | :--- |
 | bedrag | Bedrag | Bedrag in hele euro's nauwkeurig | Nee |
 | peildatum | Date | Peildatum dat de schuld is vastgesteld. | Nee |
-| soort | Enumeratie: "EnumSchuldensoort" | De soort schuld | Nee |
+| schuldsoort | Enumeratie: "EnumSchuldensoort" |  | Nee |
 | zakelijkeSchuld | boolean | Betreft het een zakelijke schuld | Nee |
 
 
@@ -407,7 +431,7 @@ Het objecttype Schuldhulporganisatie kent de volgende eigenschappen:
 | Eigenschap | Waarde |
 | :--- | :------ |
 | name | Schuldhulporganisatie |
-| definitie | Een schuldhulporganisatie is een instantie die individuen en gezinnen helpt met het beheren, verminderen en oplossen van hun schulden door middel van advies, begeleiding en bemiddeling. |
+| definitie | Een schuldhulporganisatie is een instantie die individuen en gezinnen helpt met het beheren, verminderen en oplossen van hun schulden door middel van advies, begeleiding en bemiddeling. Het betreft een gemeenten of een SHV-organisatie die de gemeentelijke schuldhulpverleningstaak vanuit een gemeente gemandateerd of gedelegeerd heeft.   |
 | bron |  |
 | version | 1.0 |
 
@@ -417,7 +441,7 @@ Attributen van objecttype Schuldhulporganisatie:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | (Statutaire) Naam | AN500 | Naam van de niet-natuurlijke persoon zoals deze is vastgelegd in de statuten (rechtspersoon) of in de vennootschapsovereenkomst is overeengekomen (Vennootschap onder firma of Commanditaire vennootschap). | Nee |
-| gemeentecode | AN2 | De gemeentecode als de aanleverende organisatie een gemeente is. | Nee |
+| gemeentecode | AN4 | De gemeentecode als de aanleverende organisatie een gemeente is. | Nee |
 | KvK-nummer | AN8 | Landelijk uniek identificerend administratienummer van een MAATSCHAPPELIJKE ACTIVITEIT behorend bij een SUBJECT zoals toegewezen door de Kamer van Koophandel (KvK). | Nee |
 | postcode | AN6 |  | Nee |
 
@@ -440,7 +464,7 @@ Attributen van objecttype Schuldhulptraject:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | einddatum | date |  | Nee |
-| gemeentecode | AN2 | De gemeentecode van de gemeente onder wiens verantwoordelijkheid het schuldhulptraject wordt uitgevoerd. | Nee |
+| gemeentecode | AN4 | De gemeentecode van de gemeente onder wiens verantwoordelijkheid het schuldhulptraject wordt uitgevoerd. | Nee |
 | omschrijving | text |  | Nee |
 | startdatum | date |  | Nee |
 | toekenningsdatum | date |  | Nee |
@@ -516,6 +540,27 @@ Attributen van objecttype Uitstroom:
 
 
 
+### VoorlopigeVoorziening 
+
+Het objecttype VoorlopigeVoorziening  kent de volgende eigenschappen:
+
+| Eigenschap | Waarde |
+| :--- | :------ |
+| name | VoorlopigeVoorziening  |
+| definitie |  |
+| bron |  |
+| version | 1.0 |
+
+
+Attributen van objecttype VoorlopigeVoorziening :
+
+| Attribuut | Datatype | Omschrijving | Verplicht |
+| :--- | :--- | :--- | :--- |
+| einddatum | Datum |  | Nee |
+| startdatum | Datum |  | Nee |
+
+
+
 ### Woningbezit
 
 Het objecttype Woningbezit kent de volgende eigenschappen:
@@ -533,7 +578,7 @@ Attributen van objecttype Woningbezit:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | einddatum | Datum |  | Nee |
-| soort | Enumeratie: "EnumWoningbezit" |  | Nee |
+| soort |  |  | Nee |
 | startdatum | Datum |  | Nee |
 
 
@@ -602,6 +647,7 @@ een bewindvoerder verantwoordelijk om  alle handelingen te verrichten die
 aan een goed bewind bijdragen en om betrokkene in en buiten rechte te
 vertegenwoordigen.
 * **Lange Termijn Begeleiding (DFD)**: <font color="#1e1d3a">Het doel van Duurzame Financi&#235;le Dienstverlening (DFD) is om de inkomsten en uitgaven van een inwoner in evenwicht te brengen als de schulden (nog) niet duurzaam opgelost kunnen worden.</font>
+* **Budgetbegeleiding**: Verbeteren financi&#235;le kennis en vaardigheden, door: verhogen van zelfredzaamheid door de financiele vaardigheden, kennis en inzicht van de hulpvrager te ontwikkelen d.m.v. budgetbegeleiding en training.
 
 
 De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
@@ -615,20 +661,21 @@ De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
 
 
 
-### EnumHuishoudenssoort
+### EnumBeschikkingssooort
 Geen Definitie
 
-Het enumeratie EnumHuishoudenssoort kent de volgende waarden:
+Het enumeratie EnumBeschikkingssooort kent de volgende waarden:
 
-* **Particulier Huishouden**: <Geen Definities>
-* **Instituuttioneel Huishouden**: <Geen Definities>
+* **Afwijzingsbeschikking**: <Geen Definities>
+* **Toewijzingsbeschikking**: <Geen Definities>
+* **Beeindigingsbeschikking**: <Geen Definities>
 
 
-De enumeratie EnumHuishoudenssoort heeft de volgende kenmerken:
+De enumeratie EnumBeschikkingssooort heeft de volgende kenmerken:
 
 | Kenmerk | Waarde |
 | :--- | :------ |
-| name | EnumHuishoudenssoort |
+| name | EnumBeschikkingssooort |
 | definitie | None |
 | bron | None |
 | version | None |
@@ -644,7 +691,7 @@ Het enumeratie EnumOplossingssoort kent de volgende waarden:
 * **Herfinanciering**: Een financieringsovereenkomst waarmee de vastgestelde vordering(en) ineens en volledig (100%) wordt/worden voldaan.
 * **Saneringskrediet**: Het ineens afkopen van de totale schuldenlast tegen finale kwijting, op basis van betaling van een percentage van de totale schuldenlast.De afbetaling aan de schuldeisers is ineens en wordt gedaan met een krediet. De afsluiting van een saneringskrediet gaat via de eigen organisatie als dat een gemeentelijke of andere kredietbank is of de schuldhulpverlener bemiddelt naar een (gemeentelijke) kredietbank, een reguliere bank of een andere financieringsmogelijkheid (bijv. priv&#233;persoon of werkgever), die vervolgens het saneringskrediet verstrekt.
 * **Schuldbemiddeling**: Het gedeeltelijk, in termijnen terugbetalen van de totale schuldenlast naar draagkracht, tegen finale kwijting.
-* **0%-aanbod**: <Geen Definities>
+* **0%-aanbod**: In een 0%-regeling erkent men dat de schuldenaar geen financi&#235;le ruimte heeft om schulden af te lossen, en daarom wordt er geen aflossing van de schulden gevraagd gedurende de looptijd van de regeling. Na afloop van de afgesproken periode kunnen de schulden, mits aan alle voorwaarden is voldaan, worden kwijtgescholden.
 
 
 De enumeratie EnumOplossingssoort heeft de volgende kenmerken:
@@ -666,7 +713,7 @@ Het enumeratie EnumSchuldensoort kent de volgende waarden:
 * **Zorg**: 
 Mogelijke zorgkosten omvatten premies ziektskostenverzekering, kosten eigen bijdragen, en niet verzekerde zorg zoals voor: fysiotherapie, psychologische hulp, tandartszorg, hulpmiddelen en kraamzorg.
 * **Publiek**: Kosten voor: Belastingdienst, Dienst Toeslagen, Gemeentebelastingen, CJIB etc
-* **Nuts**: <font color="#3f3f3f">Nutsvoorzieningen zijn essenti&#235;le diensten zoals water, gas, elektriciteit, en riolering die worden geleverd aan huishoudens en bedrijven voor dagelijks gebruik.</font>
+* **Nuts**: <font color="#3f3f3f">Nutsvoorzieningen zijn essenti&#235;le diensten zoals water, gas en elektriciteit die worden geleverd aan huishoudens en bedrijven voor dagelijks gebruik.</font>
 * **Overig**: <Geen Definities>
 
 
@@ -702,28 +749,6 @@ De enumeratie EnumUitstroomreden heeft de volgende kenmerken:
 | Kenmerk | Waarde |
 | :--- | :------ |
 | name | EnumUitstroomreden |
-| definitie | None |
-| bron | None |
-| version | None |
-
-
-
-### EnumWoningbezit
-Geen Definitie
-
-Het enumeratie EnumWoningbezit kent de volgende waarden:
-
-* **Eigen Woning**: <Geen Definities>
-* **Huurwoning**: <Geen Definities>
-* **Huurwoning geen huurtoeslag**: <Geen Definities>
-* **Huurwoning wel huurtoeslag**: <Geen Definities>
-
-
-De enumeratie EnumWoningbezit heeft de volgende kenmerken:
-
-| Kenmerk | Waarde |
-| :--- | :------ |
-| name | EnumWoningbezit |
 | definitie | None |
 | bron | None |
 | version | None |
