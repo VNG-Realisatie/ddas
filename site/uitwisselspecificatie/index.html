@@ -592,6 +592,7 @@
         },
         &quot;leveringen&quot;: {
             &quot;type&quot;: &quot;array&quot;,
+            &quot;minItems&quot;: 1,
             &quot;items&quot;: {
                 &quot;type&quot;: &quot;object&quot;,
                 &quot;description&quot;: &quot;Een levering is steeds een schuldhulporganisatie met daarbij een verzameling van schuldhulptrajecten die op een bepaald moment worden aangeleverd.&quot;,
@@ -621,6 +622,7 @@
                             },
                             &quot;contactpersonen&quot;: {
                                 &quot;type&quot;: &quot;array&quot;,
+                                &quot;minItems&quot;: 1,
                                 &quot;items&quot;: {
                                     &quot;type&quot;: &quot;object&quot;,
                                     &quot;description&quot;: &quot;Contactpersoon van de organisatie waarvan de gegevens worden aangeleverd.&quot;,
@@ -705,6 +707,8 @@
                                 },
                                 &quot;client&quot;: {
                                     &quot;type&quot;: &quot;array&quot;,
+                                    &quot;minItems&quot;: 1,
+                                    &quot;maxItems&quot;: 2,
                                     &quot;items&quot;: {
                                         &quot;type&quot;: &quot;object&quot;,
                                         &quot;description&quot;: &quot;Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente binnen de sociaal domein.&quot;,
@@ -968,12 +972,21 @@
                     }
                 },
                 &quot;required&quot;: [
-                    &quot;teller&quot;
+                    &quot;teller&quot;,
+                     &quot;aanleverende_organisatie&quot;
                 ],
                 &quot;additionalProperties&quot;: false
             }
         }
     },
+    &quot;required&quot;: [
+        &quot;startdatumLevering&quot;,
+        &quot;einddatumLevering&quot;,
+        &quot;aanleverdatumEnTijd&quot;,
+        &quot;codeGegevensleverancier&quot;,
+        &quot;leveringen&quot;
+    ],        
+    &quot;additionalProperties&quot;: false,
     &quot;$defs&quot;: {
         &quot;datum&quot;: {
             &quot;type&quot;: &quot;string&quot;,
