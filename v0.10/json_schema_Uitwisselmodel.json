@@ -20,6 +20,7 @@
         },
         "leveringen": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "type": "object",
                 "description": "Een levering is steeds een schuldhulporganisatie met daarbij een verzameling van schuldhulptrajecten die op een bepaald moment worden aangeleverd.",
@@ -49,6 +50,7 @@
                             },
                             "contactpersonen": {
                                 "type": "array",
+                                "minItems": 1,
                                 "items": {
                                     "type": "object",
                                     "description": "Contactpersoon van de organisatie waarvan de gegevens worden aangeleverd.",
@@ -133,6 +135,8 @@
                                 },
                                 "client": {
                                     "type": "array",
+                                    "minItems": 1,
+                                    "maxItems": 2,
                                     "items": {
                                         "type": "object",
                                         "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente binnen de sociaal domein.",
@@ -141,7 +145,7 @@
                                                 "type": "string"
                                             },
                                             "Geboortedatum": {
-                                                "description": "De datum waarop de ander natuurljjk persoon is geboren.",
+                                                "description": "De datum waarop de ander natuurlijk persoon is geboren.",
                                                 "type": "string"
                                             },
                                             "Geslachtsaanduiding": {
@@ -195,7 +199,7 @@
                                             "$ref": "#/$defs/datum"
                                         },
                                         "beschikkingssoort": {
-                                            "$ref": "#/$defs/EnumBeschikkingssooort"
+                                            "$ref": "#/$defs/EnumBeschikkingssoort"
                                         },
                                         "einddatum": {
                                             "description": "De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. ",
@@ -396,12 +400,21 @@
                     }
                 },
                 "required": [
-                    "teller"
+                    "teller",
+                     "aanleverende_organisatie"
                 ],
                 "additionalProperties": false
             }
         }
     },
+    "required": [
+        "startdatumLevering",
+        "einddatumLevering",
+        "aanleverdatumEnTijd",
+        "codeGegevensleverancier",
+        "leveringen"
+    ],        
+    "additionalProperties": false,
     "$defs": {
         "datum": {
             "type": "string",
@@ -427,14 +440,6 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
-        "EnumBeschikkingssooort": {
-            "type": "string",
-            "enum": [
-                "Afwijzingsbeschikking",
-                "Toewijzingsbeschikking",
-                "Beeindigingsbeschikking"
-            ]
-        },
         "EnumOplossingssoort": {
             "type": "string",
             "enum": [
@@ -445,13 +450,12 @@
                 "0%-aanbod"
             ]
         },
-        "EnumSchuldensoort": {
+        "EnumBeschikkingssoort": {
             "type": "string",
             "enum": [
-                "Zorg",
-                "Publiek",
-                "Nuts",
-                "Overig"
+                "Afwijzingsbeschikking",
+                "Toelatingsbeschikking",
+                "Beeindigingsbeschikking"
             ]
         },
         "EnumBegeleidingssoort": {
@@ -462,6 +466,15 @@
                 "Beschermingsbewind",
                 "Lange Termijn Begeleiding (DFD)",
                 "Budgetbegeleiding"
+            ]
+        },
+        "EnumSchuldensoort": {
+            "type": "string",
+            "enum": [
+                "Zorg",
+                "Publiek",
+                "Nuts",
+                "Overig"
             ]
         },
         "geslacht": {

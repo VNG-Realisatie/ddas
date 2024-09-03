@@ -82,7 +82,7 @@ Attributen van objecttype Client:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | Burgerservicenummer | AN9 |  | Nee |
-| Geboortedatum | AN22 | De datum waarop de ander natuurljjk persoon is geboren. | Nee |
+| Geboortedatum | AN22 | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
 | Geslachtsaanduiding |  | Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
@@ -197,7 +197,7 @@ Attributen van objecttype Intake:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | beschikkingsdatum | Datum | De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking.  | Nee |
-| beschikkingssoort | Enumeratie: "EnumBeschikkingssooort" |  | Nee |
+| beschikkingssoort | Enumeratie: "EnumBeschikkingssoort" |  | Nee |
 | einddatum | Datum | De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking.  | Nee |
 | startdatum | Datum | Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.    | Nee |
 
@@ -349,7 +349,7 @@ Attributen van objecttype Partner:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | Burgerservicenummer | AN9 |  | Nee |
-| Geboortedatum | AN22 | De datum waarop de ander natuurljjk persoon is geboren. | Nee |
+| Geboortedatum | AN22 | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
 | Geslachtsaanduiding | Enumeratie: "geslacht" | Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
@@ -661,21 +661,21 @@ De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
 
 
 
-### EnumBeschikkingssooort
+### EnumBeschikkingssoort
 Geen Definitie
 
-Het enumeratie EnumBeschikkingssooort kent de volgende waarden:
+Het enumeratie EnumBeschikkingssoort kent de volgende waarden:
 
 * **Afwijzingsbeschikking**: <Geen Definities>
-* **Toewijzingsbeschikking**: <Geen Definities>
+* **Toelatingsbeschikking**: <Geen Definities>
 * **Beeindigingsbeschikking**: <Geen Definities>
 
 
-De enumeratie EnumBeschikkingssooort heeft de volgende kenmerken:
+De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:
 
 | Kenmerk | Waarde |
 | :--- | :------ |
-| name | EnumBeschikkingssooort |
+| name | EnumBeschikkingssoort |
 | definitie | None |
 | bron | None |
 | version | None |
@@ -712,9 +712,9 @@ Het enumeratie EnumSchuldensoort kent de volgende waarden:
 
 * **Zorg**: 
 Mogelijke zorgkosten omvatten premies ziektskostenverzekering, kosten eigen bijdragen, en niet verzekerde zorg zoals voor: fysiotherapie, psychologische hulp, tandartszorg, hulpmiddelen en kraamzorg.
-* **Publiek**: Kosten voor: Belastingdienst, Dienst Toeslagen, Gemeentebelastingen, CJIB etc
-* **Nuts**: <font color="#3f3f3f">Nutsvoorzieningen zijn essenti&#235;le diensten zoals water, gas en elektriciteit die worden geleverd aan huishoudens en bedrijven voor dagelijks gebruik.</font>
-* **Overig**: <Geen Definities>
+* **Publiek**: Publieke organisaties krijgen het kenmerk 'Publiek' ; als een schuldregeling wordt opgestart wordt dan altijd het BSN meegestuurd.
+* **Nuts**: Bij organisaties die werken met meterstanden wordt het kenmerk 'Nuts' geregistreerd. De schuldhulpverlenende organisatie is dan verplicht om de meterstanden mee te sturen als een schuldregeling wordt opgestart.
+* **Overig**: Alle schulden die niet onder &#233;&#233;n van de andere categorie&#235;n zijn in te delen.
 
 
 De enumeratie EnumSchuldensoort heeft de volgende kenmerken:

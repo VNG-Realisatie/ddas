@@ -34,7 +34,7 @@ Na de intake en planvorming volgt de uitvoeringsfase, waarin de schuldhulpverlen
 
 Nu werken schuldhulpverleningspartijen conform het NVVK-model, het is echter de bedoeling dat ze op termijn conform de “basisdienstverlening SHV” gaan werken (zie ook <https://www.rijksoverheid.nl/actueel/nieuws/2024/03/21/basisdienstverlening-schuldhulpverlening-in-iedere-gemeente>).
 
-Het in dit document opgenomen informatiemodel gaat uit de inrichting van schuldhulpverlening, zoals die nu is. Zo kunnen de meest accurate gegevens worden ingewonnen. Aangezien de achterliggende gegevens sterk op elkaar lijken gaan we ervan uit dat op basis van de in te winnen gegevens ook uitspraken gedaan kunnen worden over dienstverlening conform de Route Kaart Financiële Zorgen.
+Het in dit document opgenomen informatiemodel gaat uit de inrichting van schuldhulpverlening, zoals die nu door veel schuldhulpverleners wordt uitgevoerd. Zo kunnen de meest accurate gegevens worden ingewonnen. Aangezien de achterliggende gegevens sterk op elkaar lijken gaan we ervan uit dat op basis van de in te winnen gegevens ook uitspraken gedaan kunnen worden over dienstverlening conform de Route Kaart Financiële Zorgen.
 
 ## Overige Uitgangspunten 
 
