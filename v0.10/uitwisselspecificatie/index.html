@@ -557,10 +557,10 @@
 <p>De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in <a href="https://json-schema.org">JSON-schema</a> gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/">informatiemodel schuldhulpverlening</a>. </p>
 <p>De uitwisselspecificatie kent de volgende opbouw: </p>
 <ol>
-<li>Op het hoofdniveau is het Uitwisselmodel gedefinieerd met een aantal attributen opgenomen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;</li>
+<li>Op het hoofdniveau is het Uitwisselmodel gedefinieerd. Dit met een aantal attributen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;</li>
 <li>Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, <strong>mits daar natuurlijk toestemming voor is afgegeven</strong>. </li>
-<li>Op het derde niveau wordt per levering de aanleverende <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#organisaties">schuldhulporganisatie</a> met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er petr levering steeds door precies één schuldhulporganisatie gegevens wordenn aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.</li>
-<li>Op detailniveau wordt een aantal schuldhultrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#processen">procesmodel</a>, en de <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#clienten">client(en)</a> die het betreft, met hun leefsituatie. Per client worden de schulden opgegeven. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.</li>
+<li>Op het derde niveau wordt per levering de aanleverende <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#organisaties">schuldhulporganisatie</a> met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er per levering steeds door precies één schuldhulporganisatie gegevens worden aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.</li>
+<li>Op detailniveau wordt een aantal schuldhulptrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#processen">procesmodel</a>, en de <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#clienten">client(en)</a> die het betreft. Per schuldhulptraject worden de schulden opgegeven die binnen de scope van het traject vallen. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.</li>
 </ol>
 <p>Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzelfde traject betreffen. De trajecten worden dan uitgebreid met de nieuwe gegevens. Het gaat om hetzelfde traject als:</p>
 <ol>
@@ -713,7 +713,7 @@
                                                 &quot;type&quot;: &quot;string&quot;
                                             },
                                             &quot;Geboortedatum&quot;: {
-                                                &quot;description&quot;: &quot;De datum waarop de ander natuurljjk persoon is geboren.&quot;,
+                                                &quot;description&quot;: &quot;De datum waarop de ander natuurlijk persoon is geboren.&quot;,
                                                 &quot;type&quot;: &quot;string&quot;
                                             },
                                             &quot;Geslachtsaanduiding&quot;: {
@@ -767,7 +767,7 @@
                                             &quot;$ref&quot;: &quot;#/$defs/datum&quot;
                                         },
                                         &quot;beschikkingssoort&quot;: {
-                                            &quot;$ref&quot;: &quot;#/$defs/EnumBeschikkingssooort&quot;
+                                            &quot;$ref&quot;: &quot;#/$defs/EnumBeschikkingssoort&quot;
                                         },
                                         &quot;einddatum&quot;: {
                                             &quot;description&quot;: &quot;De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. &quot;,
@@ -999,14 +999,6 @@
             &quot;type&quot;: &quot;integer&quot;,
             &quot;description&quot;: &quot;Een geldbedrag in hele euros nauwkweurig.&quot;
         },
-        &quot;EnumBeschikkingssooort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Afwijzingsbeschikking&quot;,
-                &quot;Toewijzingsbeschikking&quot;,
-                &quot;Beeindigingsbeschikking&quot;
-            ]
-        },
         &quot;EnumOplossingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
@@ -1017,13 +1009,12 @@
                 &quot;0%-aanbod&quot;
             ]
         },
-        &quot;EnumSchuldensoort&quot;: {
+        &quot;EnumBeschikkingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
-                &quot;Zorg&quot;,
-                &quot;Publiek&quot;,
-                &quot;Nuts&quot;,
-                &quot;Overig&quot;
+                &quot;Afwijzingsbeschikking&quot;,
+                &quot;Toelatingsbeschikking&quot;,
+                &quot;Beeindigingsbeschikking&quot;
             ]
         },
         &quot;EnumBegeleidingssoort&quot;: {
@@ -1034,6 +1025,15 @@
                 &quot;Beschermingsbewind&quot;,
                 &quot;Lange Termijn Begeleiding (DFD)&quot;,
                 &quot;Budgetbegeleiding&quot;
+            ]
+        },
+        &quot;EnumSchuldensoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Zorg&quot;,
+                &quot;Publiek&quot;,
+                &quot;Nuts&quot;,
+                &quot;Overig&quot;
             ]
         },
         &quot;geslacht&quot;: {
