@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ddas-api.nl/latest/</loc>
-         <lastmod>2024-09-03</lastmod>
+         <lastmod>2024-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/Achtergrond/</loc>
-         <lastmod>2024-09-03</lastmod>
+         <lastmod>2024-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/Detail_Model%20Schuldhulpverlening/</loc>
-         <lastmod>2024-09-03</lastmod>
+         <lastmod>2024-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/Hoofdlijnen_Model%20Schuldhulpverlening/</loc>
-         <lastmod>2024-09-03</lastmod>
+         <lastmod>2024-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/uitwisselspecificatie/</loc>
-         <lastmod>2024-09-03</lastmod>
+         <lastmod>2024-09-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
