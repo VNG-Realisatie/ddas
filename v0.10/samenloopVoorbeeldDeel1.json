@@ -52,7 +52,7 @@
                     ],
                     "intake": {
                         "beschikkingsdatum": "2023-01-25",
-                        "beschikkingssoort": "Toewijzingsbeschikking",
+                        "beschikkingssoort": "Toelatingsbeschikking",
                         "einddatum": "2023-02-01",
                         "startdatum": "2023-01-15"
                     },

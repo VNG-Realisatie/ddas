@@ -30,11 +30,13 @@ Het NVVK-proces voor schuldhulpverlening, gehanteerd door de Nederlandse Verenig
 
 Na de intake en planvorming volgt de uitvoeringsfase, waarin de schuldhulpverlener de afgesproken maatregelen implementeert. Dit kan onder meer inhouden het onderhandelen met schuldeisers om tot haalbare betalingsregelingen te komen, het aanvragen van schuldhulpverleningstrajecten of het begeleiden van de schuldenaar door een wettelijke schuldsaneringsregeling. Gedurende deze fase blijft de schuldhulpverlener de voortgang monitoren en ondersteunt hij de schuldenaar bij het naleven van het plan. Het proces wordt afgesloten met een nazorgfase, waarin de schuldenaar geholpen wordt om financieel stabiel te blijven en terugval te voorkomen. Het NVVK-proces is gericht op duurzame oplossingen, waarbij zowel de schuldenaar als de schuldeisers worden betrokken om tot een succesvolle afronding van het schuldhulptraject te komen.
 
-### Routekaart Financiële Zorgen
+## Routekaart Financiële Zorgen
 
-Nu werken schuldhulpverleningspartijen conform het NVVK-model, het is echter de bedoeling dat ze op termijn conform de “basisdienstverlening SHV” gaan werken (zie ook <https://www.rijksoverheid.nl/actueel/nieuws/2024/03/21/basisdienstverlening-schuldhulpverlening-in-iedere-gemeente>).
+Nu werken de meeste schuldhulpverleningspartijen conform het NVVK-model. Dit model is als basis genomen voor de uitvraag van de data, zoals het nu is. Zo kunnen de meest accurate gegevens worden verzameld.
 
-Het in dit document opgenomen informatiemodel gaat uit de inrichting van schuldhulpverlening, zoals die nu door veel schuldhulpverleners wordt uitgevoerd. Zo kunnen de meest accurate gegevens worden ingewonnen. Aangezien de achterliggende gegevens sterk op elkaar lijken gaan we ervan uit dat op basis van de in te winnen gegevens ook uitspraken gedaan kunnen worden over dienstverlening conform de Route Kaart Financiële Zorgen.
+Daarnaast is van belang om de [basisdienstverlening](https://www.rijksoverheid.nl/actueel/nieuws/2024/03/21/basisdienstverlening-schuldhulpverlening-in-iedere-gemeente) mee te nemen. Tussen het ministerie van SZW, VNG, NVVK en Divosa zijn bestuurlijk afspraken gemaakt over 20 elementen basisdienstverlening die de komende periode ingezet gaan worden, ook enkele elementen die aanvullend zijn op de NVVK-model. Een deel van de data die betrekking heeft op de basisdienstverlening is al meegenomen in de vastgestelde uitvraag. Aanvullend daarop zal de uitvraag op termijn worden uitgebreid met de data die te maken hebben met deze basisdienstverlening.
+
+Naast het NVVK-model is een andere ontwikkeling van belang, de [Routekaart Financiële Zorgen (RFZ)](https://vng.nl/artikelen/de-routekaart-financiele-zorgen). De achterliggende gegevens bij de RFZ komen voor een deel overeen, waardoor er ook uitspraken gedaan kunnen worden over dienstverlening conform de RFZ. Ook hier is goed om aan te geven dat op termijn de uitvraag uitgebreid wordt met de noodzakelijk gegevens om de aanvullende data met betrekking tot de RFZ op te halen.
 
 ## Overige Uitgangspunten 
 
