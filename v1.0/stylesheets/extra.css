@@ -1,0 +1,23 @@
+.md-typeset a img {
+    cursor: zoom-in;
+  }
+  
+  .md-typeset a img:active {
+    cursor: zoom-out;
+  }
+  
+/* Stel de achtergrondafbeelding in voor de hele site */
+body {
+    background-image: url('../images/background.png'); /* Pas dit pad aan naar jouw afbeelding */
+    background-size: cover; /* Zorgt ervoor dat de afbeelding de hele achtergrond bedekt */
+    background-repeat: no-repeat; /* Voorkomt dat de afbeelding wordt herhaald */
+    background-attachment: fixed; /* Zorgt ervoor dat de achtergrond vast blijft staan bij scrollen */
+  }
+  
+  /* Optioneel: stel een transparante achtergrond in voor de hoofdcontainer zodat tekst beter leesbaar is */
+  .md-container {
+    background: rgba(255, 255, 255, 1.0); /* Witte achtergrond met 80% transparantie */
+    padding: 20px; /* Ruimte rondom de inhoud */
+    border-radius: 10px; /* Ronde hoeken */
+  }
+  
