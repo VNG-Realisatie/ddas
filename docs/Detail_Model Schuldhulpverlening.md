@@ -534,7 +534,8 @@ Attributen van objecttype Uitstroom:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| datum | date |  | Nee |
+| datum | date | Datum dat clienten uit het schuldhulptraject zijn uitgestroomd | Nee |
+| datumBeeindigingsbeschikking | Datum | Datum dat de Be&#235;indigingsbeschikking is afgegeven. | Nee |
 | omschrijving | text |  | Nee |
 | reden | Enumeratie: "EnumUitstroomreden" | Reden dat de hulpverlening op enig moment na aanmelding bij schuldhulpverlening eindigt.   | Nee |
 
@@ -668,7 +669,6 @@ Het enumeratie EnumBeschikkingssoort kent de volgende waarden:
 
 * **Afwijzingsbeschikking**: <Geen Definities>
 * **Toelatingsbeschikking**: <Geen Definities>
-* **Beeindigingsbeschikking**: <Geen Definities>
 
 
 De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:

@@ -1,0 +1,197 @@
+{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL123456",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie Z",
+          "KvK-nummer": "87654321",
+          "postcode": "5678EF",
+          "gemeentecode": "GM002",
+          "contactpersonen": [
+            {
+              "email": "info@schuldhulporganisatiez.nl",
+              "functietitel": "Coördinator",
+              "naam": "Klaas de Vries",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 1",
+            "startdatum": "2024-01-10",
+            "toekenningsdatum": "2024-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 12000,
+            "gemeentecode": "GM002",
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678CD",
+                "Huisnummer": "10"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-08-31",
+            "omschrijving": "Traject 2",
+            "startdatum": "2024-02-15",
+            "toekenningsdatum": "2024-02-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM002",
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1990-02-10",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "1234AB",
+                "Huisnummer": "25"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 3",
+            "startdatum": "2024-03-20",
+            "toekenningsdatum": "2024-03-15",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM003",
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1985-03-15",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "2345CD",
+                "Huisnummer": "15"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject 4",
+            "startdatum": "2024-04-10",
+            "toekenningsdatum": "2024-04-05",
+            "totaalSchuldbedragBijAanvangSchuld": 21000,
+            "gemeentecode": "GM004",
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1975-07-20",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3456DE",
+                "Huisnummer": "20"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject 5",
+            "startdatum": "2024-05-05",
+            "toekenningsdatum": "2024-05-01",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "gemeentecode": "GM005",
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1988-08-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "4567EF",
+                "Huisnummer": "30"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-07-31",
+            "omschrijving": "Traject 6",
+            "startdatum": "2024-06-15",
+            "toekenningsdatum": "2024-06-10",
+            "totaalSchuldbedragBijAanvangSchuld": 30000,
+            "gemeentecode": "GM006",
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1995-09-05",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678GH",
+                "Huisnummer": "40"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 7",
+            "startdatum": "2024-07-10",
+            "toekenningsdatum": "2024-07-05",
+            "totaalSchuldbedragBijAanvangSchuld": 35000,
+            "gemeentecode": "GM007",
+            "client": [
+              {
+                "Burgerservicenummer": "678901234",
+                "Geboortedatum": "1980-10-20",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "6789IJ",
+                "Huisnummer": "50"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-06-30",
+            "omschrijving": "Traject 8",
+            "startdatum": "2024-05-01",
+            "toekenningsdatum": "2024-04-25",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM008",
+            "client": [
+              {
+                "Burgerservicenummer": "789012345",
+                "Geboortedatum": "1970-12-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "7890KL",
+                "Huisnummer": "60"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-05-31",
+            "omschrijving": "Traject 9",
+            "startdatum": "2024-02-20",
+            "toekenningsdatum": "2024-02-15",
+            "totaalSchuldbedragBijAanvangSchuld": 17000,
+            "gemeentecode": "GM009",
+            "client": [
+              {
+                "Burgerservicenummer": "890123456",
+                "Geboortedatum": "1990-11-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "8901MN",
+                "Huisnummer": "70"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 10",
+            "startdatum": "2024-09-15",
+            "toekenningsdatum": "2024-09-10",
+            "totaalSchuldbedragBijAanvangSchuld": 22000,
+            "gemeentecode": "GM010",
+            "client": [
+              {
+                "Burgerservicenummer": "901234567",
+                "Geboortedatum": "1982-05-30",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "9012OP",
+                "Huisnummer": "80"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

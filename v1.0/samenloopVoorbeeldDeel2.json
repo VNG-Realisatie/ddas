@@ -1,0 +1,112 @@
+{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "SL002",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Samenloop Organisatie Y",
+          "KvK-nummer": "22223333",
+          "postcode": "2222BB",
+          "gemeentecode": "GM222",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiey.nl",
+              "functietitel": "Coördinator",
+              "naam": "Piet Pietersen",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 1",
+            "startdatum": "2024-01-20",
+            "toekenningsdatum": "2024-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 14000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1978-07-12",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "2345KL",
+                "Huisnummer": "45"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject 2",
+            "startdatum": "2024-02-05",
+            "toekenningsdatum": "2024-01-30",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1992-03-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3456MN",
+                "Huisnummer": "67"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject 3",
+            "startdatum": "2024-03-01",
+            "toekenningsdatum": "2024-02-20",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1990-04-20",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "4567OP",
+                "Huisnummer": "89"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-08-31",
+            "omschrijving": "Traject 4",
+            "startdatum": "2024-04-15",
+            "toekenningsdatum": "2024-04-05",
+            "totaalSchuldbedragBijAanvangSchuld": 16000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1985-05-10",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678QR",
+                "Huisnummer": "56"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 5",
+            "startdatum": "2024-05-20",
+            "toekenningsdatum": "2024-05-10",
+            "totaalSchuldbedragBijAanvangSchuld": 13000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "678901234",
+                "Geboortedatum": "1975-06-30",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "6789ST",
+                "Huisnummer": "78"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

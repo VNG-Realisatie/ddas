@@ -1,0 +1,63 @@
+{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL987654",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie X",
+          "KvK-nummer": "12345678",
+          "postcode": "1234AB",
+          "gemeentecode": "GM001",
+          "contactpersonen": [
+            {
+              "email": "jan.jansen@schuldhulporganisatiex.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject om schulden af te lossen",
+            "startdatum": "2024-01-10",
+            "toekenningsdatum": "2024-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM001",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-01-15",
+              "startdatum": "2024-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2024-11-30",
+                "soort": "Budgetbeheer",
+                "startdatum": "2024-02-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1980-05-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678CD",
+                "Huisnummer": "10",
+                "Huisnummertoevoeging": "A"
+              }
+            ],
+            "schuldregeling": {
+              "datum": "2024-06-01",
+              "datumVerzoekDwangakkoord": "2024-06-10",
+              "dwangakkoord": true,
+              "toegekend": "2024-06-20"
+            }
+          }
+        ]
+      }
+    ]
+  }
