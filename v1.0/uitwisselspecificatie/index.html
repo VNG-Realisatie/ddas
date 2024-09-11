@@ -976,7 +976,7 @@
                                             &quot;description&quot;: &quot;Datum dat clienten uit het schuldhulptraject zijn uitgestroomd&quot;,
                                             &quot;$ref&quot;: &quot;#/$defs/datum&quot;
                                         },
-                                        &quot;datumBe\u00ebindigingsbeschikking&quot;: {
+                                        &quot;datumBeeindigingsbeschikking&quot;: {
                                             &quot;description&quot;: &quot;Datum dat de Be&amp;#235;indigingsbeschikking is afgegeven.&quot;,
                                             &quot;$ref&quot;: &quot;#/$defs/datum&quot;
                                         },
@@ -1041,14 +1041,20 @@
             &quot;type&quot;: &quot;integer&quot;,
             &quot;description&quot;: &quot;Een geldbedrag in hele euros nauwkweurig.&quot;
         },
-        &quot;EnumOplossingssoort&quot;: {
+        &quot;EnumBeschikkingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
-                &quot;Betalingsregeling&quot;,
-                &quot;Herfinanciering&quot;,
-                &quot;Saneringskrediet&quot;,
-                &quot;Schuldbemiddeling&quot;,
-                &quot;0%-aanbod&quot;
+                &quot;Afwijzingsbeschikking&quot;,
+                &quot;Toelatingsbeschikking&quot;
+            ]
+        },
+        &quot;geslacht&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Man&quot;,
+                &quot;Vrouw&quot;,
+                &quot;Onbekend&quot;,
+                &quot;Leeg&quot;
             ]
         },
         &quot;EnumBegeleidingssoort&quot;: {
@@ -1059,22 +1065,6 @@
                 &quot;Beschermingsbewind&quot;,
                 &quot;Lange Termijn Begeleiding (DFD)&quot;,
                 &quot;Budgetbegeleiding&quot;
-            ]
-        },
-        &quot;EnumSchuldensoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Zorg&quot;,
-                &quot;Publiek&quot;,
-                &quot;Nuts&quot;,
-                &quot;Overig&quot;
-            ]
-        },
-        &quot;EnumBeschikkingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;enum&quot;: [
-                &quot;Afwijzingsbeschikking&quot;,
-                &quot;Toelatingsbeschikking&quot;
             ]
         },
         &quot;EnumUitstroomreden&quot;: {
@@ -1091,13 +1081,23 @@
                 &quot;Zelf&quot;
             ]
         },
-        &quot;geslacht&quot;: {
+        &quot;EnumSchuldensoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;enum&quot;: [
-                &quot;Man&quot;,
-                &quot;Vrouw&quot;,
-                &quot;Onbekend&quot;,
-                &quot;Leeg&quot;
+                &quot;Zorg&quot;,
+                &quot;Publiek&quot;,
+                &quot;Nuts&quot;,
+                &quot;Overig&quot;
+            ]
+        },
+        &quot;EnumOplossingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Betalingsregeling&quot;,
+                &quot;Herfinanciering&quot;,
+                &quot;Saneringskrediet&quot;,
+                &quot;Schuldbemiddeling&quot;,
+                &quot;0%-aanbod&quot;
             ]
         }
     }
