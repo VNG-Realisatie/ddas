@@ -66,7 +66,7 @@ crunch_uml transform -ttp plugin -sch_from schuldhulp_informatiemodel -sch_to sc
 
 # Generate JSON Schema from 'schuldhulp_uitwisselmodel'
 echo "Generate JSON Schema from uitwisselmodel..."
-crunch_uml  -sch schuldhulp_uitwisselmodel export -t json_schema --output_class_id $ROOT_CLASS_UITWISSELMODEL -js_url https://raw.githubusercontent.com/brienen/ddas/main/$version/json_schema_Uitwisselmodel.json -f $JSON
+crunch_uml  -sch schuldhulp_uitwisselmodel export -t json_schema --output_class_id $ROOT_CLASS_UITWISSELMODEL -js_url https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/$version/json_schema_Uitwisselmodel.json -f $JSON
 
 # Generate Markdown for documentation from 'schuldhulp_informatiemodel'
 echo "Generate Markdown for documentation if informatiemodel..."

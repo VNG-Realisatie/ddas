@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/brienen/ddas/main/v0.10/json_schema_Uitwisselmodel.json",
+    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v0.10/json_schema_Uitwisselmodel.json",
     "title": "Uitwisselmodel",
     "type": "object",
     "description": "Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.",
