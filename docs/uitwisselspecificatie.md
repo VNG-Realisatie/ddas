@@ -18,6 +18,10 @@ Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzel
 
 Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. 
 
+## Encoding
+
+Alle bestanden dienen te worden aangeleverd in [UTF-8-formaat](https://www.forumstandaardisatie.nl/open-standaarden/utf-8). 
+
 ## Uitwisselspecificatie
 
 Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een [downloadversie](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json) beschikbaar.
