@@ -67,3 +67,12 @@ Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpve
 {!../v1.0/samenloopVoorbeeldDeel2.json!}
 
 ```
+
+### Voorbeeld meerdere leveringen
+
+Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meerdereLeveringenVoorbeeld.json).
+
+```
+{!../v1.0/meerdereLeveringenVoorbeeld.json!}
+
+```

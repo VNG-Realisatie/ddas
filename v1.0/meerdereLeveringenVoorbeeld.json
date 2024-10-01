@@ -1,0 +1,213 @@
+{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL123456",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie A",
+          "KvK-nummer": "11112222",
+          "postcode": "1111AA",
+          "gemeentecode": "GM111",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiea.nl",
+              "functietitel": "Coördinator",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject A1",
+            "startdatum": "2024-01-15",
+            "toekenningsdatum": "2024-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-01-20",
+              "startdatum": "2024-01-10"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 2,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie B",
+          "KvK-nummer": "22223333",
+          "postcode": "2222BB",
+          "gemeentecode": "GM222",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatienb.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Piet Pietersen",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject B1",
+            "startdatum": "2024-02-10",
+            "toekenningsdatum": "2024-01-30",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM222",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-02-15",
+              "startdatum": "2024-02-01"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1990-02-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "2345KL",
+                "Huisnummer": "45"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 3,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie C",
+          "KvK-nummer": "33334444",
+          "postcode": "3333CC",
+          "gemeentecode": "GM333",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiec.nl",
+              "functietitel": "Manager",
+              "naam": "Klaas de Vries",
+              "telefoonnummer": "0634567890"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject C1",
+            "startdatum": "2024-03-15",
+            "toekenningsdatum": "2024-03-05",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "gemeentecode": "GM333",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-03-20",
+              "startdatum": "2024-03-10"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1985-03-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "3456MN",
+                "Huisnummer": "78"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 4,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie D",
+          "KvK-nummer": "44445555",
+          "postcode": "4444DD",
+          "gemeentecode": "GM444",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatied.nl",
+              "functietitel": "Coördinator",
+              "naam": "Anneke Janssen",
+              "telefoonnummer": "0645678901"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject D1",
+            "startdatum": "2024-04-01",
+            "toekenningsdatum": "2024-03-25",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "gemeentecode": "GM444",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-04-05",
+              "startdatum": "2024-03-30"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1990-04-20",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "4567OP",
+                "Huisnummer": "89"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 5,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie E",
+          "KvK-nummer": "55556666",
+          "postcode": "5555EE",
+          "gemeentecode": "GM555",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiee.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Martijn de Boer",
+              "telefoonnummer": "0656789012"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-07-31",
+            "omschrijving": "Traject E1",
+            "startdatum": "2024-05-10",
+            "toekenningsdatum": "2024-04-30",
+            "totaalSchuldbedragBijAanvangSchuld": 30000,
+            "gemeentecode": "GM555",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-05-15",
+              "startdatum": "2024-05-01"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1995-05-30",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678QR",
+                "Huisnummer": "123"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

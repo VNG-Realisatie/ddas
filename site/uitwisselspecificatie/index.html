@@ -356,6 +356,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#voorbeeld-meerdere-leveringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voorbeeld meerdere leveringen
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -584,6 +593,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorbeeld-meerdere-leveringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voorbeeld meerdere leveringen
+    </span>
+  </a>
   
 </li>
         
@@ -1625,6 +1643,222 @@
                 &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
                 &quot;Postcode&quot;: &quot;6789ST&quot;,
                 &quot;Huisnummer&quot;: &quot;78&quot;
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h3 id="voorbeeld-meerdere-leveringen">Voorbeeld meerdere leveringen</h3>
+<p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meerdereLeveringenVoorbeeld.json">downloaden</a>.</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;startdatumLevering&quot;: &quot;2024-01-01&quot;,
+    &quot;einddatumLevering&quot;: &quot;2024-12-31&quot;,
+    &quot;aanleverdatumEnTijd&quot;: &quot;2024-12-31T23:59:59Z&quot;,
+    &quot;codeGegevensleverancier&quot;: &quot;GL123456&quot;,
+    &quot;leveringen&quot;: [
+      {
+        &quot;teller&quot;: 1,
+        &quot;aanleverende_organisatie&quot;: {
+          &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie A&quot;,
+          &quot;KvK-nummer&quot;: &quot;11112222&quot;,
+          &quot;postcode&quot;: &quot;1111AA&quot;,
+          &quot;gemeentecode&quot;: &quot;GM111&quot;,
+          &quot;contactpersonen&quot;: [
+            {
+              &quot;email&quot;: &quot;contact@organisatiea.nl&quot;,
+              &quot;functietitel&quot;: &quot;Coördinator&quot;,
+              &quot;naam&quot;: &quot;Jan Jansen&quot;,
+              &quot;telefoonnummer&quot;: &quot;0612345678&quot;
+            }
+          ]
+        },
+        &quot;schuldhulptrajecten&quot;: [
+          {
+            &quot;einddatum&quot;: &quot;2024-09-30&quot;,
+            &quot;omschrijving&quot;: &quot;Traject A1&quot;,
+            &quot;startdatum&quot;: &quot;2024-01-15&quot;,
+            &quot;toekenningsdatum&quot;: &quot;2024-01-10&quot;,
+            &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 15000,
+            &quot;gemeentecode&quot;: &quot;GM111&quot;,
+            &quot;aanmelding&quot;: {
+              &quot;crisisinterventie&quot;: true,
+              &quot;einddatum&quot;: &quot;2024-01-20&quot;,
+              &quot;startdatum&quot;: &quot;2024-01-10&quot;
+            },
+            &quot;client&quot;: [
+              {
+                &quot;Burgerservicenummer&quot;: &quot;123456789&quot;,
+                &quot;Geboortedatum&quot;: &quot;1980-01-01&quot;,
+                &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                &quot;Postcode&quot;: &quot;1234AB&quot;,
+                &quot;Huisnummer&quot;: &quot;12&quot;
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;teller&quot;: 2,
+        &quot;aanleverende_organisatie&quot;: {
+          &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie B&quot;,
+          &quot;KvK-nummer&quot;: &quot;22223333&quot;,
+          &quot;postcode&quot;: &quot;2222BB&quot;,
+          &quot;gemeentecode&quot;: &quot;GM222&quot;,
+          &quot;contactpersonen&quot;: [
+            {
+              &quot;email&quot;: &quot;contact@organisatienb.nl&quot;,
+              &quot;functietitel&quot;: &quot;Schuldhulpverlener&quot;,
+              &quot;naam&quot;: &quot;Piet Pietersen&quot;,
+              &quot;telefoonnummer&quot;: &quot;0623456789&quot;
+            }
+          ]
+        },
+        &quot;schuldhulptrajecten&quot;: [
+          {
+            &quot;einddatum&quot;: &quot;2024-10-31&quot;,
+            &quot;omschrijving&quot;: &quot;Traject B1&quot;,
+            &quot;startdatum&quot;: &quot;2024-02-10&quot;,
+            &quot;toekenningsdatum&quot;: &quot;2024-01-30&quot;,
+            &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 18000,
+            &quot;gemeentecode&quot;: &quot;GM222&quot;,
+            &quot;aanmelding&quot;: {
+              &quot;crisisinterventie&quot;: false,
+              &quot;einddatum&quot;: &quot;2024-02-15&quot;,
+              &quot;startdatum&quot;: &quot;2024-02-01&quot;
+            },
+            &quot;client&quot;: [
+              {
+                &quot;Burgerservicenummer&quot;: &quot;234567890&quot;,
+                &quot;Geboortedatum&quot;: &quot;1990-02-15&quot;,
+                &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                &quot;Postcode&quot;: &quot;2345KL&quot;,
+                &quot;Huisnummer&quot;: &quot;45&quot;
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;teller&quot;: 3,
+        &quot;aanleverende_organisatie&quot;: {
+          &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie C&quot;,
+          &quot;KvK-nummer&quot;: &quot;33334444&quot;,
+          &quot;postcode&quot;: &quot;3333CC&quot;,
+          &quot;gemeentecode&quot;: &quot;GM333&quot;,
+          &quot;contactpersonen&quot;: [
+            {
+              &quot;email&quot;: &quot;contact@organisatiec.nl&quot;,
+              &quot;functietitel&quot;: &quot;Manager&quot;,
+              &quot;naam&quot;: &quot;Klaas de Vries&quot;,
+              &quot;telefoonnummer&quot;: &quot;0634567890&quot;
+            }
+          ]
+        },
+        &quot;schuldhulptrajecten&quot;: [
+          {
+            &quot;einddatum&quot;: &quot;2024-11-30&quot;,
+            &quot;omschrijving&quot;: &quot;Traject C1&quot;,
+            &quot;startdatum&quot;: &quot;2024-03-15&quot;,
+            &quot;toekenningsdatum&quot;: &quot;2024-03-05&quot;,
+            &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 20000,
+            &quot;gemeentecode&quot;: &quot;GM333&quot;,
+            &quot;aanmelding&quot;: {
+              &quot;crisisinterventie&quot;: false,
+              &quot;einddatum&quot;: &quot;2024-03-20&quot;,
+              &quot;startdatum&quot;: &quot;2024-03-10&quot;
+            },
+            &quot;client&quot;: [
+              {
+                &quot;Burgerservicenummer&quot;: &quot;345678901&quot;,
+                &quot;Geboortedatum&quot;: &quot;1985-03-25&quot;,
+                &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                &quot;Postcode&quot;: &quot;3456MN&quot;,
+                &quot;Huisnummer&quot;: &quot;78&quot;
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;teller&quot;: 4,
+        &quot;aanleverende_organisatie&quot;: {
+          &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie D&quot;,
+          &quot;KvK-nummer&quot;: &quot;44445555&quot;,
+          &quot;postcode&quot;: &quot;4444DD&quot;,
+          &quot;gemeentecode&quot;: &quot;GM444&quot;,
+          &quot;contactpersonen&quot;: [
+            {
+              &quot;email&quot;: &quot;contact@organisatied.nl&quot;,
+              &quot;functietitel&quot;: &quot;Coördinator&quot;,
+              &quot;naam&quot;: &quot;Anneke Janssen&quot;,
+              &quot;telefoonnummer&quot;: &quot;0645678901&quot;
+            }
+          ]
+        },
+        &quot;schuldhulptrajecten&quot;: [
+          {
+            &quot;einddatum&quot;: &quot;2024-12-31&quot;,
+            &quot;omschrijving&quot;: &quot;Traject D1&quot;,
+            &quot;startdatum&quot;: &quot;2024-04-01&quot;,
+            &quot;toekenningsdatum&quot;: &quot;2024-03-25&quot;,
+            &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 25000,
+            &quot;gemeentecode&quot;: &quot;GM444&quot;,
+            &quot;aanmelding&quot;: {
+              &quot;crisisinterventie&quot;: true,
+              &quot;einddatum&quot;: &quot;2024-04-05&quot;,
+              &quot;startdatum&quot;: &quot;2024-03-30&quot;
+            },
+            &quot;client&quot;: [
+              {
+                &quot;Burgerservicenummer&quot;: &quot;456789012&quot;,
+                &quot;Geboortedatum&quot;: &quot;1990-04-20&quot;,
+                &quot;Geslachtsaanduiding&quot;: &quot;Vrouw&quot;,
+                &quot;Postcode&quot;: &quot;4567OP&quot;,
+                &quot;Huisnummer&quot;: &quot;89&quot;
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;teller&quot;: 5,
+        &quot;aanleverende_organisatie&quot;: {
+          &quot;(Statutaire) Naam&quot;: &quot;Schuldhulporganisatie E&quot;,
+          &quot;KvK-nummer&quot;: &quot;55556666&quot;,
+          &quot;postcode&quot;: &quot;5555EE&quot;,
+          &quot;gemeentecode&quot;: &quot;GM555&quot;,
+          &quot;contactpersonen&quot;: [
+            {
+              &quot;email&quot;: &quot;contact@organisatiee.nl&quot;,
+              &quot;functietitel&quot;: &quot;Schuldhulpverlener&quot;,
+              &quot;naam&quot;: &quot;Martijn de Boer&quot;,
+              &quot;telefoonnummer&quot;: &quot;0656789012&quot;
+            }
+          ]
+        },
+        &quot;schuldhulptrajecten&quot;: [
+          {
+            &quot;einddatum&quot;: &quot;2024-07-31&quot;,
+            &quot;omschrijving&quot;: &quot;Traject E1&quot;,
+            &quot;startdatum&quot;: &quot;2024-05-10&quot;,
+            &quot;toekenningsdatum&quot;: &quot;2024-04-30&quot;,
+            &quot;totaalSchuldbedragBijAanvangSchuld&quot;: 30000,
+            &quot;gemeentecode&quot;: &quot;GM555&quot;,
+            &quot;aanmelding&quot;: {
+              &quot;crisisinterventie&quot;: false,
+              &quot;einddatum&quot;: &quot;2024-05-15&quot;,
+              &quot;startdatum&quot;: &quot;2024-05-01&quot;
+            },
+            &quot;client&quot;: [
+              {
+                &quot;Burgerservicenummer&quot;: &quot;567890123&quot;,
+                &quot;Geboortedatum&quot;: &quot;1995-05-30&quot;,
+                &quot;Geslachtsaanduiding&quot;: &quot;Man&quot;,
+                &quot;Postcode&quot;: &quot;5678QR&quot;,
+                &quot;Huisnummer&quot;: &quot;123&quot;
               }
             ]
           }

@@ -54,23 +54,23 @@ fi
 
 # First read the XMI
 echo "Reading GGM Datamodel $XMI..."
-crunch_uml import -f "$XMI" -t eaxmi -db_create
+#crunch_uml import -f "$XMI" -t eaxmi -db_create
 
 # Peform transformation and move schuldhulp module to crunch-schema 'schuldhulp_informatiemodel'
 echo "Extracting and tranforming schuldhulp datamodel..."
-crunch_uml transform -ttp plugin -sch_to schuldhulp_informatiemodel -rt_pkg $ROOT_SCHULDHULP --plugin_class_name DDASPluginInformatiemodel --plugin_file_name ./tools/ddasplugin_informatiemodel.py
+#crunch_uml transform -ttp plugin -sch_to schuldhulp_informatiemodel -rt_pkg $ROOT_SCHULDHULP --plugin_class_name DDASPluginInformatiemodel --plugin_file_name ./tools/ddasplugin_informatiemodel.py
 
 # Peform transformation on 'schuldhulp_informatiemodel' and save it to 'schuldhulp_uitwisselmodel'
 echo "Extracting and tranforming schuldhulp uitwisselmodel..."
-crunch_uml transform -ttp plugin -sch_from schuldhulp_informatiemodel -sch_to schuldhulp_uitwisselmodel -rt_pkg $ROOT_SCHULDHULP --plugin_class_name DDASPluginUitwisselmodel --plugin_file_name ./tools/ddasplugin_uitwisselmodel.py
+#crunch_uml transform -ttp plugin -sch_from schuldhulp_informatiemodel -sch_to schuldhulp_uitwisselmodel -rt_pkg $ROOT_SCHULDHULP --plugin_class_name DDASPluginUitwisselmodel --plugin_file_name ./tools/ddasplugin_uitwisselmodel.py
 
 # Generate JSON Schema from 'schuldhulp_uitwisselmodel'
 echo "Generate JSON Schema from uitwisselmodel..."
-crunch_uml  -sch schuldhulp_uitwisselmodel export -t json_schema --output_class_id $ROOT_CLASS_UITWISSELMODEL -js_url https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/$version/json_schema_Uitwisselmodel.json -f $JSON
+#crunch_uml  -sch schuldhulp_uitwisselmodel export -t json_schema --output_class_id $ROOT_CLASS_UITWISSELMODEL -js_url https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/$version/json_schema_Uitwisselmodel.json -f $JSON
 
 # Generate Markdown for documentation from 'schuldhulp_informatiemodel'
 echo "Generate Markdown for documentation if informatiemodel..."
-crunch_uml  -sch schuldhulp_informatiemodel export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f $MD --output_jinja2_templatedir ./tools/
+#crunch_uml  -sch schuldhulp_informatiemodel export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f $MD --output_jinja2_templatedir ./tools/
 
 
 # Replace placeholders in uitwisselspecificatie.md.template with version
