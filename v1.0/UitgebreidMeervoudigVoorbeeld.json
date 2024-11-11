@@ -1,0 +1,205 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/brienen/ddas/main/v1.0/json_schema_Uitwisselmodel.json",
+    "title": "Uitwisselmodel",
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL123456",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie A",
+          "KvK-nummer": "11112222",
+          "postcode": "1111AA",
+          "gemeentecode": "GM111",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiea.nl",
+              "functietitel": "Coördinator",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": null,
+            "omschrijving": "Traject met alleen intake",
+            "startdatum": "2024-02-01",
+            "toekenningsdatum": "2024-01-25",
+            "totaalSchuldbedragBijAanvangSchuld": 8000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-02-05",
+              "startdatum": "2024-01-20"
+            },
+            "intake": {
+              "beschikkingsdatum": "2024-02-10",
+              "beschikkingssoort": "Toewijzingsbeschikking",
+              "einddatum": "2024-02-15",
+              "startdatum": "2024-02-01"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "12"
+              }
+            ]
+          },
+          {
+            "einddatum": null,
+            "omschrijving": "Traject met lopende oplossing",
+            "startdatum": "2024-03-15",
+            "toekenningsdatum": "2024-03-01",
+            "totaalSchuldbedragBijAanvangSchuld": 12000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-03-20",
+              "startdatum": "2024-03-10"
+            },
+            "intake": {
+              "beschikkingsdatum": "2024-03-25",
+              "beschikkingssoort": "Toewijzingsbeschikking",
+              "einddatum": "2024-03-30",
+              "startdatum": "2024-03-15"
+            },
+            "oplossing": {
+              "einddatum": null,
+              "soort": "Betalingsregeling",
+              "startdatum": "2024-04-01",
+              "vtlb": 1500
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1992-05-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "2345BC",
+                "Huisnummer": "34"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-06-30",
+            "omschrijving": "Afgerond traject met uitstroom (reden: zelfstandig verder)",
+            "startdatum": "2024-01-15",
+            "toekenningsdatum": "2024-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-01-20",
+              "startdatum": "2024-01-10"
+            },
+            "intake": {
+              "beschikkingsdatum": "2024-01-25",
+              "beschikkingssoort": "Toewijzingsbeschikking",
+              "einddatum": "2024-01-30",
+              "startdatum": "2024-01-15"
+            },
+            "oplossing": {
+              "einddatum": "2024-05-15",
+              "soort": "Schuldbemiddeling",
+              "startdatum": "2024-02-15",
+              "vtlb": 1800
+            },
+            "uitstroom": {
+              "datum": "2024-06-30",
+              "omschrijving": "Cliënt kan zelfstandig verder",
+              "reden": "Zelfstandig verder"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1978-07-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678DE",
+                "Huisnummer": "56"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Afgerond traject met uitstroom (reden: hulpvraag opgelost)",
+            "startdatum": "2024-05-05",
+            "toekenningsdatum": "2024-04-25",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-05-10",
+              "startdatum": "2024-04-30"
+            },
+            "intake": {
+              "beschikkingsdatum": "2024-05-15",
+              "beschikkingssoort": "Toewijzingsbeschikking",
+              "einddatum": "2024-05-20",
+              "startdatum": "2024-05-05"
+            },
+            "oplossing": {
+              "einddatum": "2024-10-31",
+              "soort": "Herfinanciering",
+              "startdatum": "2024-06-01",
+              "vtlb": 1200
+            },
+            "uitstroom": {
+              "datum": "2024-11-30",
+              "omschrijving": "Hulpvraag volledig opgelost",
+              "reden": "Afgerond"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1985-09-30",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3456FG",
+                "Huisnummer": "78"
+              }
+            ]
+          },
+          {
+            "einddatum": null,
+            "omschrijving": "Lopend traject met begeleiding",
+            "startdatum": "2024-06-10",
+            "toekenningsdatum": "2024-06-05",
+            "totaalSchuldbedragBijAanvangSchuld": 12000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-06-15",
+              "startdatum": "2024-06-01"
+            },
+            "intake": {
+              "beschikkingsdatum": "2024-06-20",
+              "beschikkingssoort": "Toewijzingsbeschikking",
+              "einddatum": "2024-06-25",
+              "startdatum": "2024-06-10"
+            },
+            "begeleiding": [
+              {
+                "einddatum": null,
+                "soort": "Budgetcoaching",
+                "startdatum": "2024-06-15"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1989-11-10",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "6789HI",
+                "Huisnummer": "90"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
