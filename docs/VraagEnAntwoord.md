@@ -1,5 +1,7 @@
 # Vraag en Antwoord 
 
+Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer algemene vragen over DDAS-project,  kijk hier: https://www.divosa.nl/projecten/data-delen-armoede-en-schulden/vraag-en-antwoord 
+
 ??? question "Moet het aan CBS aan te leveren JSON-bestand worden versleuteld?"
     Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinssnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
 
