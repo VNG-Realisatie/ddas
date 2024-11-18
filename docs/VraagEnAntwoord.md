@@ -16,3 +16,8 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
 
 ??? question "In de intake staat zowel Beschikkingsdatum als einddatum, is dit niet dubbelop?"
     Beschikkingsdatum en einddatum lijken i.d.d. dubbel te zijn. In principe geldt de beschikkingsdatum als leidend, en gaan we ervanuit dat de einddatum dezelfde waarde krijgt als de beschikkingsdatum. In de volgende release zal de einddatum worden verwijderd.
+
+??? question "Wanneer moet de boolean 'dwangakkoord' binnen het het object 'schuldregeling' de waarde true hebben?"
+    De boolean 'dwangakkoord' heeft alleen de waarde true als de datum 'toegekend' een waarde heeft.
+
+
