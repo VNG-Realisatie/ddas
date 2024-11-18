@@ -13,3 +13,6 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
 
 ??? question "In de 'description' van Begeleiding staan 3 soorten begeleiding genoemd terwijl de EnumBegeleidingssoort 5 soorten begeleiding kent, wat is hier aan de hand?"
     In de description van Begeleiding staan ten onrechte 3 soorten begeleiding, terwijl er 5 soorten mogelijk zijn volgens EnumBegeleidingssort. We zullen de description van Begeleiding in de volgende release aanpassen naar 5 opties.
+
+??? question "In de intake staat zowel Beschikkingsdatum als einddatum, is dit niet dubbelop?"
+    Beschikkingsdatum en einddatum lijken i.d.d. dubbel te zijn. In principe geldt de beschikkingsdatum als leidend, en gaan we ervanuit dat de einddatum dezelfde waarde krijgt als de beschikkingsdatum. In de volgende release zal de einddatum worden verwijderd.
