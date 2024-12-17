@@ -427,6 +427,42 @@
 <summary>Wanneer moet de boolean 'dwangakkoord' binnen het het object 'schuldregeling' de waarde true hebben?</summary>
 <p>De boolean 'dwangakkoord' heeft alleen de waarde true als de datum 'toegekend' een waarde heeft.</p>
 </details>
+<details class="question">
+<summary>Er wordt bij objecttype schuldeiser 2 keer om 'naam' gevraagd, wat is hier het verschil tussen?</summary>
+<p>Het betreft hier een fout in de uitwisselspecificatie: het zou 1x 'naam' moeten zijn. Aanbieders wordt gevraagd beide velden te vullen met dezelfde waarde.</p>
+</details>
+<details class="question">
+<summary>Het objecttype 'InformatieEnAdvies' bevat geen definitie, welke definitie moet ik hier hanteren?</summary>
+<p>Voor wat betreft InformatieEnAdvies kun je de volgende definitie hanteren: 'Sommige inwoners kunnen met een beetje hulp hun (dreigende) financiële problemen zelfstandig oplossen. Bij Informatie en Advies geef je iemand met informatie inzicht in financiële keuzes. Dat kan ook digitaal. Sluit aan op iemands vragen, behoeftes en mogelijkheden en stimuleer de inwoner zo veel mogelijk zelf te doen.' Bron: <a href="https://www.nvvk.nl/kennisbank-detail/2022/04/20/Module-Informatie--Advies">https://www.nvvk.nl/kennisbank-detail/2022/04/20/Module-Informatie--Advies</a></p>
+</details>
+<details class="question">
+<summary>Het objecttype 'Nazorg' bevat geen definitie, welke definitie moet ik hier hanteren?</summary>
+<p>Voor wat betreft Nazorg kun je de volgende definitie hanteren: 'Nazorg is een essentieel onderdeel van schuldhulpverlening dat tot doel heeft om klanten na een schuldregelingstraject te ondersteunen bij het opbouwen van een schuldenvrij leven, zelfredzaamheid te bevorderen en terugval te voorkomen. Dit omvat het versterken van financieel zelfvertrouwen, het helpen bij het vasthouden van gezonde financiële gewoonten en het bieden van maatwerkondersteuning, zoals periodieke checks op inkomsten en uitgaven, anticiperen op veranderingen en advies bij toekomstige financiële vraagstukken.' Bron: <a href="https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401">https://www.nvvk.nl/kennisbank-detail/2022/07/07/Module-Nazorg?originNode=1401</a></p>
+</details>
+<details class="question">
+<summary>Wat is het verschil tussen 'beschikkingsdatum' en 'einddatum' bij objecttype 'Intake'?</summary>
+<p>De beschikkingsdatum is de datum waarop de beschikking is afgegeven, en de einddatum is de datum waarop de intake is afgelopen. In de praktijk zullen deze twee data bijna altijd hetzelfde zijn, maar in theorie kunnen deze data van elkaar verschillen.</p>
+</details>
+<details class="question">
+<summary>Wat moet worden opgegeven bij 'code gegevensleverancier'?</summary>
+<p>Dit is een code die het CBS nodig heeft om onderscheid te kunnen maken tussen de leveranciers die de gegevens aanbieden. Voor nu een goede optie de naam in te vullen van de softwareleverancier die de aanpassing in de software doet. Mocht het CBS een andere verwachten dan laten we dat weten.</p>
+</details>
+<details class="question">
+<summary>Wat moet worden opgegeven bij 'omschrijving' in 'Schuldhulptraject'?</summary>
+<p>Omschrijving is een optioneel veld die iets zeggen over individuele trajecten. Dit veld is echter niet relevant voor de levering aan CBS en kan leeg gelaten worden.</p>
+</details>
+<details class="question">
+<summary>Wat moet worden opgegeven bij 'toekenningsdatum' in 'Schuldhulptraject'?</summary>
+<p>Toekenningsdatum bevat de datum waarop de schuldregeling is toegekend, en is dus hetzelfde als het veld ‘toegekend’ uit Schuldregeling. Wij vragen om hier dezelfde waarde op te voeren.</p>
+</details>
+<details class="question">
+<summary>Wat moet worden opgegeven bij 'geslachtsaanduiding' bij 'client'?</summary>
+<p>De geslachtsaanduiding hoort van het type 'geslacht' te zijn, en niet alleen een string. Dit staat nu niet goed in de uitwisselspecificatie. Bij geslachtsaanduiding moet dus een van de waarden uit 'geslacht' te staan: ['Man','Vrouw','Onbekend','Leeg']</p>
+</details>
+<details class="question">
+<summary>Een 0%-aanbod (bij EnumOplossingssoort) heet niet meer zo, maar een Schuldregeling zonder Afloscapaciteit (ook wel SA). Moet ik 0%-aanbod blijven hanteren?</summary>
+<p>Ja, de term 0%-aanbod blijft gehanteerd tot een nieuwe versie van de uitwisselspecificatie wordt uitgebracht. De huidige uitwisselspecificatie is vastgesteld voordat deze nieuwe term is geïntroduceerd, daarom wordt de oude term nog gehanteerd.</p>
+</details>
 
 
 
