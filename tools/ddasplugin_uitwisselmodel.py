@@ -14,6 +14,19 @@ UITWISSELMODEL_ID = "EAID_6b4326e3_eb4e_41d2_902b_0bff06604f63"
 CLIENT_ID = "EAID_DAF09055_A5A6_4ff4_A158_21B20567B296"
 LEVERING_ID = "EAID_DAB09055_A5A6_4ff4_A158_21B20567B888"
 SCHULDEN_ID = "EAID_93E12A3E_71E3_431e_9871_BF6075EAAEF1"
+TRAJECTEN_SORT_ORDER = [
+    'client',
+    'aanmelding',
+    'intake',
+    'planVanAanpak',
+    'stabilisatie',
+    'schuldregeling',
+    'begeleiding',
+    'oplossing',
+    'nazorg',
+    'uitstroom',
+]
+
 
 
 class DDASPluginUitwisselmodel(Plugin):
@@ -37,8 +50,28 @@ class DDASPluginUitwisselmodel(Plugin):
         for clazz in kopie.classes:
             lst_assoc = [assoc for assoc in clazz.uitgaande_associaties]
             for association in lst_assoc:
-                if str(association.name).strip() in ["resulteert in", "dienstverlening", "voert traject uit", "soort", "heeft financiele situatie"]:
+                if str(association.name).strip() in [
+                    "resulteert in",
+                    "dienstverlening",
+                    "voert traject uit",
+                    "soort",
+                    "heeft financiele situatie",
+                ]:
                     clazz.uitgaande_associaties.remove(association)
+
+        # Zet de onderdelen van het traject in de juiste volgorde
+        sort_order = [item.lower() for item in TRAJECTEN_SORT_ORDER if isinstance(item, str)]
+        for clazz in kopie.classes:
+            if str(clazz.name).strip() == "Schuldhulptraject":
+                for association in clazz.uitgaande_associaties:
+                    dst_class = schema_from.get_class(association.dst_class_id)
+                    if dst_class:
+                        dst_name = str(dst_class.name).strip().lower()
+                        if dst_name in sort_order:
+                            association.order = sort_order.index(dst_name) + 1
+                        else:
+                            association.order = 100
+
 
         # Now remove classes 'project', 'projectsoort' en 'notariele status'
         for clazz in kopie.classes:
@@ -63,18 +96,36 @@ class DDASPluginUitwisselmodel(Plugin):
             ),
         )
         startdatumLevering = Attribute(
-            id=util.getEAGuid(), name="startdatumLevering", schema_id=schema_to.schema_id, primitive="Datum"
+            id=util.getEAGuid(),
+            name="startdatumLevering",
+            schema_id=schema_to.schema_id,
+            primitive="Datum",
+            verplicht=True,
+            definitie="De begindatum van de periode waarover gerapperteerd wordt binnen de levering",
         )
         einddatumLevering = Attribute(
-            id=util.getEAGuid(), name="einddatumLevering", schema_id=schema_to.schema_id, primitive="Datum"
-        )
+            id=util.getEAGuid(),
+            name="einddatumLevering",
+            schema_id=schema_to.schema_id,
+            primitive="Datum",
+            verplicht=True,
+            definitie="De einddatum van de periode waarover gerapperteerd wordt binnen de levering",)
         aanleverdatumEnTijd = Attribute(
-            id=util.getEAGuid(), name="aanleverdatumEnTijd", schema_id=schema_to.schema_id, primitive="datumtijd"
-        )
+            id=util.getEAGuid(),
+            name="aanleverdatumEnTijd",
+            schema_id=schema_to.schema_id,
+            primitive="datumtijd",
+            verplicht=True,
+            definitie="De datum en tijd waarop de gegevens zijn aangeleverd.",)
         codeGegevensleverancier = Attribute(
-            id=util.getEAGuid(), name="codeGegevensleverancier", schema_id=schema_to.schema_id, primitive="AN8", definitie=(
-                "Code van de gegevensleverancier (softwareleverancier of hosting partij) die de gegevens voor 1 of meer partijen levert.")
+            id=util.getEAGuid(),
+            name="codeGegevensleverancier",
+            schema_id=schema_to.schema_id,
+            definitie="Code van de gegevensleverancier (softwareleverancier of hosting partij) die de gegevens voor 1 of meer partijen levert.",
+            verplicht=True,
+            primitive="AN200",
         )
+
         uitwisselmodel.attributes.append(startdatumLevering)
         uitwisselmodel.attributes.append(einddatumLevering)
         uitwisselmodel.attributes.append(aanleverdatumEnTijd)
@@ -110,7 +161,9 @@ class DDASPluginUitwisselmodel(Plugin):
             dst_mult_end="-1",
             src_role="leveringen",
             definitie="De leveringen die in het uitwisselmodel zijn opgenomen.",
+            order=1,
         )
+        assoc_uitmod_to_levering.order = 1
         uitwisselmodel.uitgaande_associaties.append(assoc_uitmod_to_levering)
         assoc_uitmod_to_levering.dst_class = levering
 
@@ -124,7 +177,9 @@ class DDASPluginUitwisselmodel(Plugin):
             dst_mult_end="1",
             src_role="aanleverende_organisatie",
             definitie="De organisatie die het uitwisselmodel aanlevert.",
+            order=1,
         )
+        assoc_levering_to_organisatie.order = 2
         assoc_levering_to_trajecten = Association(
             id=util.getEAGuid(),
             name="trajecten",
@@ -135,6 +190,7 @@ class DDASPluginUitwisselmodel(Plugin):
             dst_mult_end="-1",
             src_role="schuldhulptrajecten",
             definitie="De aan te leveren trajecten.",
+            order=2,
         )
         levering.uitgaande_associaties.append(assoc_levering_to_organisatie)
         levering.uitgaande_associaties.append(assoc_levering_to_trajecten)

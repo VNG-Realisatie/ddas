@@ -1,4 +1,4 @@
-{%- set generieke_kenmerken = ['name', 'definitie', 'bron', 'version'] -%}
+{%- set generieke_kenmerken = ['name', 'bron', 'version'] -%}
 {%- set package_kenmerken = generieke_kenmerken + [] -%}
 {%- set object_kenmerken = generieke_kenmerken + ['domein_iv3', 'domein_dcat', 'gemma_naam', 'gemma_type', 'gemma_url', 'gemma_definitie', 'gemma_toelichting'] -%}
 {%- set object_kenmerken = generieke_kenmerken -%}
@@ -6,19 +6,22 @@
 {# Classes #}
 {% for class in package.classes|sort(attribute='name') %}
 ### {{ class.name }}
+> **Definitie {{ class.name }}:** 
+>
+> {{ class.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Het objecttype {{ class.name }} kent de volgende eigenschappen:
 
 | Eigenschap | Waarde |
 | :--- | :------ |
-{% for kenmerk in object_kenmerken %}| {{ kenmerk }} | {{ class.to_dict().get(kenmerk,'')|default("", true)|del_newline()|set_url() }} |
+{% for kenmerk in object_kenmerken %}| {{ kenmerk }} | {{ class.to_dict().get(kenmerk,'')|default("", true)|fix_and_format()|set_url() }} |
 {% endfor %}
 
 Attributen van objecttype {{ class.name }}:
 {% set attributen = class.attributes|rejectattr('name','none')|list %}
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-{% for attribute in attributen|sort(attribute='name') %}| {{ attribute.name }} | {{ attribute.getDatatype()|default("", true) }} | {{ attribute.definitie|default("", true)|del_newline()|set_url() }} | Nee |
+{% for attribute in attributen|sort(attribute='name') %}| {{ attribute.name }} | {{ attribute.getDatatype()|default("", true) }} | {{ attribute.definitie|default("", true)|fix_and_format()|set_url() }} | Nee |
 {% endfor %}
 
 {% endfor %}
@@ -29,18 +32,18 @@ Attributen van objecttype {{ class.name }}:
 
 {% for enumeration in package.enumerations|sort(attribute='name') %}
 ### {{ enumeration.name }}
-{{ enumeration.definitie|default("Geen Definitie", true)|md_newline() }}
+{{ enumeration.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Het enumeratie {{ enumeration.name }} kent de volgende waarden:
 
-{% for literal in enumeration.literals %}{% if literal.name is not none %}* **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)  }}{% endif %}
+{% for literal in enumeration.literals %}{% if literal.name is not none %}* **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)|fix_and_format()|set_url()  }}{% endif %}
 {% endfor %}
 
 De enumeratie {{ enumeration.name }} heeft de volgende kenmerken:
 
 | Kenmerk | Waarde |
 | :--- | :------ |
-{% for kenmerk in object_kenmerken %}| {{ kenmerk }} | {{ enumeration.to_dict().get(kenmerk,'') }} |
+{% for kenmerk in object_kenmerken %}| {{ kenmerk }} | {{ enumeration.to_dict().get(kenmerk,'')|fix_and_format()|set_url() }} |
 {% endfor %}
 
 {% endfor %}

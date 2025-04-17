@@ -14,7 +14,7 @@ nav:
   - Uitwisselspecificatie: uitwisselspecificatie.md
   - Informatiemodel:
     - Hoofdlijnen: "Hoofdlijnen_Model Schuldhulpverlening.md"
-    - Detailspecificatie: "Detail_Model Schuldhulpverlening.md"
+    - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
   - Achtergrond DDAS: Achtergrond.md
   - Vraag en antwoord: VraagEnAntwoord.md
 
