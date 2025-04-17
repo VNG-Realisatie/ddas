@@ -28,7 +28,7 @@ Attributen van objecttype Aanmelding:
 ### Begeleiding
 > **Definitie Begeleiding:** 
 >
-> Begeleiding voor clienten in het kader van schuldhulpdienstverlening, die kan bestaan uit:<br>1. budgetbeheer<br>2. beschermingsbewind<br>3. budgetcoaching
+> Begeleiding voor clienten in het kader van schuldhulpdienstverlening.
 
 Het objecttype Begeleiding kent de volgende eigenschappen:
 
@@ -318,7 +318,7 @@ Attributen van objecttype Ondernemer:
 ### Oplossing
 > **Definitie Oplossing:** 
 >
-> De Oplossing beschrijft in 5 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:<br>• submodule Herfinanciering;<br>• submodule Betalingsregeling;<br>• submodule Saneringskrediet;<br>• submodule Schuldbemiddeling.<br>Het kan ook gaan om een 0%-aanbod
+> <font color="#0e0e0e">In de schuldhulpverlening verwijst een “oplossing” naar een regeling waarbij schulden op een beheersbare manier worden afgelost of kwijtgescholden, met als doel de financiële situatie van de schuldenaar te stabiliseren. Er worden verschillende oplossingsvormen onderscheiden, waaronder saneringskrediet, schuldbemiddeling, herfinanciering, betalingsregelingen en schuldregelingen zonder afloscapaciteit. Bij een saneringskrediet ontvangt de schuldenaar een lening om alle schuldeisers in één keer af te betalen, waarna hij deze lening aflost aan de kredietverstrekker. Schuldbemiddeling houdt in dat de schuldenaar gedurende een afgesproken periode periodiek bedragen aflost aan de schuldeisers. Herfinanciering betreft het vervangen van bestaande schulden door een nieuwe lening met gunstigere voorwaarden. Een betalingsregeling is een afspraak tussen schuldenaar en schuldeiser om de schuld in termijnen af te lossen. Bij een schuldregeling zonder afloscapaciteit wordt vastgesteld dat de schuldenaar geen financiële ruimte heeft om af te lossen, wat kan leiden tot kwijtschelding van de schuld. Deze oplossingsvormen worden ingezet afhankelijk van de specifieke situatie van de schuldenaar en zijn gericht op een duurzame oplossing van de schuldenproblematiek.  </font>
 
 Het objecttype Oplossing kent de volgende eigenschappen:
 
@@ -689,7 +689,9 @@ Attributen van objecttype WSNP-verklaring:
 
 
 ### EnumBegeleidingssoort
-Geen Definitie
+> **Definitie EnumBegeleidingssoort:** 
+>
+> Lijst met alle soorten begeleiding die worden onderkend.
 
 Het enumeratie EnumBegeleidingssoort kent de volgende waarden:
 
@@ -711,7 +713,9 @@ De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
 
 
 ### EnumBeschikkingssoort
-Geen Definitie
+> **Definitie EnumBeschikkingssoort:** 
+>
+> Lijst met alle soorten beschikkingen die worden onderkend.
 
 Het enumeratie EnumBeschikkingssoort kent de volgende waarden:
 
@@ -730,7 +734,9 @@ De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:
 
 
 ### EnumOplossingssoort
-Geen Definitie
+> **Definitie EnumOplossingssoort:** 
+>
+> Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.
 
 Het enumeratie EnumOplossingssoort kent de volgende waarden:
 
@@ -752,7 +758,9 @@ De enumeratie EnumOplossingssoort heeft de volgende kenmerken:
 
 
 ### EnumSchuldensoort
-Categorieeen:<br>• Zorg<br>• Publiek (Belastingdienst, Dienst Toeslagen,CJIB etc)<br>• Energie, water, gemeentelijke belastingen en telecom<br>• Overig
+> **Definitie EnumSchuldensoort:** 
+>
+> Lijst met alle cattegoriën van soorten schulden die worden onderkend in het kader van schuldhulpverlening.
 
 Het enumeratie EnumSchuldensoort kent de volgende waarden:
 
@@ -773,7 +781,9 @@ De enumeratie EnumSchuldensoort heeft de volgende kenmerken:
 
 
 ### EnumUitstroomreden
-De volgende uitstroomredenen zijn mogelijk:<br><ol><br>	<li><font color="#191919">Client is overleden</font></li><br>	<li><font color="#191919">Client is verhuisd naar een andere gemeente</font></li><br>	<li><font color="#191919">Client is niet verschenen</font></li><br>	<li><font color="#191919">Client trekt aanvraag in</font></li><br>	<li><font color="#191919">Dienstverlening niet (meer) passend</font></li><br>	<li><font color="#191919">Client voldoet niet aan verplichtingen</font></li><br>	<li><font color="#191919">Schuldtraject succesvol doorlopen en afgerond</font></li><br>	<li><font color="#191919">Client heeft schulden zelf geregeld</font></li><br></ol>
+> **Definitie EnumUitstroomreden:** 
+>
+> Lijst met alle soorten uitstroom die bij schuldhulptrajecten worden onderkend.
 
 Het enumeratie EnumUitstroomreden kent de volgende waarden:
 
@@ -799,7 +809,9 @@ De enumeratie EnumUitstroomreden heeft de volgende kenmerken:
 
 
 ### geslacht
-Geen Definitie
+> **Definitie geslacht:** 
+>
+> Geen Definitie
 
 Het enumeratie geslacht kent de volgende waarden:
 

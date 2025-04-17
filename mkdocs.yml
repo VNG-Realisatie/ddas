@@ -2,6 +2,8 @@ site_name: Data Delen Armoede en Schulden (DDAS)
 site_description: De uitwisselspecificatie voor de Data Delen over Armoede en Schulden (DDAS) API
 site_author: Arjen Brienen
 site_url: https://ddas-api.nl
+repo_url: https://github.com/VNG-Realisatie/ddas
+repo_name: GitHub
 theme:
   language: nl # (1)!
   name: material
@@ -28,8 +30,6 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.caret
   - pymdownx.magiclink
