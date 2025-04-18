@@ -144,6 +144,8 @@ tasks:
       - mkdir -p "{{.DEFS}}"
       - rm -rf "{{.DEFS}}"/*.md
       - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/
+      - echo "Generating uitleg documentation using jinja template..."
+      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template uitleg.j2 -f "{{.DOCS}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/
       - |
         # Vervang de versies in de uitwisselspecificatie-templates
         # Loop door alle .template-bestanden in de directory en submappen

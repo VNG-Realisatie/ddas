@@ -13,7 +13,7 @@ extra:
 
 nav:
   - Home: index.md
-  - Om welke gegevens gaat het?: uitleg.md
+  - Uitwisselspecificatie uitgelegd: uitleg_Model Schuldhulpverlening.md
   - Uitwisselspecificatie: uitwisselspecificatie.md
   - Informatiemodel:
     - Hoofdlijnen: "Hoofdlijnen_Model Schuldhulpverlening.md"
@@ -37,6 +37,7 @@ markdown_extensions:
   - markdown_include.include:
       base_path: docs
   - admonition
+  - footnotes
 
 extra_css:
   - stylesheets/extra.css
