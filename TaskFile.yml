@@ -182,6 +182,13 @@ tasks:
       - echo 'Deploying to GitHub Pages...'
       - git push origin gh-pages
 
+  publish-test:
+    desc: "Publish the documentation to test location"
+    deps: [deploy-docs]
+    cmds:
+      - echo 'Deploying to test location...'
+      - lftp -e "set ssl:verify-certificate no; cd {{.FTP_REMOTE_DIR}}; mirror -R --delete --verbose ./{{.FTP_LOCAL_DIR}} .; bye" {{.FTP_HOST}}
+
   full-deploy:
     desc: "Execute the entire deployment process: json-schema, and documentation"
     cmds:
