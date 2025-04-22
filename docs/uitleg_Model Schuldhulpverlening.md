@@ -1,6 +1,8 @@
 # Uitleg uitwisselspecificatie 
 
-Om in het kader van DDAS gegevens aan het CBS te kunnen leveren versturen schuldhulpverleners gegevens over schuldhulptrajecten via een zogenaamd JSON-uitwisselbestand. De structuur van dit bestand wordt in technische zin beschreven onder het kopje [Uitwisselspecificatie](uitwisselspecificatie.md). Voor schuldhulpverleners is het belangrijk dat zij de juiste gegevens in hun systemen administreren, anders wordt het aanleveren van de benodigde informatie bemoeilijkt. In de volgende paragrafen wordt in (niet technische taal) beschreven welke gegevens  schuldhulpverleners moeten vastleggen om juist en volledig gegevens conform DDAS aan het CBS te kunnen leveren.
+Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
+Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
+Op deze pagina leggen we in niet-technische taal uit welke informatie je als organisatie moet vastleggen, zodat je de gegevens goed en volledig kunt aanleveren volgens de DDAS-richtlijnen aan het CBS.
 
 ## Algemene gegevens
 
@@ -20,24 +22,26 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
     Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. 
 
 
-### Schulden
+### Gegevens over schulden
 
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
+## Algemeen
+
 - Bedrag
 - Peildatum - Peildatum <abbr title="Peildatum dat de schuld is vastgesteld.">❓</abbr>
-- Soort schuld (mogelijke waarden: Zorg, Publiek, Nuts, Overig)
+- Soort schuld (we houden de volgens waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK, postcode, privépersoon ja/nee)
 
-## Schuldhulptraject
+## Gegevens over het schuldhulptraject
 
 Het schuldhulptraject kent conform het NVVK-Referentieproces een aantal fases. Van deze fases is steeds een aantal gegevens van belang. Deze worden in de volgende paragrafen beschreven.
 
 Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aantal gegevens van belang die betrekking hebben op het schuldhulptraject als geheel:
 
 - Startdatum van het schuldhulptraject
-- Einddatum (alleen als het schuldhulptraject is afgerond)
+- Einddatum (als het schuldhulptraject is afgerond)
 - Toekenningsdatum (toekenningsdatum bevat de datum waarop de schuldregeling is toegekend)
 - Gemeentecode (gemeente onder wiens verantwoordelijkheid het traject wordt uitgevoerd)
 - Totaal schuldbedrag bij aanvang traject 
@@ -52,7 +56,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van de aanmelding <abbr title="Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ">❓</abbr>
 - Einddatum van de aanmeldfase (optioneel)
-- Is er sprake van crisisinterventie? (ja/nee) <abbr title="Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <abbr title="Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.
 Volgens de Wgs gaat het in elk geval om de volgende situaties:
 ■ gedwongen woningontruiming;
 ■ be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;
@@ -120,16 +124,16 @@ Hiervan worden de volgende zaken vastgelegd:
 Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
-- Soort oplossing (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  
-- VTLB-bedrag (per maand) <abbr title="Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.">❓</abbr>
+- Soort (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  
+- VTLB-bedrag (per maand) van de cliënt <abbr title="Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.">❓</abbr>
 
 
-### Begeleiding
+### Financiële begeleiding
 
 ??? note "Definitie Begeleiding"
     Begeleiding voor clienten in het kader van schuldhulpdienstverlening.
 
-Voor elk type begeleiding worden de volgende gegevens vastgelegd:
+Voor elk vorm van financiële begeleiding:
 
 - Soort begeleiding (mogelijke waarden: Budgetcoaching, Budgetbeheer, Beschermingsbewind, Lange Termijn Begeleiding (DFD), Budgetbegeleiding)
 - Start- en einddatum

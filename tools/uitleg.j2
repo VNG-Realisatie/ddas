@@ -13,7 +13,9 @@
 
 # Uitleg uitwisselspecificatie 
 
-Om in het kader van DDAS gegevens aan het CBS te kunnen leveren versturen schuldhulpverleners gegevens over schuldhulptrajecten via een zogenaamd JSON-uitwisselbestand. De structuur van dit bestand wordt in technische zin beschreven onder het kopje [Uitwisselspecificatie](uitwisselspecificatie.md). Voor schuldhulpverleners is het belangrijk dat zij de juiste gegevens in hun systemen administreren, anders wordt het aanleveren van de benodigde informatie bemoeilijkt. In de volgende paragrafen wordt in (niet technische taal) beschreven welke gegevens  schuldhulpverleners moeten vastleggen om juist en volledig gegevens conform DDAS aan het CBS te kunnen leveren.
+Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
+Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
+Op deze pagina leggen we in niet-technische taal uit welke informatie je als organisatie moet vastleggen, zodat je de gegevens goed en volledig kunt aanleveren volgens de DDAS-richtlijnen aan het CBS.
 
 ## Algemene gegevens
 
@@ -33,24 +35,26 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
     Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. 
 
 {% set clazz = package.get_class_by_name('Schuld') %}
-### Schulden
+### Gegevens over schulden
 
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
+## Algemeen
+
 - Bedrag
 - Peildatum - Peildatum {{ tooltip(clazz, 'peildatum') }}
-- Soort schuld (mogelijke waarden: {{ enum_lijst('EnumSchuldensoort') }})
+- Soort schuld (we houden de volgens waarden aan: {{ enum_lijst('EnumSchuldensoort') }} - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK, postcode, privépersoon ja/nee)
 
-## Schuldhulptraject
+## Gegevens over het schuldhulptraject
 
 Het schuldhulptraject kent conform het NVVK-Referentieproces een aantal fases. Van deze fases is steeds een aantal gegevens van belang. Deze worden in de volgende paragrafen beschreven.
 
 Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aantal gegevens van belang die betrekking hebben op het schuldhulptraject als geheel:
 
 - Startdatum van het schuldhulptraject
-- Einddatum (alleen als het schuldhulptraject is afgerond)
+- Einddatum (als het schuldhulptraject is afgerond)
 - Toekenningsdatum (toekenningsdatum bevat de datum waarop de schuldregeling is toegekend)
 - Gemeentecode (gemeente onder wiens verantwoordelijkheid het traject wordt uitgevoerd)
 - Totaal schuldbedrag bij aanvang traject 
@@ -65,7 +69,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van de aanmelding {{ tooltip(clazz, 'startdatum') }}
 - Einddatum van de aanmeldfase (optioneel)
-- Is er sprake van crisisinterventie? (ja/nee) {{ tooltip(clazz, 'crisisinterventie') }}
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) {{ tooltip(clazz, 'crisisinterventie') }}
 
 {% set clazz = package.get_class_by_name('Intake') %}
 ### Intake
@@ -122,16 +126,16 @@ Hiervan worden de volgende zaken vastgelegd:
 Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
-- Soort oplossing (mogelijke waarden: {{ enum_lijst('EnumOplossingssoort') }})  
-- VTLB-bedrag (per maand) {{ tooltip(clazz, 'vtlb') }}
+- Soort (mogelijke waarden: {{ enum_lijst('EnumOplossingssoort') }})  
+- VTLB-bedrag (per maand) van de cliënt {{ tooltip(clazz, 'vtlb') }}
 
 {% set clazz = package.get_class_by_name('Begeleiding') %}
-### Begeleiding
+### Financiële begeleiding
 
 ??? note "Definitie {{ clazz.name|title }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
-Voor elk type begeleiding worden de volgende gegevens vastgelegd:
+Voor elk vorm van financiële begeleiding:
 
 - Soort begeleiding (mogelijke waarden: {{ enum_lijst('EnumBegeleidingssoort') }})
 - Start- en einddatum
