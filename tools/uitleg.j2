@@ -5,8 +5,8 @@
 
 {%- macro tooltip(clazz, attribuut_naam) -%}
   {%- set attr = clazz.get_attribute_by_name(attribuut_naam) -%}
-  {%- if attr.definitie -%}
-    <abbr title="{{ attr.definitie|set_url() }}">❓</abbr>
+{%- if attr.definitie -%}
+    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url() }}')" style="background:none;border:none;cursor:pointer;">❓</button>
   {%- endif -%}
 {%- endmacro -%}
 
@@ -38,8 +38,6 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 ### Gegevens over schulden
 
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
-
-## Algemeen
 
 - Bedrag
 - Peildatum - Peildatum {{ tooltip(clazz, 'peildatum') }}

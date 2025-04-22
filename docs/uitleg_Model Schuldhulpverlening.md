@@ -26,10 +26,8 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
-## Algemeen
-
 - Bedrag
-- Peildatum - Peildatum <abbr title="Peildatum dat de schuld is vastgesteld.">❓</abbr>
+- Peildatum - Peildatum <button onclick="alert('Definitie peildatum: Peildatum dat de schuld is vastgesteld.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Soort schuld (we houden de volgens waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK, postcode, privépersoon ja/nee)
@@ -54,9 +52,9 @@ Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aant
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van de aanmelding <abbr title="Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ">❓</abbr>
+- Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de aanmeldfase (optioneel)
-- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <abbr title="Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.
 Volgens de Wgs gaat het in elk geval om de volgende situaties:
 ■ gedwongen woningontruiming;
 ■ be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;
@@ -67,7 +65,7 @@ Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:
 ■ een faillissementsaanvraag.
 En voor ondernemers:
 ■ beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;
-■ opzegging van het bankkrediet."">❓</abbr>
+■ opzegging van het bankkrediet."')" style="background:none;border:none;cursor:pointer;">❓</button>
 
 
 ### Intake
@@ -77,9 +75,9 @@ En voor ondernemers:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van het intakegesprek  <abbr title="Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.">❓</abbr>
-- Einddatum van de intake  <abbr title="De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. ">❓</abbr>
-- Beschikkingsdatum  <abbr title="De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking. ">❓</abbr>
+- Startdatum van het intakegesprek  <button onclick="alert('Definitie startdatum: Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Einddatum van de intake  <button onclick="alert('Definitie einddatum: De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. ')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking. ')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Soort beschikking  (mogelijke waarden: Afwijzingsbeschikking, Toelatingsbeschikking)
 
 
@@ -110,9 +108,9 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Datum aanvraag <abbr title="Datum dat schuldregeling is ingediend.">❓</abbr>
+- Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Afgewezen, toegekend of ingetrokken? Geef de juiste datum
-- Is er een dwangakkoord aangevraagd? (ja/nee) <abbr title="Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).">❓</abbr>
+- Is er een dwangakkoord aangevraagd? (ja/nee) <button onclick="alert('Definitie dwangakkoord: Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Datum verzoek dwangakkoord
 
 
@@ -125,7 +123,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
 - Soort (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  
-- VTLB-bedrag (per maand) van de cliënt <abbr title="Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.">❓</abbr>
+- VTLB-bedrag (per maand) van de cliënt <button onclick="alert('Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.')" style="background:none;border:none;cursor:pointer;">❓</button>
 
 
 ### Financiële begeleiding
@@ -146,8 +144,8 @@ Voor elk vorm van financiële begeleiding:
 
 Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
 
-- Datum uitstroom <abbr title="Datum dat clienten uit het schuldhulptraject zijn uitgestroomd">❓</abbr>
-- Datum beëindigingsbeschikking <abbr title="Datum dat de Be&#235;indigingsbeschikking is afgegeven.">❓</abbr>
+- Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Datum beëindigingsbeschikking <button onclick="alert('Definitie datumBeeindigingsbeschikking: Datum dat de Be&#235;indigingsbeschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Reden van uitstroom (mogelijke waarden: Overleden, Verhuisd, Nietverschenen, Ingetrokken, Niet passend, Overig, Voldoet niet, Afgerond, Zelf)
 
 ## Aanvullende gegevens
