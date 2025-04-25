@@ -12,14 +12,14 @@ Bij ieder schuldhulptraject zijn de hieronder weergegeven gegevens van belang.
 
 - Burgerservicenummer (BSN)
 - Geboortedatum
-- Geslacht (mogelijke waarden: Man, Vrouw, Onbekend, Leeg)
+- Geslacht (mogelijke waarden: )
 - Postcode
 - Huisnummer en eventueel huisnummertoevoeging
 
 Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd. 
 
 !!! danger "Let op: persoonsgegevens zijn van belang"
-    Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. 
+    Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. Dit maakt het mogelijk om doublures te corrigeren, om aansluiting te maken met andere data-aanleveringen en om gegevens op individu-niveau te verrijken met andere CBS-data
 
 
 ### Gegevens over schulden
@@ -27,10 +27,10 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
 - Bedrag
-- Peildatum - Peildatum <button onclick="alert('Definitie peildatum: Peildatum dat de schuld is vastgesteld.')" style="background:none;border:none;cursor:pointer;">❓</button>
-- Soort schuld (we houden de volgens waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)
+- Peildatum - Peildatum <button onclick="alert('Definitie peildatum: Datum dat de schuld is vastgesteld. Het betreft hier het moment dat de vaststelling door de schuldhulpverlener in het kader van het schuldhulptraject is gedaan.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Soort schuld (we houden de volgende waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
-- Gegevens van de schuldeiser (naam, KvK, postcode, privépersoon ja/nee)
+- Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)
 
 ## Gegevens over het schuldhulptraject
 
@@ -52,7 +52,7 @@ Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aant
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden, en het eerste contact met schuldhulpverlening is geweest. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de aanmeldfase (optioneel)
 - Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.
 Volgens de Wgs gaat het in elk geval om de volgende situaties:
@@ -71,13 +71,13 @@ En voor ondernemers:
 ### Intake
 
 ??? note "Definitie Intake"
-    Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de<br>intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel<br>evenwicht te bereiken.
+    Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel evenwicht te bereiken.
 
 Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van het intakegesprek  <button onclick="alert('Definitie startdatum: Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de intake  <button onclick="alert('Definitie einddatum: De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. ')" style="background:none;border:none;cursor:pointer;">❓</button>
-- Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking. ')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Soort beschikking  (mogelijke waarden: Afwijzingsbeschikking, Toelatingsbeschikking)
 
 
@@ -94,7 +94,7 @@ Hiervan worden de volgende zaken vastgelegd:
 ### Stabilisatie
 
 ??? note "Definitie Stabilisatie"
-    Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van<br>werkzaamheden uit het integrale plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst. In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
+    Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van werkzaamheden uit het plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst.<br>In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
 
 Hiervan worden de volgende zaken vastgelegd:
 
@@ -108,7 +108,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling door de schuldhulpverlener is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Afgewezen, toegekend of ingetrokken? Geef de juiste datum
 - Is er een dwangakkoord aangevraagd? (ja/nee) <button onclick="alert('Definitie dwangakkoord: Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Datum verzoek dwangakkoord
@@ -123,7 +123,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
 - Soort (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  
-- VTLB-bedrag (per maand) van de cliënt <button onclick="alert('Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- VTLB-bedrag (per maand) van de cliënt <button onclick="alert('Definitie vtlb: Het \“Vrij te laten bedrag\” (VTLB) is het \\bedrag (in hele euro\'s per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.')" style="background:none;border:none;cursor:pointer;">❓</button>
 
 
 ### Financiële begeleiding
@@ -131,7 +131,7 @@ Hiervan worden de volgende zaken vastgelegd:
 ??? note "Definitie Begeleiding"
     Begeleiding voor clienten in het kader van schuldhulpdienstverlening.
 
-Voor elk vorm van financiële begeleiding:
+Voor elke vorm van financiële begeleiding:
 
 - Soort begeleiding (mogelijke waarden: Budgetcoaching, Budgetbeheer, Beschermingsbewind, Lange Termijn Begeleiding (DFD), Budgetbegeleiding)
 - Start- en einddatum
@@ -140,11 +140,11 @@ Voor elk vorm van financiële begeleiding:
 ### Uitstroom
 
 ??? note "Definitie Uitstroom"
-    Motivatie voor uitstroom
+    Het betreft hier de gegevens die worden vastgelegd bij uitstroom en dus beëindiging van een schuldhulptraject.
 
 Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
 
-- Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd. Deze datum is gelijk aan de datum be&#235;indigingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Datum beëindigingsbeschikking <button onclick="alert('Definitie datumBeeindigingsbeschikking: Datum dat de Be&#235;indigingsbeschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Reden van uitstroom (mogelijke waarden: Overleden, Verhuisd, Nietverschenen, Ingetrokken, Niet passend, Overig, Voldoet niet, Afgerond, Zelf)
 
@@ -166,7 +166,7 @@ Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de vol
 ### Informatie en advies
 
 ??? note "Definitie Informatieenadvies"
-    Geen Definitie
+    <font color="#1e1d3a">Het betreft hier de activiteiten die in het kader van Informatie en advies worden uitgevoerd. Het doel van Informatie en Advies is inwoners zelf in staat te stellen een duurzaam financieel evenwicht te bereiken. Het kan een beroep op uitgebreidere vormen van dienstverlening overbodig maken.</font>
 
 Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de volgende zaken vastgelegd:
 
@@ -187,8 +187,8 @@ Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastg
 
 ### Voorlopige voorziening
 
-??? note "Definitie "
-    Geen Definitie
+??? note "Definitie Voorlopigevoorziening "
+    <font color="#0e0e0e">Een voorlopige voorziening is een tijdelijke regeling die de hulpvrager beschermt tegen verslechtering van zijn financiële situatie of het verlies van essentiële voorzieningen (zoals energie, woning, zorg), totdat een schuldregelingstraject is gestart of er meer duidelijkheid is over de vervolgstappen.</font><br><font color="#0e0e0e"><br></font><font color="#0e0e0e">Voorbeelden van voorlopige voorzieningen:</font><br><font color="#0e0e0e">	•	Tijdelijke betalingsregelingen met schuldeisers</font><br><font color="#0e0e0e">	•	Een moratorium (tijdelijke opschorting van afbetalingen)</font><br><font color="#0e0e0e">	•	Het aanvragen van uitstel van betaling bij woningcorporaties of energiebedrijven</font><br><font color="#0e0e0e">	•	Hulp bij het voorkomen van afsluiting van gas, water, licht of ontruiming</font><br><font color="#0e0e0e">	•	Budgetbeheer of beschermingsbewind als tijdelijke maatregel</font>
 
 Is er binnen het schuldhulptraject sprake van één of meer voorlopige voorzieningen? Hiervan worden de volgende zaken vastgelegd:
 

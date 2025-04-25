@@ -1,7 +1,7 @@
 import logging
 
 import crunch_uml.util as util
-from crunch_uml.db import Attribute
+from crunch_uml.db import Attribute, Class
 from crunch_uml.exceptions import CrunchException
 from crunch_uml.transformers.plugin import Plugin
 
@@ -33,9 +33,11 @@ class DDASPluginInformatiemodel(Plugin):
             raise CrunchException(msg)
 
         # Kopie schuldhulpverlening model
+        logger.info("Copying the root package.")
         kopie = root_package.get_copy(None, materialize_generalizations=True)
 
         # Remove unneccary enumerations from inherited attributes
+        logger.info("Removing unneccary enumerations from inherited attributes.")
         lst_enum = [enum for enum in kopie.enumerations]
         gsl_teller = 0
         for enum in lst_enum:
@@ -55,6 +57,7 @@ class DDASPluginInformatiemodel(Plugin):
             ]:
                 kopie.enumerations.remove(enum)
 
+        logger.info(f"Adding copy to schema {schema_to.schema_id}.")
         schema_to.add(kopie, recursive=True)
 
         # Zet de juiste attrributen bij aanlevereende organisatie
@@ -75,6 +78,7 @@ class DDASPluginInformatiemodel(Plugin):
                 )
             )
 
+        logger.info("Zet de juiste attrributen bij aanlevereende organisatie.")
         set_org(ORGANISATIE_ID, ["(statutaire) naam", "kvk-nummer"])
         org = schema_to.get_class(ORGANISATIE_ID)
         org.attributes.append(
@@ -88,6 +92,7 @@ class DDASPluginInformatiemodel(Plugin):
             )
         )
 
+        logger.info("Zet de juiste attrributen bij de schuldeisen.")
         set_org(SCHULDEISER_ID, ["naam", "kvknummer"])
         org = schema_to.get_class(SCHULDEISER_ID)
         org.attributes.append(
@@ -102,6 +107,7 @@ class DDASPluginInformatiemodel(Plugin):
         contactpersoon = schema_to.get_class(CONTACTPERSOON_ID)
         contactpersoon.definitie = "Contactpersoon van de organisatie waarvan de gegevens worden aangeleverd."
 
+        logger.info("Zoek en voeg de juiste attributen toe aan het uitwisselmodel.")
         traject = schema_to.get_class(TRAJECT_ID)
         traject.attributes.append(
             Attribute(
@@ -183,7 +189,20 @@ class DDASPluginInformatiemodel(Plugin):
                 )
             )
 
+        logger.info(f"Maak een Objecttype client met EAID {CLIENT_ID}.")
+        kopie.classes.append(
+            Class(
+                id=CLIENT_ID,
+                name="Client",
+                schema_id=schema_to.schema_id,
+                stereotype="ObjectType",
+                definitie="Een in de gemeente ingeschreven persoon die betrokken is bij een schuldhulptraject.",
+            )
+        )
+
+        logger.info(f"Zet de attributen van de client met EAID {CLIENT_ID}.")
         set_person(CLIENT_ID)
+        logger.info(f"zet de attributen van de partner met EAID {PARTNER_ID}.")
         set_person(PARTNER_ID)
         # Laat alleen schulden in hetleefgebied va de client zien
 
