@@ -32,9 +32,22 @@ class DDASPluginInformatiemodel(Plugin):
             logger.error(msg)
             raise CrunchException(msg)
 
+        # Copy Client to package # trick to get client class in the root package
+        logger.info("Copying the client package.")
+        client = schema_from.get_class(CLIENT_ID)
+        client_package = client.package
+        root_package.classes.append(client)    
+        logger.info(f"Client package {client_package.id} copied to root package.")
+
         # Kopie schuldhulpverlening model
         logger.info("Copying the root package.")
         kopie = root_package.get_copy(None, materialize_generalizations=True)
+
+        # return the client class to the original package
+        # and remove the client class from the root package
+        logger.info("Removing the client class from the root package.")
+        client_package.classes.append(client)
+        #root_package.classes.remove(client)
 
         # Remove unneccary enumerations from inherited attributes
         logger.info("Removing unneccary enumerations from inherited attributes.")
@@ -128,39 +141,44 @@ class DDASPluginInformatiemodel(Plugin):
             lst_attr = [attr for attr in schema_to.get_class(person_id).attributes]
             person = schema_to.get_class(person_id)
             for attr in lst_attr:
-                person.attributes.remove(attr)
-                attr.clazz_id = None
+                if not str(attr.name).strip().lower() in [
+                    "geslachtsaanduiding",
+                    "burgerservicenummer",
+                ]:
+                    person.attributes.remove(attr)
+                    attr.clazz_id = None
 
+            
             person.attributes.append(
                 Attribute(
                     id=util.getEAGuid(),
                     name="Geboortedatum",
                     schema_id=schema_to.schema_id,
                     verplicht=False,
-                    primitive="AN22",
-                    definitie="De datum waarop de ander natuurljjk persoon is geboren."
+                    primitive="Datum",
+                    definitie="De datum waarop de ander natuurlijk persoon is geboren."
                 )
             )
-            person.attributes.append(
-                Attribute(
-                    id=util.getEAGuid(),
-                    name="Burgerservicenummer",
-                    schema_id=schema_to.schema_id,
-                    verplicht=False,
-                    primitive="AN9"
-                )
-            )
-            person.attributes.append(
-                Attribute(
-                    id=util.getEAGuid(),
-                    name="Geslachtsaanduiding",
-                    schema_id=schema_to.schema_id,
-                    verplicht=False,
-                    enumeration_id="EAID_4205481c_3884_466f_b3f1_7b82a29c3fd1",
-                    definitie="Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.",
-                    stereotype="enum",
-                )
-            )
+            #person.attributes.append(
+            #    Attribute(
+            #        id=util.getEAGuid(),
+            #        name="Burgerservicenummer",
+            #        schema_id=schema_to.schema_id,
+            #        verplicht=False,
+            #        primitive="AN9"
+            #    )
+            #)
+            #person.attributes.append(
+            #    Attribute(
+            #        id=util.getEAGuid(),
+            #        name="Geslachtsaanduiding",
+            ##        schema_id=schema_to.schema_id,
+            #        verplicht=False,
+            #        enumeration_id="EAID_4205481c_3884_466f_b3f1_7b82a29c3fd1",
+            #        definitie="Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.",
+            #        stereotype="enum",
+            #    )
+            #)
             person.attributes.append(
                 Attribute(
                     id=util.getEAGuid(),
@@ -188,17 +206,6 @@ class DDASPluginInformatiemodel(Plugin):
                     verplicht=False,
                 )
             )
-
-        logger.info(f"Maak een Objecttype client met EAID {CLIENT_ID}.")
-        kopie.classes.append(
-            Class(
-                id=CLIENT_ID,
-                name="Client",
-                schema_id=schema_to.schema_id,
-                stereotype="ObjectType",
-                definitie="Een in de gemeente ingeschreven persoon die betrokken is bij een schuldhulptraject.",
-            )
-        )
 
         logger.info(f"Zet de attributen van de client met EAID {CLIENT_ID}.")
         set_person(CLIENT_ID)

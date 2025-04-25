@@ -6,7 +6,7 @@
 {%- macro tooltip(clazz, attribuut_naam) -%}
   {%- set attr = clazz.get_attribute_by_name(attribuut_naam) -%}
 {%- if attr.definitie -%}
-    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url() }}')" style="background:none;border:none;cursor:pointer;">❓</button>
+    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url()|fix_and_format_alert }}')" style="background:none;border:none;cursor:pointer;">❓</button>
   {%- endif -%}
 {%- endmacro -%}
 
@@ -25,7 +25,7 @@ Bij ieder schuldhulptraject zijn de hieronder weergegeven gegevens van belang.
 
 - Burgerservicenummer (BSN)
 - Geboortedatum
-- Geslacht (mogelijke waarden: {{ enum_lijst('geslacht') }})
+- Geslacht (we houden de volgende waarden aan: {{ enum_lijst('geslacht') }})
 - Postcode
 - Huisnummer en eventueel huisnummertoevoeging
 
@@ -40,7 +40,7 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
 - Bedrag
-- Peildatum - Peildatum {{ tooltip(clazz, 'peildatum') }}
+- Peildatum {{ tooltip(clazz, 'peildatum') }}
 - Soort schuld (we houden de volgende waarden aan: {{ enum_lijst('EnumSchuldensoort') }} - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)
@@ -60,19 +60,19 @@ Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aant
 {% set clazz = package.get_class_by_name('Aanmelding') %}
 ### Aanmelding
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van de aanmelding {{ tooltip(clazz, 'startdatum') }}
 - Einddatum van de aanmeldfase (optioneel)
-- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) {{ tooltip(clazz, 'crisisinterventie') }}
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie)
 
 {% set clazz = package.get_class_by_name('Intake') %}
 ### Intake
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
@@ -85,7 +85,7 @@ Hiervan worden de volgende zaken vastgelegd:
 {% set clazz = package.get_class_by_name('PlanVanAanpak') %}
 ### Plan van aanpak
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
@@ -95,7 +95,7 @@ Hiervan worden de volgende zaken vastgelegd:
 {% set clazz = package.get_class_by_name('Stabilisatie') %}
 ### Stabilisatie
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
@@ -105,7 +105,7 @@ Hiervan worden de volgende zaken vastgelegd:
 {% set clazz = package.get_class_by_name('Schuldregeling') %}
 ### Schuldregeling
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
@@ -118,19 +118,19 @@ Hiervan worden de volgende zaken vastgelegd:
 {% set clazz = package.get_class_by_name('Oplossing') %}
 ### Oplossing
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
 - Soort (mogelijke waarden: {{ enum_lijst('EnumOplossingssoort') }})  
-- VTLB-bedrag (per maand) van de cliënt {{ tooltip(clazz, 'vtlb') }}
+- VTLB-bedrag (per maand) van de cliënt
 
 {% set clazz = package.get_class_by_name('Begeleiding') %}
 ### Financiële begeleiding
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Voor elke vorm van financiële begeleiding:
@@ -141,7 +141,7 @@ Voor elke vorm van financiële begeleiding:
 {% set clazz = package.get_class_by_name('Uitstroom') %}
 ### Uitstroom
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
@@ -157,7 +157,7 @@ In sommige gevallen spelen er aanvullende zaken. De hiervoor benodigde gegevens 
 {% set clazz = package.get_class_by_name('Crisisinterventie') %}
 ### Crisisinterventie
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de volgende zaken vastgelegd:
@@ -167,7 +167,7 @@ Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de vol
 {% set clazz = package.get_class_by_name('InformatieEnAdvies') %}
 ### Informatie en advies
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de volgende zaken vastgelegd:
@@ -177,7 +177,7 @@ Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de vol
 {% set clazz = package.get_class_by_name('Moratorium') %}
 ### Moratorium
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastgelegd:
@@ -189,7 +189,7 @@ Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastg
 {% set clazz = package.get_class_by_name('VoorlopigeVoorziening ') %}
 ### Voorlopige voorziening
 
-??? note "Definitie {{ clazz.name|title }}"
+??? note "Definitie {{ clazz.name|title_case }}"
     {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
 
 Is er binnen het schuldhulptraject sprake van één of meer voorlopige voorzieningen? Hiervan worden de volgende zaken vastgelegd:
