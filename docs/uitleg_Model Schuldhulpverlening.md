@@ -54,7 +54,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden, en het eerste contact met schuldhulpverlening is geweest. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de aanmeldfase (optioneel)
-- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie)
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. &#34;Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n- gedwongen woningontruiming;\n- be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n- opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n- aangekondigde boedelverkoop of verkoop van de eigen woning;\n- loon- of bankbeslag;\n- een faillissementsaanvraag.\nEn voor ondernemers:\n- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n- opzegging van het bankkrediet.&#34;')" style="background:none;border:none;cursor:pointer;">❓</button>
 
 
 ### Intake
@@ -112,7 +112,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
 - Soort (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  
-- VTLB-bedrag (per maand) van de cliënt
+- VTLB-bedrag (per maand) van de cliënt <button onclick='alert("Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro&#39;s per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.")' style="background:none;border:none;cursor:pointer;">❓</button>
 
 
 ### Financiële begeleiding
