@@ -1,0 +1,1049 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="De uitwisselspecificatie voor de Data Delen over Armoede en Schulden (DDAS) API">
+      
+      
+        <meta name="author" content="Arjen Brienen">
+      
+      
+        <link rel="canonical" href="https://ddas-api.nl/latest/uitleg_Model%20Schuldhulpverlening/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../uitwisselspecificatie/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Uitwisselspecificatie uitgelegd - Data Delen Armoede en Schulden (DDAS)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uitleg-uitwisselspecificatie" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-header__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Delen Armoede en Schulden (DDAS)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Uitwisselspecificatie uitgelegd
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VNG-Realisatie/ddas" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-nav__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Data Delen Armoede en Schulden (DDAS)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VNG-Realisatie/ddas" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Uitwisselspecificatie uitgelegd
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Uitwisselspecificatie uitgelegd
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#algemene-gegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algemene gegevens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algemene gegevens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clientgegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliëntgegevens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gegevens-over-schulden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gegevens over schulden
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gegevens-over-het-schuldhulptraject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gegevens over het schuldhulptraject
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gegevens over het schuldhulptraject">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanmelding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanmelding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-van-aanpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan van aanpak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stabilisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldregeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldregeling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financiele-begeleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financiële begeleiding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitstroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitstroom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aanvullende-gegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanvullende gegevens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aanvullende gegevens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crisisinterventie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crisisinterventie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatie-en-advies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informatie en advies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moratorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moratorium
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorlopige-voorziening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voorlopige voorziening
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uitwisselspecificatie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uitwisselspecificatie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Informatiemodel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Informatiemodel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hoofdlijnen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../definities/Detail_Model%20Schuldhulpverlening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Detailspecificatie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Achtergrond/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achtergrond DDAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VraagEnAntwoord/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vraag en antwoord
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#algemene-gegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algemene gegevens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algemene gegevens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clientgegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliëntgegevens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gegevens-over-schulden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gegevens over schulden
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gegevens-over-het-schuldhulptraject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gegevens over het schuldhulptraject
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gegevens over het schuldhulptraject">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanmelding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanmelding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-van-aanpak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan van aanpak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilisatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stabilisatie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schuldregeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schuldregeling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oplossing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oplossing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#financiele-begeleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Financiële begeleiding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uitstroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitstroom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aanvullende-gegevens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanvullende gegevens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aanvullende gegevens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crisisinterventie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crisisinterventie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informatie-en-advies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informatie en advies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moratorium" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moratorium
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorlopige-voorziening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voorlopige voorziening
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="uitleg-uitwisselspecificatie">Uitleg uitwisselspecificatie</h1>
+<p>Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
+Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
+Op deze pagina leggen we in niet-technische taal uit welke informatie je als organisatie moet vastleggen, zodat je de gegevens goed en volledig kunt aanleveren volgens de DDAS-richtlijnen aan het CBS.</p>
+<h2 id="algemene-gegevens">Algemene gegevens</h2>
+<p>Bij ieder schuldhulptraject zijn de hieronder weergegeven gegevens van belang.</p>
+<h3 id="clientgegevens">Cliëntgegevens</h3>
+<ul>
+<li>Burgerservicenummer (BSN)</li>
+<li>Geboortedatum</li>
+<li>Geslacht (we houden de volgende waarden aan: Man, Vrouw, Onbekend, Leeg)</li>
+<li>Postcode</li>
+<li>Huisnummer en eventueel huisnummertoevoeging</li>
+</ul>
+<p>Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd. </p>
+<div class="admonition danger">
+<p class="admonition-title">Let op: persoonsgegevens zijn van belang</p>
+<p>Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. Dit maakt het mogelijk om doublures te corrigeren, om aansluiting te maken met andere data-aanleveringen en om gegevens op individu-niveau te verrijken met andere CBS-data</p>
+</div>
+<h3 id="gegevens-over-schulden">Gegevens over schulden</h3>
+<p>Voor elke schuld die in het schuldhulptraject wordt meegenomen:</p>
+<ul>
+<li>Bedrag</li>
+<li>Peildatum <button onclick="alert('Definitie peildatum: Datum dat de schuld is vastgesteld. Het betreft hier het moment dat de vaststelling door de schuldhulpverlener in het kader van het schuldhulptraject is gedaan.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Soort schuld (we houden de volgende waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)</li>
+<li>Is het een zakelijke schuld? (ja/nee)</li>
+<li>Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)</li>
+</ul>
+<h2 id="gegevens-over-het-schuldhulptraject">Gegevens over het schuldhulptraject</h2>
+<p>Het schuldhulptraject kent conform het NVVK-Referentieproces een aantal fases. Van deze fases is steeds een aantal gegevens van belang. Deze worden in de volgende paragrafen beschreven.</p>
+<p>Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aantal gegevens van belang die betrekking hebben op het schuldhulptraject als geheel:</p>
+<ul>
+<li>Startdatum van het schuldhulptraject</li>
+<li>Einddatum (als het schuldhulptraject is afgerond)</li>
+<li>Toekenningsdatum (toekenningsdatum bevat de datum waarop de schuldregeling is toegekend)</li>
+<li>Gemeentecode (gemeente onder wiens verantwoordelijkheid het traject wordt uitgevoerd)</li>
+<li>Totaal schuldbedrag bij aanvang traject </li>
+</ul>
+<h3 id="aanmelding">Aanmelding</h3>
+<details class="note">
+<summary>Definitie Aanmelding</summary>
+<p>Moment dat een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.</p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden, en het eerste contact met schuldhulpverlening is geweest. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Einddatum van de aanmeldfase (optioneel)</li>
+<li>Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. &#34;Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n- gedwongen woningontruiming;\n- be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n- opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n- aangekondigde boedelverkoop of verkoop van de eigen woning;\n- loon- of bankbeslag;\n- een faillissementsaanvraag.\nEn voor ondernemers:\n- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n- opzegging van het bankkrediet.&#34;')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+</ul>
+<h3 id="intake">Intake</h3>
+<details class="note">
+<summary>Definitie Intake</summary>
+<p>Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel evenwicht te bereiken.</p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Startdatum van het intakegesprek  <button onclick="alert('Definitie startdatum: Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Einddatum van de intake  <button onclick="alert('Definitie einddatum: De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Soort beschikking  (mogelijke waarden: Afwijzingsbeschikking, Toelatingsbeschikking)</li>
+</ul>
+<h3 id="plan-van-aanpak">Plan van aanpak</h3>
+<details class="note">
+<summary>Definitie Plan Van Aanpak</summary>
+<p>Een document waarin in elk geval het volgende staat:<br>• de hulpvraag van de persoon;<br>• de voorgestelde ondersteuning;<br>• eventueel de organisatie(s) waarnaar je hebt doorverwezen;<br>• de voorwaarden voor schuldhulpverlening (bijvoorbeeld dat de persoon geen nieuwe schulden mag maken).<br>De hoogte van beslagvrije voet voor de persoon (zie artikel 4a:5 van de Wgs) moet in acht worden genomen.</p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Datum afronding plan van aanpak</li>
+</ul>
+<h3 id="stabilisatie">Stabilisatie</h3>
+<details class="note">
+<summary>Definitie Stabilisatie</summary>
+<p>Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van werkzaamheden uit het plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst.<br>In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financi&#235;le probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.</p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Start- en einddatum van de stabilisatiefase</li>
+</ul>
+<h3 id="schuldregeling">Schuldregeling</h3>
+<details class="note">
+<summary>Definitie Schuldregeling</summary>
+<p>De schuldregeling heeft als doel een overeenkomst te sluiten tussen iemand met problematische schulden en zijn schuldeisers. Op basis van eventueel ingezet vermogen en de berekende afloscapaciteit (of op andere wijze vastgestelde minimale afdracht) lost de schuldenaar in maximaal 18 maanden zo veel mogelijk van de schuld af. Daarna schelden de schuldeisers de rest van hun vordering kwijt. Voordat de schuldregeling start, sluit je een schuldregelingsovereenkomst met de schuldenaar. Daarin staan de rechten en plichten van beide partijen. Een schuldregeling kan met een saneringskrediet of een schuldbemiddeling gerealiseerd worden. Als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregeling, informeer je de schuldenaar over mogelijke vervolgstappen, zoals het aanvragen van een dwangakkoord (artikel 287a Fw) of toelating tot de Wsnp.</p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling door de schuldhulpverlener is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Afgewezen, toegekend of ingetrokken? Geef de juiste datum</li>
+<li>Is er een dwangakkoord aangevraagd? (ja/nee) <button onclick="alert('Definitie dwangakkoord: Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Datum verzoek dwangakkoord</li>
+</ul>
+<h3 id="oplossing">Oplossing</h3>
+<details class="note">
+<summary>Definitie Oplossing</summary>
+<p><font color="#0e0e0e">In de schuldhulpverlening verwijst een “oplossing” naar een regeling waarbij schulden op een beheersbare manier worden afgelost of kwijtgescholden, met als doel de financi&#235;le situatie van de schuldenaar te stabiliseren. Er worden verschillende oplossingsvormen onderscheiden, waaronder saneringskrediet, schuldbemiddeling, herfinanciering, betalingsregelingen en schuldregelingen zonder afloscapaciteit. Bij een saneringskrediet ontvangt de schuldenaar een lening om alle schuldeisers in &#233;&#233;n keer af te betalen, waarna hij deze lening aflost aan de kredietverstrekker. Schuldbemiddeling houdt in dat de schuldenaar gedurende een afgesproken periode periodiek bedragen aflost aan de schuldeisers. Herfinanciering betreft het vervangen van bestaande schulden door een nieuwe lening met gunstigere voorwaarden. Een betalingsregeling is een afspraak tussen schuldenaar en schuldeiser om de schuld in termijnen af te lossen. Bij een schuldregeling zonder afloscapaciteit wordt vastgesteld dat de schuldenaar geen financi&#235;le ruimte heeft om af te lossen, wat kan leiden tot kwijtschelding van de schuld. Deze oplossingsvormen worden ingezet afhankelijk van de specifieke situatie van de schuldenaar en zijn gericht op een duurzame oplossing van de schuldenproblematiek.  </font></p>
+</details>
+<p>Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Start- en einddatum</li>
+<li>Soort (mogelijke waarden: Betalingsregeling, Herfinanciering, Saneringskrediet, Schuldbemiddeling, 0%-aanbod)  </li>
+<li>VTLB-bedrag (per maand) van de cliënt <button onclick='alert("Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro&#39;s per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.")' style="background:none;border:none;cursor:pointer;">❓</button></li>
+</ul>
+<h3 id="financiele-begeleiding">Financiële begeleiding</h3>
+<details class="note">
+<summary>Definitie Begeleiding</summary>
+<p>Begeleiding voor clienten in het kader van schuldhulpdienstverlening.</p>
+</details>
+<p>Voor elke vorm van financiële begeleiding:</p>
+<ul>
+<li>Soort begeleiding (mogelijke waarden: Budgetcoaching, Budgetbeheer, Beschermingsbewind, Lange Termijn Begeleiding (DFD), Budgetbegeleiding)</li>
+<li>Start- en einddatum</li>
+</ul>
+<h3 id="uitstroom">Uitstroom</h3>
+<details class="note">
+<summary>Definitie Uitstroom</summary>
+<p>Het betreft hier de gegevens die worden vastgelegd bij uitstroom en dus be&#235;indiging van een schuldhulptraject.</p>
+</details>
+<p>Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd. Deze datum is gelijk aan de datum be&#235;indigingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Datum beëindigingsbeschikking <button onclick="alert('Definitie datumBeeindigingsbeschikking: Datum dat de Be&#235;indigingsbeschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button></li>
+<li>Reden van uitstroom (mogelijke waarden: Overleden, Verhuisd, Nietverschenen, Ingetrokken, Niet passend, Overig, Voldoet niet, Afgerond, Zelf)</li>
+</ul>
+<h2 id="aanvullende-gegevens">Aanvullende gegevens</h2>
+<p>In sommige gevallen spelen er aanvullende zaken. De hiervoor benodigde gegevens worden in de volgende paragrafen beschreven. </p>
+<h3 id="crisisinterventie">Crisisinterventie</h3>
+<details class="note">
+<summary>Definitie Crisisinterventie</summary>
+<p>Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.<br>Volgens de Wgs gaat het in elk geval om de volgende situaties:<br>• gedwongen woningontruiming;<br>• be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;<br>• opzegging of ontbinding van de zorgverzekering.<br>Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:<br>• aangekondigde boedelverkoop of verkoop van de eigen woning;<br>• loon- of bankbeslag;<br>• een faillissementsaanvraag.<br>En voor ondernemers:<br>• beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;<br>• opzegging van het bankkrediet.</p>
+</details>
+<p>Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Start- en einddatum</li>
+</ul>
+<h3 id="informatie-en-advies">Informatie en advies</h3>
+<details class="note">
+<summary>Definitie Informatie En Advies</summary>
+<p><font color="#1e1d3a">Het betreft hier de activiteiten die in het kader van Informatie en advies worden uitgevoerd. Het doel van Informatie en Advies is inwoners zelf in staat te stellen een duurzaam financieel evenwicht te bereiken. Het kan een beroep op uitgebreidere vormen van dienstverlening overbodig maken.</font></p>
+</details>
+<p>Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Start- en einddatum van het informatie- en adviestraject</li>
+</ul>
+<h3 id="moratorium">Moratorium</h3>
+<details class="note">
+<summary>Definitie Moratorium</summary>
+<p>Het gaat hier om de datum waarop een verzoek tot een moratorium (ex art. 287 b Fw) is ingediend bij de rechter.<br>Er kan een verzoek tot een moratorium bij de rechter worden gedaan om te voorkomen dat een schuldeiser zijn specifieke inningsmogelijkheden gebruikt, terwijl een aanvraag voor een minnelijke schuldregeling in behandeling is. Het moratorium is bedoeld om het minnelijke traject te kunnen voortzetten.<br>Het moratorium kan in de volgende situaties worden ingezet:<br>• gedwongen woningontruiming;<br>• be&#235;indiging van de levering van gas, water elektriciteit of stadsverwarming;<br>• opzegging dan wel ontbinding van de zorgverzekering.<br>Het moratorium duurt maximaal zes maanden.</p>
+</details>
+<p>Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Datum aanvraag</li>
+<li>Datum goedkeuring</li>
+<li>Start- en einddatum</li>
+</ul>
+<h3 id="voorlopige-voorziening">Voorlopige voorziening</h3>
+<details class="note">
+<summary>Definitie Voorlopige Voorziening </summary>
+<p><font color="#0e0e0e">Een voorlopige voorziening is een tijdelijke regeling die de hulpvrager beschermt tegen verslechtering van zijn financi&#235;le situatie of het verlies van essenti&#235;le voorzieningen (zoals energie, woning, zorg), totdat een schuldregelingstraject is gestart of er meer duidelijkheid is over de vervolgstappen.</font><br><font color="#0e0e0e"><br></font><font color="#0e0e0e">Voorbeelden van voorlopige voorzieningen:</font><br><font color="#0e0e0e"> •   Tijdelijke betalingsregelingen met schuldeisers</font><br><font color="#0e0e0e">    •   Een moratorium (tijdelijke opschorting van afbetalingen)</font><br><font color="#0e0e0e">   •   Het aanvragen van uitstel van betaling bij woningcorporaties of energiebedrijven</font><br><font color="#0e0e0e">   •   Hulp bij het voorkomen van afsluiting van gas, water, licht of ontruiming</font><br><font color="#0e0e0e">  •   Budgetbeheer of beschermingsbewind als tijdelijke maatregel</font></p>
+</details>
+<p>Is er binnen het schuldhulptraject sprake van één of meer voorlopige voorzieningen? Hiervan worden de volgende zaken vastgelegd:</p>
+<ul>
+<li>Start- en einddatum</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
