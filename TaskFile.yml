@@ -144,6 +144,8 @@ tasks:
       - mkdir -p "{{.DEFS}}"
       - rm -rf "{{.DEFS}}"/*.md
       - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/
+      - echo "Generating uitleg documentation using jinja template..."
+      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template uitleg.j2 -f "{{.DOCS}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/
       - |
         # Vervang de versies in de uitwisselspecificatie-templates
         # Loop door alle .template-bestanden in de directory en submappen
@@ -162,14 +164,14 @@ tasks:
 
 
   deploy-docs:
-    desc: "Build and deploy the documentation using MkDocs and Mike."
+    desc: "Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
     deps: [generate-docs]
     cmds:
       - echo "Building and deploying MkDocs and Mike..."
       - mkdocs build
       - mike deploy "{{.VERSION}}"
       - mike set-default "{{.VERSION}}"
-      - echo "Documentation deployed. Use 'mike serve' to view results..."
+      - echo "Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
     shell: bash
 
   publish-docs:
@@ -181,6 +183,13 @@ tasks:
     cmds:
       - echo 'Deploying to GitHub Pages...'
       - git push origin gh-pages
+
+  publish-test:
+    desc: "Publish the documentation to test location on host {{.FTP_HOST}}"
+    deps: [deploy-docs]
+    cmds:
+      - echo 'Deploying to test location...'
+      - lftp -e "set ssl:verify-certificate no; cd {{.FTP_REMOTE_DIR}}; mirror -R --delete --verbose ./{{.FTP_LOCAL_DIR}} .; bye" {{.FTP_HOST}}
 
   full-deploy:
     desc: "Execute the entire deployment process: json-schema, and documentation"

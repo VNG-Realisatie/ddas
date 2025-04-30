@@ -1,0 +1,197 @@
+{%- macro enum_lijst(enum_naam) -%}
+  {%- set enum = package.get_enumeration_by_name(enum_naam) -%}
+  {{ enum.literals | map(attribute='name') | join(', ') }}
+{%- endmacro -%}
+
+{%- macro tooltip(clazz, attribuut_naam) -%}
+  {%- set attr = clazz.get_attribute_by_name(attribuut_naam) -%}
+{%- if attr.definitie -%}
+    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url()|fix_and_format_alert }}')" style="background:none;border:none;cursor:pointer;">❓</button>
+  {%- endif -%}
+{%- endmacro -%}
+
+
+# Uitleg uitwisselspecificatie 
+
+Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
+Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
+Op deze pagina leggen we in niet-technische taal uit welke informatie je als organisatie moet vastleggen, zodat je de gegevens goed en volledig kunt aanleveren volgens de DDAS-richtlijnen aan het CBS.
+
+## Algemene gegevens
+
+Bij ieder schuldhulptraject zijn de hieronder weergegeven gegevens van belang.
+
+### Cliëntgegevens
+
+- Burgerservicenummer (BSN)
+- Geboortedatum
+- Geslacht (we houden de volgende waarden aan: {{ enum_lijst('geslacht') }})
+- Postcode
+- Huisnummer en eventueel huisnummertoevoeging
+
+Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd. 
+
+!!! danger "Let op: persoonsgegevens zijn van belang"
+    Het is belangrijk dat, of het BSN, of alle andere gegevens zijn vastgelegd. Dit maakt het mogelijk om doublures te corrigeren, om aansluiting te maken met andere data-aanleveringen en om gegevens op individu-niveau te verrijken met andere CBS-data
+
+{% set clazz = package.get_class_by_name('Schuld') %}
+### Gegevens over schulden
+
+Voor elke schuld die in het schuldhulptraject wordt meegenomen:
+
+- Bedrag
+- Peildatum {{ tooltip(clazz, 'peildatum') }}
+- Soort schuld (we houden de volgende waarden aan: {{ enum_lijst('EnumSchuldensoort') }} - dit is gelijk aan het Schuldenknooppunt)
+- Is het een zakelijke schuld? (ja/nee)
+- Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)
+
+## Gegevens over het schuldhulptraject
+
+Het schuldhulptraject kent conform het NVVK-Referentieproces een aantal fases. Van deze fases is steeds een aantal gegevens van belang. Deze worden in de volgende paragrafen beschreven.
+
+Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aantal gegevens van belang die betrekking hebben op het schuldhulptraject als geheel:
+
+- Startdatum van het schuldhulptraject
+- Einddatum (als het schuldhulptraject is afgerond)
+- Toekenningsdatum (toekenningsdatum bevat de datum waarop de schuldregeling is toegekend)
+- Gemeentecode (gemeente onder wiens verantwoordelijkheid het traject wordt uitgevoerd)
+- Totaal schuldbedrag bij aanvang traject 
+
+{% set clazz = package.get_class_by_name('Aanmelding') %}
+### Aanmelding
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Startdatum van de aanmelding {{ tooltip(clazz, 'startdatum') }}
+- Einddatum van de aanmeldfase (optioneel)
+- Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. &#34;Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n- gedwongen woningontruiming;\n- be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n- opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n- aangekondigde boedelverkoop of verkoop van de eigen woning;\n- loon- of bankbeslag;\n- een faillissementsaanvraag.\nEn voor ondernemers:\n- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n- opzegging van het bankkrediet.&#34;')" style="background:none;border:none;cursor:pointer;">❓</button>
+
+{% set clazz = package.get_class_by_name('Intake') %}
+### Intake
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Startdatum van het intakegesprek  {{ tooltip(clazz, 'startdatum') }}
+- Einddatum van de intake  {{ tooltip(clazz, 'einddatum') }}
+- Beschikkingsdatum  {{ tooltip(clazz, 'beschikkingsdatum') }}
+- Soort beschikking  (mogelijke waarden: {{ enum_lijst('EnumBeschikkingssoort') }})
+
+{% set clazz = package.get_class_by_name('PlanVanAanpak') %}
+### Plan van aanpak
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Datum afronding plan van aanpak
+
+{% set clazz = package.get_class_by_name('Stabilisatie') %}
+### Stabilisatie
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Start- en einddatum van de stabilisatiefase
+
+{% set clazz = package.get_class_by_name('Schuldregeling') %}
+### Schuldregeling
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Datum aanvraag {{ tooltip(clazz, 'datum') }}
+- Afgewezen, toegekend of ingetrokken? Geef de juiste datum
+- Is er een dwangakkoord aangevraagd? (ja/nee) {{ tooltip(clazz, 'dwangakkoord') }}
+- Datum verzoek dwangakkoord
+
+{% set clazz = package.get_class_by_name('Oplossing') %}
+### Oplossing
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Hiervan worden de volgende zaken vastgelegd:
+
+- Start- en einddatum
+- Soort (mogelijke waarden: {{ enum_lijst('EnumOplossingssoort') }})  
+- VTLB-bedrag (per maand) van de cliënt <button onclick='alert("Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro&#39;s per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.")' style="background:none;border:none;cursor:pointer;">❓</button>
+
+{% set clazz = package.get_class_by_name('Begeleiding') %}
+### Financiële begeleiding
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Voor elke vorm van financiële begeleiding:
+
+- Soort begeleiding (mogelijke waarden: {{ enum_lijst('EnumBegeleidingssoort') }})
+- Start- en einddatum
+
+{% set clazz = package.get_class_by_name('Uitstroom') %}
+### Uitstroom
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
+
+- Datum uitstroom {{ tooltip(clazz, 'datum') }}
+- Datum beëindigingsbeschikking {{ tooltip(clazz, 'datumBeeindigingsbeschikking') }}
+- Reden van uitstroom (mogelijke waarden: {{ enum_lijst('EnumUitstroomreden') }})
+
+## Aanvullende gegevens
+
+In sommige gevallen spelen er aanvullende zaken. De hiervoor benodigde gegevens worden in de volgende paragrafen beschreven. 
+
+{% set clazz = package.get_class_by_name('Crisisinterventie') %}
+### Crisisinterventie
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de volgende zaken vastgelegd:
+
+- Start- en einddatum
+
+{% set clazz = package.get_class_by_name('InformatieEnAdvies') %}
+### Informatie en advies
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de volgende zaken vastgelegd:
+
+- Start- en einddatum van het informatie- en adviestraject
+
+{% set clazz = package.get_class_by_name('Moratorium') %}
+### Moratorium
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastgelegd:
+
+- Datum aanvraag
+- Datum goedkeuring
+- Start- en einddatum
+
+{% set clazz = package.get_class_by_name('VoorlopigeVoorziening ') %}
+### Voorlopige voorziening
+
+??? note "Definitie {{ clazz.name|title_case }}"
+    {{ clazz.definitie|default("Geen Definitie", true)|fix_and_format()|set_url() }}
+
+Is er binnen het schuldhulptraject sprake van één of meer voorlopige voorzieningen? Hiervan worden de volgende zaken vastgelegd:
+
+- Start- en einddatum
