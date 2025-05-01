@@ -512,6 +512,20 @@
 <summary>Een 0%-aanbod (bij EnumOplossingssoort) heet niet meer zo, maar een Schuldregeling zonder Afloscapaciteit (ook wel SA). Moet ik 0%-aanbod blijven hanteren?</summary>
 <p>Ja, de term 0%-aanbod blijft gehanteerd tot een nieuwe versie van de uitwisselspecificatie wordt uitgebracht. De huidige uitwisselspecificatie is vastgesteld voordat deze nieuwe term is geïntroduceerd, daarom wordt de oude term nog gehanteerd.</p>
 </details>
+<details class="question">
+<summary>Overlap in de schuldhulptrajecten in de aanlevering aan CBS</summary>
+<p>In sommige gevallen kan er overlap ontstaan tussen (delen van) schuldhulptrajecten in de aanlevering aan het CBS. bijvoorbeeld omdat een deel van de schuldhulpverlening wordt uitgevoerd door een andere partij. Hoe gaat het CBS hier mee om? 
+Als er overlap in de tijd is in de aangeleverde informatie, dan wordt dit samengevoegd tot één (deel)traject. Is er geen overlap in de tijd, dan ontstaan twee losse (deel)trajecten. 
+Als voorbeeld: stel dat er losse BBR-begeleidingssoorten worden aangeleverd bij het CBS? Dus bijvoorbeeld:</p>
+<div class="highlight"><pre><span></span><code>* aanlevering over 2020: BBR 01-01-2020 tot 31-12-2020
+* aanlevering over 2023: BBR 01-12-2023 tot 20-12-2023  &amp;  BBR 15-12-2023 tot [leeg]
+* aanlevering over 2024: BBR 15-12-2023 tot 15-01-2024  &amp;  BBR 10-01-2024 tot [leeg]
+</code></pre></div>
+<p>In dit geval vat het CBS dat op als twee begeleingstrajecten:</p>
+<div class="highlight"><pre><span></span><code>* aanlevering over 2020: BBR 01-01-2020 tot 31-12-2020
+* aanlevering over 2023: BBR 01-12-2023 tot [leeg]
+</code></pre></div>
+</details>
 
 
 
