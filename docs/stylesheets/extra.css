@@ -2,10 +2,17 @@
     cursor: zoom-in;
   }
   
-  .md-typeset a img:active {
-    cursor: zoom-out;
-  }
-  
+.md-typeset a img:active {
+  cursor: zoom-out;
+}
+
+.md-nav__item--nested:not(:first-child) {
+  margin-top: 1em;
+}
+.md-nav__item--nested:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 /* Stel de achtergrondafbeelding in voor de hele site */
 body {
     background-image: url('../images/background.png'); /* Pas dit pad aan naar jouw afbeelding */
@@ -20,4 +27,3 @@ body {
     padding: 20px; /* Ruimte rondom de inhoud */
     border-radius: 10px; /* Ronde hoeken */
   }
-  

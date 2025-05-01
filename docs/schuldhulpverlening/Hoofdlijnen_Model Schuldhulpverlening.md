@@ -8,7 +8,7 @@ De kern van het informatiemodel Schuldhulpverlening bestaat uit een Schuldhulptr
 
 Eén of meer Schuldhulporganisaties leveren het Schuldhulptraject aan de client(en). Vaak zijn er naast de gemeente ook andere partijen die betrokken zijn bij onderdelen van het Schuldhulptraject.
 
-[![Hoofdindeling](images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)](images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)
+[![Hoofdindeling](../images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)](../images/EAID_9060F49C_F450_4693_A636_0E1384D677AE.jpg)
 
 Figuur 2 Hoofdindeling Schuldhulpverlening
 
@@ -18,7 +18,7 @@ Een Client is altijd een Ingeschreven Persoon, zoals bekend in de BRP (Basisregi
 
 Het procesdeel van het informatiemodel is gebaseerd op het NVVK-Referentieproces (zie paragraaf 1.4) en geeft uitwerking van de processen die in het kader van een Schuldhulptraject kunnen voorkomen.
 
-[![Proces Schuldhulpverlening](images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)](images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)
+[![Proces Schuldhulpverlening](../images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)](../images/EAID_BBE1A03C_2D40_48cb_91AE_EF630304F490.jpg)
 
 Figuur 3 Proces Schuldhulpverlening
 
@@ -30,7 +30,7 @@ Daarnaast kan een Schuldhulptraject een Plan van aanpak hebben en een Uitstroomr
 
 Binnen het Informatiemodel Schuldhulpverlening worden de volgende objecttypen vastgelegd rond de Client in het kader van een Schuldhulptraject. Van een client worden niet alle vastgelegde attributen uit de BRP overgenomen. Alleen die attributen worden gebruikt die noodzakelijk zijn om de client te identificeren: BSN en door het geval deze niet beschikbaar is: geboortedatum, geslacht, postcode, huisnummer en huisnummertoevoeging. In Figuur 4 zijn deze uitgewerkt.
 
-[![Client Schuldhulpverlening](images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)](images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)
+[![Client Schuldhulpverlening](../images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)](../images/EAID_60622F3B_724C_487b_B974_EAFC4A8DD0BE.jpg)
 
 Figuur 4 Informatiemodel Client
 
@@ -42,7 +42,7 @@ In het kader van de Schuldhulpverlening heeft een Client een Leefstituatie. In d
 
 In het informatiemodel Schuldhulpverlening worden de volgende objecttypen en relaties vastgelegd over de schuldhulp verlenende organisatie. Van een organisatie worden niet alle kenmerken zoals vastgelegd in de NHR overgenomen, alleen kvk-nummer, naam en als het een gemeente betreft de gemeentecode, deze zijn in Figuur 5 uitgewerkt.
 
-[![Schuldhulpverlenende organisatie](images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)](images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)
+[![Schuldhulpverlenende organisatie](../images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)](../images/EAID_752DF3AE_43AC_4165_8FCD_FDDE73075872.jpg)
 
 Figuur 5 Schuldhulpverlenende Organisatie
 

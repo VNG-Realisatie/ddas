@@ -1,0 +1,78 @@
+# Uitwisselmodel
+
+## Inleiding
+
+De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in [JSON-schema](https://json-schema.org) gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het [informatiemodel schuldhulpverlening](./Hoofdlijnen_Model Schuldhulpverlening.md). 
+
+De uitwisselspecificatie kent de volgende opbouw: 
+
+1. Op het hoofdniveau is het Uitwisselmodel gedefinieerd. Dit met een aantal attributen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;
+2. Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, **mits daar natuurlijk toestemming voor is afgegeven**. 
+3. Op het derde niveau wordt per levering de aanleverende [schuldhulporganisatie](./Hoofdlijnen_Model Schuldhulpverlening.md/#organisaties) met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er per levering steeds door precies één schuldhulporganisatie gegevens worden aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.
+4. Op detailniveau wordt een aantal schuldhulptrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het [procesmodel](./Hoofdlijnen_Model Schuldhulpverlening.md/#processen), en de [client(en)](./Hoofdlijnen_Model Schuldhulpverlening.md/#clienten) die het betreft. Per schuldhulptraject worden de schulden opgegeven die binnen de scope van het traject vallen. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.
+
+Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzelfde traject betreffen. De trajecten worden dan uitgebreid met de nieuwe gegevens. Het gaat om hetzelfde traject als:
+
+1. Er overlap is in de looptijd; EN
+2. Het dezelfde clienten betreft (clienten kunnen maar 1 traject tegelijk hebben gedurende 1 periode. Wel kunnen zij sequentieel meerdere trajecten hebben)
+
+Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. 
+
+## Encoding
+
+Alle bestanden dienen te worden aangeleverd in [UTF-8-formaat](https://www.forumstandaardisatie.nl/open-standaarden/utf-8). 
+
+## Uitwisselspecificatie
+
+Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een [downloadversie](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/json_schema_Uitwisselmodel.json) beschikbaar.
+
+```
+{!../###VERSION###/json_schema_Uitwisselmodel.json!}
+
+```
+
+## Voorbeelden
+
+### Enkelvoudig voorbeeld
+
+Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/enkelvoudigVoorbeeld.json).
+
+```
+{!../###VERSION###/enkelvoudigVoorbeeld.json!}
+
+```
+
+### Meervoudig voorbeeld
+
+Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/meervoudigVoorbeeld.json).
+
+```
+{!../###VERSION###/meervoudigVoorbeeld.json!}
+
+```
+
+### Samenloop voorbeeld
+
+Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpverlenende partij heeft uitbesteed. In een dergelijk geval worden er door meerdere schuldhulpverleners aanleveringen gedaan over dezelfde clienten in dezelfde periode. Onderstaand twee voorbeeld JSON-bestanden conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Deze voorbeeld kun je ook [downloaden deel 1](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/samenloopVoorbeeldDeel1.json) en [downloaden deel 2](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/samenloopVoorbeeldDeel2.json).
+
+#### Samenloop bestand 1
+```
+{!../###VERSION###/samenloopVoorbeeldDeel1.json!}
+
+```
+
+#### Samenloop bestand 2
+
+```
+{!../###VERSION###/samenloopVoorbeeldDeel2.json!}
+
+```
+
+### Voorbeeld meerdere leveringen
+
+Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/meerdereLeveringenVoorbeeld.json).
+
+```
+{!../###VERSION###/meerdereLeveringenVoorbeeld.json!}
+
+```

@@ -113,17 +113,20 @@ tasks:
           exit 1
         fi
       - echo "Importing XMI file '{{.XMI}}' into Crunch UML..."
-      - crunch_uml import -f "{{.XMI}}" -t eaxmi -db_create
+      - #crunch_uml import -f "{{.XMI}}" -t eaxmi -db_create
       - echo "Extracting and tranforming schuldhulp datamodel..."
       - crunch_uml transform -ttp plugin -sch_to {{.IM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_SCHULDHULP}}
       - echo "Extracting and tranforming schuldhulp uitwisselmodel..."
       - crunch_uml transform -ttp plugin -sch_from {{.IM_SCHEMA_SCHULDHULP}} -sch_to {{.UM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.UM_TRANSFORMER_SCHULDHULP_CLASS}} --plugin_file_name {{.UM_TRANSFORMER_SCHULDHULP}}
+      - echo "Extracting and tranforming vroegsignalering datamodel..."
+      - crunch_uml transform -ttp plugin -sch_to {{.IM_SCHEMA_VROEGSIGNALERING}} -rt_pkg "{{.ROOT_IM_VROEGSIGNALERING}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_VROEGSIGNALERING}}
       - echo "Crunch database successfully created and setup..."
     shell: bash
     sources:
       - "{{.XMI}}"
       - "{{.IM_TRANSFORMER_SCHULDHULP}}"
       - "{{.UM_TRANSFORMER_SCHULDHULP}}"
+      - "{{.IM_TRANSFORMER_VROEGSIGNALERING}}"
     generates:
       - "{{.CRUNCH_UML_DB}}"
     run: when_changed
@@ -136,21 +139,19 @@ tasks:
       - crunch_uml  -sch {{.UM_SCHEMA_SCHULDHULP}} -d export -t json_schema --output_class_id {{.ROOT_CLASS_UM_SCHULDHULP}} -js_url {{.SCHULDHULP_JSON_SCHEMA_URL}} -f {{.JSON}}
     shell: bash
 
-  generate-docs:
+  generate-docs-for:
     desc: "Generate Markdown documentation from the model."
     deps: [import-xmi]
     cmds:
-      - echo "Generating Markdown documentation..."
-      - mkdir -p "{{.DEFS}}"
-      - rm -rf "{{.DEFS}}"/*.md
-      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/
-      - echo "Generating uitleg documentation using jinja template..."
-      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template uitleg.j2 -f "{{.DOCS}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/
+      - echo "Generating definitions documentation using jinja template for use case {{.USECASE}}..."
+      - crunch_uml -sch {{.IM_SCHEMA}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/
+      - echo "Generating uitleg documentation using jinja template for use case {{.USECASE}}..."
+      - crunch_uml -sch {{.IM_SCHEMA}} export -t jinja2 --output_jinja2_template {{.UITLEG_TEMPLATE}} -f "{{.DOCS}}/{{.USECASE}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/
       - |
         # Vervang de versies in de uitwisselspecificatie-templates
         # Loop door alle .template-bestanden in de directory en submappen
-        echo "Processing template files in {{.DOCS}} ..."
-        for file in $(find "{{.DOCS}}" -type f -name "*.template"); do
+        echo "Processing template files in {{.USECASE}}/{{.DOCS}} ..."
+        for file in $(find "{{.DOCS}}/{{.USECASE}}" -type f -name "*.template"); do
           # Bepaal de doelbestandnaam door ".template" te verwijderen
           output_file="${file%.template}"
 
@@ -161,7 +162,26 @@ tasks:
           echo "Processed $file -> $output_file"
         done
     shell: bash
+    requires:
+      vars: ["USECASE", "UITLEG_TEMPLATE", "IM_SCHEMA"]
 
+  generate-docs:
+    desc: "Generate Markdown documentation from the model."
+    cmds:
+      - echo "Generating Markdown documentation..."
+      - mkdir -p "{{.DEFS}}"
+      - rm -rf "{{.DEFS}}"/*.md
+      - task: generate-docs-for
+        vars:
+          USECASE: "schuldhulpverlening"
+          UITLEG_TEMPLATE: "uitleg-schuldhulp.j2"
+          IM_SCHEMA: "{{.IM_SCHEMA_SCHULDHULP}}"
+      - task: generate-docs-for
+        vars:
+          USECASE: "vroegsignalering"
+          UITLEG_TEMPLATE: "uitleg-vroegsignalering.j2"
+          IM_SCHEMA: "{{.IM_SCHEMA_VROEGSIGNALERING}}"
+    shell: bash
 
   deploy-docs:
     desc: "Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."

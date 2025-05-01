@@ -1,17 +1,6 @@
-{%- macro enum_lijst(enum_naam) -%}
-  {%- set enum = package.get_enumeration_by_name(enum_naam) -%}
-  {{ enum.literals | map(attribute='name') | join(', ') }}
-{%- endmacro -%}
+{% import "macros.j2" as macros %}
 
-{%- macro tooltip(clazz, attribuut_naam) -%}
-  {%- set attr = clazz.get_attribute_by_name(attribuut_naam) -%}
-{%- if attr.definitie -%}
-    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url()|fix_and_format_alert }}')" style="background:none;border:none;cursor:pointer;">❓</button>
-  {%- endif -%}
-{%- endmacro -%}
-
-
-# Uitleg uitwisselspecificatie 
+# Uitleg uitwisselspecificatie Schuldhulpverlening
 
 Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
 Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
@@ -25,7 +14,7 @@ Bij ieder schuldhulptraject zijn de hieronder weergegeven gegevens van belang.
 
 - Burgerservicenummer (BSN)
 - Geboortedatum
-- Geslacht (we houden de volgende waarden aan: {{ enum_lijst('geslacht') }})
+- Geslacht (we houden de volgende waarden aan: {{ macros.enum_lijst(package, 'geslacht') }})
 - Postcode
 - Huisnummer en eventueel huisnummertoevoeging
 
@@ -40,8 +29,8 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
 - Bedrag
-- Peildatum {{ tooltip(clazz, 'peildatum') }}
-- Soort schuld (we houden de volgende waarden aan: {{ enum_lijst('EnumSchuldensoort') }} - dit is gelijk aan het Schuldenknooppunt)
+- Peildatum {{ macros.tooltip(clazz, 'peildatum') }}
+- Soort schuld (we houden de volgende waarden aan: {{ macros.enum_lijst(package, 'EnumSchuldensoort') }} - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)
 
@@ -65,7 +54,7 @@ Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aant
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van de aanmelding {{ tooltip(clazz, 'startdatum') }}
+- Startdatum van de aanmelding {{ macros.tooltip(clazz, 'startdatum') }}
 - Einddatum van de aanmeldfase (optioneel)
 - Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. &#34;Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n- gedwongen woningontruiming;\n- be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n- opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n- aangekondigde boedelverkoop of verkoop van de eigen woning;\n- loon- of bankbeslag;\n- een faillissementsaanvraag.\nEn voor ondernemers:\n- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n- opzegging van het bankkrediet.&#34;')" style="background:none;border:none;cursor:pointer;">❓</button>
 
@@ -77,10 +66,10 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van het intakegesprek  {{ tooltip(clazz, 'startdatum') }}
-- Einddatum van de intake  {{ tooltip(clazz, 'einddatum') }}
-- Beschikkingsdatum  {{ tooltip(clazz, 'beschikkingsdatum') }}
-- Soort beschikking  (mogelijke waarden: {{ enum_lijst('EnumBeschikkingssoort') }})
+- Startdatum van het intakegesprek  {{ macros.tooltip(clazz, 'startdatum') }}
+- Einddatum van de intake  {{ macros.tooltip(clazz, 'einddatum') }}
+- Beschikkingsdatum  {{ macros.tooltip(clazz, 'beschikkingsdatum') }}
+- Soort beschikking  (mogelijke waarden: {{ macros.enum_lijst(package, 'EnumBeschikkingssoort') }})
 
 {% set clazz = package.get_class_by_name('PlanVanAanpak') %}
 ### Plan van aanpak
@@ -110,9 +99,9 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Datum aanvraag {{ tooltip(clazz, 'datum') }}
+- Datum aanvraag {{ macros.tooltip(clazz, 'datum') }}
 - Afgewezen, toegekend of ingetrokken? Geef de juiste datum
-- Is er een dwangakkoord aangevraagd? (ja/nee) {{ tooltip(clazz, 'dwangakkoord') }}
+- Is er een dwangakkoord aangevraagd? (ja/nee) {{ macros.tooltip(clazz, 'dwangakkoord') }}
 - Datum verzoek dwangakkoord
 
 {% set clazz = package.get_class_by_name('Oplossing') %}
@@ -124,7 +113,7 @@ Hiervan worden de volgende zaken vastgelegd:
 Hiervan worden de volgende zaken vastgelegd:
 
 - Start- en einddatum
-- Soort (mogelijke waarden: {{ enum_lijst('EnumOplossingssoort') }})  
+- Soort (mogelijke waarden: {{ macros.enum_lijst(package, 'EnumOplossingssoort') }})  
 - VTLB-bedrag (per maand) van de cliënt <button onclick='alert("Definitie vtlb: Het “Vrij te laten bedrag” (VTLB) is het bedrag (in hele euro&#39;s per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.")' style="background:none;border:none;cursor:pointer;">❓</button>
 
 {% set clazz = package.get_class_by_name('Begeleiding') %}
@@ -135,7 +124,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Voor elke vorm van financiële begeleiding:
 
-- Soort begeleiding (mogelijke waarden: {{ enum_lijst('EnumBegeleidingssoort') }})
+- Soort begeleiding (mogelijke waarden: {{ macros.enum_lijst(package, 'EnumBegeleidingssoort') }})
 - Start- en einddatum
 
 {% set clazz = package.get_class_by_name('Uitstroom') %}
@@ -146,9 +135,9 @@ Voor elke vorm van financiële begeleiding:
 
 Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
 
-- Datum uitstroom {{ tooltip(clazz, 'datum') }}
-- Datum beëindigingsbeschikking {{ tooltip(clazz, 'datumBeeindigingsbeschikking') }}
-- Reden van uitstroom (mogelijke waarden: {{ enum_lijst('EnumUitstroomreden') }})
+- Datum uitstroom {{ macros.tooltip(clazz, 'datum') }}
+- Datum beëindigingsbeschikking {{ macros.tooltip(clazz, 'datumBeeindigingsbeschikking') }}
+- Reden van uitstroom (mogelijke waarden: {{ macros.enum_lijst(package, 'EnumUitstroomreden') }})
 
 ## Aanvullende gegevens
 

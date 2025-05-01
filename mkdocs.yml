@@ -13,13 +13,22 @@ extra:
 
 nav:
   - Home: index.md
-  - Uitwisselspecificatie uitgelegd: uitleg_Model Schuldhulpverlening.md
-  - Uitwisselspecificatie: uitwisselspecificatie.md
-  - Informatiemodel:
-    - Hoofdlijnen: "Hoofdlijnen_Model Schuldhulpverlening.md"
-    - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
+  - Schuldhulpverlening:
+    - Inleiding: schuldhulpverlening/inleiding.md
+    - Uitwisselspecificatie uitgelegd: schuldhulpverlening/uitleg_Model Schuldhulpverlening.md
+    - Uitwisselspecificatie: schuldhulpverlening/uitwisselspecificatie.md
+    - Informatiemodel:
+      - Hoofdlijnen: "schuldhulpverlening/Hoofdlijnen_Model Schuldhulpverlening.md"
+      - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
+    - Vraag en antwoord: schuldhulpverlening/VraagEnAntwoord.md
+  - Vroegsignalering:
+    - Uitwisselspecificatie uitgelegd: vroegsignalering/uitleg_Model Vroegsignalering.md
+    - Uitwisselspecificatie: vroegsignalering/uitwisselspecificatie.md
+    - Informatiemodel:
+      - Hoofdlijnen: "vroegsignalering/Hoofdlijnen_Model Vroegsignalering.md"
+      - Detailspecificatie: "definities/Detail_Model Vroegsignalering.md"
+    - Vraag en antwoord: vroegsignalering/VraagEnAntwoord.md  
   - Achtergrond DDAS: Achtergrond.md
-  - Vraag en antwoord: VraagEnAntwoord.md
 
 markdown_extensions:
   - pymdownx.superfences

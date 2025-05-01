@@ -1,0 +1,11 @@
+{%- macro enum_lijst(package, enum_naam) -%}
+  {%- set enum = package.get_enumeration_by_name(enum_naam) -%}
+  {{ enum.literals | map(attribute='name') | join(', ') }}
+{%- endmacro -%}
+
+{%- macro tooltip(clazz, attribuut_naam) -%}
+  {%- set attr = clazz.get_attribute_by_name(attribuut_naam) -%}
+{%- if attr.definitie -%}
+    <button onclick="alert('Definitie {{ attr.name }}: {{ attr.definitie|set_url()|fix_and_format_alert }}')" style="background:none;border:none;cursor:pointer;">❓</button>
+  {%- endif -%}
+{%- endmacro -%}

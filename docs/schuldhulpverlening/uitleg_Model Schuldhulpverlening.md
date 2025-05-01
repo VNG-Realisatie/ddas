@@ -1,4 +1,6 @@
-# Uitleg uitwisselspecificatie 
+
+
+# Uitleg uitwisselspecificatie Schuldhulpverlening
 
 Schuldhulporganisaties leveren gegevens aan het CBS via een speciaal digitaal bestand (JSON-bestand). In dit bestand staan gegevens over schuldhulptrajecten. Hoe dit bestand technisch is opgebouwd, wordt uitgelegd onder het kopje ‘Uitwisselspecificatie’.
 Voor schuldhulporganisaties is het belangrijk om de juiste gegevens goed vast te leggen in hun eigen systemen. Als dat niet goed gebeurt, wordt het moeilijker om de gegevens op de juiste manier aan te leveren.
