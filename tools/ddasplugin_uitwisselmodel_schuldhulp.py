@@ -101,7 +101,7 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De begindatum van de periode waarover gerapperteerd wordt binnen de levering",
+            definitie="De begindatum van de periode waarover gerapporteerd wordt binnen de levering",
         )
         einddatumLevering = Attribute(
             id=util.getEAGuid(),
@@ -109,7 +109,7 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De einddatum van de periode waarover gerapperteerd wordt binnen de levering",)
+            definitie="De einddatum van de periode waarover gerapporteerd wordt binnen de levering",)
         aanleverdatumEnTijd = Attribute(
             id=util.getEAGuid(),
             name="aanleverdatumEnTijd",

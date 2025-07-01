@@ -8,7 +8,7 @@ from crunch_uml.transformers.plugin import Plugin
 logger = logging.getLogger()
 
 VROEGSIGNALERING_PACKAGE_ID = "EAPK_BB7B01A9_44F5_4e0f_B158_0DDAA5B6593D"
-VROEGSIGNAAL_ID = "EAID_C6DA2586-C0E3-4868-93E8-64AF6D118092"  # C6DA2586-C0E3-4868-93E8-64AF6D118092}
+VROEGSIGNAAL_ID = "EAID_C6DA2586_C0E3_4868_93E8_64AF6D118092"  # C6DA2586-C0E3-4868-93E8-64AF6D118092}
 UITWISSELMODEL_ID = "EAID_6b4326e3_eb4e_41d2_902b_44ff06604f63"
 CLIENT_ID = "EAID_DAF09055_A5A6_4ff4_A158_21B20567B296"
 TRAJECTEN_SORT_ORDER = [
@@ -90,7 +90,7 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De begindatum van de periode waarover gerapperteerd wordt binnen de levering",
+            definitie="De begindatum van de periode waarover gerapporteerd wordt binnen de levering",
         )
         einddatumLevering = Attribute(
             id=util.getEAGuid(),
@@ -98,7 +98,7 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De einddatum van de periode waarover gerapperteerd wordt binnen de levering",)
+            definitie="De einddatum van de periode waarover gerapporteerd wordt binnen de levering",)
         aanleverdatumEnTijd = Attribute(
             id=util.getEAGuid(),
             name="aanleverdatumEnTijd",

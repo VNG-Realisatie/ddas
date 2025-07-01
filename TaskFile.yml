@@ -113,13 +113,15 @@ tasks:
           exit 1
         fi
       - echo "Importing XMI file '{{.XMI}}' into Crunch UML..."
-      - #crunch_uml import -f "{{.XMI}}" -t eaxmi -db_create
+      - crunch_uml import -f "{{.XMI}}" -t eaxmi -db_create
       - echo "Extracting and tranforming schuldhulp datamodel..."
       - crunch_uml transform -ttp plugin -sch_to {{.IM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_SCHULDHULP}}
       - echo "Extracting and tranforming schuldhulp uitwisselmodel..."
       - crunch_uml transform -ttp plugin -sch_from {{.IM_SCHEMA_SCHULDHULP}} -sch_to {{.UM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.UM_TRANSFORMER_SCHULDHULP_CLASS}} --plugin_file_name {{.UM_TRANSFORMER_SCHULDHULP}}
       - echo "Extracting and tranforming vroegsignalering datamodel..."
       - crunch_uml transform -ttp plugin -sch_to {{.IM_SCHEMA_VROEGSIGNALERING}} -rt_pkg "{{.ROOT_IM_VROEGSIGNALERING}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_VROEGSIGNALERING}}
+      - echo "Extracting and transforming vroegsignalering uitwisselmodel..."
+      - crunch_uml transform -ttp plugin -sch_from {{.IM_SCHEMA_VROEGSIGNALERING}} -sch_to {{.UM_SCHEMA_VROEGSIGNALERING}} -rt_pkg "{{.ROOT_IM_VROEGSIGNALERING}}" --plugin_class_name {{.UM_TRANSFORMER_VROEGSIGNALERING_CLASS}} --plugin_file_name {{.UM_TRANSFORMER_VROEGSIGNALERING}}
       - echo "Crunch database successfully created and setup..."
     shell: bash
     sources:
@@ -127,16 +129,37 @@ tasks:
       - "{{.IM_TRANSFORMER_SCHULDHULP}}"
       - "{{.UM_TRANSFORMER_SCHULDHULP}}"
       - "{{.IM_TRANSFORMER_VROEGSIGNALERING}}"
+      - "{{.UM_TRANSFORMER_VROEGSIGNALERING}}"
     generates:
       - "{{.CRUNCH_UML_DB}}"
     run: when_changed
 
-  generate-json-schema:
-    desc: "Generate JSON Schema from uitwisselmodel {{.UM_SCHEMA_SCHULDHULP}}...'"
+  generate-json-schema-for:
+    desc: "Generate JSON Schema from a specified uitwisselmodel."
     deps: [import-xmi]
     cmds:
-      - echo "Generate JSON Schema '{{.JSON}}' from schema '{{.UM_SCHEMA_SCHULDHULP}}' using root class '{{.ROOT_CLASS_UM_SCHULDHULP}}'..."
-      - crunch_uml  -sch {{.UM_SCHEMA_SCHULDHULP}} -d export -t json_schema --output_class_id {{.ROOT_CLASS_UM_SCHULDHULP}} -js_url {{.SCHULDHULP_JSON_SCHEMA_URL}} -f {{.JSON}}
+      - echo "Generate JSON Schema '{{.JSON}}' from schema '{{.UM_SCHEMA}}' using root class '{{.ROOT_CLASS}}'..."
+      - crunch_uml -sch {{.UM_SCHEMA}} -d export -t json_schema --output_class_id {{.ROOT_CLASS}} -js_url {{.SCHEMA_URL}} -f {{.JSON}}
+    shell: bash
+    requires:
+      vars: ["UM_SCHEMA", "ROOT_CLASS", "SCHEMA_URL", "JSON"]
+
+  generate-json-schema:
+    desc: "Generate JSON Schema for all defined use cases."
+    deps: [import-xmi]
+    cmds:
+      - task: generate-json-schema-for
+        vars:
+          UM_SCHEMA: "{{.UM_SCHEMA_SCHULDHULP}}"
+          ROOT_CLASS: "{{.ROOT_CLASS_UM_SCHULDHULP}}"
+          SCHEMA_URL: "{{.SCHULDHULP_JSON_SCHEMA_URL}}"
+          JSON: "{{.JSON}}"
+      - task: generate-json-schema-for
+        vars:
+          UM_SCHEMA: "{{.UM_SCHEMA_VROEGSIGNALERING}}"
+          ROOT_CLASS: "{{.ROOT_CLASS_UM_VROEGSIGNALERING}}"
+          SCHEMA_URL: "{{.SCHULDHULP_JSON_SCHEMA_URL}}"
+          JSON: "{{.JSON}}"
     shell: bash
 
   generate-docs-for:

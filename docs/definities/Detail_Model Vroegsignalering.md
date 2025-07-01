@@ -47,7 +47,7 @@ Attributen van objecttype Contactpoging:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | bereikt | boolean | Er is succesvol contact met de client gemaakt. | Nee |
-| dagdeel | int | Ochtend, middag of avond | Nee |
+| dagdeel | Enumeratie: "EnumDagdeel" | Ochtend, middag of avond | Nee |
 | datum | Date |  | Nee |
 | soort | Enumeratie: "EnumContactsoort" |  | Nee |
 
@@ -95,10 +95,10 @@ Attributen van objecttype Vroegsignaal:
 | :--- | :--- | :--- | :--- |
 | bedrag | bedrag |  | Nee |
 | crisissignaal | boolean | Betreft het een crisis? | Nee |
-| einddatumPeriode | Date |  | Nee |
+| ontstaansdatum | Date |  | Nee |
 | signaaldatum | Date | Datum waarop de signaalpartner het signaal heeft verstuurd. | Nee |
-| startdatumPeriode | Date |  | Nee |
-| warmeOverdracht | boolean | Er is al contact met persoon. Betredft verzoek deze pwersoon op te pakken in het kader van vroegsignalering. | Nee |
+| status | Enumeratie: "EnumSignaalstatus" |  | Nee |
+| warmeOverdracht | boolean | Er is al contact met persoon. Betreft verzoek deze persoon op te pakken in het kader van vroegsignalering. | Nee |
 
 
 
@@ -121,7 +121,7 @@ Attributen van objecttype Vroegsignaalzaak:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | archiefnominatie | AN1 | <font color="#610e6a">Indicatie of het zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) gearchiveerd dient te worden</font> | Nee |
-| crisis | boolean |  | Nee |
+| datum_opgepakt | Date |  | Nee |
 | datumEinde |  | <font color="#610e6a">De datum waarop de uitvoering van de zaak afgerond is.</font> | Nee |
 | datumEindeGepland |  | <font color="#610e6a">De datum waarop volgens de planning verwacht wordt dat de zaak afgerond wordt.</font> | Nee |
 | datumEindeUiterlijkeAfdoening |  | <font color="#610e6a">De laatste datum waarop volgens wet- en regelgeving de zaak afgerond dient te zijn.</font> | Nee |
@@ -132,7 +132,7 @@ Attributen van objecttype Vroegsignaalzaak:
 | datumVernietigingDossier |  | <font color="#610e6a">De datum waarop het, al dan niet gearchiveerde, zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) vernietigd mag worden.</font> | Nee |
 | document |  |  | Nee |
 | duurVerlenging | N3 |  | Nee |
-| einddatum | Date |  | Nee |
+| einddatum_matchingperiode | Date |  | Nee |
 | indicatieBetaling | AN12 | <font color="#610e6a">Indicatie of de, met behandeling van de zaak gemoeide, kosten betaald zijn door de desbetreffende betrokkene.</font> | Nee |
 | indicatieDeelzaken | A1 | <font color="#610e6a">De aanduiding of een ZAAK behandeld wordt in deelzaken.</font> | Nee |
 | indicatieOpschorting | AN1 |  | Nee |
@@ -143,7 +143,7 @@ Attributen van objecttype Vroegsignaalzaak:
 | redenOpschorting | AN200 |  | Nee |
 | redenVerlenging | AN200 |  | Nee |
 | resultaat | Enumeratie: "EnumEindresultaat" |  | Nee |
-| startdatum | date |  | Nee |
+| startdatum_matchtingperiode | Date |  | Nee |
 | status |  |  | Nee |
 | toelichting | AN1000 | <font color="#610e6a">Een toelichting op de zaak.</font> | Nee |
 | toelichtingResultaat | AN1000 | <font color="#610e6a">Een toelichting op wat het resultaat van de zaak inhoudt.</font> | Nee |
@@ -186,6 +186,28 @@ De enumeratie EnumContactsoort heeft de volgende kenmerken:
 
 
 
+### EnumDagdeel
+> **Definitie EnumDagdeel:** 
+>
+> Geen Definitie
+
+Het enumeratie EnumDagdeel kent de volgende waarden:
+
+* **Ochtend**: <Geen Definities>
+* **Middag**: <Geen Definities>
+* **Avond**: <Geen Definities>
+
+
+De enumeratie EnumDagdeel heeft de volgende kenmerken:
+
+| Kenmerk | Waarde |
+| :--- | :------ |
+| name | EnumDagdeel |
+| bron |  |
+| version | 1.0 |
+
+
+
 ### EnumEindresultaat
 > **Definitie EnumEindresultaat:** 
 >
@@ -193,7 +215,22 @@ De enumeratie EnumContactsoort heeft de volgende kenmerken:
 
 Het enumeratie EnumEindresultaat kent de volgende waarden:
 
-* **wordt niet opgepakt**: <Geen Definities>
+* **Niet opgepakt: inwoner wil geen contact**: <Geen Definities>
+* **Niet opgepakt: geen capaciteit**: <Geen Definities>
+* **Niet opgepakt**: [overig]
+* **Inwoner al bekend bij schuldhulpverlening**: <Geen Definities>
+* **Geen contact (meer) kunnen krijgen**: <Geen Definities>
+* **Inwoner wil geen hulp**: <Geen Definities>
+* **Inwoner probeert het zelf op te lossen**: <Geen Definities>
+* **Inwoner heeft betaald/betalingsregeling getroffen voor oppakken melding**: <Geen Definities>
+* **Inwoner heeft zelf betaald/betalingsregeling getroffen na oppakken melding**: <Geen Definities>
+* **(Budget)advies en/of quick fix**: <Geen Definities>
+* **Inwoner al een ander lopend traject**: <Geen Definities>
+* **Verwijzing financieel**: [bijv. naar schuldhulpverlening, budgetcoach, bewindvoerder]
+* **Voorzien van informatie**: <Geen Definities>
+* **Niet opgepakt: BRP-uitsluiting**: <Geen Definities>
+* **Verwijzing niet-financieel**: [bijv. naar maatschappelijk werk, verslavingszorg, gezinszorg]
+* **Inwoner heeft al ander lopend traject**: [bijv. bij externe netwerkpartner, bij ander onderdeel sociaal domein, is onder bewind]
 
 
 De enumeratie EnumEindresultaat heeft de volgende kenmerken:
@@ -213,16 +250,17 @@ De enumeratie EnumEindresultaat heeft de volgende kenmerken:
 
 Het enumeratie EnumSignaalpartner kent de volgende waarden:
 
-* **energie**: <Geen Definities>
-* **huur**: <Geen Definities>
-* **hypotheek**: <Geen Definities>
-* **CAK_Zorgverzekeringen**: Als de zorgverzekering meer dan 6 maanden niet is betaald, wordt deze door CAK overgenomen.
-* **zorg**: <Geen Definities>
-* **water**: <Geen Definities>
+* **Energie**: <Geen Definities>
+* **Huur**: <Geen Definities>
+* **Hypotheek**: <Geen Definities>
+* **CAK Zorgverzekeringen**: Als de zorgverzekering meer dan 6 maanden niet is betaald, wordt deze door CAK overgenomen.
+* **Zorg**: <Geen Definities>
+* **Water**: <Geen Definities>
 * **DUO**: <Geen Definities>
 * **Belastingdienst**: <Geen Definities>
-* **CAK_EigenBijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. Zie convenant CAK Wmo en WLZ.
+* **CAK Eigen bijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. Zie convenant CAK Wmo en WLZ.
 * **Overige**: <Geen Definities>
+* **Dienst Toeslagen**: <Geen Definities>
 
 
 De enumeratie EnumSignaalpartner heeft de volgende kenmerken:
@@ -230,6 +268,33 @@ De enumeratie EnumSignaalpartner heeft de volgende kenmerken:
 | Kenmerk | Waarde |
 | :--- | :------ |
 | name | EnumSignaalpartner |
+| bron |  |
+| version | 1.0 |
+
+
+
+### EnumSignaalstatus
+> **Definitie EnumSignaalstatus:** 
+>
+> Geen Definitie
+
+Het enumeratie EnumSignaalstatus kent de volgende waarden:
+
+* **Nog niet opgepakt**: <Geen Definities>
+* **Onterecht signaal**: <Geen Definities>
+* **Overleden**: <Geen Definities>
+* **Woont niet in gemeente**: <Geen Definities>
+* **Herhaalde melding**: <Geen Definities>
+* **Niet opgepakt**: <Geen Definities>
+* **Opgepakt**: <Geen Definities>
+* **Woont op een ander adres binnen gemeente**: <Geen Definities>
+
+
+De enumeratie EnumSignaalstatus heeft de volgende kenmerken:
+
+| Kenmerk | Waarde |
+| :--- | :------ |
+| name | EnumSignaalstatus |
 | bron |  |
 | version | 1.0 |
 
