@@ -38,7 +38,10 @@ Attributen van objecttype {{ class.name }}:
 
 Het enumeratie {{ enumeration.name }} kent de volgende waarden:
 
-{% for literal in enumeration.literals %}{% if literal.name is not none %}* **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)|fix_and_format()|set_url()  }}{% endif %}
+{% for literal in enumeration.literals | sort(attribute='name') %}
+  {% if literal.name is not none %}
+  * **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)|fix_and_format()|set_url()  }}
+  {% endif %}
 {% endfor %}
 
 De enumeratie {{ enumeration.name }} heeft de volgende kenmerken:

@@ -692,11 +692,26 @@ Attributen van objecttype WSNP-verklaring:
 
 Het enumeratie EnumBegeleidingssoort kent de volgende waarden:
 
-* **Budgetcoaching**: Het bijbrengen van financi&#235;le kennis en vaardigheden zodat een persoon in staat is om zijn eigen geldzaken zelfstandig te regelen (al dan niet met medewerking van derden).
-* **Budgetbeheer**: Het beheren van de inkomsten en het verrichten van betalingen. Dit met als doel om vaste lasten op tijd te betalen om zo te voorkomen dat schulden en betalingsachterstanden ontstaan en/of oplopen.
-* **Beschermingsbewind**: Beschermingsbewind is een wettelijke maatregel die bedoeld is om iemands financi&#235;le belangen, volledig of gedeeltelijk, te beschermen als diegene daar zelf niet toe in staat is. Het is bedoeld voor meerderjarigen die niet in staat zijn om hun eigen vermogen te beheren doordat ze:<br>• een lichamelijke of geestelijke beperking hebben;<br>• hun bezit (dreigen te) verkwisten of problematische schulden hebben.<br>De kantonrechter beslist of iemand beschermingsbewind nodig heeft. Na uitspraak van de kantonrechter wordt<br>een bewindvoerder verantwoordelijk om  alle handelingen te verrichten die<br>aan een goed bewind bijdragen en om betrokkene in en buiten rechte te<br>vertegenwoordigen.
-* **Lange Termijn Begeleiding (DFD)**: <font color="#1e1d3a">Het doel van Duurzame Financi&#235;le Dienstverlening (DFD) is om de inkomsten en uitgaven van een inwoner in evenwicht te brengen als de schulden (nog) niet duurzaam opgelost kunnen worden.</font>
-* **Budgetbegeleiding**: Verbeteren financi&#235;le kennis en vaardigheden, door: verhogen van zelfredzaamheid door de financiele vaardigheden, kennis en inzicht van de hulpvrager te ontwikkelen d.m.v. budgetbegeleiding en training.
+
+  
+  * **Beschermingsbewind**: Beschermingsbewind is een wettelijke maatregel die bedoeld is om iemands financi&#235;le belangen, volledig of gedeeltelijk, te beschermen als diegene daar zelf niet toe in staat is. Het is bedoeld voor meerderjarigen die niet in staat zijn om hun eigen vermogen te beheren doordat ze:<br>• een lichamelijke of geestelijke beperking hebben;<br>• hun bezit (dreigen te) verkwisten of problematische schulden hebben.<br>De kantonrechter beslist of iemand beschermingsbewind nodig heeft. Na uitspraak van de kantonrechter wordt<br>een bewindvoerder verantwoordelijk om  alle handelingen te verrichten die<br>aan een goed bewind bijdragen en om betrokkene in en buiten rechte te<br>vertegenwoordigen.
+  
+
+  
+  * **Budgetbegeleiding**: Verbeteren financi&#235;le kennis en vaardigheden, door: verhogen van zelfredzaamheid door de financiele vaardigheden, kennis en inzicht van de hulpvrager te ontwikkelen d.m.v. budgetbegeleiding en training.
+  
+
+  
+  * **Budgetbeheer**: Het beheren van de inkomsten en het verrichten van betalingen. Dit met als doel om vaste lasten op tijd te betalen om zo te voorkomen dat schulden en betalingsachterstanden ontstaan en/of oplopen.
+  
+
+  
+  * **Budgetcoaching**: Het bijbrengen van financi&#235;le kennis en vaardigheden zodat een persoon in staat is om zijn eigen geldzaken zelfstandig te regelen (al dan niet met medewerking van derden).
+  
+
+  
+  * **Lange Termijn Begeleiding (DFD)**: <font color="#1e1d3a">Het doel van Duurzame Financi&#235;le Dienstverlening (DFD) is om de inkomsten en uitgaven van een inwoner in evenwicht te brengen als de schulden (nog) niet duurzaam opgelost kunnen worden.</font>
+  
 
 
 De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
@@ -716,8 +731,14 @@ De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
 
 Het enumeratie EnumBeschikkingssoort kent de volgende waarden:
 
-* **Afwijzingsbeschikking**: <Geen Definities>
-* **Toelatingsbeschikking**: <Geen Definities>
+
+  
+  * **Afwijzingsbeschikking**: <Geen Definities>
+  
+
+  
+  * **Toelatingsbeschikking**: <Geen Definities>
+  
 
 
 De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:
@@ -737,11 +758,26 @@ De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:
 
 Het enumeratie EnumOplossingssoort kent de volgende waarden:
 
-* **Betalingsregeling**: Het volledig (100%) betalen van de vordering(en) in een aantal termijnen.
-* **Herfinanciering**: Een financieringsovereenkomst waarmee de vastgestelde vordering(en) ineens en volledig (100%) wordt/worden voldaan.
-* **Saneringskrediet**: Het ineens afkopen van de totale schuldenlast tegen finale kwijting, op basis van betaling van een percentage van de totale schuldenlast.De afbetaling aan de schuldeisers is ineens en wordt gedaan met een krediet. De afsluiting van een saneringskrediet gaat via de eigen organisatie als dat een gemeentelijke of andere kredietbank is of de schuldhulpverlener bemiddelt naar een (gemeentelijke) kredietbank, een reguliere bank of een andere financieringsmogelijkheid (bijv. priv&#233;persoon of werkgever), die vervolgens het saneringskrediet verstrekt.
-* **Schuldbemiddeling**: Het gedeeltelijk, in termijnen terugbetalen van de totale schuldenlast naar draagkracht, tegen finale kwijting.
-* **0%-aanbod**: In een 0%-regeling erkent men dat de schuldenaar geen financi&#235;le ruimte heeft om schulden af te lossen, en daarom wordt er geen aflossing van de schulden gevraagd gedurende de looptijd van de regeling. Na afloop van de afgesproken periode kunnen de schulden, mits aan alle voorwaarden is voldaan, worden kwijtgescholden.
+
+  
+  * **0%-aanbod**: In een 0%-regeling erkent men dat de schuldenaar geen financi&#235;le ruimte heeft om schulden af te lossen, en daarom wordt er geen aflossing van de schulden gevraagd gedurende de looptijd van de regeling. Na afloop van de afgesproken periode kunnen de schulden, mits aan alle voorwaarden is voldaan, worden kwijtgescholden.
+  
+
+  
+  * **Betalingsregeling**: Het volledig (100%) betalen van de vordering(en) in een aantal termijnen.
+  
+
+  
+  * **Herfinanciering**: Een financieringsovereenkomst waarmee de vastgestelde vordering(en) ineens en volledig (100%) wordt/worden voldaan.
+  
+
+  
+  * **Saneringskrediet**: Het ineens afkopen van de totale schuldenlast tegen finale kwijting, op basis van betaling van een percentage van de totale schuldenlast.De afbetaling aan de schuldeisers is ineens en wordt gedaan met een krediet. De afsluiting van een saneringskrediet gaat via de eigen organisatie als dat een gemeentelijke of andere kredietbank is of de schuldhulpverlener bemiddelt naar een (gemeentelijke) kredietbank, een reguliere bank of een andere financieringsmogelijkheid (bijv. priv&#233;persoon of werkgever), die vervolgens het saneringskrediet verstrekt.
+  
+
+  
+  * **Schuldbemiddeling**: Het gedeeltelijk, in termijnen terugbetalen van de totale schuldenlast naar draagkracht, tegen finale kwijting.
+  
 
 
 De enumeratie EnumOplossingssoort heeft de volgende kenmerken:
@@ -761,10 +797,22 @@ De enumeratie EnumOplossingssoort heeft de volgende kenmerken:
 
 Het enumeratie EnumSchuldensoort kent de volgende waarden:
 
-* **Zorg**: Mogelijke zorgkosten omvatten premies ziektskostenverzekering, kosten eigen bijdragen, en niet verzekerde zorg zoals voor: fysiotherapie, psychologische hulp, tandartszorg, hulpmiddelen en kraamzorg.
-* **Publiek**: Publieke organisaties krijgen het kenmerk 'Publiek' ; als een schuldregeling wordt opgestart wordt dan altijd het BSN meegestuurd.
-* **Nuts**: Bij organisaties die werken met meterstanden wordt het kenmerk 'Nuts' geregistreerd. De schuldhulpverlenende organisatie is dan verplicht om de meterstanden mee te sturen als een schuldregeling wordt opgestart.
-* **Overig**: Alle schulden die niet onder &#233;&#233;n van de andere categorie&#235;n zijn in te delen.
+
+  
+  * **Nuts**: Bij organisaties die werken met meterstanden wordt het kenmerk 'Nuts' geregistreerd. De schuldhulpverlenende organisatie is dan verplicht om de meterstanden mee te sturen als een schuldregeling wordt opgestart.
+  
+
+  
+  * **Overig**: Alle schulden die niet onder &#233;&#233;n van de andere categorie&#235;n zijn in te delen.
+  
+
+  
+  * **Publiek**: Publieke organisaties krijgen het kenmerk 'Publiek' ; als een schuldregeling wordt opgestart wordt dan altijd het BSN meegestuurd.
+  
+
+  
+  * **Zorg**: Mogelijke zorgkosten omvatten premies ziektskostenverzekering, kosten eigen bijdragen, en niet verzekerde zorg zoals voor: fysiotherapie, psychologische hulp, tandartszorg, hulpmiddelen en kraamzorg.
+  
 
 
 De enumeratie EnumSchuldensoort heeft de volgende kenmerken:
@@ -784,15 +832,42 @@ De enumeratie EnumSchuldensoort heeft de volgende kenmerken:
 
 Het enumeratie EnumUitstroomreden kent de volgende waarden:
 
-* **Overleden**: Client is overleden
-* **Verhuisd**: Client is verhuisd naar een andere gemeente
-* **Nietverschenen**: Client is niet verschenen
-* **Ingetrokken**: Client trekt aanvraag in
-* **Niet passend**: Dienstverlening niet (meer) passend
-* **Overig**: <Geen Definities>
-* **Voldoet niet**: Client voldoet niet aan verplichtingen
-* **Afgerond**: Schuldtraject positief doorlopen en afgerond
-* **Zelf**: Client heeft schulden zelf geregeld
+
+  
+  * **Afgerond**: Schuldtraject positief doorlopen en afgerond
+  
+
+  
+  * **Ingetrokken**: Client trekt aanvraag in
+  
+
+  
+  * **Niet passend**: Dienstverlening niet (meer) passend
+  
+
+  
+  * **Nietverschenen**: Client is niet verschenen
+  
+
+  
+  * **Overig**: <Geen Definities>
+  
+
+  
+  * **Overleden**: Client is overleden
+  
+
+  
+  * **Verhuisd**: Client is verhuisd naar een andere gemeente
+  
+
+  
+  * **Voldoet niet**: Client voldoet niet aan verplichtingen
+  
+
+  
+  * **Zelf**: Client heeft schulden zelf geregeld
+  
 
 
 De enumeratie EnumUitstroomreden heeft de volgende kenmerken:
@@ -812,10 +887,22 @@ De enumeratie EnumUitstroomreden heeft de volgende kenmerken:
 
 Het enumeratie geslacht kent de volgende waarden:
 
-* **Man**: <Geen Definities>
-* **Vrouw**: <Geen Definities>
-* **Onbekend**: <Geen Definities>
-* **Leeg**: <Geen Definities>
+
+  
+  * **Leeg**: <Geen Definities>
+  
+
+  
+  * **Man**: <Geen Definities>
+  
+
+  
+  * **Onbekend**: <Geen Definities>
+  
+
+  
+  * **Vrouw**: <Geen Definities>
+  
 
 
 De enumeratie geslacht heeft de volgende kenmerken:

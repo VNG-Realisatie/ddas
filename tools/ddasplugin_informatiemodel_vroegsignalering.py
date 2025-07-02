@@ -42,7 +42,7 @@ class DDASPluginInformatiemodel(Plugin):
 
         # Kopie schuldhulpverlening model
         logger.info("Copying the root package.")
-        kopie = root_package.get_copy(None, materialize_generalizations=True)
+        kopie = root_package.get_copy(None, materialize_generalizations=False)
 
         # return the client class to the original package
         # and remove the client class from the root package

@@ -19,9 +19,7 @@ Attributen van objecttype Client:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| burgerservicenummer | AN9 |  | Nee |
 | Geboortedatum | Datum | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
-| geslachtsaanduiding |  | Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
 | Postcode | AN6 |  | Nee |
@@ -120,37 +118,11 @@ Attributen van objecttype Vroegsignaalzaak:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| archiefnominatie | AN1 | <font color="#610e6a">Indicatie of het zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) gearchiveerd dient te worden</font> | Nee |
 | datum_opgepakt | Date |  | Nee |
-| datumEinde |  | <font color="#610e6a">De datum waarop de uitvoering van de zaak afgerond is.</font> | Nee |
-| datumEindeGepland |  | <font color="#610e6a">De datum waarop volgens de planning verwacht wordt dat de zaak afgerond wordt.</font> | Nee |
-| datumEindeUiterlijkeAfdoening |  | <font color="#610e6a">De laatste datum waarop volgens wet- en regelgeving de zaak afgerond dient te zijn.</font> | Nee |
-| datumLaatsteBetaling |  | <font color="#610e6a">De datum waarop de meest recente betaling is verwerkt van kosten die gemoeid zijn met behandeling van de zaak.</font> | Nee |
-| datumPublicatie | datum | <font color="#610e6a">Datum waarop (het starten van) de zaak gepubliceerd is of wordt.</font> | Nee |
-| datumRegistratie |  | <font color="#610e6a">De datum waarop de zaakbehandelende organisatie de ZAAK heeft geregistreerd</font> | Nee |
-| datumStart |  | <font color="#610e6a">De datum waarop met de uitvoering van de zaak is gestart.</font> | Nee |
-| datumVernietigingDossier |  | <font color="#610e6a">De datum waarop het, al dan niet gearchiveerde, zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) vernietigd mag worden.</font> | Nee |
-| document |  |  | Nee |
-| duurVerlenging | N3 |  | Nee |
 | einddatum_matchingperiode | Date |  | Nee |
-| indicatieBetaling | AN12 | <font color="#610e6a">Indicatie of de, met behandeling van de zaak gemoeide, kosten betaald zijn door de desbetreffende betrokkene.</font> | Nee |
-| indicatieDeelzaken | A1 | <font color="#610e6a">De aanduiding of een ZAAK behandeld wordt in deelzaken.</font> | Nee |
-| indicatieOpschorting | AN1 |  | Nee |
-| leges | AN100 |  | Nee |
 | matchingsdatum | Date |  | Nee |
-| omschrijving | AN80 | <font color="#610e6a">Een korte omschrijving van de zaak.</font> | Nee |
-| omschrijvingResultaat | AN80 | <font color="#610e6a">Een korte omschrijving wat het resultaat van de zaak inhoudt.</font> | Nee |
-| redenOpschorting | AN200 |  | Nee |
-| redenVerlenging | AN200 |  | Nee |
 | resultaat | Enumeratie: "EnumEindresultaat" |  | Nee |
 | startdatum_matchtingperiode | Date |  | Nee |
-| status |  |  | Nee |
-| toelichting | AN1000 | <font color="#610e6a">Een toelichting op de zaak.</font> | Nee |
-| toelichtingResultaat | AN1000 | <font color="#610e6a">Een toelichting op wat het resultaat van de zaak inhoudt.</font> | Nee |
-| type |  |  | Nee |
-| vertrouwelijkheid | AN40 |  | Nee |
-| zaakidentificatie | AN40 | <font color="#610e6a">Een identificatie van de zaak.</font> | Nee |
-| zaakniveau | N1 | <font color="#610e6a">Het niveau van een ZAAK in de hierarchie van hoofdzaak met deelzaken.</font> | Nee |
 
 
 
@@ -167,13 +139,34 @@ Attributen van objecttype Vroegsignaalzaak:
 
 Het enumeratie EnumContactsoort kent de volgende waarden:
 
-* **Mail**: <Geen Definities>
-* **Brief**: <Geen Definities>
-* **SMS/Whatsapp**: <Geen Definities>
-* **Telefoon**: <Geen Definities>
-* **Huisbezoek**: <Geen Definities>
-* **Kaartje**: <Geen Definities>
-* **Overige**: <Geen Definities>
+
+  
+  * **Brief**: <Geen Definities>
+  
+
+  
+  * **Huisbezoek**: <Geen Definities>
+  
+
+  
+  * **Kaartje**: <Geen Definities>
+  
+
+  
+  * **Mail**: <Geen Definities>
+  
+
+  
+  * **Overige**: <Geen Definities>
+  
+
+  
+  * **SMS/Whatsapp**: <Geen Definities>
+  
+
+  
+  * **Telefoon**: <Geen Definities>
+  
 
 
 De enumeratie EnumContactsoort heeft de volgende kenmerken:
@@ -193,9 +186,18 @@ De enumeratie EnumContactsoort heeft de volgende kenmerken:
 
 Het enumeratie EnumDagdeel kent de volgende waarden:
 
-* **Ochtend**: <Geen Definities>
-* **Middag**: <Geen Definities>
-* **Avond**: <Geen Definities>
+
+  
+  * **Avond**: <Geen Definities>
+  
+
+  
+  * **Middag**: <Geen Definities>
+  
+
+  
+  * **Ochtend**: <Geen Definities>
+  
 
 
 De enumeratie EnumDagdeel heeft de volgende kenmerken:
@@ -215,22 +217,70 @@ De enumeratie EnumDagdeel heeft de volgende kenmerken:
 
 Het enumeratie EnumEindresultaat kent de volgende waarden:
 
-* **Niet opgepakt: inwoner wil geen contact**: <Geen Definities>
-* **Niet opgepakt: geen capaciteit**: <Geen Definities>
-* **Niet opgepakt**: [overig]
-* **Inwoner al bekend bij schuldhulpverlening**: <Geen Definities>
-* **Geen contact (meer) kunnen krijgen**: <Geen Definities>
-* **Inwoner wil geen hulp**: <Geen Definities>
-* **Inwoner probeert het zelf op te lossen**: <Geen Definities>
-* **Inwoner heeft betaald/betalingsregeling getroffen voor oppakken melding**: <Geen Definities>
-* **Inwoner heeft zelf betaald/betalingsregeling getroffen na oppakken melding**: <Geen Definities>
-* **(Budget)advies en/of quick fix**: <Geen Definities>
-* **Inwoner al een ander lopend traject**: <Geen Definities>
-* **Verwijzing financieel**: [bijv. naar schuldhulpverlening, budgetcoach, bewindvoerder]
-* **Voorzien van informatie**: <Geen Definities>
-* **Niet opgepakt: BRP-uitsluiting**: <Geen Definities>
-* **Verwijzing niet-financieel**: [bijv. naar maatschappelijk werk, verslavingszorg, gezinszorg]
-* **Inwoner heeft al ander lopend traject**: [bijv. bij externe netwerkpartner, bij ander onderdeel sociaal domein, is onder bewind]
+
+  
+  * **(Budget)advies en/of quick fix**: <Geen Definities>
+  
+
+  
+  * **Geen contact (meer) kunnen krijgen**: <Geen Definities>
+  
+
+  
+  * **Inwoner al bekend bij schuldhulpverlening**: <Geen Definities>
+  
+
+  
+  * **Inwoner al een ander lopend traject**: <Geen Definities>
+  
+
+  
+  * **Inwoner heeft al ander lopend traject**: [bijv. bij externe netwerkpartner, bij ander onderdeel sociaal domein, is onder bewind]
+  
+
+  
+  * **Inwoner heeft betaald/betalingsregeling getroffen voor oppakken melding**: <Geen Definities>
+  
+
+  
+  * **Inwoner heeft zelf betaald/betalingsregeling getroffen na oppakken melding**: <Geen Definities>
+  
+
+  
+  * **Inwoner probeert het zelf op te lossen**: <Geen Definities>
+  
+
+  
+  * **Inwoner wil geen hulp**: <Geen Definities>
+  
+
+  
+  * **Niet opgepakt**: [overig]
+  
+
+  
+  * **Niet opgepakt: BRP-uitsluiting**: <Geen Definities>
+  
+
+  
+  * **Niet opgepakt: geen capaciteit**: <Geen Definities>
+  
+
+  
+  * **Niet opgepakt: inwoner wil geen contact**: <Geen Definities>
+  
+
+  
+  * **Verwijzing financieel**: [bijv. naar schuldhulpverlening, budgetcoach, bewindvoerder]
+  
+
+  
+  * **Verwijzing niet-financieel**: [bijv. naar maatschappelijk werk, verslavingszorg, gezinszorg]
+  
+
+  
+  * **Voorzien van informatie**: <Geen Definities>
+  
 
 
 De enumeratie EnumEindresultaat heeft de volgende kenmerken:
@@ -250,17 +300,50 @@ De enumeratie EnumEindresultaat heeft de volgende kenmerken:
 
 Het enumeratie EnumSignaalpartner kent de volgende waarden:
 
-* **Energie**: <Geen Definities>
-* **Huur**: <Geen Definities>
-* **Hypotheek**: <Geen Definities>
-* **CAK Zorgverzekeringen**: Als de zorgverzekering meer dan 6 maanden niet is betaald, wordt deze door CAK overgenomen.
-* **Zorg**: <Geen Definities>
-* **Water**: <Geen Definities>
-* **DUO**: <Geen Definities>
-* **Belastingdienst**: <Geen Definities>
-* **CAK Eigen bijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. Zie convenant CAK Wmo en WLZ.
-* **Overige**: <Geen Definities>
-* **Dienst Toeslagen**: <Geen Definities>
+
+  
+  * **Belastingdienst**: <Geen Definities>
+  
+
+  
+  * **CAK Eigen bijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. Zie convenant CAK Wmo en WLZ.
+  
+
+  
+  * **CAK Zorgverzekeringen**: Als de zorgverzekering meer dan 6 maanden niet is betaald, wordt deze door CAK overgenomen.
+  
+
+  
+  * **Dienst Toeslagen**: <Geen Definities>
+  
+
+  
+  * **DUO**: <Geen Definities>
+  
+
+  
+  * **Energie**: <Geen Definities>
+  
+
+  
+  * **Huur**: <Geen Definities>
+  
+
+  
+  * **Hypotheek**: <Geen Definities>
+  
+
+  
+  * **Overige**: <Geen Definities>
+  
+
+  
+  * **Water**: <Geen Definities>
+  
+
+  
+  * **Zorg**: <Geen Definities>
+  
 
 
 De enumeratie EnumSignaalpartner heeft de volgende kenmerken:
@@ -280,14 +363,38 @@ De enumeratie EnumSignaalpartner heeft de volgende kenmerken:
 
 Het enumeratie EnumSignaalstatus kent de volgende waarden:
 
-* **Nog niet opgepakt**: <Geen Definities>
-* **Onterecht signaal**: <Geen Definities>
-* **Overleden**: <Geen Definities>
-* **Woont niet in gemeente**: <Geen Definities>
-* **Herhaalde melding**: <Geen Definities>
-* **Niet opgepakt**: <Geen Definities>
-* **Opgepakt**: <Geen Definities>
-* **Woont op een ander adres binnen gemeente**: <Geen Definities>
+
+  
+  * **Herhaalde melding**: <Geen Definities>
+  
+
+  
+  * **Niet opgepakt**: <Geen Definities>
+  
+
+  
+  * **Nog niet opgepakt**: <Geen Definities>
+  
+
+  
+  * **Onterecht signaal**: <Geen Definities>
+  
+
+  
+  * **Opgepakt**: <Geen Definities>
+  
+
+  
+  * **Overleden**: <Geen Definities>
+  
+
+  
+  * **Woont niet in gemeente**: <Geen Definities>
+  
+
+  
+  * **Woont op een ander adres binnen gemeente**: <Geen Definities>
+  
 
 
 De enumeratie EnumSignaalstatus heeft de volgende kenmerken:

@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json",
+    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main//json_schema_Uitwisselmodel.json",
     "title": "Uitwisselmodel",
     "type": "object",
     "description": "Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.",
@@ -76,101 +76,6 @@
                             "einddatum_matchingperiode": {
                                 "$ref": "#/$defs/datum"
                             },
-                            "document": {
-                                "type": "string"
-                            },
-                            "zaakidentificatie": {
-                                "description": "<font color=\"#610e6a\">Een identificatie van de zaak.</font>",
-                                "type": "string"
-                            },
-                            "datumEinde": {
-                                "description": "<font color=\"#610e6a\">De datum waarop de uitvoering van de zaak afgerond is.</font>",
-                                "type": "string"
-                            },
-                            "datumEindeGepland": {
-                                "description": "<font color=\"#610e6a\">De datum waarop volgens de planning verwacht wordt dat de zaak afgerond wordt.</font>",
-                                "type": "string"
-                            },
-                            "omschrijving": {
-                                "description": "<font color=\"#610e6a\">Een korte omschrijving van de zaak.</font>",
-                                "type": "string"
-                            },
-                            "omschrijvingResultaat": {
-                                "description": "<font color=\"#610e6a\">Een korte omschrijving wat het resultaat van de zaak inhoudt.</font>",
-                                "type": "string"
-                            },
-                            "toelichtingResultaat": {
-                                "description": "<font color=\"#610e6a\">Een toelichting op wat het resultaat van de zaak inhoudt.</font>",
-                                "type": "string"
-                            },
-                            "datumStart": {
-                                "description": "<font color=\"#610e6a\">De datum waarop met de uitvoering van de zaak is gestart.</font>",
-                                "type": "string"
-                            },
-                            "toelichting": {
-                                "description": "<font color=\"#610e6a\">Een toelichting op de zaak.</font>",
-                                "type": "string"
-                            },
-                            "datumEindeUiterlijkeAfdoening": {
-                                "description": "<font color=\"#610e6a\">De laatste datum waarop volgens wet- en regelgeving de zaak afgerond dient te zijn.</font>",
-                                "type": "string"
-                            },
-                            "zaakniveau": {
-                                "description": "<font color=\"#610e6a\">Het niveau van een ZAAK in de hierarchie van hoofdzaak met deelzaken.</font>",
-                                "type": "string"
-                            },
-                            "indicatieDeelzaken": {
-                                "description": "<font color=\"#610e6a\">De aanduiding of een ZAAK behandeld wordt in deelzaken.</font>",
-                                "type": "string"
-                            },
-                            "datumRegistratie": {
-                                "description": "<font color=\"#610e6a\">De datum waarop de zaakbehandelende organisatie de ZAAK heeft geregistreerd</font>",
-                                "type": "string"
-                            },
-                            "datumPublicatie": {
-                                "description": "<font color=\"#610e6a\">Datum waarop (het starten van) de zaak gepubliceerd is of wordt.</font>",
-                                "$ref": "#/$defs/datum"
-                            },
-                            "archiefnominatie": {
-                                "description": "<font color=\"#610e6a\">Indicatie of het zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) gearchiveerd dient te worden</font>",
-                                "type": "string"
-                            },
-                            "datumVernietigingDossier": {
-                                "description": "<font color=\"#610e6a\">De datum waarop het, al dan niet gearchiveerde, zaakdossier (de ZAAK met alle bijbehorende DOCUMENTen) vernietigd mag worden.</font>",
-                                "type": "string"
-                            },
-                            "indicatieBetaling": {
-                                "description": "<font color=\"#610e6a\">Indicatie of de, met behandeling van de zaak gemoeide, kosten betaald zijn door de desbetreffende betrokkene.</font>",
-                                "type": "string"
-                            },
-                            "datumLaatsteBetaling": {
-                                "description": "<font color=\"#610e6a\">De datum waarop de meest recente betaling is verwerkt van kosten die gemoeid zijn met behandeling van de zaak.</font>",
-                                "type": "string"
-                            },
-                            "indicatieOpschorting": {
-                                "type": "string"
-                            },
-                            "duurVerlenging": {
-                                "type": "string"
-                            },
-                            "redenOpschorting": {
-                                "type": "string"
-                            },
-                            "redenVerlenging": {
-                                "type": "string"
-                            },
-                            "vertrouwelijkheid": {
-                                "type": "string"
-                            },
-                            "leges": {
-                                "type": "string"
-                            },
-                            "type": {
-                                "type": "string"
-                            },
-                            "status": {
-                                "type": "string"
-                            },
                             "contactpogingen": {
                                 "type": "array",
                                 "items": {
@@ -200,13 +105,6 @@
                         "type": "object",
                         "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.",
                         "properties": {
-                            "geslachtsaanduiding": {
-                                "description": "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.",
-                                "type": "string"
-                            },
-                            "burgerservicenummer": {
-                                "type": "string"
-                            },
                             "Geboortedatum": {
                                 "description": "De datum waarop de ander natuurlijk persoon is geboren.",
                                 "$ref": "#/$defs/datum"
@@ -234,9 +132,9 @@
         }
     },
     "required": [
-        "einddatumLevering",
         "aanleverdatumEnTijd",
         "codeGegevensleverancier",
+        "einddatumLevering",
         "startdatumLevering"
     ],
     "additionalProperties": false,
@@ -300,17 +198,12 @@
                 "Inwoner heeft al ander lopend traject"
             ]
         },
-        "EnumSignaalstatus": {
+        "EnumDagdeel": {
             "type": "string",
             "enum": [
-                "Nog niet opgepakt",
-                "Onterecht signaal",
-                "Overleden",
-                "Woont niet in gemeente",
-                "Herhaalde melding",
-                "Niet opgepakt",
-                "Opgepakt",
-                "Woont op een ander adres binnen gemeente"
+                "Ochtend",
+                "Middag",
+                "Avond"
             ]
         },
         "EnumSignaalpartner": {
@@ -330,12 +223,17 @@
                 "Dienst Toeslagen"
             ]
         },
-        "EnumDagdeel": {
+        "EnumSignaalstatus": {
             "type": "string",
             "enum": [
-                "Ochtend",
-                "Middag",
-                "Avond"
+                "Nog niet opgepakt",
+                "Onterecht signaal",
+                "Overleden",
+                "Woont niet in gemeente",
+                "Herhaalde melding",
+                "Niet opgepakt",
+                "Opgepakt",
+                "Woont op een ander adres binnen gemeente"
             ]
         }
     }

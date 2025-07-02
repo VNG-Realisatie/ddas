@@ -206,15 +206,35 @@ tasks:
           IM_SCHEMA: "{{.IM_SCHEMA_VROEGSIGNALERING}}"
     shell: bash
 
-  deploy-docs:
-    desc: "Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
+  deploy-docs-schuldhulp:
+    desc: "Schuldhulp: Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
     deps: [generate-docs]
     cmds:
-      - echo "Building and deploying MkDocs and Mike..."
+      - echo "Schuldhulp, Building and deploying MkDocs and Mike..."
+      - cp mkdocs.schuldhulp.yml mkdocs.yml
       - mkdocs build
       - mike deploy "{{.VERSION}}"
       - mike set-default "{{.VERSION}}"
-      - echo "Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
+      - echo "Schuldhulp, Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
+    shell: bash
+
+  deploy-docs-vroegsignalering:
+    desc: "Vroegsignalering: Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
+    deps: [generate-docs]
+    cmds:
+      - echo "Vroegsignalering, Building and deploying MkDocs and Mike..."
+      - cp mkdocs.vroegsignalering.yml mkdocs.yml
+      - mkdocs build
+      - mike deploy "{{.VERSION}}"
+      - mike set-default "{{.VERSION}}"
+      - echo "Vroegsignalering, Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
+    shell: bash
+
+  deploy-docs:
+    desc: "Build and deploy all the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
+    cmds:
+      - task: deploy-docs-schuldhulp
+      - task: deploy-docs-vroegsignalering
     shell: bash
 
   publish-docs:
