@@ -27,7 +27,7 @@ Alle bestanden dienen te worden aangeleverd in [UTF-8-formaat](https://www.forum
 Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een [downloadversie](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/json_schema_Uitwisselmodel.json) beschikbaar.
 
 ```
-{!../###VERSION###/json_schema_Uitwisselmodel.json!}
+{!../vroegsignalering/###VERSION###/json_schema_Uitwisselmodel.json!}
 
 ```
 
@@ -38,7 +38,7 @@ Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/enkelvoudigVoorbeeld.json).
 
 ```
-{!../###VERSION###/enkelvoudigVoorbeeld.json!}
+{!../vroegsignalering/###VERSION###/enkelvoudigVoorbeeld.json!}
 
 ```
 
@@ -47,7 +47,7 @@ Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/meervoudigVoorbeeld.json).
 
 ```
-{!../###VERSION###/meervoudigVoorbeeld.json!}
+{!../vroegsignalering/###VERSION###/meervoudigVoorbeeld.json!}
 
 ```
 
@@ -57,14 +57,14 @@ Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpve
 
 #### Samenloop bestand 1
 ```
-{!../###VERSION###/samenloopVoorbeeldDeel1.json!}
+{!../vroegsignalering/###VERSION###/samenloopVoorbeeldDeel1.json!}
 
 ```
 
 #### Samenloop bestand 2
 
 ```
-{!../###VERSION###/samenloopVoorbeeldDeel2.json!}
+{!../vroegsignalering/###VERSION###/samenloopVoorbeeldDeel2.json!}
 
 ```
 
@@ -73,6 +73,6 @@ Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpve
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/###VERSION###/meerdereLeveringenVoorbeeld.json).
 
 ```
-{!../###VERSION###/meerdereLeveringenVoorbeeld.json!}
+{!../vroegsignalering/###VERSION###/meerdereLeveringenVoorbeeld.json!}
 
 ```

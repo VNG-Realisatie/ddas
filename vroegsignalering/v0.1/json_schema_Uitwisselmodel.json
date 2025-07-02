@@ -122,8 +122,8 @@
                     }
                 },
                 "required": [
-                    "signaalpartner",
-                    "client"
+                    "client",
+                    "signaalpartner"
                 ],
                 "additionalProperties": false
             },
@@ -132,10 +132,10 @@
         }
     },
     "required": [
-        "aanleverdatumEnTijd",
         "codeGegevensleverancier",
-        "einddatumLevering",
-        "startdatumLevering"
+        "aanleverdatumEnTijd",
+        "startdatumLevering",
+        "einddatumLevering"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -176,6 +176,14 @@
                 "Overige"
             ]
         },
+        "EnumDagdeel": {
+            "type": "string",
+            "enum": [
+                "Ochtend",
+                "Middag",
+                "Avond"
+            ]
+        },
         "EnumEindresultaat": {
             "type": "string",
             "description": "Enumeratie met de soorten Eindresultaten van een Vroegsignaalzaak.",
@@ -198,12 +206,17 @@
                 "Inwoner heeft al ander lopend traject"
             ]
         },
-        "EnumDagdeel": {
+        "EnumSignaalstatus": {
             "type": "string",
             "enum": [
-                "Ochtend",
-                "Middag",
-                "Avond"
+                "Nog niet opgepakt",
+                "Onterecht signaal",
+                "Overleden",
+                "Woont niet in gemeente",
+                "Herhaalde melding",
+                "Niet opgepakt",
+                "Opgepakt",
+                "Woont op een ander adres binnen gemeente"
             ]
         },
         "EnumSignaalpartner": {
@@ -221,19 +234,6 @@
                 "CAK Eigen bijdrage",
                 "Overige",
                 "Dienst Toeslagen"
-            ]
-        },
-        "EnumSignaalstatus": {
-            "type": "string",
-            "enum": [
-                "Nog niet opgepakt",
-                "Onterecht signaal",
-                "Overleden",
-                "Woont niet in gemeente",
-                "Herhaalde melding",
-                "Niet opgepakt",
-                "Opgepakt",
-                "Woont op een ander adres binnen gemeente"
             ]
         }
     }

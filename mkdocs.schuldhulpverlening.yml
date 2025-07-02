@@ -1,7 +1,7 @@
 site_name: "Data Delen Armoede en Schulden (DDAS): Schuldhulpverlening"
 site_description: De uitwisselspecificatie voor de Data Delen over Armoede en Schulden (DDAS) API
 site_author: Arjen Brienen
-site_dir: site/schuldhulp
+site_dir: site/schuldhulpverlening
 site_url: https://ddas-api.nl
 repo_url: https://github.com/VNG-Realisatie/ddas
 repo_name: GitHub

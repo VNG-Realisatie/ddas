@@ -37,14 +37,16 @@ default: full-deploy
 dotenv: ['.env']
 
 vars:
-  VERSION_DIR: "./{{.VERSION}}"
+  VERSION_DIR_SCHULDHULPVERLENING: "./schuldhulpverlening/{{.VERSION_SCHULDHULPVERLENING}}"
+  VERSION_DIR_VROEGSIGNALERING: "./vroegsignalering/{{.VERSION_VROEGSIGNALERING}}"
   XMI: "data/{{.XMI_FILE}}"
   CRUNCH_UML_DB: "./crunch_uml.db"
   DOCS: "./docs"
   DEFS: "./docs/definities"
   PUBLISH: "false"
-  JSON: "{{.VERSION_DIR}}/{{.JSON_SCHEMA}}"
-  
+  JSON_SCHULDHULPVERLENING: "{{.VERSION_DIR_SCHULDHULPVERLENING}}/{{.JSON_SCHEMA}}"
+  JSON_VROEGSIGNALERING: "{{.VERSION_DIR_VROEGSIGNALERING}}/{{.JSON_SCHEMA}}"
+
 tasks:
   check-tools:
     desc: "Check for pre conditions. Verify required tools are installed."
@@ -84,23 +86,36 @@ tasks:
     cmds:
       - |
         # Valideer invoerparameters
-        echo "Validating input parameter {{.VERSION}} ..."
+        echo "Validating input parameter {{.VERSION_SCHULDHULPVERLENING}} en {{.VERSION_VROEGSIGNALERING}}..."
       - |
-        if [ -z "{{.VERSION}}" ]; then
-          echo "Error: VERSION cannot be empty."
+        if [ -z "{{.VERSION_SCHULDHULPVERLENING}}" ]; then
+          echo "Error: VERSION_SCHULDHULPVERLENING cannot be empty."
           exit 1
         fi
-        if [[ ! "{{.VERSION}}" =~ ^v[0-9]+\.[0-9]+(\.[0-9]+)*$ ]]; then
+        if [[ ! "{{.VERSION_SCHULDHULPVERLENING}}" =~ ^v[0-9]+\.[0-9]+(\.[0-9]+)*$ ]]; then
           echo "Error: Invalid VERSION format. Use v{number}.{number}, e.g., v1.0"
           exit 1
         fi
-        if [ ! -d "{{.VERSION_DIR}}" ]; then
-          echo "Error: Directory '{{.VERSION_DIR}}' does not exist."
+        if [ ! -d "{{.VERSION_DIR_SCHULDHULPVERLENING}}" ]; then
+          echo "Error: Directory '{{.VERSION_DIR_SCHULDHULPVERLENING}}' does not exist."
+          exit 1
+        fi
+        if [ -z "{{.VERSION_VROEGSIGNALERING}}" ]; then
+          echo "Error: VERSION_VROEGSIGNALERING cannot be empty."
+          exit 1
+        fi
+        if [[ ! "{{.VERSION_VROEGSIGNALERING}}" =~ ^v[0-9]+\.[0-9]+(\.[0-9]+)*$ ]]; then
+          echo "Error: Invalid VERSION format. Use v{number}.{number}, e.g., v1.0"
+          exit 1
+        fi
+        if [ ! -d "{{.VERSION_DIR_VROEGSIGNALERING}}" ]; then
+          echo "Error: Directory '{{.VERSION_DIR_VROEGSIGNALERING}}' does not exist."
           exit 1
         fi
       - |
         # Valideer invoerparameters
-        echo "VERSION {{.VERSION}} and Versiondir {{.VERSION_DIR}} are valid..."
+        echo "Vroegsignalering {{.VERSION_VROEGSIGNALERING}} and Versiondir {{.VERSION_DIR_VROEGSIGNALERING}} are valid..."
+        echo "Schuldhulpverlening {{.VERSION_SCHULDHULPVERLENING}} and Versiondir {{.VERSION_DIR_SCHULDHULPVERLENING}} are valid..."
     shell: bash
 
   import-xmi:
@@ -153,13 +168,13 @@ tasks:
           UM_SCHEMA: "{{.UM_SCHEMA_SCHULDHULP}}"
           ROOT_CLASS: "{{.ROOT_CLASS_UM_SCHULDHULP}}"
           SCHEMA_URL: "{{.SCHULDHULP_JSON_SCHEMA_URL}}"
-          JSON: "{{.JSON}}"
+          JSON: "{{.JSON_SCHULDHULPVERLENING}}"
       - task: generate-json-schema-for
         vars:
           UM_SCHEMA: "{{.UM_SCHEMA_VROEGSIGNALERING}}"
           ROOT_CLASS: "{{.ROOT_CLASS_UM_VROEGSIGNALERING}}"
           SCHEMA_URL: "{{.SCHULDHULP_JSON_SCHEMA_URL}}"
-          JSON: "{{.JSON}}"
+          JSON: "{{.JSON_VROEGSIGNALERING}}"
     shell: bash
 
   generate-docs-for:
@@ -186,7 +201,7 @@ tasks:
         done
     shell: bash
     requires:
-      vars: ["USECASE", "UITLEG_TEMPLATE", "IM_SCHEMA"]
+      vars: ["USECASE", "VERSION", "UITLEG_TEMPLATE", "IM_SCHEMA"]
 
   generate-docs:
     desc: "Generate Markdown documentation from the model."
@@ -197,25 +212,28 @@ tasks:
       - task: generate-docs-for
         vars:
           USECASE: "schuldhulpverlening"
+          VERSION: "{{.VERSION_SCHULDHULPVERLENING}}"
           UITLEG_TEMPLATE: "uitleg-schuldhulp.j2"
           IM_SCHEMA: "{{.IM_SCHEMA_SCHULDHULP}}"
       - task: generate-docs-for
         vars:
           USECASE: "vroegsignalering"
+          VERSION: "{{.VERSION_VROEGSIGNALERING}}"
           UITLEG_TEMPLATE: "uitleg-vroegsignalering.j2"
           IM_SCHEMA: "{{.IM_SCHEMA_VROEGSIGNALERING}}"
     shell: bash
 
-  deploy-docs-schuldhulp:
-    desc: "Schuldhulp: Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
+  deploy-docs-schuldhulpverlening:
+    desc: "Schuldhulpverlening: Build and deploy the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
     deps: [generate-docs]
     cmds:
-      - echo "Schuldhulp, Building and deploying MkDocs and Mike..."
-      - cp mkdocs.schuldhulp.yml mkdocs.yml
+      - echo "Schuldhulpverlening, Building and deploying MkDocs and Mike..."
+      - cp mkdocs.schuldhulpverlening.yml mkdocs.yml
       - mkdocs build
-      - mike deploy "{{.VERSION}}"
-      - mike set-default "{{.VERSION}}"
-      - echo "Schuldhulp, Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
+      - mike deploy --deploy-prefix=schuldhulpverlening "{{.VERSION_SCHULDHULPVERLENING}}"
+      - mike set-default --deploy-prefix=schuldhulpverlening "{{.VERSION_SCHULDHULPVERLENING}}"
+      - cp tools/redirect_to_schuldhulp.html site/index.html
+      - echo "Schuldhulpverlening, Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
     shell: bash
 
   deploy-docs-vroegsignalering:
@@ -225,15 +243,16 @@ tasks:
       - echo "Vroegsignalering, Building and deploying MkDocs and Mike..."
       - cp mkdocs.vroegsignalering.yml mkdocs.yml
       - mkdocs build
-      - mike deploy "{{.VERSION}}"
-      - mike set-default "{{.VERSION}}"
+      - mike deploy --deploy-prefix=vroegsignalering "{{.VERSION_VROEGSIGNALERING}}"
+      - mike set-default --deploy-prefix=vroegsignalering "{{.VERSION_VROEGSIGNALERING}}"
+      - cp tools/redirect_to_schuldhulp.html site/index.html
       - echo "Vroegsignalering, Documentation deployed. Use 'mike serve' or 'mkdocs serve' to view results..."
     shell: bash
 
   deploy-docs:
     desc: "Build and deploy all the documentation locally using MkDocs and Mike. After deployment, use 'mike serve' or 'mkdocs serve' to view the results."
     cmds:
-      - task: deploy-docs-schuldhulp
+      - task: deploy-docs-schuldhulpverlening
       - task: deploy-docs-vroegsignalering
     shell: bash
 

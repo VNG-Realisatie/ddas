@@ -27,7 +27,7 @@ Alle bestanden dienen te worden aangeleverd in [UTF-8-formaat](https://www.forum
 Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een [downloadversie](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json) beschikbaar.
 
 ```
-{!../v1.0/json_schema_Uitwisselmodel.json!}
+{!../schuldhulpverlening/v1.0/json_schema_Uitwisselmodel.json!}
 
 ```
 
@@ -38,7 +38,7 @@ Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/enkelvoudigVoorbeeld.json).
 
 ```
-{!../v1.0/enkelvoudigVoorbeeld.json!}
+{!../schuldhulpverlening/v1.0/enkelvoudigVoorbeeld.json!}
 
 ```
 
@@ -47,7 +47,7 @@ Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meervoudigVoorbeeld.json).
 
 ```
-{!../v1.0/meervoudigVoorbeeld.json!}
+{!../schuldhulpverlening/v1.0/meervoudigVoorbeeld.json!}
 
 ```
 
@@ -57,14 +57,14 @@ Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpve
 
 #### Samenloop bestand 1
 ```
-{!../v1.0/samenloopVoorbeeldDeel1.json!}
+{!../schuldhulpverlening/v1.0/samenloopVoorbeeldDeel1.json!}
 
 ```
 
 #### Samenloop bestand 2
 
 ```
-{!../v1.0/samenloopVoorbeeldDeel2.json!}
+{!../schuldhulpverlening/v1.0/samenloopVoorbeeldDeel2.json!}
 
 ```
 
@@ -73,6 +73,6 @@ Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpve
 Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meerdereLeveringenVoorbeeld.json).
 
 ```
-{!../v1.0/meerdereLeveringenVoorbeeld.json!}
+{!../schuldhulpverlening/v1.0/meerdereLeveringenVoorbeeld.json!}
 
 ```
