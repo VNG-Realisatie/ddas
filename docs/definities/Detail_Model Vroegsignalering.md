@@ -19,17 +19,22 @@ Attributen van objecttype Client:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
+| Achternaam | AN200 |  | Nee |
+| BSN | AN9 |  | Nee |
 | Geboortedatum | Datum | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
+| Plaatsnaam | AN200 |  | Nee |
 | Postcode | AN6 |  | Nee |
+| Straatnaam | AN200 |  | Nee |
+| Voorletters | AN20 |  | Nee |
 
 
 
 ### Contactpoging
 > **Definitie Contactpoging:** 
 >
-> <font color="#0e0e0e">Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).</font>
+> Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).
 
 Het objecttype Contactpoging kent de volgende eigenschappen:
 
@@ -54,7 +59,7 @@ Attributen van objecttype Contactpoging:
 ### Signaalpartner
 > **Definitie Signaalpartner:** 
 >
-> <font color="#0e0e0e"><i>Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.</i></font><br><font color="#0e0e0e"><i><br></i></font><font color="#0e0e0e"><i>Een signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.</i></font>
+> Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.<br>Een signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.
 
 Het objecttype Signaalpartner kent de volgende eigenschappen:
 
@@ -69,14 +74,15 @@ Attributen van objecttype Signaalpartner:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| postcode | AN6 |  | Nee |
+| Organisatienaam | AN6 |  | Nee |
+| type | Enumeratie: "EnumSignaalpartner" |  | Nee |
 
 
 
 ### Vroegsignaal
 > **Definitie Vroegsignaal:** 
 >
-> <font color="#0e0e0e">Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.</font><br><font color="#0e0e0e"><br></font><font color="#0e0e0e"><i>De juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de </i></font><font color="#0e0e0e"><i>Wet gemeentelijke schuldhulpverlening (Wgs)</i></font><font color="#0e0e0e"><i>. Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.</i></font>
+> Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.<br>De juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs). Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.
 
 Het objecttype Vroegsignaal kent de volgende eigenschappen:
 

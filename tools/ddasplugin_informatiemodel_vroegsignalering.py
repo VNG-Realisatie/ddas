@@ -75,15 +75,15 @@ class DDASPluginInformatiemodel(Plugin):
         # Zet de juiste attrributen bij aanlevereende organisatie
         def set_org(org_id, lst_incl):
             org = schema_to.get_class(org_id)
-            lst_attr = [attr for attr in schema_to.get_class(org_id).attributes]
-            for attr in lst_attr:
-                if not str(attr.name).strip().lower() in lst_incl:
-                    org.attributes.remove(attr)
-                    attr.clazz_id = None
+            #lst_attr = [attr for attr in schema_to.get_class(org_id).attributes]
+            #for attr in lst_attr:
+            #    if not str(attr.name).strip().lower() in lst_incl:
+            #        org.attributes.remove(attr)
+            #        attr.clazz_id = None
             org.attributes.append(
                 Attribute(
                     id=util.getEAGuid(),
-                    name="postcode",
+                    name="Organisatienaam",
                     schema_id=schema_to.schema_id,
                     primitive="AN6",
                     verplicht=False,
@@ -120,11 +120,47 @@ class DDASPluginInformatiemodel(Plugin):
             person.attributes.append(
                 Attribute(
                     id=util.getEAGuid(),
+                    name="Burgerservicenummer",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN9",
+                    verplicht=False,
+                )
+            )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="Voorletters",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN20",
+                    verplicht=False,
+                )
+            )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="Achternaam",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN200",
+                    verplicht=False,
+                )
+            )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
                     name="Geboortedatum",
                     schema_id=schema_to.schema_id,
                     verplicht=False,
                     primitive="Datum",
                     definitie="De datum waarop de ander natuurlijk persoon is geboren."
+                )
+            )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="Straatnaam",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN200",
+                    verplicht=False,
                 )
             )
             person.attributes.append(
@@ -154,6 +190,16 @@ class DDASPluginInformatiemodel(Plugin):
                     verplicht=False,
                 )
             )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="Plaatsnaam",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN200",
+                    verplicht=False,
+                )
+            )
+            
 
         logger.info(f"Zet de attributen van de client met EAID {CLIENT_ID}.")
         set_person(CLIENT_ID)

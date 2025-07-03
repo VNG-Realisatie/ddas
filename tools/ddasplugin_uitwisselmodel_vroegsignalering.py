@@ -9,6 +9,7 @@ logger = logging.getLogger()
 
 VROEGSIGNALERING_PACKAGE_ID = "EAPK_BB7B01A9_44F5_4e0f_B158_0DDAA5B6593D"
 VROEGSIGNAAL_ID = "EAID_C6DA2586_C0E3_4868_93E8_64AF6D118092"  # C6DA2586-C0E3-4868-93E8-64AF6D118092}
+VROEGSIGNAALZAAK_ID = "EAID_1AA67F0D_3B94_48a3_A037_A2ACC6D61CF0"  # 839017B2-0F95-42d0-AB2B-E873636340DA
 UITWISSELMODEL_ID = "EAID_6b4326e3_eb4e_41d2_902b_44ff06604f63"
 CLIENT_ID = "EAID_DAF09055_A5A6_4ff4_A158_21B20567B296"
 TRAJECTEN_SORT_ORDER = [
@@ -133,6 +134,7 @@ class DDASPluginUitwisselmodel(Plugin):
             order=1,
         )
         uitwisselmodel.uitgaande_associaties.append(assoc_uitmod_to_vroegsignaal)
+
 
         kopie.classes.append(uitwisselmodel)
         schema_to.add(kopie, recursive=True)

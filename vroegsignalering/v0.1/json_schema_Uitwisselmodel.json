@@ -25,7 +25,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "description": "<font color=\"#0e0e0e\">Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.</font>\n<font color=\"#0e0e0e\">\n</font><font color=\"#0e0e0e\"><i>De juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de </i></font><font color=\"#0e0e0e\"><i>Wet gemeentelijke schuldhulpverlening (Wgs)</i></font><font color=\"#0e0e0e\"><i>. Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.</i></font>",
+                "description": "Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.\n\nDe juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs). Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.\n",
                 "properties": {
                     "crisissignaal": {
                         "description": "Betreft het een crisis?\n",
@@ -50,9 +50,12 @@
                     },
                     "signaalpartner": {
                         "type": "object",
-                        "description": "<font color=\"#0e0e0e\"><i>Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.</i></font>\n<font color=\"#0e0e0e\"><i>\n</i></font><font color=\"#0e0e0e\"><i>Een signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.</i></font>",
+                        "description": "Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.\n\nEen signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.\n",
                         "properties": {
-                            "postcode": {
+                            "type": {
+                                "$ref": "#/$defs/EnumSignaalpartner"
+                            },
+                            "Organisatienaam": {
                                 "type": "string"
                             }
                         }
@@ -80,7 +83,7 @@
                                 "type": "array",
                                 "items": {
                                     "type": "object",
-                                    "description": "<font color=\"#0e0e0e\">Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).</font>",
+                                    "description": "Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).\n",
                                     "properties": {
                                         "soort": {
                                             "$ref": "#/$defs/EnumContactsoort"
@@ -105,9 +108,21 @@
                         "type": "object",
                         "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.",
                         "properties": {
+                            "BSN": {
+                                "type": "string"
+                            },
+                            "Voorletters": {
+                                "type": "string"
+                            },
+                            "Achternaam": {
+                                "type": "string"
+                            },
                             "Geboortedatum": {
                                 "description": "De datum waarop de ander natuurlijk persoon is geboren.",
                                 "$ref": "#/$defs/datum"
+                            },
+                            "Straatnaam": {
+                                "type": "string"
                             },
                             "Postcode": {
                                 "type": "string"
@@ -117,13 +132,16 @@
                             },
                             "Huisnummertoevoeging": {
                                 "type": "string"
+                            },
+                            "Plaatsnaam": {
+                                "type": "string"
                             }
                         }
                     }
                 },
                 "required": [
-                    "client",
-                    "signaalpartner"
+                    "signaalpartner",
+                    "client"
                 ],
                 "additionalProperties": false
             },
@@ -132,10 +150,10 @@
         }
     },
     "required": [
-        "codeGegevensleverancier",
+        "einddatumLevering",
         "aanleverdatumEnTijd",
-        "startdatumLevering",
-        "einddatumLevering"
+        "codeGegevensleverancier",
+        "startdatumLevering"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -163,6 +181,14 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
+        "EnumDagdeel": {
+            "type": "string",
+            "enum": [
+                "Ochtend",
+                "Middag",
+                "Avond"
+            ]
+        },
         "EnumContactsoort": {
             "type": "string",
             "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
@@ -176,12 +202,17 @@
                 "Overige"
             ]
         },
-        "EnumDagdeel": {
+        "EnumSignaalstatus": {
             "type": "string",
             "enum": [
-                "Ochtend",
-                "Middag",
-                "Avond"
+                "Nog niet opgepakt",
+                "Onterecht signaal",
+                "Overleden",
+                "Woont niet in gemeente",
+                "Herhaalde melding",
+                "Niet opgepakt",
+                "Opgepakt",
+                "Woont op een ander adres binnen gemeente"
             ]
         },
         "EnumEindresultaat": {
@@ -204,19 +235,6 @@
                 "Niet opgepakt: BRP-uitsluiting",
                 "Verwijzing niet-financieel",
                 "Inwoner heeft al ander lopend traject"
-            ]
-        },
-        "EnumSignaalstatus": {
-            "type": "string",
-            "enum": [
-                "Nog niet opgepakt",
-                "Onterecht signaal",
-                "Overleden",
-                "Woont niet in gemeente",
-                "Herhaalde melding",
-                "Niet opgepakt",
-                "Opgepakt",
-                "Woont op een ander adres binnen gemeente"
             ]
         },
         "EnumSignaalpartner": {
