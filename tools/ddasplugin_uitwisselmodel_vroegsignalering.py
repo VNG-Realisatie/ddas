@@ -36,18 +36,6 @@ class DDASPluginUitwisselmodel(Plugin):
         # Kopie schuldhulpverlening model
         kopie = root_package.get_copy(None, materialize_generalizations=True)
 
-        # Now remove all associations with name 'resulteert in'
-        #for clazz in kopie.classes:
-        #    lst_assoc = [assoc for assoc in clazz.uitgaande_associaties]
-        #    for association in lst_assoc:
-        #        if str(association.name).strip() in [
-        #            "resulteert in",
-        #            "dienstverlening",
-        #            "voert traject uit",
-        #            "soort",
-        #            "heeft financiele situatie",
-        #        ]:
-        #            clazz.uitgaande_associaties.remove(association)
 
         # Zet de onderdelen van het traject in de juiste volgorde
         sort_order = [item.lower() for item in TRAJECTEN_SORT_ORDER if isinstance(item, str)]
@@ -62,17 +50,6 @@ class DDASPluginUitwisselmodel(Plugin):
                         else:
                             association.order = 100
 
-
-        # Now remove classes 'project', 'projectsoort' en 'notariele status'
-        #for clazz in kopie.classes:
-        #    if str(clazz.name).strip() in [
-        #        "Huishouden",
-        #        "Partner",
-        #        "Inkomen",
-        #        "Woningbezit",
-        #        "Ondernemer",
-        #    ]:  # or str(clazz.name).strip() == "Projectsoort" or str(clazz.name).strip() == "Notariele status"
-        #        kopie.classes.remove(clazz)
 
         # Now add the Class Uitwisselmodel
         uitwisselmodel = Class(
@@ -121,19 +98,107 @@ class DDASPluginUitwisselmodel(Plugin):
         uitwisselmodel.attributes.append(aanleverdatumEnTijd)
         uitwisselmodel.attributes.append(codeGegevensleverancier)
 
+        # Zet vroegsignalen als eerste in uitwisselspecificatie
         assoc_uitmod_to_vroegsignaal = Association(
             id=util.getEAGuid(),
             name="bevat",
             schema_id=schema_to.schema_id,
             src_class_id=uitwisselmodel.id,
             dst_class_id=VROEGSIGNAAL_ID,
-            dst_mult_start="1",
+            dst_mult_start="0",
             dst_mult_end="-1",
             src_role="vroegsignalen",
             definitie="De vroegsignalen die in het uitwisselmodel zijn opgenomen.",
             order=1,
         )
         uitwisselmodel.uitgaande_associaties.append(assoc_uitmod_to_vroegsignaal)
+
+        # Zet vroegsignaalzaken als tweede in uitwisselspecificatie
+        assoc_uitmod_to_vroegsignaalzaak = Association(
+            id=util.getEAGuid(),
+            name="bevat",
+            schema_id=schema_to.schema_id,
+            src_class_id=uitwisselmodel.id,
+            dst_class_id=VROEGSIGNAALZAAK_ID,
+            dst_mult_start="0",
+            dst_mult_end="-1",
+            src_role="vroegsignaalzaken",
+            definitie="De vroegsignaalzaken die in het uitwisselmodel zijn opgenomen.",
+            order=2,
+        )
+        uitwisselmodel.uitgaande_associaties.append(assoc_uitmod_to_vroegsignaalzaak)
+
+        # Now remove association between vroegsignaal en zaak, anders toont uitwisselmodel zaken niet
+        # Haal de vroegsignaal en vroegsignaalzaak classes op uit de kopie
+        for clazz in kopie.classes:
+            lst_assoc = [assoc for assoc in clazz.uitgaande_associaties]
+            for association in lst_assoc:
+                if str(association.name).strip() in [
+                    "opgepaktIn",
+                ]:
+                    clazz.uitgaande_associaties.remove(association)
+            if clazz.id == VROEGSIGNAAL_ID:
+                vroegsignaal = clazz
+            if clazz.id == VROEGSIGNAALZAAK_ID:
+                vroegsignaalzaak = clazz
+
+        # Maak nu de referenties vanuit de zaken aan naar de vroegsignalen. Hiervoor maken we een referentieclass aan met ID
+        # vroegsignaalzaak en vroegsignaal, zodat we vanuit de vroegsignaalzaak naar het vroegsignaal kunnen verwijzen. 
+        # Geef het vroegsignaal een ID om vanuit Vroegsignaalzaak naartoe te kunnen verwijzen
+        logger.info("Copying the client package.")
+        vroegsignaal.attributes.insert(
+            0,
+            Attribute(
+            id=util.getEAGuid(),
+            name="ID",
+            schema_id=schema_to.schema_id,
+            primitive="AN200",
+            verplicht=True,
+            )
+        )
+        # Now add the Class Uitwisselmodel
+        vroegsignaal_ref = Class(
+            id=util.getEAGuid(),
+            name="Vroegsignaal",
+            schema_id=schema_to.schema_id,
+            package=kopie,
+            definitie=(
+                "Referentie naar het vroegsignaal dat hoort bij de vroegsignaalzaak. "
+            ),
+        )
+        vroegsignaal_ref.attributes.append(
+            Attribute(
+                id=util.getEAGuid(),
+                name="ID",
+                schema_id=schema_to.schema_id,
+                primitive="AN200",
+                verplicht=True,
+            )
+        )
+        assoc_vroegsignaalzaak_to_vroegsignaalref = Association(
+            id=util.getEAGuid(),
+            name="opgeklaptIn",
+            schema_id=schema_to.schema_id,
+            src_class_id=vroegsignaalzaak.id,
+            dst_class_id=vroegsignaal_ref.id,
+            dst_mult_start="1",
+            dst_mult_end="-1",
+            src_role="vroegsignalen",
+            definitie="De lijst ID's van de vroegsignalen op basis waarvan de vroegsignaalzaak is geopend.",
+            order=2,
+        )
+        vroegsignaalzaak.uitgaande_associaties.append(assoc_vroegsignaalzaak_to_vroegsignaalref)
+        # Einde referentieclass aanmaken
+
+        vroegsignaalzaak.attributes.append(Attribute(
+                id=util.getEAGuid(),
+                name="gemeentecode",
+                schema_id=schema_to.schema_id,
+                definitie="Code van de gemeente names wie de zaak is opgepakt.",
+                verplicht=True,
+                primitive="AN6",
+            )
+        )
 
 
         kopie.classes.append(uitwisselmodel)

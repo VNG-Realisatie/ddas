@@ -13,7 +13,7 @@ extra:
     provider: mike
 
 nav:
-  - Home: index.md
+  - Home: vroegsignalering/inleiding.md
   - Vroegsignalering:
     - Uitwisselspecificatie uitgelegd: vroegsignalering/uitleg_Model Vroegsignalering.md
     - Uitwisselspecificatie: vroegsignalering/uitwisselspecificatie.md

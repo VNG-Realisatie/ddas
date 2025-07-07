@@ -46,6 +46,9 @@ vars:
   PUBLISH: "false"
   JSON_SCHULDHULPVERLENING: "{{.VERSION_DIR_SCHULDHULPVERLENING}}/{{.JSON_SCHEMA}}"
   JSON_VROEGSIGNALERING: "{{.VERSION_DIR_VROEGSIGNALERING}}/{{.JSON_SCHEMA}}"
+  SCHULDHULP_JSON_SCHEMA_URL: "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/schuldhulpverlening/{{.VERSION_SCHULDHULPVERLENING}}/json_schema_Uitwisselmodel.json"
+  VROEGSIGNALERING_JSON_SCHEMA_URL: "https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/Vroegsignalering/vroegsignalering/{{.VERSION_VROEGSIGNALERING}}/json_schema_Uitwisselmodel.json"
+
 
 tasks:
   check-tools:
@@ -173,7 +176,7 @@ tasks:
         vars:
           UM_SCHEMA: "{{.UM_SCHEMA_VROEGSIGNALERING}}"
           ROOT_CLASS: "{{.ROOT_CLASS_UM_VROEGSIGNALERING}}"
-          SCHEMA_URL: "{{.SCHULDHULP_JSON_SCHEMA_URL}}"
+          SCHEMA_URL: "{{.VROEGSIGNALERING_JSON_SCHEMA_URL}}"
           JSON: "{{.JSON_VROEGSIGNALERING}}"
     shell: bash
 

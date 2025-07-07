@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main//json_schema_Uitwisselmodel.json",
+    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/Vroegsignalering/vroegsignalering/v0.1/json_schema_Uitwisselmodel.json",
     "title": "Uitwisselmodel",
     "type": "object",
     "description": "Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.",
@@ -27,6 +27,9 @@
                 "type": "object",
                 "description": "Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.\n\nDe juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs). Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.\n",
                 "properties": {
+                    "ID": {
+                        "type": "string"
+                    },
                     "crisissignaal": {
                         "description": "Betreft het een crisis?\n",
                         "type": "boolean"
@@ -60,55 +63,11 @@
                             }
                         }
                     },
-                    "vroegsignaalzaak": {
-                        "type": "object",
-                        "description": "<font color=\"#0e0e0e\">Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.</font>",
-                        "properties": {
-                            "resultaat": {
-                                "$ref": "#/$defs/EnumEindresultaat"
-                            },
-                            "matchingsdatum": {
-                                "$ref": "#/$defs/datum"
-                            },
-                            "startdatum_matchtingperiode": {
-                                "$ref": "#/$defs/datum"
-                            },
-                            "datum_opgepakt": {
-                                "$ref": "#/$defs/datum"
-                            },
-                            "einddatum_matchingperiode": {
-                                "$ref": "#/$defs/datum"
-                            },
-                            "contactpogingen": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "description": "Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).\n",
-                                    "properties": {
-                                        "soort": {
-                                            "$ref": "#/$defs/EnumContactsoort"
-                                        },
-                                        "bereikt": {
-                                            "description": "Er is succesvol contact met de client gemaakt.",
-                                            "type": "boolean"
-                                        },
-                                        "datum": {
-                                            "$ref": "#/$defs/datum"
-                                        },
-                                        "dagdeel": {
-                                            "description": "Ochtend, middag of avond",
-                                            "$ref": "#/$defs/EnumDagdeel"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "client": {
                         "type": "object",
                         "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.",
                         "properties": {
-                            "BSN": {
+                            "Burgerservicenummer": {
                                 "type": "string"
                             },
                             "Voorletters": {
@@ -141,18 +100,90 @@
                 },
                 "required": [
                     "signaalpartner",
-                    "client"
+                    "client",
+                    "ID"
                 ],
                 "additionalProperties": false
-            },
-            "minItems": 1,
-            "uniqueItems": true
+            }
+        },
+        "vroegsignaalzaken": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "description": "Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.",
+                "properties": {
+                    "resultaat": {
+                        "$ref": "#/$defs/EnumEindresultaat"
+                    },
+                    "matchingsdatum": {
+                        "$ref": "#/$defs/datum"
+                    },
+                    "startdatum_matchtingperiode": {
+                        "$ref": "#/$defs/datum"
+                    },
+                    "datum_opgepakt": {
+                        "$ref": "#/$defs/datum"
+                    },
+                    "einddatum_matchingperiode": {
+                        "$ref": "#/$defs/datum"
+                    },
+                    "gemeentecode": {
+                        "description": "Code van de gemeente names wie de zaak is opgepakt.",
+                        "type": "string"
+                    },
+                    "vroegsignalen": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "description": "Referentie naar het vroegsignaal dat hoort bij de vroegsignaalzaak. ",
+                            "properties": {
+                                "ID": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "ID"
+                            ],
+                            "additionalProperties": false
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+                    "contactpogingen": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "description": "Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).\n",
+                            "properties": {
+                                "soort": {
+                                    "$ref": "#/$defs/EnumContactsoort"
+                                },
+                                "bereikt": {
+                                    "description": "Er is succesvol contact met de client gemaakt.",
+                                    "type": "boolean"
+                                },
+                                "datum": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "dagdeel": {
+                                    "description": "Ochtend, middag of avond",
+                                    "$ref": "#/$defs/EnumDagdeel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "gemeentecode"
+                ],
+                "additionalProperties": false
+            }
         }
     },
     "required": [
-        "einddatumLevering",
         "aanleverdatumEnTijd",
         "codeGegevensleverancier",
+        "einddatumLevering",
         "startdatumLevering"
     ],
     "additionalProperties": false,
@@ -181,6 +212,19 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
+        "EnumSignaalstatus": {
+            "type": "string",
+            "enum": [
+                "Nog niet opgepakt",
+                "Onterecht signaal",
+                "Overleden",
+                "Woont niet in gemeente",
+                "Herhaalde melding",
+                "Niet opgepakt",
+                "Opgepakt",
+                "Woont op een ander adres binnen gemeente"
+            ]
+        },
         "EnumDagdeel": {
             "type": "string",
             "enum": [
@@ -200,19 +244,6 @@
                 "Huisbezoek",
                 "Kaartje",
                 "Overige"
-            ]
-        },
-        "EnumSignaalstatus": {
-            "type": "string",
-            "enum": [
-                "Nog niet opgepakt",
-                "Onterecht signaal",
-                "Overleden",
-                "Woont niet in gemeente",
-                "Herhaalde melding",
-                "Niet opgepakt",
-                "Opgepakt",
-                "Woont op een ander adres binnen gemeente"
             ]
         },
         "EnumEindresultaat": {

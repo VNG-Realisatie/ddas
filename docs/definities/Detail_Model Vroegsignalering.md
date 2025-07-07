@@ -20,7 +20,7 @@ Attributen van objecttype Client:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | Achternaam | AN200 |  | Nee |
-| BSN | AN9 |  | Nee |
+| Burgerservicenummer | AN9 |  | Nee |
 | Geboortedatum | Datum | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
@@ -109,7 +109,7 @@ Attributen van objecttype Vroegsignaal:
 ### Vroegsignaalzaak
 > **Definitie Vroegsignaalzaak:** 
 >
-> <font color="#0e0e0e">Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.</font>
+> Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.
 
 Het objecttype Vroegsignaalzaak kent de volgende eigenschappen:
 
