@@ -14,14 +14,13 @@ extra:
 
 nav:
   - Home: index.md
-  - Schuldhulpverlening:
-    - Inleiding: schuldhulpverlening/inleiding.md
-    - Uitwisselspecificatie uitgelegd: schuldhulpverlening/uitleg_Model Schuldhulpverlening.md
-    - Uitwisselspecificatie: schuldhulpverlening/uitwisselspecificatie.md
-    - Informatiemodel:
-      - Hoofdlijnen: "schuldhulpverlening/Hoofdlijnen_Model Schuldhulpverlening.md"
-      - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
-    - Vraag en antwoord: schuldhulpverlening/VraagEnAntwoord.md
+  - Inleiding: schuldhulpverlening/inleiding.md
+  - Uitwisselspecificatie uitgelegd: schuldhulpverlening/uitleg_Model Schuldhulpverlening.md
+  - Uitwisselspecificatie: schuldhulpverlening/uitwisselspecificatie.md
+  - Informatiemodel:
+    - Hoofdlijnen: "schuldhulpverlening/Hoofdlijnen_Model Schuldhulpverlening.md"
+    - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
+  - Vraag en antwoord: schuldhulpverlening/VraagEnAntwoord.md
   - Achtergrond DDAS: Achtergrond.md
 
 markdown_extensions:

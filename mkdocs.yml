@@ -14,13 +14,12 @@ extra:
 
 nav:
   - Home: vroegsignalering/inleiding.md
-  - Vroegsignalering:
-    - Uitwisselspecificatie uitgelegd: vroegsignalering/uitleg_Model Vroegsignalering.md
-    - Uitwisselspecificatie: vroegsignalering/uitwisselspecificatie.md
-    - Informatiemodel:
-      - Hoofdlijnen: "vroegsignalering/Hoofdlijnen_Model Vroegsignalering.md"
-      - Detailspecificatie: "definities/Detail_Model Vroegsignalering.md"
-    - Vraag en antwoord: vroegsignalering/VraagEnAntwoord.md  
+  - Uitwisselspecificatie uitgelegd: vroegsignalering/uitleg_Model Vroegsignalering.md
+  - Uitwisselspecificatie: vroegsignalering/uitwisselspecificatie.md
+  - Informatiemodel:
+    - Hoofdlijnen: "vroegsignalering/Hoofdlijnen_Model Vroegsignalering.md"
+    - Detailspecificatie: "definities/Detail_Model Vroegsignalering.md"
+  - Vraag en antwoord: vroegsignalering/VraagEnAntwoord.md  
   - Achtergrond DDAS: Achtergrond.md
 
 markdown_extensions:

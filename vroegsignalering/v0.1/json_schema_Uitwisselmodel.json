@@ -182,9 +182,9 @@
     },
     "required": [
         "aanleverdatumEnTijd",
-        "codeGegevensleverancier",
+        "startdatumLevering",
         "einddatumLevering",
-        "startdatumLevering"
+        "codeGegevensleverancier"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -212,38 +212,12 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
-        "EnumSignaalstatus": {
-            "type": "string",
-            "enum": [
-                "Nog niet opgepakt",
-                "Onterecht signaal",
-                "Overleden",
-                "Woont niet in gemeente",
-                "Herhaalde melding",
-                "Niet opgepakt",
-                "Opgepakt",
-                "Woont op een ander adres binnen gemeente"
-            ]
-        },
         "EnumDagdeel": {
             "type": "string",
             "enum": [
                 "Ochtend",
                 "Middag",
                 "Avond"
-            ]
-        },
-        "EnumContactsoort": {
-            "type": "string",
-            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
-            "enum": [
-                "Mail",
-                "Brief",
-                "SMS/Whatsapp",
-                "Telefoon",
-                "Huisbezoek",
-                "Kaartje",
-                "Overige"
             ]
         },
         "EnumEindresultaat": {
@@ -283,6 +257,32 @@
                 "CAK Eigen bijdrage",
                 "Overige",
                 "Dienst Toeslagen"
+            ]
+        },
+        "EnumSignaalstatus": {
+            "type": "string",
+            "enum": [
+                "Nog niet opgepakt",
+                "Onterecht signaal",
+                "Overleden",
+                "Woont niet in gemeente",
+                "Herhaalde melding",
+                "Niet opgepakt",
+                "Opgepakt",
+                "Woont op een ander adres binnen gemeente"
+            ]
+        },
+        "EnumContactsoort": {
+            "type": "string",
+            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
+            "enum": [
+                "Mail",
+                "Brief",
+                "SMS/Whatsapp",
+                "Telefoon",
+                "Huisbezoek",
+                "Kaartje",
+                "Overige"
             ]
         }
     }

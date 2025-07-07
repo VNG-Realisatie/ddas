@@ -30,7 +30,7 @@ Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook
 
 ### Enkelvoudig voorbeeld
 
-Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v0.1/enkelvoudigVoorbeeld.json).
+Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie. Dit voorbeeld kun je ook [downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/Vroegsignalering/vroegsignalering/v0.1/enkelvoudigVoorbeeld.json).
 
 ```
 {!../vroegsignalering/v0.1/enkelvoudigVoorbeeld.json!}

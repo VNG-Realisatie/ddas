@@ -1,14 +1,14 @@
 # Inleiding Schuldhulpverlening
 
-Het programma **Doorontwikkeling Digitaal Aanleveren Schuldhulpverleningsgegevens (DDAS)** ondersteunt gemeenten en uitvoeringsorganisaties bij het gestructureerd aanleveren van gegevens over schuldhulpverlening en vroegsignalering aan het Centraal Bureau voor de Statistiek (CBS). Het doel van DDAS is om de informatievoorziening over schuldhulpverlening te verbeteren, zodat beleidsmakers, onderzoekers en uitvoerders beter inzicht krijgen in de werking en effectiviteit van schuldhulptrajecten in Nederland.
+Het programma **Data delen voor Armoede en Schulden (DDAS)** ondersteunt gemeenten en uitvoeringsorganisaties bij het gestructureerd aanleveren van gegevens over schuldhulpverlening en vroegsignalering aan het Centraal Bureau voor de Statistiek (CBS). Het doel van DDAS is om de informatievoorziening over schuldhulpverlening te verbeteren, zodat beleidsmakers, onderzoekers en uitvoerders beter inzicht krijgen in de werking en effectiviteit van schuldhulptrajecten in Nederland.
 
 ## Gegevensverzameling voor het CBS
 
-Binnen DDAS worden gegevens worden op het gebied van vroegsignalering en schuldhulpverlening gegevens verzameld. In deze website vindt u de technische specificaties voor de aanlevering van de gegevens betreffende vroegsignalering. 
+Binnen DDAS worden gegevens worden op het gebied van **vroegsignalering** en schuldhulpverlening gegevens verzameld. In deze website vindt u de technische specificaties voor de aanlevering van de gegevens betreffende vroegsignalering. 
 
 Door deze gestandaardiseerde aanlevering wordt het mogelijk om landelijk vergelijkbare en betrouwbare statistieken te maken, zonder dat individuele hulpvragers herleidbaar zijn. Dit draagt bij aan beleidsvorming, monitoring en verbetering van schuldhulpverlening op lokaal en landelijk niveau.
 
-## Informatie- en uitwisselmodel
+## Informatiemodel en uitwisselspecificatie
 
 Een informatiemodel is een gestructureerde representatie van gegevens en hun onderlinge relaties binnen een bepaald domein. Het helpt bij het standaardiseren van gegevens door uniforme definities, formats en regels vast te leggen voor hoe informatie wordt opgeslagen, uitgewisseld en geïnterpreteerd. Dit bevordert consistentie, duidelijkheid en interoperabiliteit tussen verschillende systemen en afdelingen, waardoor efficiëntie en datakwaliteit verbeteren.
 
