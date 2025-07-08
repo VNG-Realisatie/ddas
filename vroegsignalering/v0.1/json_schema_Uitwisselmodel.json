@@ -99,9 +99,9 @@
                     }
                 },
                 "required": [
-                    "signaalpartner",
+                    "ID",
                     "client",
-                    "ID"
+                    "signaalpartner"
                 ],
                 "additionalProperties": false
             }
@@ -181,10 +181,10 @@
         }
     },
     "required": [
+        "codeGegevensleverancier",
         "aanleverdatumEnTijd",
-        "startdatumLevering",
         "einddatumLevering",
-        "codeGegevensleverancier"
+        "startdatumLevering"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -211,6 +211,19 @@
         "bedrag": {
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
+        },
+        "EnumContactsoort": {
+            "type": "string",
+            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
+            "enum": [
+                "Mail",
+                "Brief",
+                "SMS/Whatsapp",
+                "Telefoon",
+                "Huisbezoek",
+                "Kaartje",
+                "Overige"
+            ]
         },
         "EnumDagdeel": {
             "type": "string",
@@ -270,19 +283,6 @@
                 "Niet opgepakt",
                 "Opgepakt",
                 "Woont op een ander adres binnen gemeente"
-            ]
-        },
-        "EnumContactsoort": {
-            "type": "string",
-            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
-            "enum": [
-                "Mail",
-                "Brief",
-                "SMS/Whatsapp",
-                "Telefoon",
-                "Huisbezoek",
-                "Kaartje",
-                "Overige"
             ]
         }
     }

@@ -401,8 +401,8 @@
                     }
                 },
                 "required": [
-                    "aanleverende_organisatie",
-                    "teller"
+                    "teller",
+                    "aanleverende_organisatie"
                 ],
                 "additionalProperties": false
             },
@@ -411,10 +411,10 @@
         }
     },
     "required": [
-        "aanleverdatumEnTijd",
+        "einddatumLevering",
         "codeGegevensleverancier",
-        "startdatumLevering",
-        "einddatumLevering"
+        "aanleverdatumEnTijd",
+        "startdatumLevering"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -442,6 +442,14 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
+        "EnumBeschikkingssoort": {
+            "type": "string",
+            "description": "Lijst met alle soorten beschikkingen die worden onderkend.",
+            "enum": [
+                "Afwijzingsbeschikking",
+                "Toelatingsbeschikking"
+            ]
+        },
         "EnumBegeleidingssoort": {
             "type": "string",
             "description": "Lijst met alle soorten begeleiding die worden onderkend.",
@@ -451,6 +459,26 @@
                 "Beschermingsbewind",
                 "Lange Termijn Begeleiding (DFD)",
                 "Budgetbegeleiding"
+            ]
+        },
+        "geslacht": {
+            "type": "string",
+            "enum": [
+                "Man",
+                "Vrouw",
+                "Onbekend",
+                "Leeg"
+            ]
+        },
+        "EnumOplossingssoort": {
+            "type": "string",
+            "description": "Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.",
+            "enum": [
+                "Betalingsregeling",
+                "Herfinanciering",
+                "Saneringskrediet",
+                "Schuldbemiddeling",
+                "0%-aanbod"
             ]
         },
         "EnumUitstroomreden": {
@@ -476,34 +504,6 @@
                 "Publiek",
                 "Nuts",
                 "Overig"
-            ]
-        },
-        "EnumBeschikkingssoort": {
-            "type": "string",
-            "description": "Lijst met alle soorten beschikkingen die worden onderkend.",
-            "enum": [
-                "Afwijzingsbeschikking",
-                "Toelatingsbeschikking"
-            ]
-        },
-        "geslacht": {
-            "type": "string",
-            "enum": [
-                "Man",
-                "Vrouw",
-                "Onbekend",
-                "Leeg"
-            ]
-        },
-        "EnumOplossingssoort": {
-            "type": "string",
-            "description": "Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.",
-            "enum": [
-                "Betalingsregeling",
-                "Herfinanciering",
-                "Saneringskrediet",
-                "Schuldbemiddeling",
-                "0%-aanbod"
             ]
         }
     }
