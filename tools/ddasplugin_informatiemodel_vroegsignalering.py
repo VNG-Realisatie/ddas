@@ -138,6 +138,15 @@ class DDASPluginInformatiemodel(Plugin):
             person.attributes.append(
                 Attribute(
                     id=util.getEAGuid(),
+                    name="Voorvoegsel",
+                    schema_id=schema_to.schema_id,
+                    primitive="AN200",
+                    verplicht=False,
+                )
+            )
+            person.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
                     name="Achternaam",
                     schema_id=schema_to.schema_id,
                     primitive="AN200",
@@ -151,7 +160,7 @@ class DDASPluginInformatiemodel(Plugin):
                     schema_id=schema_to.schema_id,
                     verplicht=False,
                     primitive="Datum",
-                    definitie="De datum waarop de ander natuurlijk persoon is geboren."
+                    definitie="De datum waarop de persoon is geboren."
                 )
             )
             person.attributes.append(

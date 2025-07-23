@@ -7,9 +7,10 @@ De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegeven
 De uitwisselspecificatie kent de volgende opbouw: 
 
 1. Op het hoofdniveau is het Uitwisselmodel gedefinieerd. Dit met een aantal attributen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;
-2. Op het tweede niveau worden zowel de vroegsignalen als de vroegsignaalzaken uitgevraagd. 
-3. Vroegsignalen hebben een ID waarmee ze binnen de levering **en ook buiten de levering** te identificeren zijn.
-4. In de vroegsignaalzaken wordt verwezen naar de vroegsignalen via een lijst ID's naar vroegsignalen
+2. Op het tweede niveau zijn 1 of meer leveringen gedefinieerd. Iedere levering bevat steeds de vroegsignalen en de vroegsignaalzaken van precies één gemeente.
+3. Op het derde niveau worden zowel de vroegsignalen als de vroegsignaalzaken uitgevraagd. 
+4. Vroegsignalen hebben een ID waarmee ze binnen de levering te identificeren zijn.
+5. In de vroegsignaalzaken wordt verwezen naar de vroegsignalen via een lijst ID's naar vroegsignalen
 
 Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. 
 

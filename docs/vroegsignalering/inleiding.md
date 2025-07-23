@@ -1,4 +1,4 @@
-# Inleiding Schuldhulpverlening
+# Inleiding Vroegsignalering
 
 Het programma **Data delen voor Armoede en Schulden (DDAS)** ondersteunt gemeenten en uitvoeringsorganisaties bij het gestructureerd aanleveren van gegevens over schuldhulpverlening en vroegsignalering aan het Centraal Bureau voor de Statistiek (CBS). Het doel van DDAS is om de informatievoorziening over schuldhulpverlening te verbeteren, zodat beleidsmakers, onderzoekers en uitvoerders beter inzicht krijgen in de werking en effectiviteit van schuldhulptrajecten in Nederland.
 

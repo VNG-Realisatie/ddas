@@ -1,4 +1,4 @@
-# Data delen Armoede en Schulden: Vroegsignalering
+# Data delen Armoede en Schulden: Schuldhulpverlening
 
 Op deze plek is de benodigde informatie beschikbaar voor de gegevensuitwisseling ten behoeve van DDAS (Data delen over Armoede en Schulden). In het kader van DDAS leveren gemeenten en andere schuldhulporganisaties gegevens aan het CBS, zodat op landelijk en gemeentelijk niveau inzicht ontstaat in stand van zaken rond schuldhulpverlening.  
 

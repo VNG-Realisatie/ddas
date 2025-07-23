@@ -21,170 +21,224 @@
             "description": "Code van de gegevensleverancier (softwareleverancier of hosting partij) die de gegevens voor 1 of meer partijen levert.",
             "type": "string"
         },
-        "vroegsignalen": {
+        "leveringen": {
             "type": "array",
             "items": {
                 "type": "object",
-                "description": "Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.\n\nDe juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs). Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.\n",
+                "description": "Een levering bevat steeds van \u00e9\u00e9n gemeente de verzameling van vroegsignalen en vroegsignaalzaken die over een bepaalde periode worden aangeleverd.",
                 "properties": {
-                    "ID": {
-                        "type": "string"
-                    },
-                    "crisissignaal": {
-                        "description": "Betreft het een crisis?\n",
-                        "type": "boolean"
-                    },
-                    "warmeOverdracht": {
-                        "description": "Er is al contact met persoon. Betreft verzoek deze persoon op te pakken in het kader van vroegsignalering. ",
-                        "type": "boolean"
-                    },
-                    "bedrag": {
-                        "$ref": "#/$defs/bedrag"
-                    },
-                    "ontstaansdatum": {
-                        "$ref": "#/$defs/datum"
-                    },
-                    "signaaldatum": {
-                        "description": "Datum waarop de signaalpartner het signaal heeft verstuurd.",
-                        "$ref": "#/$defs/datum"
-                    },
-                    "status": {
-                        "$ref": "#/$defs/EnumSignaalstatus"
-                    },
-                    "signaalpartner": {
-                        "type": "object",
-                        "description": "Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.\n\nEen signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.\n",
-                        "properties": {
-                            "type": {
-                                "$ref": "#/$defs/EnumSignaalpartner"
-                            },
-                            "Organisatienaam": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "client": {
-                        "type": "object",
-                        "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.",
-                        "properties": {
-                            "Burgerservicenummer": {
-                                "type": "string"
-                            },
-                            "Voorletters": {
-                                "type": "string"
-                            },
-                            "Achternaam": {
-                                "type": "string"
-                            },
-                            "Geboortedatum": {
-                                "description": "De datum waarop de ander natuurlijk persoon is geboren.",
-                                "$ref": "#/$defs/datum"
-                            },
-                            "Straatnaam": {
-                                "type": "string"
-                            },
-                            "Postcode": {
-                                "type": "string"
-                            },
-                            "Huisnummer": {
-                                "type": "string"
-                            },
-                            "Huisnummertoevoeging": {
-                                "type": "string"
-                            },
-                            "Plaatsnaam": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                },
-                "required": [
-                    "ID",
-                    "client",
-                    "signaalpartner"
-                ],
-                "additionalProperties": false
-            }
-        },
-        "vroegsignaalzaken": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "description": "Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.",
-                "properties": {
-                    "resultaat": {
-                        "$ref": "#/$defs/EnumEindresultaat"
-                    },
-                    "matchingsdatum": {
-                        "$ref": "#/$defs/datum"
-                    },
-                    "startdatum_matchtingperiode": {
-                        "$ref": "#/$defs/datum"
-                    },
-                    "datum_opgepakt": {
-                        "$ref": "#/$defs/datum"
-                    },
-                    "einddatum_matchingperiode": {
-                        "$ref": "#/$defs/datum"
+                    "teller": {
+                        "description": "Teller van het aantal leveringen dat in het bestand is opgenomen.",
+                        "type": "integer"
                     },
                     "gemeentecode": {
-                        "description": "Code van de gemeente names wie de zaak is opgepakt.",
+                        "description": "Code van de gemeente names wie de levering is gedaan.",
                         "type": "string"
+                    },
+                    "aanleverende_organisatie": {
+                        "type": "object",
+                        "properties": {
+                            "naam": {
+                                "type": "string"
+                            },
+                            "kvk-nummer": {
+                                "type": "string"
+                            },
+                            "contactpersoonen": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "description": "Contactpersoon van een organisatie",
+                                    "properties": {
+                                        "naam": {
+                                            "type": "string"
+                                        },
+                                        "telefoonnummer": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "$ref": "#/$defs/email"
+                                        },
+                                        "functietitel": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "minItems": 1,
+                                "uniqueItems": true
+                            }
+                        }
                     },
                     "vroegsignalen": {
                         "type": "array",
                         "items": {
                             "type": "object",
-                            "description": "Referentie naar het vroegsignaal dat hoort bij de vroegsignaalzaak. ",
+                            "description": "Een Vroegsignaal is een bericht dat door een signaalpartner (zoals een zorgverzekeraar, energieleverancier of verhuurder) aan de gemeente wordt verstrekt, met als doel de gemeente te informeren over een mogelijk beginnende schuldsituatie van een inwoner. Het vroegsignaal vormt het startpunt van het gemeentelijk proces van vroegsignalering van schulden.\n\nDe juridische grondslag voor het ontvangen en verwerken van vroegsignalen is vastgelegd in artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs). Deze wet verplicht gemeenten om vroegtijdig signalen van betalingsachterstanden te ontvangen en op basis daarvan inwoners passende hulp aan te bieden.\n",
                             "properties": {
                                 "ID": {
                                     "type": "string"
+                                },
+                                "crisissignaal": {
+                                    "description": "Betreft het een crisis?\n",
+                                    "type": "boolean"
+                                },
+                                "warmeOverdracht": {
+                                    "description": "Er is al contact met persoon. Betreft verzoek deze persoon op te pakken in het kader van vroegsignalering. ",
+                                    "type": "boolean"
+                                },
+                                "bedrag": {
+                                    "$ref": "#/$defs/bedrag"
+                                },
+                                "ontstaansdatum": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "signaaldatum": {
+                                    "description": "Datum waarop de signaalpartner het signaal heeft verstuurd.",
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "status": {
+                                    "$ref": "#/$defs/EnumSignaalstatus"
+                                },
+                                "signaalpartner": {
+                                    "type": "object",
+                                    "description": "Een signaalpartner is een organisatie die op grond van artikel 2.2.1 van de Wet gemeentelijke schuldhulpverlening (Wgs) bevoegd is om signalen van betalingsachterstanden door te geven aan de gemeente met het doel vroegtijdige hulpverlening bij schulden mogelijk te maken. Signaalpartners zijn dienstverleners met een maatschappelijk belang, zoals zorgverzekeraars, energieleveranciers, drinkwaterbedrijven en woningverhuurders.\n\nEen signaalpartner verstrekt een vroegsignaal aan de gemeente wanneer bij een klant of huurder sprake is van een betalingsachterstand die voldoet aan de wettelijke en/of contractuele criteria voor signalering.\n",
+                                    "properties": {
+                                        "type": {
+                                            "$ref": "#/$defs/EnumSignaalpartner"
+                                        },
+                                        "Organisatienaam": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "client": {
+                                    "type": "object",
+                                    "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.",
+                                    "properties": {
+                                        "Burgerservicenummer": {
+                                            "type": "string"
+                                        },
+                                        "Voorletters": {
+                                            "type": "string"
+                                        },
+                                        "Voorvoegsel": {
+                                            "type": "string"
+                                        },
+                                        "Achternaam": {
+                                            "type": "string"
+                                        },
+                                        "Geboortedatum": {
+                                            "description": "De datum waarop de persoon is geboren.",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "Straatnaam": {
+                                            "type": "string"
+                                        },
+                                        "Postcode": {
+                                            "type": "string"
+                                        },
+                                        "Huisnummer": {
+                                            "type": "string"
+                                        },
+                                        "Huisnummertoevoeging": {
+                                            "type": "string"
+                                        },
+                                        "Plaatsnaam": {
+                                            "type": "string"
+                                        }
+                                    }
                                 }
                             },
                             "required": [
+                                "signaalpartner",
+                                "client",
                                 "ID"
                             ],
                             "additionalProperties": false
-                        },
-                        "minItems": 1,
-                        "uniqueItems": true
+                        }
                     },
-                    "contactpogingen": {
+                    "vroegsignaalzaken": {
                         "type": "array",
                         "items": {
                             "type": "object",
-                            "description": "Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).\n",
+                            "description": "Een Vroegsignaalzaak is procesmatige eenheid binnen de gemeentelijke organisatie waarin de behandeling van &#233;&#233;n of meerdere vroegsigna(a)len is/zijn ondergebracht. De vroegsignaalzaak omvat alle handelingen die de gemeente verricht naar aanleiding van het ontvangen vroegsignaal, zoals het vastleggen van het signaal, het uitvoeren van een eerste beoordeling, het leggen van contact met de inwoner, het registreren van contactpogingen en -resultaten, en het eventueel toeleiden naar schuldhulpverlening of andere passende ondersteuning.",
                             "properties": {
-                                "soort": {
-                                    "$ref": "#/$defs/EnumContactsoort"
+                                "resultaat": {
+                                    "$ref": "#/$defs/EnumEindresultaat"
                                 },
-                                "bereikt": {
-                                    "description": "Er is succesvol contact met de client gemaakt.",
-                                    "type": "boolean"
-                                },
-                                "datum": {
+                                "matchingsdatum": {
                                     "$ref": "#/$defs/datum"
                                 },
-                                "dagdeel": {
-                                    "description": "Ochtend, middag of avond",
-                                    "$ref": "#/$defs/EnumDagdeel"
+                                "startdatum_matchtingperiode": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "datum_opgepakt": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "einddatum_matchingperiode": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "vroegsignalen": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Referentie naar het vroegsignaal dat hoort bij de vroegsignaalzaak. ",
+                                        "properties": {
+                                            "ID": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "ID"
+                                        ],
+                                        "additionalProperties": false
+                                    },
+                                    "minItems": 1,
+                                    "uniqueItems": true
+                                },
+                                "contactpogingen": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Een Contactpoging is de actie die de gemeente onderneemt om in contact te treden met de inwoner naar aanleiding van een vroegsignaal. Een contactpoging maakt onderdeel uit van de vroegsignaalzaak en kan verschillende vormen aannemen, zoals een telefoongesprek, huisbezoek, brief of digitaal bericht. Van elke contactpoging wordt vastgelegd wanneer deze is gedaan, op welke wijze, met welk doel en wat het resultaat was (bijvoorbeeld: geen gehoor, gesprek gevoerd, brief retour ontvangen).\n",
+                                        "properties": {
+                                            "soort": {
+                                                "$ref": "#/$defs/EnumContactsoort"
+                                            },
+                                            "bereikt": {
+                                                "description": "Er is succesvol contact met de client gemaakt.",
+                                                "type": "boolean"
+                                            },
+                                            "datum": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "dagdeel": {
+                                                "description": "Ochtend, middag of avond",
+                                                "$ref": "#/$defs/EnumDagdeel"
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 },
                 "required": [
-                    "gemeentecode"
+                    "aanleverende_organisatie",
+                    "gemeentecode",
+                    "teller"
                 ],
                 "additionalProperties": false
-            }
+            },
+            "minItems": 1,
+            "uniqueItems": true
         }
     },
     "required": [
+        "startdatumLevering",
         "codeGegevensleverancier",
-        "aanleverdatumEnTijd",
         "einddatumLevering",
-        "startdatumLevering"
+        "aanleverdatumEnTijd"
     ],
     "additionalProperties": false,
     "$defs": {
@@ -212,47 +266,12 @@
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
         },
-        "EnumContactsoort": {
-            "type": "string",
-            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
-            "enum": [
-                "Mail",
-                "Brief",
-                "SMS/Whatsapp",
-                "Telefoon",
-                "Huisbezoek",
-                "Kaartje",
-                "Overige"
-            ]
-        },
         "EnumDagdeel": {
             "type": "string",
             "enum": [
                 "Ochtend",
                 "Middag",
                 "Avond"
-            ]
-        },
-        "EnumEindresultaat": {
-            "type": "string",
-            "description": "Enumeratie met de soorten Eindresultaten van een Vroegsignaalzaak.",
-            "enum": [
-                "Niet opgepakt: inwoner wil geen contact",
-                "Niet opgepakt: geen capaciteit",
-                "Niet opgepakt",
-                "Inwoner al bekend bij schuldhulpverlening",
-                "Geen contact (meer) kunnen krijgen",
-                "Inwoner wil geen hulp",
-                "Inwoner probeert het zelf op te lossen",
-                "Inwoner heeft betaald/betalingsregeling getroffen voor oppakken melding",
-                "Inwoner heeft zelf betaald/betalingsregeling getroffen na oppakken melding",
-                "(Budget)advies en/of quick fix",
-                "Inwoner al een ander lopend traject",
-                "Verwijzing financieel",
-                "Voorzien van informatie",
-                "Niet opgepakt: BRP-uitsluiting",
-                "Verwijzing niet-financieel",
-                "Inwoner heeft al ander lopend traject"
             ]
         },
         "EnumSignaalpartner": {
@@ -272,6 +291,19 @@
                 "Dienst Toeslagen"
             ]
         },
+        "EnumContactsoort": {
+            "type": "string",
+            "description": "Enumeratie met daarin de soorten onderscheiden contactsoorten bij een contactpoging.",
+            "enum": [
+                "Mail",
+                "Brief",
+                "SMS/Whatsapp",
+                "Telefoon",
+                "Huisbezoek",
+                "Kaartje",
+                "Overige"
+            ]
+        },
         "EnumSignaalstatus": {
             "type": "string",
             "enum": [
@@ -283,6 +315,27 @@
                 "Niet opgepakt",
                 "Opgepakt",
                 "Woont op een ander adres binnen gemeente"
+            ]
+        },
+        "EnumEindresultaat": {
+            "type": "string",
+            "description": "Enumeratie met de soorten Eindresultaten van een Vroegsignaalzaak.",
+            "enum": [
+                "Niet opgepakt: inwoner wil geen contact",
+                "Niet opgepakt: geen capaciteit",
+                "Niet opgepakt",
+                "Inwoner al bekend bij schuldhulpverlening",
+                "Geen contact (meer) kunnen krijgen",
+                "Inwoner wil geen hulp",
+                "Inwoner probeert het zelf op te lossen",
+                "Inwoner heeft betaald/betalingsregeling getroffen voor oppakken melding",
+                "Inwoner heeft zelf betaald/betalingsregeling getroffen na oppakken melding",
+                "(Budget)advies en/of quick fix",
+                "Verwijzing financieel",
+                "Voorzien van informatie",
+                "Niet opgepakt: BRP-uitsluiting",
+                "Verwijzing niet-financieel",
+                "Inwoner heeft al een ander lopend traject"
             ]
         }
     }

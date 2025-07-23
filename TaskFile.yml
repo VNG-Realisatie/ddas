@@ -191,7 +191,7 @@ tasks:
       - |
         # Vervang de versies in de uitwisselspecificatie-templates
         # Loop door alle .template-bestanden in de directory en submappen
-        echo "Processing template files in {{.USECASE}}/{{.DOCS}} ..."
+        echo "Processing template files in {{.DOCS}}/{{.USECASE}} ..."
         for file in $(find "{{.DOCS}}/{{.USECASE}}" -type f -name "*.template"); do
           # Bepaal de doelbestandnaam door ".template" te verwijderen
           output_file="${file%.template}"
@@ -202,6 +202,8 @@ tasks:
           # Geef een bericht over de verwerking
           echo "Processed $file -> $output_file"
         done
+        # Zet het index bestand uit de use case naar de root van de docs directory
+        [ -e {{.DOCS}}/{{.USECASE}}/index.md ] && cp -f {{.DOCS}}/{{.USECASE}}/index.md {{.DOCS}}/index.md
     shell: bash
     requires:
       vars: ["USECASE", "VERSION", "UITLEG_TEMPLATE", "IM_SCHEMA"]

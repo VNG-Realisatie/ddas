@@ -401,8 +401,8 @@
                     }
                 },
                 "required": [
-                    "teller",
-                    "aanleverende_organisatie"
+                    "aanleverende_organisatie",
+                    "teller"
                 ],
                 "additionalProperties": false
             },
@@ -411,9 +411,9 @@
         }
     },
     "required": [
+        "aanleverdatumEnTijd",
         "einddatumLevering",
         "codeGegevensleverancier",
-        "aanleverdatumEnTijd",
         "startdatumLevering"
     ],
     "additionalProperties": false,
@@ -441,25 +441,6 @@
         "bedrag": {
             "type": "integer",
             "description": "Een geldbedrag in hele euros nauwkweurig."
-        },
-        "EnumBeschikkingssoort": {
-            "type": "string",
-            "description": "Lijst met alle soorten beschikkingen die worden onderkend.",
-            "enum": [
-                "Afwijzingsbeschikking",
-                "Toelatingsbeschikking"
-            ]
-        },
-        "EnumBegeleidingssoort": {
-            "type": "string",
-            "description": "Lijst met alle soorten begeleiding die worden onderkend.",
-            "enum": [
-                "Budgetcoaching",
-                "Budgetbeheer",
-                "Beschermingsbewind",
-                "Lange Termijn Begeleiding (DFD)",
-                "Budgetbegeleiding"
-            ]
         },
         "geslacht": {
             "type": "string",
@@ -504,6 +485,25 @@
                 "Publiek",
                 "Nuts",
                 "Overig"
+            ]
+        },
+        "EnumBegeleidingssoort": {
+            "type": "string",
+            "description": "Lijst met alle soorten begeleiding die worden onderkend.",
+            "enum": [
+                "Budgetcoaching",
+                "Budgetbeheer",
+                "Beschermingsbewind",
+                "Lange Termijn Begeleiding (DFD)",
+                "Budgetbegeleiding"
+            ]
+        },
+        "EnumBeschikkingssoort": {
+            "type": "string",
+            "description": "Lijst met alle soorten beschikkingen die worden onderkend.",
+            "enum": [
+                "Afwijzingsbeschikking",
+                "Toelatingsbeschikking"
             ]
         }
     }

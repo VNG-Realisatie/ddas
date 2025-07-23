@@ -1,6 +1,29 @@
 ## Objecttypen Model Vroegsignalering
 
 
+### AanleverendeOrganisatie
+> **Definitie AanleverendeOrganisatie:** 
+>
+> Geen Definitie
+
+Het objecttype AanleverendeOrganisatie kent de volgende eigenschappen:
+
+| Eigenschap | Waarde |
+| :--- | :------ |
+| name | AanleverendeOrganisatie |
+| bron |  |
+| version | 1.0 |
+
+
+Attributen van objecttype AanleverendeOrganisatie:
+
+| Attribuut | Datatype | Omschrijving | Verplicht |
+| :--- | :--- | :--- | :--- |
+| kvk-nummer | AN80 |  | Nee |
+| naam | AN200 |  | Nee |
+
+
+
 ### Client
 > **Definitie Client:** 
 >
@@ -21,13 +44,39 @@ Attributen van objecttype Client:
 | :--- | :--- | :--- | :--- |
 | Achternaam | AN200 |  | Nee |
 | Burgerservicenummer | AN9 |  | Nee |
-| Geboortedatum | Datum | De datum waarop de ander natuurlijk persoon is geboren. | Nee |
+| Geboortedatum | Datum | De datum waarop de persoon is geboren. | Nee |
 | Huisnummer | AN5 |  | Nee |
 | Huisnummertoevoeging | AN4 |  | Nee |
 | Plaatsnaam | AN200 |  | Nee |
 | Postcode | AN6 |  | Nee |
 | Straatnaam | AN200 |  | Nee |
 | Voorletters | AN20 |  | Nee |
+| Voorvoegsel | AN200 |  | Nee |
+
+
+
+### Contactpersoon
+> **Definitie Contactpersoon:** 
+>
+> Contactpersoon van een organisatie
+
+Het objecttype Contactpersoon kent de volgende eigenschappen:
+
+| Eigenschap | Waarde |
+| :--- | :------ |
+| name | Contactpersoon |
+| bron |  |
+| version | 1.0 |
+
+
+Attributen van objecttype Contactpersoon:
+
+| Attribuut | Datatype | Omschrijving | Verplicht |
+| :--- | :--- | :--- | :--- |
+| email | email |  | Nee |
+| functietitel | AN200 |  | Nee |
+| naam | AN200 |  | Nee |
+| telefoonnummer | AN200 |  | Nee |
 
 
 
@@ -147,31 +196,31 @@ Het enumeratie EnumContactsoort kent de volgende waarden:
 
 
   
-  * **Brief**: <Geen Definities>
+  * **Brief**: Een fysieke brief, vaak met uitleg over de achterstand en het hulpaanbod, verzonden per post.
   
 
   
-  * **Huisbezoek**: <Geen Definities>
+  * **Huisbezoek**: Een persoonlijke contactpoging aan huis, al dan niet aangekondigd, om direct met de inwoner in gesprek te gaan.
   
 
   
-  * **Kaartje**: <Geen Definities>
+  * **Kaartje**: Een informatief of uitnodigend kaartje dat bij de inwoner thuis wordt achtergelaten, bijvoorbeeld bij een gemist huisbezoek.
   
 
   
-  * **Mail**: <Geen Definities>
+  * **Mail**: Contact via e-mail, vaak gebruikt voor laagdrempelige informatievoorziening of opvolging.
   
 
   
-  * **Overige**: <Geen Definities>
+  * **Overige**: Een andere vorm van contact dan de hier benoemde, bijvoorbeeld via een bemiddelaar, buurthulp of digitaal platform.
   
 
   
-  * **SMS/Whatsapp**: <Geen Definities>
+  * **SMS/Whatsapp**: Een tekstbericht verstuurd via sms, WhatsApp of andere digitale berichtendienst.
   
 
   
-  * **Telefoon**: <Geen Definities>
+  * **Telefoon**: Telefonisch contact, waarbij direct met de inwoner wordt gesproken of een voicemail wordt ingesproken.
   
 
 
@@ -194,15 +243,15 @@ Het enumeratie EnumDagdeel kent de volgende waarden:
 
 
   
-  * **Avond**: <Geen Definities>
+  * **Avond**: 18:00 uur of later
   
 
   
-  * **Middag**: <Geen Definities>
+  * **Middag**: Tussen 12:00 en 18:00
   
 
   
-  * **Ochtend**: <Geen Definities>
+  * **Ochtend**: Tot 12:00 uur
   
 
 
@@ -237,11 +286,7 @@ Het enumeratie EnumEindresultaat kent de volgende waarden:
   
 
   
-  * **Inwoner al een ander lopend traject**: <Geen Definities>
-  
-
-  
-  * **Inwoner heeft al ander lopend traject**: [bijv. bij externe netwerkpartner, bij ander onderdeel sociaal domein, is onder bewind]
+  * **Inwoner heeft al een ander lopend traject**: [bijv. bij externe netwerkpartner, bij ander onderdeel sociaal domein, is onder bewind]
   
 
   
@@ -308,11 +353,11 @@ Het enumeratie EnumSignaalpartner kent de volgende waarden:
 
 
   
-  * **Belastingdienst**: <Geen Definities>
+  * **Belastingdienst**: Mensen die na een aanmaning hun belasting niet hebben betaald of terugbetaald.
   
 
   
-  * **CAK Eigen bijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. Zie convenant CAK Wmo en WLZ.
+  * **CAK Eigen bijdrage**: Achterstand bij het betalen van de Eigen bijdrage in het kader van WLZ, en WMO. <font color="#0e0e0e">De doelgroep voldoet aan deze drie voorwaarden:</font><br><font color="#0e0e0e">1.Inwoners van de Gemeenten die het incassotraject hebben doorlopen (schriftelijke herinnering, aanmaning, minnelijk deurwaarders traject en telefonische poging tot persoonlijk contact). Het betreft hier achterstanden op gebied van eigen bijdrage Wmo of Wlz, ge&#239;ncasseerd door het CAK. Het gaat hierbij specifiek om de groep die terugkeert van een minnelijk deurwaarderstraject.</font><br><font color="#0e0e0e">2.Er is nog geen sprake van een gerechtelijke dwangmaatregel. De vroegsignalering gaat vooraf aan de inzet van een gerechtelijke procedure (doorgaans wordt die ingezet bij vorderingen &gt; € 100,= achterstand).</font><br><font color="#0e0e0e">3.Het lukt CAK niet om contact te krijgen of een betaalafspraak te maken met de klant.</font>
   
 
   
@@ -320,7 +365,7 @@ Het enumeratie EnumSignaalpartner kent de volgende waarden:
   
 
   
-  * **Dienst Toeslagen**: <Geen Definities>
+  * **Dienst Toeslagen**: Mensen die na een aanmaning te veel ontvangen toeslag niet hebben betaald of terugbetaald.
   
 
   
@@ -328,11 +373,11 @@ Het enumeratie EnumSignaalpartner kent de volgende waarden:
   
 
   
-  * **Energie**: <Geen Definities>
+  * **Energie**: Inzake de energierekening (elektriciteit, gas en/of warmte) vanaf 30 dagen
   
 
   
-  * **Huur**: <Geen Definities>
+  * **Huur**: Inzake de huur vanaf 30 dagen.
   
 
   
@@ -344,11 +389,11 @@ Het enumeratie EnumSignaalpartner kent de volgende waarden:
   
 
   
-  * **Water**: <Geen Definities>
+  * **Water**: Inzake de drinkwaterrekening vanaf 30 dagen
   
 
   
-  * **Zorg**: <Geen Definities>
+  * **Zorg**: Inzake de zorgverzekeringspremie inclusief premie voor aanvullende verzekering, eigen risico en eigen bijdragen van 30 tot 100 dagen.
   
 
 
