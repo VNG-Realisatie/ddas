@@ -76,3 +76,9 @@ Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij
 {!../v1.0/meerdereLeveringenVoorbeeld.json!}
 
 ```
+
+## Testen Uitwisselspecificatie
+
+Om te testen hoe JSON-bestanden voldoen aan de uitwisselspecificatie kun je de [DDAS-Invoerapp](https://ddas.divosa.nl) gebruiken. Deze app heeft de mogelijkheid bestanden conform de uitwisselspecificatie in te lezen, en zo kun je zien hoe de data in het bestand geïnterpreteerd wordt. Gebruik hiervoor de optie `Inladen eerder opgeslagen gegevens` in de app. Uiteraard heb je al eerder vastgesteld dat je JSON-bestand een valide bestand is conform de uitwisselspecificatie.
+
+[![JSON-Bestand laden in DDAS-Invoerapp](images/InvoerApp.png)](images/InvoerApp.png)
