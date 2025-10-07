@@ -21,3 +21,10 @@ body {
     border-radius: 10px; /* Ronde hoeken */
   }
   
+  /* Alleen codeblokken met .code-scroll krijgen een scrollbalk */
+.md-typeset pre.code-scroll {
+  max-height: 28rem;     /* kies je eigen hoogte */
+  overflow: auto;        /* toont verticale/horizontale slider indien nodig */
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;      /* geen wrap; houd horizontale scroll mogelijk */
+}
