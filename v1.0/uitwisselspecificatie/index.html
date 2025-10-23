@@ -322,6 +322,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uitwisselvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitwisselvarianten
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uitwisselvarianten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-een-gemeente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanlevering voor één gemeente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-meerdere-gemeenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanlevering voor meerdere gemeenten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanvullende-gegevens-softwareleverancier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanvullende gegevens softwareleverancier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encoding" class="md-nav__link">
     <span class="md-ellipsis">
       Encoding
@@ -591,6 +633,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uitwisselvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uitwisselvarianten
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uitwisselvarianten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-een-gemeente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanlevering voor één gemeente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-meerdere-gemeenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanlevering voor meerdere gemeenten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanvullende-gegevens-softwareleverancier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aanvullende gegevens softwareleverancier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encoding" class="md-nav__link">
     <span class="md-ellipsis">
       Encoding
@@ -726,6 +810,39 @@
 <li>Het dezelfde clienten betreft (clienten kunnen maar 1 traject tegelijk hebben gedurende 1 periode. Wel kunnen zij sequentieel meerdere trajecten hebben)</li>
 </ol>
 <p>Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. </p>
+<h2 id="uitwisselvarianten">Uitwisselvarianten</h2>
+<p>De uitwisselspecificatie bevat mogelijkheden om voor één gemeente aan te leveren, maar ook in één keer voor meerdere gemeenten. Bijvoorbeeld door een softwareleverancier die meerdere gemeenten op het Cloud-platform heeft, of voor samenwerkingsorganisaties die uitvoering geven aan schuldhulpverlening voor meerdere gemeenten. Hieronder wordt toegelicht hoe de uitwisselspecificatie hiervoor op de juiste manier wordt gevuld.</p>
+<p>Om voorgaande varianten vanuit de uitwisselspecificatie te ondersteunen kent deze het concept <code>leveringen</code>. Hiermee kan in één aanlevering (= 1 JSON-bestand) voor meerdere organisaties de schuldhulpverleningstrajecten worden aangeleverd.</p>
+<p><img alt="Leveringen in het uitwisselschema" src="../images/Leveringen.jpg" /></p>
+<p>In de volgende paragrafen wordt uitgelegd hoe je het concept <code>leveringen</code> bij verschillende uitwisselvarianten kunt gebruiken.</p>
+<h3 id="aanlevering-voor-een-gemeente">Aanlevering voor één gemeente</h3>
+<p>Dit is de eenvoudigste variant. In het uitwisselmodel wordt voor één gemeente de schuldhulptrajecten aangeboden. In dit geval wordt er één levering aangemaakt met daarin tenminste de volgende waardes:</p>
+<ol>
+<li>teller: 1</li>
+<li>gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan.</li>
+<li>aanleverende organisatie:<ol>
+<li>(Statutaire) naam: gemeentenaam</li>
+<li>KvK-nummer: <geen waarde></li>
+<li>gemeentecode: zelfde als gemeentecode: code van de gemeente... </li>
+</ol>
+</li>
+</ol>
+<p>De overige waarden zijn af te leiden uit de documentatie.</p>
+<h3 id="aanlevering-voor-meerdere-gemeenten">Aanlevering voor meerdere gemeenten</h3>
+<p>Dit is een ingewikkelder variant waar de werking van het concept <code>leveringen</code> tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.</p>
+<p>In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één levering gemaakt die als volgt wordt gevuld: </p>
+<ol>
+<li>teller: nummer van de levering, te beginnen bij 1 </li>
+<li>gemeentecode:code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan. (per levering dus een nieuwe gemeentecode)</li>
+<li>aanleverende organisatie:<ol>
+<li>(Statutaire) naam: als het een samenwerkingsorganisatie betreft de naam van de samenwerkingsorganisatie, als het een softwareleverancier betreft de naam van de gemeente. </li>
+<li>KvK-nummer: als het een samenwerkingsorganisatie betreft het kvk-nummer van de samenwerkingsorganisatie, anders <geen waarde></li>
+<li>gemeentecode: als het een samenwerkingsorganisatie betreft <geen waarde>, als het een softwareleverancier betreft de code van de gemeente </li>
+</ol>
+</li>
+</ol>
+<h3 id="aanvullende-gegevens-softwareleverancier">Aanvullende gegevens softwareleverancier</h3>
+<p>In alle gevallen geeft de softwareleverancier de code van haar organisatie mee in het veld <code>codeGegevensleverancier</code>. Hier wordt de naam van de leverancier meegegeven met daarna het versienummer van het aanleverende pakket. </p>
 <h2 id="encoding">Encoding</h2>
 <p>Alle bestanden dienen te worden aangeleverd in <a href="https://www.forumstandaardisatie.nl/open-standaarden/utf-8">UTF-8-formaat</a>. </p>
 <h2 id="uitwisselspecificatie">Uitwisselspecificatie</h2>

@@ -18,6 +18,46 @@ Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzel
 
 Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. 
 
+## Uitwisselvarianten
+
+De uitwisselspecificatie bevat mogelijkheden om voor één gemeente aan te leveren, maar ook in één keer voor meerdere gemeenten. Bijvoorbeeld door een softwareleverancier die meerdere gemeenten op het Cloud-platform heeft, of voor samenwerkingsorganisaties die uitvoering geven aan schuldhulpverlening voor meerdere gemeenten. Hieronder wordt toegelicht hoe de uitwisselspecificatie hiervoor op de juiste manier wordt gevuld.
+
+Om voorgaande varianten vanuit de uitwisselspecificatie te ondersteunen kent deze het concept `leveringen`. Hiermee kan in één aanlevering (= 1 JSON-bestand) voor meerdere organisaties de schuldhulpverleningstrajecten worden aangeleverd.
+
+![Leveringen in het uitwisselschema](images/Leveringen.jpg)
+
+In de volgende paragrafen wordt uitgelegd hoe je het concept `leveringen` bij verschillende uitwisselvarianten kunt gebruiken.
+
+### Aanlevering voor één gemeente
+
+Dit is de eenvoudigste variant. In het uitwisselmodel wordt voor één gemeente de schuldhulptrajecten aangeboden. In dit geval wordt er één levering aangemaakt met daarin tenminste de volgende waardes:
+
+1. teller: 1
+2. gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan.
+3. aanleverende organisatie:
+    1. (Statutaire) naam: gemeentenaam
+    2. KvK-nummer: <geen waarde>
+    3. gemeentecode: zelfde als gemeentecode: code van de gemeente... 
+
+De overige waarden zijn af te leiden uit de documentatie.
+
+### Aanlevering voor meerdere gemeenten
+
+Dit is een ingewikkelder variant waar de werking van het concept `leveringen` tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.
+
+In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één levering gemaakt die als volgt wordt gevuld: 
+
+1. teller: nummer van de levering, te beginnen bij 1 
+2. gemeentecode:code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan. (per levering dus een nieuwe gemeentecode)
+3. aanleverende organisatie:
+    1. (Statutaire) naam: als het een samenwerkingsorganisatie betreft de naam van de samenwerkingsorganisatie, als het een softwareleverancier betreft de naam van de gemeente. 
+    2. KvK-nummer: als het een samenwerkingsorganisatie betreft het kvk-nummer van de samenwerkingsorganisatie, anders <geen waarde>
+    3. gemeentecode: als het een samenwerkingsorganisatie betreft <geen waarde>, als het een softwareleverancier betreft de code van de gemeente 
+
+### Aanvullende gegevens softwareleverancier
+
+In alle gevallen geeft de softwareleverancier de code van haar organisatie mee in het veld `codeGegevensleverancier`. Hier wordt de naam van de leverancier meegegeven met daarna het versienummer van het aanleverende pakket. 
+
 ## Encoding
 
 Alle bestanden dienen te worden aangeleverd in [UTF-8-formaat](https://www.forumstandaardisatie.nl/open-standaarden/utf-8). 
