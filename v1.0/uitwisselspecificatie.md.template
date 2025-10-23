@@ -24,7 +24,7 @@ De uitwisselspecificatie bevat mogelijkheden om voor één gemeente aan te lever
 
 Om voorgaande varianten vanuit de uitwisselspecificatie te ondersteunen kent deze het concept `leveringen`. Hiermee kan in één aanlevering (= 1 JSON-bestand) voor meerdere organisaties de schuldhulpverleningstrajecten worden aangeleverd.
 
-![Leveringen in het uitwisselschema](images/Leveringen.jpg)
+[![Leveringen in het uitwisselschema](images/Leveringen.jpg)](images/Leveringen.jpg)
 
 In de volgende paragrafen wordt uitgelegd hoe je het concept `leveringen` bij verschillende uitwisselvarianten kunt gebruiken.
 
