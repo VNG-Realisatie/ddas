@@ -1,6 +1,9 @@
 # Vraag en Antwoord 
 
 Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer algemene vragen over DDAS-project,  kijk hier: https://www.divosa.nl/projecten/data-delen-armoede-en-schulden 
+ 
+??? question "Hoe lever ik aan voor meerdere gemeenten?"
+    Deze situatie is beschreven onder [Uitwisselvarianten](uitwisselspecificatie/#uitwisselvarianten) bij de Uitwisselspecificatie.
 
 ??? question "Moet het aan CBS aan te leveren JSON-bestand worden versleuteld?"
     Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinssnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
@@ -64,5 +67,4 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     
         * aanlevering over 2020: BBR 01-01-2020 tot 31-12-2020
         * aanlevering over 2023: BBR 01-12-2023 tot [leeg]
- 
  
