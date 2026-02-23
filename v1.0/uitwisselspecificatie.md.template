@@ -30,7 +30,7 @@ In de volgende paragrafen wordt uitgelegd hoe je het concept `leveringen` bij ve
 
 ### Aanlevering door de gemeente zelf
 
-Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één levering aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:
+Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één `levering` aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:
 
 1. **teller**: 1
 2. **aanleverende organisatie**:
@@ -43,7 +43,7 @@ Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhu
 
 ### Aanlevering voor één gemeente door een derde partij
 
-In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één levering aangemaakt met daarin tenminste de volgende waardes:
+In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één `levering` aangemaakt met daarin tenminste de volgende waardes:
 
 1. **teller**: 1
 2. **aanleverende organisatie**:
@@ -58,7 +58,7 @@ In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeb
 
 Dit is een ingewikkelder variant waar de werking van het concept `leveringen` tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.
 
-In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één levering gemaakt die als volgt wordt gevuld: 
+In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één `levering` gemaakt die als volgt wordt gevuld: 
 
 1. **teller**: volgnummer van de levering in het bestand (1, 2, 3, …) 
 2. **aanleverende organisatie**:
@@ -68,6 +68,8 @@ In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één l
 3. **schuldhulptrajecten** Meerdere schuldhulptrajecten met daarin:
     1. gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd. Binnen één levering behoren de trajecten tot dezelfde verantwoordelijke gemeente; daarom is de gemeentecode in die trajecten gelijk.
     2. alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.
+
+Het kan voorkomen dat meerdere leveringen dezelfde `aanleverende organisatie` organisatie hebben. 
 
 ### Aanvullende gegevens softwareleverancier
 

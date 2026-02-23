@@ -852,7 +852,7 @@
 <p><a href="../images/Leveringen.jpg"><img alt="Leveringen in het uitwisselschema" src="../images/Leveringen.jpg" /></a></p>
 <p>In de volgende paragrafen wordt uitgelegd hoe je het concept <code>leveringen</code> bij verschillende uitwisselvarianten kunt gebruiken.</p>
 <h3 id="aanlevering-door-de-gemeente-zelf">Aanlevering door de gemeente zelf</h3>
-<p>Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één levering aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:</p>
+<p>Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één <code>levering</code> aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:</p>
 <ol>
 <li><strong>teller</strong>: 1</li>
 <li><strong>aanleverende organisatie</strong>:<ol>
@@ -868,7 +868,7 @@
 </li>
 </ol>
 <h3 id="aanlevering-voor-een-gemeente-door-een-derde-partij">Aanlevering voor één gemeente door een derde partij</h3>
-<p>In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één levering aangemaakt met daarin tenminste de volgende waardes:</p>
+<p>In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één <code>levering</code> aangemaakt met daarin tenminste de volgende waardes:</p>
 <ol>
 <li><strong>teller</strong>: 1</li>
 <li><strong>aanleverende organisatie</strong>:<ol>
@@ -885,7 +885,7 @@
 </ol>
 <h3 id="aanlevering-voor-meerdere-gemeenten">Aanlevering voor meerdere gemeenten</h3>
 <p>Dit is een ingewikkelder variant waar de werking van het concept <code>leveringen</code> tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.</p>
-<p>In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één levering gemaakt die als volgt wordt gevuld: </p>
+<p>In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één <code>levering</code> gemaakt die als volgt wordt gevuld: </p>
 <ol>
 <li><strong>teller</strong>: volgnummer van de levering in het bestand (1, 2, 3, …) </li>
 <li><strong>aanleverende organisatie</strong>:<ol>
@@ -900,6 +900,7 @@
 </ol>
 </li>
 </ol>
+<p>Het kan voorkomen dat meerdere leveringen dezelfde <code>aanleverende organisatie</code> organisatie hebben. </p>
 <h3 id="aanvullende-gegevens-softwareleverancier">Aanvullende gegevens softwareleverancier</h3>
 <p>In alle gevallen geeft de softwareleverancier de code van haar organisatie mee in het veld <code>codeGegevensleverancier</code>. Hier wordt de naam van de leverancier meegegeven met daarna het versienummer van het aanleverende pakket. </p>
 <h3 id="gebruik-gemeentecode">Gebruik gemeentecode</h3>
