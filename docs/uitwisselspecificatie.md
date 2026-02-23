@@ -9,7 +9,7 @@ De uitwisselspecificatie kent de volgende opbouw:
 1. Op het hoofdniveau is het Uitwisselmodel gedefinieerd. Dit met een aantal attributen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;
 2. Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, **mits daar natuurlijk toestemming voor is afgegeven**. 
 3. Op het derde niveau wordt per levering de aanleverende [schuldhulporganisatie](./Hoofdlijnen_Model Schuldhulpverlening.md/#organisaties) met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er per levering steeds door precies één schuldhulporganisatie gegevens worden aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.
-4. Op detailniveau wordt een aantal schuldhulptrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het [procesmodel](./Hoofdlijnen_Model Schuldhulpverlening.md/#processen), en de [client(en)](./Hoofdlijnen_Model Schuldhulpverlening.md/#clienten) die het betreft. Per schuldhulptraject worden de schulden opgegeven die binnen de scope van het traject vallen. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor het schuldhulptraject.
+4. Op detailniveau wordt een aantal schuldhulptrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het [procesmodel](./Hoofdlijnen_Model Schuldhulpverlening.md/#processen), en de [client(en)](./Hoofdlijnen_Model Schuldhulpverlening.md/#clienten) die het betreft. Per schuldhulptraject worden de schulden opgegeven die binnen de scope van het traject vallen. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor de uitvoering van het schuldhulptraject. In veel gevallen is dit dezelfde gemeente als waar de cliënt woont, maar dat hoeft niet. Na een verhuizing kan een cliënt in een andere gemeente zijn gaan wonen, terwijl de uitvoering nog bij de oorspronkelijke gemeente (van voor de verhuizing) ligt. 
 
 Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzelfde traject betreffen. De trajecten worden dan uitgebreid met de nieuwe gegevens. Het gaat om hetzelfde traject als:
 
@@ -28,35 +28,56 @@ Om voorgaande varianten vanuit de uitwisselspecificatie te ondersteunen kent dez
 
 In de volgende paragrafen wordt uitgelegd hoe je het concept `leveringen` bij verschillende uitwisselvarianten kunt gebruiken.
 
-### Aanlevering voor één gemeente
+### Aanlevering door de gemeente zelf
 
-Dit is de eenvoudigste variant. In het uitwisselmodel wordt voor één gemeente de schuldhulptrajecten aangeboden. In dit geval wordt er één levering aangemaakt met daarin tenminste de volgende waardes:
+Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één `levering` aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:
 
 1. **teller**: 1
-2. **gemeentecode**: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan.
-3. **aanleverende organisatie**:
+2. **aanleverende organisatie**:
     1. (Statutaire) naam: gemeentenaam
     2. KvK-nummer: geen waarde
-    3. gemeentecode: zelfde als gemeentecode: code van de gemeente... 
+    3. gemeentecode: code van de gemeente 
+3. **schuldhulptrajecten** Eén schuldhulptraject met daarin:
+    1. gemeentecode: code van de gemeente (zelfde als onder "aanleverende organisatie")
+    2. alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.
 
-De overige waarden zijn af te leiden uit de documentatie.
+### Aanlevering voor één gemeente door een derde partij
+
+In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één `levering` aangemaakt met daarin tenminste de volgende waardes:
+
+1. **teller**: 1
+2. **aanleverende organisatie**:
+    1. (Statutaire) naam: naam van de aanleverende organisatie
+    2. KvK-nummer: kvk-nummer van de aanleverende organisatie
+    3. gemeentecode: geen waarde 
+3. **schuldhulptrajecten** Eén schuldhulptraject met daarin:
+    1. gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd
+    2. alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.
 
 ### Aanlevering voor meerdere gemeenten
 
 Dit is een ingewikkelder variant waar de werking van het concept `leveringen` tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.
 
-In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één levering gemaakt die als volgt wordt gevuld: 
+In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één `levering` gemaakt die als volgt wordt gevuld: 
 
-1. **teller**: nummer van de levering, te beginnen bij 1 
-2. **gemeentecode**: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd en namens wie de levering is gedaan. (per levering dus een nieuwe gemeentecode)
-3. **aanleverende organisatie**:
-    1. (Statutaire) naam: als het een samenwerkingsorganisatie betreft de naam van de samenwerkingsorganisatie, als het een softwareleverancier betreft de naam van de gemeente. 
-    2. KvK-nummer: als het een samenwerkingsorganisatie betreft het kvk-nummer van de samenwerkingsorganisatie, anders: geen waarde.
-    3. gemeentecode: als het een samenwerkingsorganisatie betreft: geen waarde, als het een softwareleverancier betreft de code van de gemeente. 
+1. **teller**: volgnummer van de levering in het bestand (1, 2, 3, …) 
+2. **aanleverende organisatie**:
+    1. (Statutaire) naam: naam van de aanleverende organisatie (softwareleverancier of samenwerkingsorganisatie) 
+    2. KvK-nummer: kvk-nummer van de aanleverende organisatie (softwareleverancier of samenwerkingsorganisatie)
+    3. gemeentecode: geen waarde 
+3. **schuldhulptrajecten** Meerdere schuldhulptrajecten met daarin:
+    1. gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd. Binnen één levering behoren de trajecten tot dezelfde verantwoordelijke gemeente; daarom is de gemeentecode in die trajecten gelijk.
+    2. alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.
+
+Het kan voorkomen dat meerdere leveringen dezelfde `aanleverende organisatie` organisatie hebben. 
 
 ### Aanvullende gegevens softwareleverancier
 
 In alle gevallen geeft de softwareleverancier de code van haar organisatie mee in het veld `codeGegevensleverancier`. Hier wordt de naam van de leverancier meegegeven met daarna het versienummer van het aanleverende pakket. 
+
+### Gebruik gemeentecode
+
+Als de aanleverende organisatie een gemeente is wordt er onder `aanleverende organisatie` de gemeentecode ingevuld, in andere gevallen is deze waarde leeg. De `schuldhulptrajecten` hebben **altijd** een gemeentecode. Dit betreft de gemeente onder wiens verantwoordelijkheid de schuldhulpverlening wordt uitgevoerd, en niet het adres van de client. 
 
 ## Encoding
 

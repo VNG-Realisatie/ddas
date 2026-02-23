@@ -21,7 +21,8 @@ Attributen van objecttype {{ class.name }}:
 {% set attributen = class.attributes|rejectattr('name','none')|list %}
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-{% for attribute in attributen|sort(attribute='name') %}| {{ attribute.name }} | {{ attribute.getDatatype()|default("", true) }} | {{ attribute.definitie|default("", true)|fix_and_format()|set_url() }} | Nee |
+{% for attribute in class.attributes if attribute.name -%}
+| {{ attribute.name }} | {{ attribute.getDatatype()|default("", true) }} | {{ attribute.definitie|default("", true)|set_url()|fix_and_format_table() }} |
 {% endfor %}
 
 {% endfor %}
@@ -38,7 +39,7 @@ Attributen van objecttype {{ class.name }}:
 
 Het enumeratie {{ enumeration.name }} kent de volgende waarden:
 
-{% for literal in enumeration.literals %}{% if literal.name is not none %}* **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)|fix_and_format()|set_url()  }}{% endif %}
+{% for literal in enumeration.literals %}{% if literal.name is not none %}* **{{ literal.name }}**: {{ literal.definitie|default("<Geen Definities>", true)|fix_and_format_table()|set_url()  }}{% endif %}
 {% endfor %}
 
 De enumeratie {{ enumeration.name }} heeft de volgende kenmerken:

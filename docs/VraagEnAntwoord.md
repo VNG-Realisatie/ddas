@@ -2,8 +2,13 @@
 
 Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer algemene vragen over DDAS-project,  kijk hier: https://www.divosa.nl/projecten/data-delen-armoede-en-schulden 
  
+??? question "Wat vul ik in bij gemeentecode?"
+    Gemeentecode komt twee maal voor in de uitwisselspecificatie. Gemeentecode dient als volgt gebruikt te worden: Als de aanleverende organisatie een gemeente is wordt er onder `aanleverende organisatie` de gemeentecode ingevuld, in andere gevallen is deze waarde leeg. De `schuldhulptrajecten` hebben **altijd** een gemeentecode. Dit betreft de gemeente onder wiens verantwoordelijkheid de schuldhulpverlening wordt uitgevoerd, en niet het adres van de client.   
+    
+    De invulling van gemeentecode heeft een rol bij verschillende uitwisselvarianten. Dit staat onder [Uitwisselvarianten](../uitwisselspecificatie/#uitwisselvarianten) uitgelegd.
+ 
 ??? question "Hoe lever ik aan voor meerdere gemeenten?"
-    Deze situatie is beschreven onder [Uitwisselvarianten](uitwisselspecificatie/#uitwisselvarianten) bij de Uitwisselspecificatie.
+    Deze situatie is beschreven onder [Uitwisselvarianten](../uitwisselspecificatie/#uitwisselvarianten) bij de Uitwisselspecificatie. 
 
 ??? question "Moet het aan CBS aan te leveren JSON-bestand worden versleuteld?"
     Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinssnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
@@ -40,7 +45,7 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     De beschikkingsdatum is de datum waarop de beschikking is afgegeven, en de einddatum is de datum waarop de intake is afgelopen. In de praktijk zullen deze twee data bijna altijd hetzelfde zijn, maar in theorie kunnen deze data van elkaar verschillen.
 
 ??? question "Wat moet worden opgegeven bij 'code gegevensleverancier'?"
-    Dit is een code die het CBS nodig heeft om onderscheid te kunnen maken tussen de leveranciers die de gegevens aanbieden. Voor nu een goede optie de naam in te vullen van de softwareleverancier die de aanpassing in de software doet. Mocht het CBS een andere verwachten dan laten we dat weten.
+    Dit is een code die het CBS nodig heeft om onderscheid te kunnen maken tussen de softwareleveranciers die de gegevens aanbieden. Ook wordt op basis van deze code bepaald welke versie van de software is gebruikt. De correcte vulling van dit veld is als volgt: 'naam softwareleverancier' + 'versienummer software'.
 
 ??? question "Wat moet worden opgegeven bij 'omschrijving' in 'Schuldhulptraject'?"
     Omschrijving is een optioneel veld die iets zeggen over individuele trajecten. Dit veld is echter niet relevant voor de levering aan CBS en kan leeg gelaten worden.
