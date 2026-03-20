@@ -11,7 +11,7 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     Deze situatie is beschreven onder [Uitwisselvarianten](../uitwisselspecificatie/#uitwisselvarianten) bij de Uitwisselspecificatie. 
 
 ??? question "Moet het aan CBS aan te leveren JSON-bestand worden versleuteld?"
-    Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinssnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
+    Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinsnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
 
 ??? question "In het informatiemodel zijn oa. Woningbezit en Inkomen opgenomen, waarom zitten deze niet in het uitwisselmodel?"
     Inkomen, Woningbezit en een aantal andere kenmerken zijn i.d.d. onderdeel van het informatiemodel, maar worden niet bij de schuldhulpverleners uitgevraagd omdat deze gegevens al bij het CBS beschikbaar zijn. Het is dus correct dat deze niet in het uitwisselmodel staan beschreven.
@@ -23,9 +23,9 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     In de description van Begeleiding staan ten onrechte 3 soorten begeleiding, terwijl er 5 soorten mogelijk zijn volgens EnumBegeleidingssort. We zullen de description van Begeleiding in de volgende release aanpassen naar 5 opties.
 
 ??? question "In de intake staat zowel Beschikkingsdatum als einddatum, is dit niet dubbelop?"
-    Beschikkingsdatum en einddatum lijken i.d.d. dubbel te zijn. In principe geldt de beschikkingsdatum als leidend, en gaan we ervanuit dat de einddatum dezelfde waarde krijgt als de beschikkingsdatum. In de volgende release zal de einddatum worden verwijderd.
+    Beschikkingsdatum en einddatum lijken i.d.d. dubbel te zijn. In principe geldt de beschikkingsdatum als leidend, en gaan we ervan uit dat de einddatum dezelfde waarde krijgt als de beschikkingsdatum. In de volgende release zal de einddatum worden verwijderd.
 
-??? question "Wanneer moet de boolean 'dwangakkoord' binnen het het object 'schuldregeling' de waarde true hebben?"
+??? question "Wanneer moet de boolean 'dwangakkoord' binnen het object 'schuldregeling' de waarde true hebben?"
     De boolean 'dwangakkoord' heeft alleen de waarde true als de datum 'toegekend' een waarde heeft.
 
 ??? question "Er wordt bij objecttype schuldeiser 2 keer om 'naam' gevraagd, wat is hier het verschil tussen?"
@@ -45,7 +45,7 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     De beschikkingsdatum is de datum waarop de beschikking is afgegeven, en de einddatum is de datum waarop de intake is afgelopen. In de praktijk zullen deze twee data bijna altijd hetzelfde zijn, maar in theorie kunnen deze data van elkaar verschillen.
 
 ??? question "Wat moet worden opgegeven bij 'code gegevensleverancier'?"
-    Dit is een code die het CBS nodig heeft om onderscheid te kunnen maken tussen de softwareleveranciers die de gegevens aanbieden. Ook wordt op basis van deze code bepaald welke versie van de software is gebruikt. De correcte vulling van dit veld is als volgt: 'naam softwareleverancier' + 'versienummer software'.
+    Dit is een code die het CBS nodig heeft om onderscheid te kunnen maken tussen de softwareleveranciers die de gegevens aanbieden. Ook wordt op basis van deze code bepaald welke versie van de software is gebruikt. De correcte vulling van dit veld is als volgt: 'naam softwareleverancier' + 'versienummer-software'.
 
 ??? question "Wat moet worden opgegeven bij 'omschrijving' in 'Schuldhulptraject'?"
     Omschrijving is een optioneel veld die iets zeggen over individuele trajecten. Dit veld is echter niet relevant voor de levering aan CBS en kan leeg gelaten worden.
@@ -60,7 +60,7 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
     Ja, de term 0%-aanbod blijft gehanteerd tot een nieuwe versie van de uitwisselspecificatie wordt uitgebracht. De huidige uitwisselspecificatie is vastgesteld voordat deze nieuwe term is geïntroduceerd, daarom wordt de oude term nog gehanteerd.
  
 ??? question "Overlap in de schuldhulptrajecten in de aanlevering aan CBS"
-    In sommige gevallen kan er overlap ontstaan tussen (delen van) schuldhulptrajecten in de aanlevering aan het CBS. bijvoorbeeld omdat een deel van de schuldhulpverlening wordt uitgevoerd door een andere partij. Hoe gaat het CBS hier mee om? 
+    In sommige gevallen kan er overlap ontstaan tussen (delen van) schuldhulptrajecten in de aanlevering aan het CBS, bijvoorbeeld omdat een deel van de schuldhulpverlening wordt uitgevoerd door een andere partij. Hoe gaat het CBS hier mee om? 
     Als er overlap in de tijd is in de aangeleverde informatie, dan wordt dit samengevoegd tot één (deel)traject. Is er geen overlap in de tijd, dan ontstaan twee losse (deel)trajecten. 
     Als voorbeeld: stel dat er losse BBR-begeleidingssoorten worden aangeleverd bij het CBS? Dus bijvoorbeeld:
 
@@ -68,8 +68,12 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
         * aanlevering over 2023: BBR 01-12-2023 tot 20-12-2023  &  BBR 15-12-2023 tot [leeg]
         * aanlevering over 2024: BBR 15-12-2023 tot 15-01-2024  &  BBR 10-01-2024 tot [leeg]  
 
-    In dit geval vat het CBS dat op als twee begeleingstrajecten:
+    In dit geval vat het CBS dat op als twee begeleidingstrajecten:
     
         * aanlevering over 2020: BBR 01-01-2020 tot 31-12-2020
         * aanlevering over 2023: BBR 01-12-2023 tot [leeg]
- 
+
+??? question "Wat te doen als de gemeentecode onbekend is van de gemeente onder wiens verantwoordelijkheid schuldhulp wordt uitgevoerd."
+    In uitzonderlijke gevallen is het mogelijk dat de gemeentecode onbekend is van de gemeente onder wiens verantwoordelijkheid schuldhulp wordt uitgevoerd. Bijvoorbeeld bij samenwerkingsorganisaties die deze gemeente niet administreren. 
+    
+    De verantwoordelijke gemeente is één van de belangrijke startpunten voor de statistiek die door CBS wordt opgesteld. Dus sporen aan dit wel in de systemen op te nemen. Wel zijn we erg blij met aan te leveren gegevens, en kunnen we die gebruiken voor diverse andere statistieken. In dergelijke gevallen kan bij de trajecten in het veld gemeentecode de waarde “Onbekend” worden opgenomen.
