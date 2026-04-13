@@ -1,0 +1,224 @@
+openapi: 3.1.0
+info:
+  title: DDAS Gegevens Uitwissel API - SHV
+  description: |
+    API voor het uitwisselen van Schuldhulpverleningsgegevens (SHV) met het CBS.
+    Beveiligd met OAuth 2.0 Client Credentials Grant.
+    Payload-integriteit en authenticiteit via JAdES payload signing conform Geonovum
+    KP-APIs signing-jades module (header: nlgov-adr-payload-sig, PS256, detached,
+    alleen digest getekend, key meegestuurd via x5c).
+
+    Error handling is FSC-compatibel (Logius FSC Core 1.0.0): bij FSC-gerelateerde fouten
+    wordt de header `Fsc-Error-Code` meegegeven met een geldige ERROR_CODE_... waarde.
+  version: 1.0.0
+  contact:
+    name: DDAS-beheer
+    url: https://divosa.nl/ddas
+
+servers:
+  - url: https://api.gegevensuitwissel.com/v1
+    description: Productieomgeving
+  - url: https://api-test.gegevensuitwissel.com/v1
+    description: Acceptatie-/testomgeving
+
+security:
+  - OAuth2: [read]
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.gegevensuitwissel.com/token
+          scopes:
+            read: Toegang om SHV-gegevens op te halen
+
+  headers:
+    Digest:
+      description: SHA-256 digest van de payload (conform RFC 3230). Verplicht bij berichten met body.
+      schema:
+        type: string
+        pattern: '^SHA-256=[A-Za-z0-9+/=]{43,44}$'
+      required: true
+
+    NlgovAdrPayloadSig:
+      name: nlgov-adr-payload-sig
+      in: header
+      required: true
+      description: >
+        De protected header bevat minimaal:
+        - alg: PS256
+        - kid: key identifier
+        - x5c: volledige X.509 certificaatketen (PKIoverheid)
+        - typ: "JOSE"
+
+        De publieke sleutel wordt afgeleid uit het eerste certificaat in de x5c-array.
+        Bij validatie dient:
+        - de certificaatketen gevalideerd te worden tot PKIoverheid root
+        - OCSP of CRL controle plaats te vinden
+        - geldigheidsduur gecontroleerd te worden
+      schema:
+        type: string
+        description: JWS Compact Serialization (detached payload)
+        example: >
+          eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]
+
+    Fsc-Error-Code:
+      description: |
+        Verplichte FSC-header bij fouten conform FSC Core 1.0.0 (Inway/Outway).
+        Bevat een ERROR_CODE_... uit de FSC-standaard (bijv. ERROR_CODE_ACCESS_TOKEN_INVALID).
+      schema:
+        type: string
+        enum:
+          - ERROR_CODE_ACCESS_TOKEN_MISSING
+          - ERROR_CODE_ACCESS_TOKEN_INVALID
+          - ERROR_CODE_ACCESS_TOKEN_EXPIRED
+          - ERROR_CODE_WRONG_GROUP_ID_IN_TOKEN
+          - ERROR_CODE_SERVICE_NOT_FOUND
+          - ERROR_CODE_SERVICE_UNREACHABLE
+          - ERROR_CODE_METHOD_UNSUPPORTED
+      example: ERROR_CODE_ACCESS_TOKEN_INVALID
+
+  schemas:
+    Uitwisselmodel:
+      $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json'
+
+    GegevensRequest:
+      type: object
+      properties:
+        aanleverperiodeStartdatum:
+          type: string
+          format: date
+          example: "2025-01-01"
+        aanleverperiodeEinddatum:
+          type: string
+          format: date
+          example: "2025-12-31"
+        aanleverende_organisatie:
+          type: string
+          example: "Gemeente Voorbeeldstad"
+      additionalProperties: false
+
+    FscError:
+      type: object
+      required: [code, domain]
+      properties:
+        code:
+          type: string
+          description: ERROR_CODE_... uit FSC standaard
+          example: ERROR_CODE_ACCESS_TOKEN_INVALID
+        domain:
+          type: string
+          enum: [ERROR_DOMAIN_INWAY, ERROR_DOMAIN_OUTWAY]
+          example: ERROR_DOMAIN_INWAY
+        title:
+          type: string
+          example: Ongeldige access token
+        detail:
+          type: string
+          example: De meegegeven Fsc-Authorization token is ongeldig of verlopen
+        status:
+          type: integer
+          example: 401
+
+paths:
+  /gegevens:
+    post:
+      summary: Aanvragen en ontvangen van SHV-gegevens
+      operationId: postGegevens
+      description: |
+        Stuurt een verzoek om SHV-gegevens over een bepaalde periode / organisatie.
+        Het verzoek én het antwoord worden beschermd met een nlgov-adr-payload-sig
+        header (JAdES payload signing, PS256, alleen digest getekend).
+      security:
+        - OAuth2: [read]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GegevensRequest'
+      responses:
+        '200':
+          description: Succesvol antwoord met de gevraagde SHV-gegevens
+          headers:
+            Digest:
+              $ref: '#/components/headers/Digest'
+            nlgov-adr-payload-sig:
+              $ref: '#/components/headers/nlgov-adr-payload-sig'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Uitwisselmodel'
+
+        '400':
+          description: Ongeldig verzoek (bijv. ongeldige filters of syntaxis)
+          content:
+            application/problem+json:
+              schema:
+                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+
+        '401':
+          description: Geen of ongeldige authenticatie (FSC-compatibel)
+          headers:
+            Fsc-Error-Code:
+              $ref: '#/components/headers/Fsc-Error-Code'
+            WWW-Authenticate:
+              schema:
+                type: string
+              description: Bearer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FscError'
+
+        '403':
+          description: Toegang geweigerd (bijv. verkeerde groep in token)
+          headers:
+            Fsc-Error-Code:
+              $ref: '#/components/headers/Fsc-Error-Code'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FscError'
+
+        '404':
+          description: Service of resource niet gevonden
+          headers:
+            Fsc-Error-Code:
+              $ref: '#/components/headers/Fsc-Error-Code'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FscError'
+
+        '405':
+          description: Niet-ondersteunde HTTP-methode (FSC Outway fout)
+          headers:
+            Fsc-Error-Code:
+              $ref: '#/components/headers/Fsc-Error-Code'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FscError'
+
+        '422':
+          description: Onverwerkbare entiteit (bijv. semantische validatiefout)
+          content:
+            application/problem+json:
+              schema:
+                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+
+        '429':
+          description: Rate limit overschreden
+
+        '502':
+          description: Service niet bereikbaar (FSC Inway fout)
+          headers:
+            Fsc-Error-Code:
+              $ref: '#/components/headers/Fsc-Error-Code'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FscError'
