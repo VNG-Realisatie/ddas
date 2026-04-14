@@ -18,6 +18,16 @@ nav:
   - Informatiemodel:
     - Hoofdlijnen: "Hoofdlijnen_Model Schuldhulpverlening.md"
     - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
+  - Koppelvlakspecificatie API:
+    - Inleiding: api/index.md
+    - Kaders: api/uitgangspunten.md
+    - Overzicht: api/overzicht.md
+    - Transportlaag: api/transport.md
+    - Identificatie, authenticatie en autorisatie: api/iam.md
+    - Ondertekenen en versleutelen: api/signing-encryptie.md
+    - Berichten: api/berichten.md
+    - Niet-functionele eisen: api/non-functionals.md
+
   - Achtergrond DDAS: Achtergrond.md
   - Vraag en antwoord: VraagEnAntwoord.md
 
