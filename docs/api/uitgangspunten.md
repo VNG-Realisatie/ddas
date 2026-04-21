@@ -22,7 +22,7 @@ Het koppelvlak moet voldoen aan de volgende wetten, afspraken en standaarden: 
 
 De volgende keuzes zijn gemaakt: 
 
-### **Gegevensleveranciers bieden een API aan die rechtstreeks door CBS wordt bevraagd**
+### Gegevensleveranciers bieden een API aan die rechtstreeks door CBS wordt bevraagd
 
   *Rationale*
 
@@ -44,7 +44,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Gebruik [Digikoppeling](https://www.logius.nl/domeinen/gegevensuitwisseling/digikoppeling) REST profiel**
+### Gebruik [Digikoppeling](https://www.logius.nl/domeinen/gegevensuitwisseling/digikoppeling) REST profiel
 
   *Rationale*
 
@@ -60,7 +60,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Gebruik [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) voor signen**
+### Gebruik [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) voor signen
 
   *Rationale*
 
@@ -81,7 +81,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Berichten worden niet versleuteld***
+### Berichten worden niet versleuteld*
 
   *Rationale*
 
@@ -95,7 +95,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Federatieve Services Connectiviteit voor de connectiviteit - [FSC](https://gitdocumentatie.logius.nl/publicatie/fsc/core/1.0.0/)**
+### Federatieve Services Connectiviteit voor de connectiviteit - [FSC](https://gitdocumentatie.logius.nl/publicatie/fsc/core/1.0.0/)
 
   *Rationale*
 
@@ -118,7 +118,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Gebruik van FSC directory van RINIS**
+### Gebruik van FSC directory van RINIS
 
   *Rationale*
 
@@ -139,13 +139,13 @@ De volgende keuzes zijn gemaakt: 
 
   - Alle deelnemers moeten hun endpoint (laten) registreren bij RINIS. Dit gebeurt als onderdeel van het aansluitprotocol en wordt gefaciliteerd door de stelselbeheerder (gedurende het programma is dit het programma DDAS).
 
-  - Omdat de directory door alle overheidspartijen gebruikt mag worden, is het belangrijk afspraken te maken over de naamgeving van de services, zodat deze eenvoudig vindbaar zijn. Zie [paragraaf 3.4](https://govert-claus.github.io/DDAS-API/#naamsconventie) hiervoor.
+  - Omdat de directory door alle overheidspartijen gebruikt mag worden, is het belangrijk afspraken te maken over de naamgeving van de services, zodat deze eenvoudig vindbaar zijn. Zie de paragraaf [naamsconventie](transport.md#naamsconventie) hiervoor.
 
   - Voor het ophalen van de gegevens, moet CBS de directory van RINIS bevragen om de services van de gegevensleveranciers te vinden. Daarmee sluit CBS een contract af met de gegevensleverancier om toegang te krijgen tot de service en de gegevens.
 
 
 
-### **[JSON formaat](https://json-schema.org/draft/2020-12/json-schema-validation) voor berichten**
+### [JSON formaat](https://json-schema.org/draft/2020-12/json-schema-validation) voor berichten
 
   *Rationale*
 
@@ -161,7 +161,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Gebruik "open" internet voor transport**
+### Gebruik "open" internet voor transport
 
   *Rationale*
 
@@ -188,7 +188,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie**
+### Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie
 
   *Rationale*
 
@@ -205,11 +205,11 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### **Beveiligingsniveau BBN2**
+### Beveiligingsniveau BBN2
 
   *Rationale*
 
-  - BBN2 is het niveau dat volgens [GEMMA](https://www.gemmaonline.nl/wiki/Basisbeveiligingsniveau_van_referentiecomponenten) geldt voor gegevensverwerkingen in de schuldhulpverlening.
+  - BBN2 is het niveau dat volgens [GEMMA](https://www.gemmaonline.nl/wiki/Basisbeveiligingsniveau_van_referentiecomponenten) geldt voor gegevensverwerkingen in de schuldhulpverlening. Er is geen aanleiding om hiervan af te wijken.
 
   *Implicaties*
 
