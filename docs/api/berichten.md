@@ -12,7 +12,7 @@ De technische beschrijving van de API is in het volgende OAS3-bestand beschreven
 De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:  
 
 - [Bekijk specificatie](https://VNG-Realisatie.github.io/ddas/api/v1.0/DDAS-VS.yaml)  
-- [Download YAML](https://raw.githubusercontent.com/Govert-Claus/DDAS-API/main/docs/api/v0.2/DDAS-VS_v0.2.3.yaml)  
+- [Download YAML](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-VS.yaml)  
 
 
 Hieronder worden de berichten die in het OAS-bestand technisch beschreven zijn, toegelicht.
@@ -35,7 +35,7 @@ Parameters die meegestuurd kunnen worden (allemaal optioneel):
 
 - Aanleverende_organisatie (string, default alle – alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)
 
-Het bericht wordt met [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) ondertekend met de private sleutel van de verzender van het vraagbericht - in dit geval CBS. Zie het hoofdstuk [Signing en Versleuteling](#signing-encryptie) voor de specificaties van de ondertekening.
+Het bericht wordt met [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) ondertekend met de private sleutel van de verzender van het vraagbericht - in dit geval CBS. Zie het hoofdstuk [Signing en Versleuteling](/api/signing-encryptie.md) voor de specificaties van de ondertekening.
 
 
 ## Antwoordbericht (response)

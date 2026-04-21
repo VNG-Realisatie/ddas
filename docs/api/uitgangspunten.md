@@ -22,7 +22,7 @@ Het koppelvlak moet voldoen aan de volgende wetten, afspraken en standaarden: 
 
 De volgende keuzes zijn gemaakt: 
 
-**Gegevensleveranciers bieden een API aan die rechtstreeks door CBS wordt bevraagd**
+### **Gegevensleveranciers bieden een API aan die rechtstreeks door CBS wordt bevraagd**
 
   *Rationale*
 
@@ -44,7 +44,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Gebruik [Digikoppeling](https://www.logius.nl/domeinen/gegevensuitwisseling/digikoppeling) REST profiel**
+### **Gebruik [Digikoppeling](https://www.logius.nl/domeinen/gegevensuitwisseling/digikoppeling) REST profiel**
 
   *Rationale*
 
@@ -60,7 +60,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Gebruik [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) voor signen**
+### **Gebruik [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) voor signen**
 
   *Rationale*
 
@@ -81,7 +81,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Berichten worden niet versleuteld***
+### **Berichten worden niet versleuteld***
 
   *Rationale*
 
@@ -95,7 +95,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Federatieve Services Connectiviteit voor de connectiviteit - [FSC](https://gitdocumentatie.logius.nl/publicatie/fsc/core/1.0.0/)**
+### **Federatieve Services Connectiviteit voor de connectiviteit - [FSC](https://gitdocumentatie.logius.nl/publicatie/fsc/core/1.0.0/)**
 
   *Rationale*
 
@@ -118,7 +118,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Gebruik van FSC directory van RINIS**
+### **Gebruik van FSC directory van RINIS**
 
   *Rationale*
 
@@ -145,7 +145,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**[JSON formaat](https://json-schema.org/draft/2020-12/json-schema-validation) voor berichten**
+### **[JSON formaat](https://json-schema.org/draft/2020-12/json-schema-validation) voor berichten**
 
   *Rationale*
 
@@ -161,7 +161,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Gebruik "open" internet voor transport**
+### **Gebruik "open" internet voor transport**
 
   *Rationale*
 
@@ -188,7 +188,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie**
+### **Gebruik [PKIoverheid certificaten](https://www.logius.nl/domeinen/toegang/pkioverheid) voor authenticatie, signing en encryptie**
 
   *Rationale*
 
@@ -205,7 +205,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-**Beveiligingsniveau BBN2**
+### **Beveiligingsniveau BBN2**
 
   *Rationale*
 

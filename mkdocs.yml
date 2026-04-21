@@ -20,7 +20,7 @@ nav:
     - Detailspecificatie: "definities/Detail_Model Schuldhulpverlening.md"
   - Koppelvlakspecificatie API:
     - Inleiding: api/index.md
-    - Kaders: api/uitgangspunten.md
+    - Uitgangspunten: api/uitgangspunten.md
     - Overzicht: api/overzicht.md
     - Transportlaag: api/transport.md
     - Identificatie, authenticatie en autorisatie: api/iam.md

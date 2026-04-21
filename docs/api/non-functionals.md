@@ -1,10 +1,12 @@
 # Niet functionele eisen
 
-Dit onderwerp vraagt nog verdere uitwerking!
+## OPMERKING!
+
+De niet-functionele eisen hieronder zijn op basis van het ontwerp vastgesteld, maar moeten zich nog in de praktijk bewijzen. Tijdens het gebruik van het koppelvlak zal bijgehouden worden hoe de oplossing werkt en of aanscherping van de niet-functionele eisen nodig is. Deze kunnen dan in een aparte afspraak vastgelegd worden, tot de koppelvlakspecificatie als geheel bijgewerkt wordt. Als er inderdaad aparte afspraken over de niet-functionele eisen vastgelegd zijn, gaan die voor de eisen die in deze koppelvlakspecificatie staan.  
 
 ## Beschikbaarheid
 
-De toepassing is niet kritisch: er is geen hoge beschikbaarheid vereist.
+De toepassing is niet kritisch: er is geen hoge beschikbaarheid vereist.  
 De services moeten beschikbaar zijn op de momenten dat CBS de gegevens verzameld. Hierover moeten nog afspraken gemaakt worden.
 
 ## Performance
