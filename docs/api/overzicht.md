@@ -6,7 +6,7 @@ In de onderstaande figuur staan de componenten geschetst die in het API berichte
 ![overzicht API componenten](overzicht.png)
 --->
 <!--- NB: bij Respec wordt dit --->
-![overzicht API componenten](/api/overzicht.png)
+![overzicht API componenten](overzicht.png)
 <!--- --->
 
 In deze figuur is:
@@ -19,4 +19,4 @@ In deze figuur is:
 
 
 Deze specificatie richt zich op de inrichting van alle componenten van dit koppelvlak.
-Bent u enkel geïnteresseerd in de OpenAPI specificatie van de API? Deze staat onder het kopje [Berichten](/api/messages.md).
+Bent u enkel geïnteresseerd in de OpenAPI specificatie van de API? Deze staat onder het kopje [Berichten](messages.md).
