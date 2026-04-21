@@ -40,7 +40,7 @@ De volgende keuzes zijn gemaakt: 
 
   - De service moet voldoende beschikbaar zijn om CBS op de afgesproken momenten te faciliteren.
 
-  - Er is geen centrale routeervoorziening of gegevensopslag nodig. Wel is een centrale "directory" nodig waar de services gepubliceerd worden, waarmee CBS de gegevens kan ophalen. Hiervoor wordt de directory van RINIS gebruikt (zie de keuze "Gebruik van FSC directory van RINIS" voor de onderbouwing daarvan).
+  - Er is geen centrale routeervoorziening of gegevensopslag nodig. Wel is een centrale "directory" nodig waar de services gepubliceerd worden, waarmee CBS de gegevens kan ophalen. Hiervoor wordt de directory van RINIS gebruikt (zie de keuze [Gebruik van FSC directory van RINIS](#gebruik-van-fsc-directory-van-rinis) voor de onderbouwing daarvan).
 
 
 
