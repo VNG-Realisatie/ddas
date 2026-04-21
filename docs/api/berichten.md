@@ -15,7 +15,7 @@ De technische beschrijving van de API is in het volgende OAS3-bestand beschreven
 - [Download YAML](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-VS.yaml)  
 
 
-
+  
 Hieronder worden de berichten die in het OAS-bestand technisch beschreven zijn, toegelicht.
 
 
