@@ -959,10 +959,10 @@ Deze specifieke header geeft de ruimte om eventueel een extra autorisatie toe te
 <p>De inrichting van de transportlaag volgt de stappen die in de <a href="https://fsc-standaard.nl/adoptie">FSC standaard</a> genoemd worden:</p>
 <ul>
 <li>
-<p>Ontwerp, bouw en implementatie van de API die beschikbaar gesteld gaat worden, conform de <a href="#messages">OAS3 beschrijving</a>.</p>
+<p>Ontwerp, bouw en implementatie van de API die beschikbaar gesteld gaat worden, conform de <a href="../berichten/">OAS3 beschrijving</a>.</p>
 </li>
 <li>
-<p>Keuze inrichting en implementatie van FSC componenten in de eigen omgeving. Hiervoor kan gebruik gemaakt worden van de <a href="(https://docs.open-fsc.nl/introduction/)">documentatie</a> en de <a href="https://gitlab.com/rinis-oss/fsc/open-fsc">referentie-implementatie</a> van FSC.</p>
+<p>Keuze inrichting en implementatie van FSC componenten in de eigen omgeving. Hiervoor kan gebruik gemaakt worden van de <a href="https://docs.open-fsc.nl/introduction/">documentatie</a> en de <a href="https://gitlab.com/rinis-oss/fsc/open-fsc">referentie-implementatie</a> van FSC.</p>
 </li>
 </ul>
 <p>Bij het inrichten en testen van de FSC componenten kan het helpen om aan te sluiten op de <a href="https://fsc-standaard.nl/groepen#demo">Demo groep</a> van VNG-Realisatie. Hiervoor zijn geen PKIo certificaten nodig, maar kunnen <a href="https://certportal.demo.open-fsc.nl/">"self-signed" certificaten</a> gebruikt worden.</p>
@@ -970,86 +970,36 @@ Deze specifieke header geeft de ruimte om eventueel een extra autorisatie toe te
 <p>Er wordt gebruik gemaakt van de directory die RINIS beheerd. Hier worden de services gepubliceerd, zodat CBS deze vindt en kan gebruiken.
 Om gebruik te maken van de directory moeten de volgende stappen doorlopen worden:</p>
 <ul>
-<li>Aanmelden bij <a href="https://fsc-standaard.nl/groepen#digikoppeling-acceptatie">Acceptatie groep</a> van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen <a href="https://certportal.demo.open-fsc.nl/">"self-signed" certificaten</a> gebruikt worden.</li>
-</ul>
-<p><em>LET OP</em>: de naamgeving van de RINIS omgevingen is eind januari 2026 aangepast. De juiste instellingen voor de acceptatieomgeving zijn:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Waarde</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Directory URL</td>
-<td><a href="https://acc-digikoppeling.fsc-directory.nl:8443">https://acc-digikoppeling.fsc-directory.nl:8443</a></td>
-</tr>
-<tr>
-<td>Peer ID</td>
-<td>01765373141930780586</td>
-</tr>
-<tr>
-<td>Directory UI</td>
-<td><a href="https://index.acc-digikoppeling.fsc-directory.nl/">https://index.acc-digikoppeling.fsc-directory.nl/</a></td>
-</tr>
-<tr>
-<td>Groepsnaam</td>
-<td>acc-digikoppeling</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Testen van verbinding en service in overleg met CBS. Zij moeten een contract afsluiten met de gegevensleverancier via de FSC Manager, die de service in de directory opzoekt.</li>
+<li>
+<p>Aanmelden bij <a href="https://fsc-standaard.nl/groepen#digikoppeling-acceptatie">Acceptatie groep</a> van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen <a href="https://certportal.demo.open-fsc.nl/">"self-signed" certificaten</a> gebruikt worden.</p>
+</li>
+<li>
+<p>Testen van verbinding en service in overleg met CBS. Zij moeten een contract afsluiten met de gegevensleverancier via de FSC Manager, die de service in de directory opzoekt.</p>
+</li>
 </ul>
 <p>In deze stap kan de API ook inhoudelijk getest worden: worden de juiste gegevens in het juiste formaat beschikbaar gesteld?</p>
 <ul>
-<li>Als de testen het gewenste resultaat leveren, aanmelden bij <a href="https://fsc-standaard.nl/groepen#digikoppeling-productie">Productie groep</a> van RINIS. NB: hiervoor is een <a href="https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid/pkioverheidcertificaat-aanvragen">PKIo certificaat</a> nodig.</li>
-</ul>
-<p><em>LET OP</em>: de naamgeving van de RINIS omgevingen is eind januari 2026 aangepast. De juiste instellingen voor de productieomgeving zijn:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Waarde</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Directory URL</td>
-<td><a href="https://digikoppeling.fsc-directory.nl">https://digikoppeling.fsc-directory.nl</a></td>
-</tr>
-<tr>
-<td>Peer ID</td>
-<td>00000001805544434000</td>
-</tr>
-<tr>
-<td>Directory UI</td>
-<td><a href="https://index.digikoppeling.fsc-directory.nl/">https://index.digikoppeling.fsc-directory.nl/</a></td>
-</tr>
-<tr>
-<td>Groepsnaam</td>
-<td>digikoppeling</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Publiceren van de productieversie van de service en afsluiten van een contract met de consumer (CBS).</li>
+<li>
+<p>Als de testen het gewenste resultaat leveren, aanmelden bij <a href="https://fsc-standaard.nl/groepen#digikoppeling-productie">Productie groep</a> van RINIS. NB: hiervoor is een <a href="https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid/pkioverheidcertificaat-aanvragen">PKIo certificaat</a> nodig.</p>
+</li>
+<li>
+<p>Publiceren van de productieversie van de service en afsluiten van een contract met de consumer (CBS).</p>
+</li>
 </ul>
 <h2 id="naamsconventie">Naamsconventie</h2>
 <p>Gebruik voor het publiceren van services een duidelijke naam, die de functie en afzender van de services bevat. De afspraak is als volgt:</p>
 <ul>
 <li>
-<p>Voor schuldhulpverleningsgegevens: DDAS-schuldhulpverlening-ophaal-[gegevensleverancier]<br />
+<p>Voor schuldhulpverleningsgegevens: <strong>DDAS-schuldhulpverlening-ophaal-[gegevensleverancier]</strong><br />
   [gegevensleverancier] is de naam van de leverancier van gegevens (om er zeker van te zijn dat dit tot een unieke naam leidt, is het verstandig dit met het programma DDAS af te stemmen)  </p>
 </li>
 <li>
-<p>Voor vroegsignaleringsgegevens: DDAS-vroegsignalering-ophaal-[gegevensleverancier]<br />
+<p>Voor vroegsignaleringsgegevens: <strong>DDAS-vroegsignalering-ophaal-[gegevensleverancier]</strong><br />
   [gegevensleverancier] is de naam van de leverancier van gegevens (om er zeker van te zijn dat dit tot een unieke naam leidt, is het verstandig dit met het programma DDAS af te stemmen)  </p>
 </li>
 </ul>
 <p>NB: het versienummer van de service zit niet in de naam, om te voorkomen dat er bij ieder nieuwe versie opnieuw een contract afgesloten moet worden. We gaan ervan uit dat met nieuwe versies er geen nieuwe functionaliteit of gegevens beschikbaar worden gesteld. Als dat wel gebeurt, moet er een nieuwe service met een andere naam gepubliceerd worden.<br />
-Als het versienummer verandert, stem dan wel met CBS af welke versie wanneer gebruikt moet worden!  </p>
+Als het versienummer verandert, stem dan wel met CBS af welke versie wanneer gebruikt moet worden en hoe de juiste versie aangeroepen moet worden!  </p>
 
 
 
