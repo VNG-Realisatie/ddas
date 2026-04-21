@@ -81,7 +81,7 @@ De volgende keuzes zijn gemaakt: 
 
 
 
-### Berichten worden niet versleuteld*
+### Berichten worden niet versleuteld
 
   *Rationale*
 
