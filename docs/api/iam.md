@@ -1,6 +1,6 @@
 # Identificatie, Authenticatie en Autorisatie
 
-Het bijhouden van de deelnemers in het DDAS-stelsel gebeurt door RINIS in een directory die door FSC gebruikt wordt. Alle deelnemers gebruiken deze directory bij het uitwisselen van berichten. Zie het hoofdstuk [transport](#transport) voor aansluitspecificaties.
+Het bijhouden van de deelnemers in het DDAS-stelsel gebeurt door RINIS in een directory die door FSC gebruikt wordt. Alle deelnemers gebruiken deze directory bij het uitwisselen van berichten. Zie het hoofdstuk [transport](transport.md) voor aansluitspecificaties.
 
 ## Identificatie
 
