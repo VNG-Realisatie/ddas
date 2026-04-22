@@ -7,4 +7,4 @@ De koppelvlakspecificatie bestaat uit de volgende onderdelen:
 - [Identificatie, Authenticatie en Autorisatie](iam.md): afspraken rond identificatie, authenticatie en autorisatie;  
 - [Signing en encryptie](signing-encryptie.md): afspraken rond het ondertekenen en versleutelen van berichten;  
 - [Berichten](berichten.md): de inhoud van de berichten met OAS3 beschrijving;  
-- [Niet-functionele eisen](non-functionals.md): de niet-functionele eisen aan de services;  
+- [Niet-functionele eisen](non-functionals.md): de niet-functionele eisen aan de services.  
