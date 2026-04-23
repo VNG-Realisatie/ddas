@@ -1,0 +1,6 @@
+mkdocs
+mkdocs-material
+mkdocs-print-site-plugin
+pymdown-extensions
+markdown-include
+mike
