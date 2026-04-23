@@ -4,7 +4,7 @@ Het bijhouden van de deelnemers in het DDAS-stelsel gebeurt door RINIS in een di
 
 ## Identificatie
 
-Identificatie gebeurt op basis van het (sub)OIN van de deelnemer. Dit (sub)OIN wordt bij PKIo certificaten geplaatst in het SerialNumber veld van het Subject. Als de deelnemer geen (sub)OIN heeft, dan wordt het handelregisternummer hiervoor gebruikt.
+Identificatie gebeurt op basis van het (sub)OIN van de deelnemer. Dit (sub)OIN wordt bij PKIo certificaten geplaatst in het SerialNumber veld van het Subject. Als de deelnemer geen (sub)OIN heeft, dan wordt het handelsregisternummer hiervoor gebruikt.
 
 ## Authenticatie
 
