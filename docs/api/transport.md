@@ -29,7 +29,7 @@ De inrichting van de transportlaag volgt de stappen die in de [FSC standaard](ht
 
 ## Directory
 
-Er wordt gebruik gemaakt van de directory die RINIS beheerd. Hier worden de services gepubliceerd, zodat CBS deze vindt en kan gebruiken.
+Er wordt gebruik gemaakt van de directory die RINIS beheert. Hier worden de services gepubliceerd, zodat CBS deze vindt en kan gebruiken.
 Om gebruik te maken van de directory moeten de volgende stappen doorlopen worden:
 
 - Aanmelden bij [Acceptatie groep](https://fsc-standaard.nl/groepen#digikoppeling-acceptatie) van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen ["self-signed" certificaten](https://certportal.demo.open-fsc.nl/) gebruikt worden.
