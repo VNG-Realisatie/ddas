@@ -19,4 +19,4 @@ In deze figuur is:
 
 
 Deze specificatie richt zich op de inrichting van alle componenten van dit koppelvlak.
-Bent u enkel geïnteresseerd in de OpenAPI specificatie van de API? Deze staat onder het kopje [Berichten](messages.md).
+Bent u enkel geïnteresseerd in de OpenAPI specificatie van de API? Deze staat onder het kopje [Berichten](berichten.md).
