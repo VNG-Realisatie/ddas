@@ -2,37 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ddas-api.nl/latest/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/Achtergrond/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/Hoofdlijnen_Model%20Schuldhulpverlening/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/VraagEnAntwoord/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/uitleg_Model%20Schuldhulpverlening/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/uitwisselspecificatie/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/berichten/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/iam/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/non-functionals/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/overzicht/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/signing-encryptie/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/transport/</loc>
+         <lastmod>2026-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ddas-api.nl/latest/api/uitgangspunten/</loc>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ddas-api.nl/latest/definities/Detail_Model%20Schuldhulpverlening/</loc>
-         <lastmod>2026-03-20</lastmod>
+         <lastmod>2026-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
