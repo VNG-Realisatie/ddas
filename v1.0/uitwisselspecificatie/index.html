@@ -1121,7 +1121,7 @@
 <p>Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json">downloadversie</a> beschikbaar.</p>
 <div class="highlight"><pre><span></span><code>{
     &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
-    &quot;$id&quot;: &quot;https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json&quot;,
+    &quot;$id&quot;: &quot;https://raw.githubusercontent.com/VNG-Realisatie/ddas/main//json_schema_Uitwisselmodel.json&quot;,
     &quot;title&quot;: &quot;Uitwisselmodel&quot;,
     &quot;type&quot;: &quot;object&quot;,
     &quot;description&quot;: &quot;Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.&quot;,
@@ -1532,10 +1532,10 @@
         }
     },
     &quot;required&quot;: [
-        &quot;aanleverdatumEnTijd&quot;,
-        &quot;einddatumLevering&quot;,
+        &quot;startdatumLevering&quot;,
         &quot;codeGegevensleverancier&quot;,
-        &quot;startdatumLevering&quot;
+        &quot;einddatumLevering&quot;,
+        &quot;aanleverdatumEnTijd&quot;
     ],
     &quot;additionalProperties&quot;: false,
     &quot;$defs&quot;: {
@@ -1572,6 +1572,35 @@
                 &quot;Leeg&quot;
             ]
         },
+        &quot;EnumOplossingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.&quot;,
+            &quot;enum&quot;: [
+                &quot;Betalingsregeling&quot;,
+                &quot;Herfinanciering&quot;,
+                &quot;Saneringskrediet&quot;,
+                &quot;Schuldbemiddeling&quot;,
+                &quot;0%-aanbod&quot;
+            ]
+        },
+        &quot;EnumBeschikkingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Lijst met alle soorten beschikkingen die worden onderkend.&quot;,
+            &quot;enum&quot;: [
+                &quot;Afwijzingsbeschikking&quot;,
+                &quot;Toelatingsbeschikking&quot;
+            ]
+        },
+        &quot;EnumSchuldensoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Lijst met alle cattegori&amp;#235;n van soorten schulden die worden onderkend in het kader van schuldhulpverlening.\n&quot;,
+            &quot;enum&quot;: [
+                &quot;Zorg&quot;,
+                &quot;Publiek&quot;,
+                &quot;Nuts&quot;,
+                &quot;Overig&quot;
+            ]
+        },
         &quot;EnumUitstroomreden&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;description&quot;: &quot;Lijst met alle soorten uitstroom die bij schuldhulptrajecten worden onderkend.&quot;,
@@ -1585,35 +1614,6 @@
                 &quot;Voldoet niet&quot;,
                 &quot;Afgerond&quot;,
                 &quot;Zelf&quot;
-            ]
-        },
-        &quot;EnumOplossingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.&quot;,
-            &quot;enum&quot;: [
-                &quot;Betalingsregeling&quot;,
-                &quot;Herfinanciering&quot;,
-                &quot;Saneringskrediet&quot;,
-                &quot;Schuldbemiddeling&quot;,
-                &quot;0%-aanbod&quot;
-            ]
-        },
-        &quot;EnumSchuldensoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle cattegori&amp;#235;n van soorten schulden die worden onderkend in het kader van schuldhulpverlening.\n&quot;,
-            &quot;enum&quot;: [
-                &quot;Zorg&quot;,
-                &quot;Publiek&quot;,
-                &quot;Nuts&quot;,
-                &quot;Overig&quot;
-            ]
-        },
-        &quot;EnumBeschikkingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle soorten beschikkingen die worden onderkend.&quot;,
-            &quot;enum&quot;: [
-                &quot;Afwijzingsbeschikking&quot;,
-                &quot;Toelatingsbeschikking&quot;
             ]
         },
         &quot;EnumBegeleidingssoort&quot;: {
