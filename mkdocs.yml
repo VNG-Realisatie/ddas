@@ -27,12 +27,12 @@ nav:
     - Ondertekenen en versleutelen: api/signing-encryptie.md
     - Berichten: api/berichten.md
     - Niet-functionele eisen: api/non-functionals.md
-
   - Achtergrond DDAS: Achtergrond.md
   - Vraag en antwoord: VraagEnAntwoord.md
 
 markdown_extensions:
   - pymdownx.superfences
+  - pymdownx.snippets
   - pymdownx.inlinehilite
   - pymdownx.tilde
   - pymdownx.critic
