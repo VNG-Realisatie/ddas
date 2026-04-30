@@ -32,7 +32,8 @@ nav:
 
 markdown_extensions:
   - pymdownx.superfences
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: docs
   - pymdownx.inlinehilite
   - pymdownx.tilde
   - pymdownx.critic
