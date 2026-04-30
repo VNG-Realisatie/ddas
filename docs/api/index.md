@@ -9,4 +9,4 @@ De koppelvlakspecificatie bestaat uit de volgende onderdelen:
 - [Berichten](berichten.md): de inhoud van de berichten met OAS3 beschrijving;  
 - [Niet-functionele eisen](non-functionals.md): de niet-functionele eisen aan de services.  
 
-**LET OP**: de koppelvlakspecificatie voor het beschikbaarstellen van vroegsignaleringsgegevens is hetzelfde als die voor het beschikbaarstellen van schuldhulpgegevens - alleen de [naamsconventie](transport.md#naamsconventie) en de [inhoud van de berichten](berichten.md) zijn verschillend. Let er daarom op dat u bij deze onderwerpen de juiste keuze maakt.
+**LET OP**: de koppelvlakspecificatie voor het beschikbaarstellen van schuldhulpverleningsgegevens is hetzelfde als die voor het beschikbaarstellen van vroegsignaleringsgegevens - alleen de [naamsconventie](transport.md#naamsconventie) en de [inhoud van de berichten](berichten.md) zijn verschillend. Let er daarom op dat u bij deze onderwerpen de juiste keuze maakt.
