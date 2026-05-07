@@ -1522,8 +1522,8 @@
                     }
                 },
                 &quot;required&quot;: [
-                    &quot;teller&quot;,
-                    &quot;aanleverende_organisatie&quot;
+                    &quot;aanleverende_organisatie&quot;,
+                    &quot;teller&quot;
                 ],
                 &quot;additionalProperties&quot;: false
             },
@@ -1534,8 +1534,8 @@
     &quot;required&quot;: [
         &quot;codeGegevensleverancier&quot;,
         &quot;aanleverdatumEnTijd&quot;,
-        &quot;startdatumLevering&quot;,
-        &quot;einddatumLevering&quot;
+        &quot;einddatumLevering&quot;,
+        &quot;startdatumLevering&quot;
     ],
     &quot;additionalProperties&quot;: false,
     &quot;$defs&quot;: {
@@ -1584,17 +1584,6 @@
                 &quot;Overig&quot;
             ]
         },
-        &quot;EnumBegeleidingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle soorten begeleiding die worden onderkend.&quot;,
-            &quot;enum&quot;: [
-                &quot;Budgetcoaching&quot;,
-                &quot;Budgetbeheer&quot;,
-                &quot;Beschermingsbewind&quot;,
-                &quot;Lange Termijn Begeleiding (DFD)&quot;,
-                &quot;Budgetbegeleiding&quot;
-            ]
-        },
         &quot;EnumBeschikkingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;description&quot;: &quot;Lijst met alle soorten beschikkingen die worden onderkend.&quot;,
@@ -1616,6 +1605,17 @@
                 &quot;Voldoet niet&quot;,
                 &quot;Afgerond&quot;,
                 &quot;Zelf&quot;
+            ]
+        },
+        &quot;EnumBegeleidingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Lijst met alle soorten begeleiding die worden onderkend.&quot;,
+            &quot;enum&quot;: [
+                &quot;Budgetcoaching&quot;,
+                &quot;Budgetbeheer&quot;,
+                &quot;Beschermingsbewind&quot;,
+                &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                &quot;Budgetbegeleiding&quot;
             ]
         },
         &quot;geslacht&quot;: {
