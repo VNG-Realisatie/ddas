@@ -5,8 +5,9 @@
 De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:
 
 ??? note "Bekijk specificatie"
-    ``` {.code-scroll}
-    {!../../v1.0/json_schema_Uitwisselmodel.json!}
+
+    ```yaml
+    --8<-- "includes/DDAS-SHV.yaml"
     ```
 
 - [Download OAS3 beschrijving in YAML-bestand](https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/main/v1.0/DDAS-SHV.yaml)  
