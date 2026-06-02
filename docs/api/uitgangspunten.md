@@ -160,6 +160,20 @@ De volgende keuzes zijn gemaakt: 
   - De gegevens moeten in JSON formaat uitgewisseld worden.
 
 
+### Gebruik "paginering" voor verdelen van gegevens over meerdere responseberichten
+
+  *Rationale*
+
+  - Als niet alle gegevens in één responsebericht passen, wordt paginering gebruikt om de gegevens in meerdere berichten beschikbaar te stellen. Dit houdt het berichtenverkeer synchroon, zonder tegen limieten aan te lopen.
+
+  *Implicaties*
+
+  - In de berichtenspecificaties wordt een object "paginering" opgenomen waarmee het verdelen van gegevens over meerdere berichten mogelijk wordt. NB: dit object is optioneel - als alle gegevens in één responsebericht passen hoeft er geen gebruik van paginering gemaakt te worden.
+
+  - Als er meer gegevens geleverd moeten worden dan in één responsebericht passen (zie [niet-functionele eisen](non-functionals.md#performance) voor het maximaal aantal records per bericht), dan moet de gegevensleverancier gebruik maken van paginering en de gegevens beschikbaar stellen in verschillende berichten.
+
+  - De afnemer van de API (CBS) moet rekening houden met de mogelijkheid dat er meerdere requestberichten naar een gegevensleverancier verstuurd moeten worden en moet de gegevens uit de verschillende responseberichten op de juiste manier verwerken.
+
 
 ### Gebruik "open" internet voor transport
 

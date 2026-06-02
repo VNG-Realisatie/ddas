@@ -43,8 +43,6 @@ components:
       required: true
 
     NlgovAdrPayloadSig:
-      name: nlgov-adr-payload-sig
-      in: header
       required: true
       description: >
         De protected header bevat minimaal:
@@ -84,6 +82,35 @@ components:
     Uitwisselmodel:
       $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json'
 
+    Paginering:
+      type: object
+      required:
+        - pageSize
+        - currentPage
+        - totalPages
+        - totalRecords
+      properties:
+        pageSize:
+          description: Het aantal records per pagina
+          type: integer
+          minimum: 1
+          example: 25000
+        currentPage:
+          description: De huidige pagina
+          type: integer
+          minimum: 1
+          example: 1
+        totalPages:
+          description: Het totaal aantal beschikbare pagina's
+          type: integer
+          minimum: 1
+          example: 3
+        totalRecords:
+          description: Het totaal aantal te versturen records
+          type: integer
+          minimum: 0
+          example: 72643
+
     GegevensRequest:
       type: object
       properties:
@@ -98,6 +125,14 @@ components:
         aanleverende_organisatie:
           type: string
           example: "Gemeente Voorbeeldstad"
+        page:
+          type: integer
+          minimum: 1
+          example: 1
+        pageSize:
+          type: integer
+          minimum: 1
+          example: 25000
       additionalProperties: false
 
     FscError:
@@ -121,6 +156,37 @@ components:
         status:
           type: integer
           example: 401
+
+    ProblemDetails:
+      type: object
+      description: Probleemdetails volgens RFC 7807 / RFC 9457.
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          format: uri
+          description: URI die het type fout identificeert.
+          example: "https://api.example.nl/problems/ongeldig-request"
+        title:
+          type: string
+          description: Korte, leesbare omschrijving van het probleemtype.
+          example: "Ongeldig request"
+        status:
+          type: integer
+          description: HTTP-statuscode.
+          example: 400
+        detail:
+          type: string
+          description: Specifieke toelichting op deze fout.
+          example: "De parameter page moet groter zijn dan of gelijk zijn aan 1."
+        instance:
+          type: string
+          format: uri-reference
+          description: URI-referentie naar deze specifieke foutinstantie.
+          example: "/vs?aanleverperiodeStartdatum=2026-01-01&page=0"
 
 paths:
   /gegevens:
@@ -146,18 +212,29 @@ paths:
             Digest:
               $ref: '#/components/headers/Digest'
             nlgov-adr-payload-sig:
-              $ref: '#/components/headers/nlgov-adr-payload-sig'
+              $ref: '#/components/headers/NlgovAdrPayloadSig'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Uitwisselmodel'
+                type: object
+                required:
+                  - gegevens
+                properties:
+                  gegevens:
+                    $ref: '#/components/schemas/Uitwisselmodel'
+                  paginering:
+                    allOf:
+                      - $ref: '#/components/schemas/Paginering'
+                    description: >
+                      Alleen aanwezig als de gegevenslevering gepagineerd wordt.
+                      Als dit object aanwezig is, zijn alle velden binnen Paginering verplicht.
 
         '400':
           description: Ongeldig verzoek (bijv. ongeldige filters of syntaxis)
           content:
             application/problem+json:
               schema:
-                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+                $ref: '#/components/schemas/ProblemDetails'
 
         '401':
           description: Geen of ongeldige authenticatie (FSC-compatibel)
@@ -169,7 +246,7 @@ paths:
                 type: string
               description: Bearer
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -179,7 +256,7 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -189,7 +266,7 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -199,16 +276,16 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
         '422':
-          description: Onverwerkbare entiteit (bijv. semantische validatiefout)
+          description: Request syntactisch correct, maar inhoudelijk niet verwerkbaar
           content:
             application/problem+json:
               schema:
-                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+                $ref: '#/components/schemas/ProblemDetails'
 
         '429':
           description: Rate limit overschreden
@@ -219,6 +296,6 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'

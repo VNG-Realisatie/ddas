@@ -2,13 +2,13 @@ openapi: 3.1.0
 info:
   title: DDAS Gegevens Uitwissel API - VS
   description: |
-    API voor het uitwisselen van Vroegsignaleringsgegevens (VS) met het CBS.
+    API voor het uitwisselen van VroegSignalen (VS) met het CBS.
     Beveiligd met OAuth 2.0 Client Credentials Grant.
     Payload-integriteit en authenticiteit via JAdES payload signing conform Geonovum
     KP-APIs signing-jades module (header: nlgov-adr-payload-sig, PS256, detached,
     alleen digest getekend, key meegestuurd via x5c).
 
-    Error handling is FSC-compatibel (Logius FSC Core 1.1.2): bij FSC-gerelateerde fouten
+    Error handling is FSC-compatibel (Logius FSC Core 1.0.0): bij FSC-gerelateerde fouten
     wordt de header `Fsc-Error-Code` meegegeven met een geldige ERROR_CODE_... waarde.
   version: 1.0.0
   contact:
@@ -43,8 +43,6 @@ components:
       required: true
 
     NlgovAdrPayloadSig:
-      name: nlgov-adr-payload-sig
-      in: header
       required: true
       description: >
         De protected header bevat minimaal:
@@ -60,9 +58,9 @@ components:
         - geldigheidsduur gecontroleerd te worden
       schema:
         type: string
-        format: jws-compact-detached
-        pattern: '^[A-Za-z0-9_-]+\.\.[A-Za-z0-9_-]+$'
-      example: eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]
+        description: JWS Compact Serialization (detached payload)
+        example: >
+          eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]
 
     Fsc-Error-Code:
       description: |
@@ -82,7 +80,36 @@ components:
 
   schemas:
     Uitwisselmodel:
-      $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/refs/heads/main/v1.0/json_schema_Uitwisselmodel.json'
+      $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/main/v1.0/json_schema_Uitwisselmodel.json'
+
+    Paginering:
+      type: object
+      required:
+        - pageSize
+        - currentPage
+        - totalPages
+        - totalRecords
+      properties:
+        pageSize:
+          description: Het aantal records per pagina
+          type: integer
+          minimum: 1
+          example: 25000
+        currentPage:
+          description: De huidige pagina
+          type: integer
+          minimum: 1
+          example: 1
+        totalPages:
+          description: Het totaal aantal beschikbare pagina's
+          type: integer
+          minimum: 1
+          example: 3
+        totalRecords:
+          description: Het totaal aantal te versturen records
+          type: integer
+          minimum: 0
+          example: 72643
 
     GegevensRequest:
       type: object
@@ -97,7 +124,15 @@ components:
           example: "2025-12-31"
         aanleverende_organisatie:
           type: string
-          example: "GM0001"
+          example: "Gemeente Voorbeeldstad"
+        page:
+          type: integer
+          minimum: 1
+          example: 1
+        pageSize:
+          type: integer
+          minimum: 1
+          example: 25000
       additionalProperties: false
 
     FscError:
@@ -121,6 +156,37 @@ components:
         status:
           type: integer
           example: 401
+
+    ProblemDetails:
+      type: object
+      description: Probleemdetails volgens RFC 7807 / RFC 9457.
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          format: uri
+          description: URI die het type fout identificeert.
+          example: "https://api.example.nl/problems/ongeldig-request"
+        title:
+          type: string
+          description: Korte, leesbare omschrijving van het probleemtype.
+          example: "Ongeldig request"
+        status:
+          type: integer
+          description: HTTP-statuscode.
+          example: 400
+        detail:
+          type: string
+          description: Specifieke toelichting op deze fout.
+          example: "De parameter page moet groter zijn dan of gelijk zijn aan 1."
+        instance:
+          type: string
+          format: uri-reference
+          description: URI-referentie naar deze specifieke foutinstantie.
+          example: "/vs?aanleverperiodeStartdatum=2026-01-01&page=0"
 
 paths:
   /gegevens:
@@ -146,18 +212,29 @@ paths:
             Digest:
               $ref: '#/components/headers/Digest'
             nlgov-adr-payload-sig:
-              $ref: '#/components/headers/nlgov-adr-payload-sig'
+              $ref: '#/components/headers/NlgovAdrPayloadSig'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Uitwisselmodel'
+                type: object
+                required:
+                  - gegevens
+                properties:
+                  gegevens:
+                    $ref: '#/components/schemas/Uitwisselmodel'
+                  paginering:
+                    allOf:
+                      - $ref: '#/components/schemas/Paginering'
+                    description: >
+                      Alleen aanwezig als de gegevenslevering gepagineerd wordt.
+                      Als dit object aanwezig is, zijn alle velden binnen Paginering verplicht.
 
         '400':
           description: Ongeldig verzoek (bijv. ongeldige filters of syntaxis)
           content:
             application/problem+json:
               schema:
-                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+                $ref: '#/components/schemas/ProblemDetails'
 
         '401':
           description: Geen of ongeldige authenticatie (FSC-compatibel)
@@ -169,7 +246,7 @@ paths:
                 type: string
               description: Bearer
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -179,7 +256,7 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -189,7 +266,7 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
@@ -199,16 +276,16 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'
 
         '422':
-          description: Onverwerkbare entiteit (bijv. semantische validatiefout)
+          description: Request syntactisch correct, maar inhoudelijk niet verwerkbaar
           content:
             application/problem+json:
               schema:
-                $ref: 'https://datatracker.ietf.org/doc/html/rfc7807'
+                $ref: '#/components/schemas/ProblemDetails'
 
         '429':
           description: Rate limit overschreden
@@ -219,6 +296,6 @@ paths:
             Fsc-Error-Code:
               $ref: '#/components/headers/Fsc-Error-Code'
           content:
-            application/json:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/FscError'

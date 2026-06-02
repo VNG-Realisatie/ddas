@@ -49,9 +49,7 @@ Bij ontvangst moet de ontvanger het volgende doen om de ondertekening te control
 - Valideer certificaatketen tot PKIoverheid root
 
 - Controleer:
-
-  - Geldigheid
-
+  - Geldigheid certificaat
   - OCSP of CRL
 
 - Verifieer signature over HTTP body
