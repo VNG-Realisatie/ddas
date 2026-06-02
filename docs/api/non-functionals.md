@@ -19,7 +19,7 @@ Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (vroegsign
 | Schuldhulptrajecten | **25.000** |
 | Vroegsignalen | **50.000** |  
 
-Als het maximaal aantal records overschreven dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht worden dan de velden in het object **paginering** gevuld worden.  
+Als het maximaal aantal records overschreven dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht moeten dan de velden in het object **paginering** gevuld worden.  
 Dit gebeurt conform de volgende definities:
 
 | Veld | Betekenis | Waarde |
