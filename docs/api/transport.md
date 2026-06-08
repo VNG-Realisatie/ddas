@@ -32,14 +32,14 @@ De inrichting van de transportlaag volgt de stappen die in de [FSC standaard](ht
 Er wordt gebruik gemaakt van de directory die RINIS beheert. Hier worden de services gepubliceerd, zodat CBS deze vindt en kan gebruiken.
 Om gebruik te maken van de directory moeten de volgende stappen doorlopen worden:
 
-- Aanmelden bij [Acceptatie groep](https://fsc-standaard.nl/groepen#digikoppeling-acceptatie) van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen ["self-signed" certificaten](https://certportal.demo.open-fsc.nl/) gebruikt worden.
+- Aanmelden bij de groep [acc-digikoppeling](https://fsc-standaard.nl/groepen#digikoppeling-acceptatie) van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen ["self-signed" certificaten](https://certportal.demo.open-fsc.nl/) gebruikt worden.
 
 
 - Testen van verbinding en service in overleg met CBS. Zij moeten een contract afsluiten met de gegevensleverancier via de FSC Manager, die de service in de directory opzoekt.
 
   In deze stap kan de API ook inhoudelijk getest worden: worden de juiste gegevens in het juiste formaat beschikbaar gesteld?
 
-- Als de testen het gewenste resultaat leveren, aanmelden bij [Productie groep](https://fsc-standaard.nl/groepen#digikoppeling-productie) van RINIS. NB: hiervoor is een [PKIo certificaat](https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid/pkioverheidcertificaat-aanvragen) nodig.
+- Als de testen het gewenste resultaat leveren, aanmelden bij de groep [digikoppeling](https://fsc-standaard.nl/groepen#digikoppeling-productie) van RINIS. NB: hiervoor is een [PKIo certificaat](https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid/pkioverheidcertificaat-aanvragen) nodig.
 
 
 - Publiceren van de productieversie van de service en afsluiten van een contract met de consumer (CBS).
