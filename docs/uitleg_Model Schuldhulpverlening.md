@@ -75,10 +75,12 @@ Hiervan worden de volgende zaken vastgelegd:
 ??? note "Definitie Plan Van Aanpak"
     
 > Een document waarin in elk geval het volgende staat:
-> ■ de hulpvraag van de persoon;
-> ■ de voorgestelde ondersteuning;
-> ■ eventueel de organisatie(s) waarnaar je hebt doorverwezen;
-> ■ de voorwaarden voor schuldhulpverlening (bijvoorbeeld dat de persoon geen nieuwe schulden mag maken).
+>
+> * de hulpvraag van de persoon;
+> * de voorgestelde ondersteuning;
+> * eventueel de organisatie(s) waarnaar je hebt doorverwezen;
+> * de voorwaarden voor schuldhulpverlening (bijvoorbeeld dat de persoon geen nieuwe schulden mag maken).
+>
 > De hoogte van beslagvrije voet voor de persoon (zie artikel 4a:5 van de Wgs) moet in acht worden genomen.
 
 Hiervan worden de volgende zaken vastgelegd:
@@ -156,16 +158,21 @@ In sommige gevallen spelen er aanvullende zaken. De hiervoor benodigde gegevens 
     
 > Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te creëren om de klant te helpen via de reguliere schuldhulpverlening.
 > Volgens de Wgs gaat het in elk geval om de volgende situaties:
-> ■ gedwongen woningontruiming;
-> ■ beëindiging van de levering van gas, water, elektriciteit of stadsverwarming;
-> ■ opzegging of ontbinding van de zorgverzekering.
+>
+> * gedwongen woningontruiming;
+> * beëindiging van de levering van gas, water, elektriciteit of stadsverwarming;
+> * opzegging of ontbinding van de zorgverzekering.
+>
 > Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:
-> ■ aangekondigde boedelverkoop of verkoop van de eigen woning;
-> ■ loon- of bankbeslag;
-> ■ een faillissementsaanvraag.
+>
+> * aangekondigde boedelverkoop of verkoop van de eigen woning;
+> * loon- of bankbeslag;
+> * een faillissementsaanvraag.
+>
 > En voor ondernemers:
-> ■ beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;
-> ■ opzegging van het bankkrediet.
+>
+> * beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;
+> * opzegging van het bankkrediet.
 
 Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de volgende zaken vastgelegd:
 
@@ -187,11 +194,15 @@ Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de vol
 ??? note "Definitie Moratorium"
     
 > Het gaat hier om de datum waarop een verzoek tot een moratorium (ex art. 287 b Fw) is ingediend bij de rechter.
+>
 > Er kan een verzoek tot een moratorium bij de rechter worden gedaan om te voorkomen dat een schuldeiser zijn specifieke inningsmogelijkheden gebruikt, terwijl een aanvraag voor een minnelijke schuldregeling in behandeling is. Het moratorium is bedoeld om het minnelijke traject te kunnen voortzetten.
+>
 > Het moratorium kan in de volgende situaties worden ingezet:
-> - gedwongen woningontruiming;
-> - beëindiging van de levering van gas, water elektriciteit of stadsverwarming;
-> - opzegging dan wel ontbinding van de zorgverzekering.
+>
+> * gedwongen woningontruiming;
+> * beëindiging van de levering van gas, water elektriciteit of stadsverwarming;
+> * opzegging dan wel ontbinding van de zorgverzekering.
+>
 > Het moratorium duurt maximaal zes maanden.
 
 Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastgelegd:
