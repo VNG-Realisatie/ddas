@@ -557,6 +557,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#gebruik-paginering-voor-verdelen-van-gegevens-over-meerdere-responseberichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gebruik "paginering" voor verdelen van gegevens over meerdere responseberichten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#gebruik-open-internet-voor-transport" class="md-nav__link">
     <span class="md-ellipsis">
       Gebruik "open" internet voor transport
@@ -879,6 +888,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#gebruik-paginering-voor-verdelen-van-gegevens-over-meerdere-responseberichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gebruik "paginering" voor verdelen van gegevens over meerdere responseberichten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#gebruik-open-internet-voor-transport" class="md-nav__link">
     <span class="md-ellipsis">
       Gebruik "open" internet voor transport
@@ -1122,6 +1140,23 @@
 <p><em>Implicaties</em></p>
 <ul>
 <li>De gegevens moeten in JSON formaat uitgewisseld worden.</li>
+</ul>
+<h3 id="gebruik-paginering-voor-verdelen-van-gegevens-over-meerdere-responseberichten">Gebruik "paginering" voor verdelen van gegevens over meerdere responseberichten</h3>
+<p><em>Rationale</em></p>
+<ul>
+<li>Als niet alle gegevens in één responsebericht passen, wordt paginering gebruikt om de gegevens in meerdere berichten beschikbaar te stellen. Dit houdt het berichtenverkeer synchroon, zonder tegen limieten aan te lopen.</li>
+</ul>
+<p><em>Implicaties</em></p>
+<ul>
+<li>
+<p>In de berichtenspecificaties wordt een object "paginering" opgenomen waarmee het verdelen van gegevens over meerdere berichten mogelijk wordt. NB: dit object is optioneel - als alle gegevens in één responsebericht passen hoeft er geen gebruik van paginering gemaakt te worden.</p>
+</li>
+<li>
+<p>Als er meer gegevens geleverd moeten worden dan in één responsebericht passen (zie <a href="../non-functionals/#performance">niet-functionele eisen</a> voor het maximaal aantal records per bericht), dan moet de gegevensleverancier gebruik maken van paginering en de gegevens beschikbaar stellen in verschillende berichten.</p>
+</li>
+<li>
+<p>De afnemer van de API (CBS) moet rekening houden met de mogelijkheid dat er meerdere requestberichten naar een gegevensleverancier verstuurd moeten worden en moet de gegevens uit de verschillende responseberichten op de juiste manier verwerken.</p>
+</li>
 </ul>
 <h3 id="gebruik-open-internet-voor-transport">Gebruik "open" internet voor transport</h3>
 <p><em>Rationale</em></p>

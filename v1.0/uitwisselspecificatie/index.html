@@ -1522,8 +1522,8 @@
                     }
                 },
                 &quot;required&quot;: [
-                    &quot;aanleverende_organisatie&quot;,
-                    &quot;teller&quot;
+                    &quot;teller&quot;,
+                    &quot;aanleverende_organisatie&quot;
                 ],
                 &quot;additionalProperties&quot;: false
             },
@@ -1532,10 +1532,10 @@
         }
     },
     &quot;required&quot;: [
-        &quot;codeGegevensleverancier&quot;,
-        &quot;aanleverdatumEnTijd&quot;,
         &quot;einddatumLevering&quot;,
-        &quot;startdatumLevering&quot;
+        &quot;startdatumLevering&quot;,
+        &quot;codeGegevensleverancier&quot;,
+        &quot;aanleverdatumEnTijd&quot;
     ],
     &quot;additionalProperties&quot;: false,
     &quot;$defs&quot;: {
@@ -1574,6 +1574,14 @@
                 &quot;0%-aanbod&quot;
             ]
         },
+        &quot;EnumBeschikkingssoort&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Lijst met alle soorten beschikkingen die worden onderkend.&quot;,
+            &quot;enum&quot;: [
+                &quot;Afwijzingsbeschikking&quot;,
+                &quot;Toelatingsbeschikking&quot;
+            ]
+        },
         &quot;EnumSchuldensoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
             &quot;description&quot;: &quot;Lijst met alle cattegori&amp;#235;n van soorten schulden die worden onderkend in het kader van schuldhulpverlening.\n&quot;,
@@ -1584,12 +1592,15 @@
                 &quot;Overig&quot;
             ]
         },
-        &quot;EnumBeschikkingssoort&quot;: {
+        &quot;EnumBegeleidingssoort&quot;: {
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle soorten beschikkingen die worden onderkend.&quot;,
+            &quot;description&quot;: &quot;Lijst met alle soorten begeleiding die worden onderkend.&quot;,
             &quot;enum&quot;: [
-                &quot;Afwijzingsbeschikking&quot;,
-                &quot;Toelatingsbeschikking&quot;
+                &quot;Budgetcoaching&quot;,
+                &quot;Budgetbeheer&quot;,
+                &quot;Beschermingsbewind&quot;,
+                &quot;Lange Termijn Begeleiding (DFD)&quot;,
+                &quot;Budgetbegeleiding&quot;
             ]
         },
         &quot;EnumUitstroomreden&quot;: {
@@ -1605,17 +1616,6 @@
                 &quot;Voldoet niet&quot;,
                 &quot;Afgerond&quot;,
                 &quot;Zelf&quot;
-            ]
-        },
-        &quot;EnumBegeleidingssoort&quot;: {
-            &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Lijst met alle soorten begeleiding die worden onderkend.&quot;,
-            &quot;enum&quot;: [
-                &quot;Budgetcoaching&quot;,
-                &quot;Budgetbeheer&quot;,
-                &quot;Beschermingsbewind&quot;,
-                &quot;Lange Termijn Begeleiding (DFD)&quot;,
-                &quot;Budgetbegeleiding&quot;
             ]
         },
         &quot;geslacht&quot;: {

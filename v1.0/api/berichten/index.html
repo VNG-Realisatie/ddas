@@ -793,23 +793,623 @@
 <h1 id="berichten">Berichten</h1>
 <h2 id="schuldhulpverleningsgegevens">Schuldhulpverleningsgegevens</h2>
 <p>De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:</p>
-<details class="note">
-<summary>Bekijk specificatie</summary>
-<div class="highlight"><pre><span></span><code>
+<details><summary>Toon OAS3 beschrijving</summary>
+<div class="copy highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1.0</span>
+<span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DDAS Gegevens Uitwissel API - SHV</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">API voor het uitwisselen van Schuldhulpverleningsgegevens (SHV) met het CBS.</span>
+<span class="w">    </span><span class="no">Beveiligd met OAuth 2.0 Client Credentials Grant.</span>
+<span class="w">    </span><span class="no">Payload-integriteit en authenticiteit via JAdES payload signing conform Geonovum</span>
+<span class="w">    </span><span class="no">KP-APIs signing-jades module (header: nlgov-adr-payload-sig, PS256, detached,</span>
+<span class="w">    </span><span class="no">alleen digest getekend, key meegestuurd via x5c).</span>
+
+<span class="w">    </span><span class="no">Error handling is FSC-compatibel (Logius FSC Core 1.0.0): bij FSC-gerelateerde fouten</span>
+<span class="w">    </span><span class="no">wordt de header `Fsc-Error-Code` meegegeven met een geldige ERROR_CODE_... waarde.</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DDAS-beheer</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://divosa.nl/ddas</span>
+
+<span class="nt">servers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.gegevensuitwissel.com/v1</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Productieomgeving</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api-test.gegevensuitwissel.com/v1</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Acceptatie-/testomgeving</span>
+
+<span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">OAuth2</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">read</span><span class="p p-Indicator">]</span>
+
+<span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">OAuth2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oauth2</span>
+<span class="w">      </span><span class="nt">flows</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">clientCredentials</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://auth.gegevensuitwissel.com/token</span>
+<span class="w">          </span><span class="nt">scopes</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">read</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Toegang om SHV-gegevens op te halen</span>
+
+<span class="w">  </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Digest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHA-256 digest van de payload (conform RFC 3230). Verplicht bij berichten met body.</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^SHA-256=[A-Za-z0-9+/=]{43,44}$&#39;</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="nt">NlgovAdrPayloadSig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">De protected header bevat minimaal:</span>
+<span class="w">        </span><span class="no">- alg: PS256</span>
+<span class="w">        </span><span class="no">- kid: key identifier</span>
+<span class="w">        </span><span class="no">- x5c: volledige X.509 certificaatketen (PKIoverheid)</span>
+<span class="w">        </span><span class="no">- typ: &quot;JOSE&quot;</span>
+
+<span class="w">        </span><span class="no">De publieke sleutel wordt afgeleid uit het eerste certificaat in de x5c-array.</span>
+<span class="w">        </span><span class="no">Bij validatie dient:</span>
+<span class="w">        </span><span class="no">- de certificaatketen gevalideerd te worden tot PKIoverheid root</span>
+<span class="w">        </span><span class="no">- OCSP of CRL controle plaats te vinden</span>
+<span class="w">        </span><span class="no">- geldigheidsduur gecontroleerd te worden</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWS Compact Serialization (detached payload)</span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]</span>
+
+<span class="w">    </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">Verplichte FSC-header bij fouten conform FSC Core 1.0.0 (Inway/Outway).</span>
+<span class="w">        </span><span class="no">Bevat een ERROR_CODE_... uit de FSC-standaard (bijv. ERROR_CODE_ACCESS_TOKEN_INVALID).</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_MISSING</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_EXPIRED</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_WRONG_GROUP_ID_IN_TOKEN</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_SERVICE_NOT_FOUND</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_SERVICE_UNREACHABLE</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_METHOD_UNSUPPORTED</span>
+<span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Uitwisselmodel</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json&#39;</span>
+
+<span class="w">    </span><span class="nt">Paginering</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageSize</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currentPage</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalPages</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalRecords</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">pageSize</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het aantal records per pagina</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000</span>
+<span class="w">        </span><span class="nt">currentPage</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">De huidige pagina</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">totalPages</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het totaal aantal beschikbare pagina&#39;s</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">totalRecords</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het totaal aantal te versturen records</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72643</span>
+
+<span class="w">    </span><span class="nt">GegevensRequest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">aanleverperiodeStartdatum</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-01&quot;</span>
+<span class="w">        </span><span class="nt">aanleverperiodeEinddatum</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-12-31&quot;</span>
+<span class="w">        </span><span class="nt">aanleverende_organisatie</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Gemeente</span><span class="nv"> </span><span class="s">Voorbeeldstad&quot;</span>
+<span class="w">        </span><span class="nt">page</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">pageSize</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000</span>
+<span class="w">      </span><span class="nt">additionalProperties</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="nt">FscError</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">code</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">domain</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">code</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_... uit FSC standaard</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+<span class="w">        </span><span class="nt">domain</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ERROR_DOMAIN_INWAY</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ERROR_DOMAIN_OUTWAY</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_DOMAIN_INWAY</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ongeldige access token</span>
+<span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">De meegegeven Fsc-Authorization token is ongeldig of verlopen</span>
+<span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
+
+<span class="w">    </span><span class="nt">ProblemDetails</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Probleemdetails volgens RFC 7807 / RFC 9457.</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI die het type fout identificeert.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.example.nl/problems/ongeldig-request&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Korte, leesbare omschrijving van het probleemtype.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Ongeldig</span><span class="nv"> </span><span class="s">request&quot;</span>
+<span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP-statuscode.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifieke toelichting op deze fout.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;De</span><span class="nv"> </span><span class="s">parameter</span><span class="nv"> </span><span class="s">page</span><span class="nv"> </span><span class="s">moet</span><span class="nv"> </span><span class="s">groter</span><span class="nv"> </span><span class="s">zijn</span><span class="nv"> </span><span class="s">dan</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">gelijk</span><span class="nv"> </span><span class="s">zijn</span><span class="nv"> </span><span class="s">aan</span><span class="nv"> </span><span class="s">1.&quot;</span>
+<span class="w">        </span><span class="nt">instance</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri-reference</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI-referentie naar deze specifieke foutinstantie.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/vs?aanleverperiodeStartdatum=2026-01-01&amp;page=0&quot;</span>
+
+<span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">/gegevens</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aanvragen en ontvangen van SHV-gegevens</span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postGegevens</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">Stuurt een verzoek om SHV-gegevens over een bepaalde periode / organisatie.</span>
+<span class="w">        </span><span class="no">Het verzoek én het antwoord worden beschermd met een nlgov-adr-payload-sig</span>
+<span class="w">        </span><span class="no">header (JAdES payload signing, PS256, alleen digest getekend).</span>
+<span class="w">      </span><span class="nt">security</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">OAuth2</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">read</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/GegevensRequest&#39;</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Succesvol antwoord met de gevraagde SHV-gegevens</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Digest</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Digest&#39;</span>
+<span class="w">            </span><span class="nt">nlgov-adr-payload-sig</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/NlgovAdrPayloadSig&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gegevens</span>
+<span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">gegevens</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Uitwisselmodel&#39;</span>
+<span class="w">                  </span><span class="nt">paginering</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">allOf</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Paginering&#39;</span>
+<span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">Alleen aanwezig als de gegevenslevering gepagineerd wordt.</span>
+<span class="w">                      </span><span class="no">Als dit object aanwezig is, zijn alle velden binnen Paginering verplicht.</span>
+
+<span class="w">        </span><span class="s">&#39;400&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ongeldig verzoek (bijv. ongeldige filters of syntaxis)</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ProblemDetails&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Geen of ongeldige authenticatie (FSC-compatibel)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;403&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Toegang geweigerd (bijv. verkeerde groep in token)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;404&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service of resource niet gevonden</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;405&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Niet-ondersteunde HTTP-methode (FSC Outway fout)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;422&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Request syntactisch correct, maar inhoudelijk niet verwerkbaar</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ProblemDetails&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;429&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rate limit overschreden</span>
+
+<span class="w">        </span><span class="s">&#39;502&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service niet bereikbaar (FSC Inway fout)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
 </code></pre></div>
 </details>
+
 <ul>
-<li><a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-SHV.yaml">Download YAML</a>  </li>
+<li><a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/main/v1.0/DDAS-SHV.yaml">Klik hier om het bestand te downloaden</a>  </li>
 </ul>
 <h2 id="vroegsignaleringsgegevens">Vroegsignaleringsgegevens</h2>
 <p>De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:  </p>
-<details class="note">
-<summary>Bekijk specificatie</summary>
-<div class="highlight"><pre><span></span><code>
+<details><summary>Toon OAS3 beschrijving</summary>
+<div class="copy highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1.0</span>
+<span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DDAS Gegevens Uitwissel API - VS</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">API voor het uitwisselen van VroegSignalen (VS) met het CBS.</span>
+<span class="w">    </span><span class="no">Beveiligd met OAuth 2.0 Client Credentials Grant.</span>
+<span class="w">    </span><span class="no">Payload-integriteit en authenticiteit via JAdES payload signing conform Geonovum</span>
+<span class="w">    </span><span class="no">KP-APIs signing-jades module (header: nlgov-adr-payload-sig, PS256, detached,</span>
+<span class="w">    </span><span class="no">alleen digest getekend, key meegestuurd via x5c).</span>
+
+<span class="w">    </span><span class="no">Error handling is FSC-compatibel (Logius FSC Core 1.0.0): bij FSC-gerelateerde fouten</span>
+<span class="w">    </span><span class="no">wordt de header `Fsc-Error-Code` meegegeven met een geldige ERROR_CODE_... waarde.</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DDAS-beheer</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://divosa.nl/ddas</span>
+
+<span class="nt">servers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.gegevensuitwissel.com/v1</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Productieomgeving</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api-test.gegevensuitwissel.com/v1</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Acceptatie-/testomgeving</span>
+
+<span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">OAuth2</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">read</span><span class="p p-Indicator">]</span>
+
+<span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">OAuth2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oauth2</span>
+<span class="w">      </span><span class="nt">flows</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">clientCredentials</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://auth.gegevensuitwissel.com/token</span>
+<span class="w">          </span><span class="nt">scopes</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">read</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Toegang om VS-gegevens op te halen</span>
+
+<span class="w">  </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Digest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHA-256 digest van de payload (conform RFC 3230). Verplicht bij berichten met body.</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^SHA-256=[A-Za-z0-9+/=]{43,44}$&#39;</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">    </span><span class="nt">NlgovAdrPayloadSig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="no">De protected header bevat minimaal:</span>
+<span class="w">        </span><span class="no">- alg: PS256</span>
+<span class="w">        </span><span class="no">- kid: key identifier</span>
+<span class="w">        </span><span class="no">- x5c: volledige X.509 certificaatketen (PKIoverheid)</span>
+<span class="w">        </span><span class="no">- typ: &quot;JOSE&quot;</span>
+
+<span class="w">        </span><span class="no">De publieke sleutel wordt afgeleid uit het eerste certificaat in de x5c-array.</span>
+<span class="w">        </span><span class="no">Bij validatie dient:</span>
+<span class="w">        </span><span class="no">- de certificaatketen gevalideerd te worden tot PKIoverheid root</span>
+<span class="w">        </span><span class="no">- OCSP of CRL controle plaats te vinden</span>
+<span class="w">        </span><span class="no">- geldigheidsduur gecontroleerd te worden</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWS Compact Serialization (detached payload)</span>
+<span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">          </span><span class="no">eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]</span>
+
+<span class="w">    </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">Verplichte FSC-header bij fouten conform FSC Core 1.0.0 (Inway/Outway).</span>
+<span class="w">        </span><span class="no">Bevat een ERROR_CODE_... uit de FSC-standaard (bijv. ERROR_CODE_ACCESS_TOKEN_INVALID).</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_MISSING</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_EXPIRED</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_WRONG_GROUP_ID_IN_TOKEN</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_SERVICE_NOT_FOUND</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_SERVICE_UNREACHABLE</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_METHOD_UNSUPPORTED</span>
+<span class="w">      </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Uitwisselmodel</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/main/v1.0/json_schema_Uitwisselmodel.json&#39;</span>
+
+<span class="w">    </span><span class="nt">Paginering</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageSize</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currentPage</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalPages</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalRecords</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">pageSize</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het aantal records per pagina</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000</span>
+<span class="w">        </span><span class="nt">currentPage</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">De huidige pagina</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">totalPages</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het totaal aantal beschikbare pagina&#39;s</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">totalRecords</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Het totaal aantal te versturen records</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72643</span>
+
+<span class="w">    </span><span class="nt">GegevensRequest</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">aanleverperiodeStartdatum</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-01&quot;</span>
+<span class="w">        </span><span class="nt">aanleverperiodeEinddatum</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-12-31&quot;</span>
+<span class="w">        </span><span class="nt">aanleverende_organisatie</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Gemeente</span><span class="nv"> </span><span class="s">Voorbeeldstad&quot;</span>
+<span class="w">        </span><span class="nt">page</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">pageSize</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000</span>
+<span class="w">      </span><span class="nt">additionalProperties</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="nt">FscError</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">code</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">domain</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">code</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_... uit FSC standaard</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_CODE_ACCESS_TOKEN_INVALID</span>
+<span class="w">        </span><span class="nt">domain</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ERROR_DOMAIN_INWAY</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ERROR_DOMAIN_OUTWAY</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR_DOMAIN_INWAY</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ongeldige access token</span>
+<span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">De meegegeven Fsc-Authorization token is ongeldig of verlopen</span>
+<span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
+
+<span class="w">    </span><span class="nt">ProblemDetails</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Probleemdetails volgens RFC 7807 / RFC 9457.</span>
+<span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI die het type fout identificeert.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.example.nl/problems/ongeldig-request&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Korte, leesbare omschrijving van het probleemtype.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Ongeldig</span><span class="nv"> </span><span class="s">request&quot;</span>
+<span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP-statuscode.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifieke toelichting op deze fout.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;De</span><span class="nv"> </span><span class="s">parameter</span><span class="nv"> </span><span class="s">page</span><span class="nv"> </span><span class="s">moet</span><span class="nv"> </span><span class="s">groter</span><span class="nv"> </span><span class="s">zijn</span><span class="nv"> </span><span class="s">dan</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">gelijk</span><span class="nv"> </span><span class="s">zijn</span><span class="nv"> </span><span class="s">aan</span><span class="nv"> </span><span class="s">1.&quot;</span>
+<span class="w">        </span><span class="nt">instance</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri-reference</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI-referentie naar deze specifieke foutinstantie.</span>
+<span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/vs?aanleverperiodeStartdatum=2026-01-01&amp;page=0&quot;</span>
+
+<span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">/gegevens</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aanvragen en ontvangen van VS-gegevens</span>
+<span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postGegevens</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">Stuurt een verzoek om VS-gegevens over een bepaalde periode / organisatie.</span>
+<span class="w">        </span><span class="no">Het verzoek én het antwoord worden beschermd met een nlgov-adr-payload-sig</span>
+<span class="w">        </span><span class="no">header (JAdES payload signing, PS256, alleen digest getekend).</span>
+<span class="w">      </span><span class="nt">security</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">OAuth2</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">read</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/GegevensRequest&#39;</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Succesvol antwoord met de gevraagde VS-gegevens</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Digest</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Digest&#39;</span>
+<span class="w">            </span><span class="nt">nlgov-adr-payload-sig</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/NlgovAdrPayloadSig&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gegevens</span>
+<span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">gegevens</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Uitwisselmodel&#39;</span>
+<span class="w">                  </span><span class="nt">paginering</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">allOf</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Paginering&#39;</span>
+<span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">Alleen aanwezig als de gegevenslevering gepagineerd wordt.</span>
+<span class="w">                      </span><span class="no">Als dit object aanwezig is, zijn alle velden binnen Paginering verplicht.</span>
+
+<span class="w">        </span><span class="s">&#39;400&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ongeldig verzoek (bijv. ongeldige filters of syntaxis)</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ProblemDetails&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Geen of ongeldige authenticatie (FSC-compatibel)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;403&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Toegang geweigerd (bijv. verkeerde groep in token)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;404&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service of resource niet gevonden</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;405&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Niet-ondersteunde HTTP-methode (FSC Outway fout)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;422&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Request syntactisch correct, maar inhoudelijk niet verwerkbaar</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ProblemDetails&#39;</span>
+
+<span class="w">        </span><span class="s">&#39;429&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rate limit overschreden</span>
+
+<span class="w">        </span><span class="s">&#39;502&#39;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service niet bereikbaar (FSC Inway fout)</span>
+<span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Fsc-Error-Code</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/headers/Fsc-Error-Code&#39;</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/FscError&#39;</span>
 </code></pre></div>
 </details>
+
 <ul>
-<li><a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-VS.yaml">Download YAML</a>  </li>
+<li><a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/refs/heads/main/v1.0/DDAS-VS.yaml">Klik hier om het bestand te downloaden</a>  </li>
 </ul>
 <p>Hieronder worden de berichten die in het OAS-bestand technisch beschreven zijn, toegelicht.</p>
 <h2 id="encoding">Encoding</h2>
@@ -819,25 +1419,36 @@
 <p>Parameters die meegestuurd kunnen worden (allemaal optioneel):</p>
 <ul>
 <li>
-<p>Startdatum (date, default leeg - schuldhulpverlener bepaalt dan startdatum)</p>
+<p>aanleverperiodeStartdatum (date - startdatum van rapportageperiode, default leeg: gegevensleverancier bepaalt dan startdatum<sup>*</sup>)</p>
 </li>
 <li>
-<p>Einddatum (date, default leeg - schuldhulpverlener bepaalt dan einddatum)</p>
+<p>aanleverperiodeEinddatum (date - startdatum van rapportageperiode, default leeg: gegevensleverancier bepaalt dan einddatum<sup>*</sup>)</p>
 </li>
 <li>
-<p>Aanleverende_organisatie (string, default alle – alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)</p>
+<p>Aanleverende_organisatie (string - organisatie waarvan de gegevens geleverd worden, default alle; alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)</p>
+</li>
+<li>
+<p>page (integer - de gewenste pagina, als er meerdere pagina's aan gegevens zijn; zie ook <a href="../non-functionals/#performance">niet-functionele eisen</a>, default de eerste pagina)</p>
+</li>
+<li>
+<p>pageSize (integer - aantal records (vroegsignalen/schuldhulptrajecten) dat in één responsebericht meegestuurd wordt, default leeg: gegevensleverancier bepaalt dan het aantal met een maximum zoals bepaald in de <a href="../non-functionals/#performance">niet-functionele eisen</a>)</p>
 </li>
 </ul>
+<blockquote>
+<p><sup>*</sup>: als de schuldhulpverlener de start- en einddatum van de rapportageperiode bepaalt, worden de start- en einddatum van de afgelopen rapportageperiode gebruikt. NB: de definitie van de rapportageperiode (start- en einddatum en welke gegevens meegenomen moeten worden) wordt in een aparte beschrijving vastgesteld. <br />
+Voorbeeld: als CBS in juli een request voor gegevens verstuurt zonder start- en einddatum en er halfjaarlijks gerapporteerd wordt, dan worden de start- en einddatum waarover gegevens geleverd worden 1 januari, resp. 30 juni van het huidige jaar. Als er per kwartaal gerapporteerd wordt, dan zijn in dit geval de start- en einddatum 1 maart, resp. 30 juni van het huidige jaar.</p>
+</blockquote>
 <p>Het bericht wordt met <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/">JAdES</a> ondertekend met de private sleutel van de verzender van het vraagbericht - in dit geval CBS. Zie het hoofdstuk <a href="../signing-encryptie/">Signing en Versleuteling</a> voor de specificaties van de ondertekening.</p>
 <h2 id="antwoordbericht-response">Antwoordbericht (response)</h2>
 <p>Dit is het antwoordbericht van de gegevensbeheerder (systeem dat de bron beheert) met de gewenste gegevens in JSON formaat.
 De payload is gebaseerd op het uitwisselformaat zoals dat is beschreven voor <a href="https://vng-realisatie.github.io/ddas/v1.0/uitwisselspecificatie/">schuldhulpgegevens</a> en <a href="https://vng-realisatie.github.io/ddas-vroegsignalering/v1.0/uitwisselspecificatie/">vroegsignaleringsgegevens</a>.</p>
-<p>Ook dit bericht wordt ondertekend met <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/">JAdES</a> met gebruik van de eigen private sleutel.
+<p>Naast de vroegsignalen worden gegevens voor de <strong>paginering</strong> meegegeven. Deze zijn nodig als niet alle gegevens in één responsebericht passen - zie de <a href="../non-functionals/#performance">niet-functionele eisen</a> voor meer uitleg. Als alle gegevens in één responsebericht passen, hoeven de paginering gegevens niet in het bericht opgenomen te worden.</p>
+<p>Ook dit bericht wordt ondertekend met <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/">JAdES</a> met gebruik van de eigen private sleutel. Zie het hoofdstuk <a href="../signing-encryptie/">Signing en Versleuteling</a> voor de specificaties van de ondertekening.
 Versleutelen van de payload is niet nodig.</p>
 <p>Mogelijke responses:</p>
 <ul>
 <li>
-<p>200: bericht goed verwerkt (met versleutelde en gesigneerde payload)</p>
+<p>200: bericht goed verwerkt (met gesigneerde payload)</p>
 </li>
 <li>
 <p>Foutberichten conform de FSC standaard:</p>
