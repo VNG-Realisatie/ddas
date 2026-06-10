@@ -24,6 +24,16 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Download OAS YAML files
+        run: |
+          mkdir -p docs/includes
+          curl -L \
+            -o docs/includes/DDAS-SHV.yaml \
+            https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/main/v1.0/DDAS-SHV.yaml
+          curl -L \
+            -o docs/includes/DDAS-VS.yaml \
+            https://raw.githubusercontent.com/VNG-Realisatie/ddas/refs/heads/main/v1.0/DDAS-VS.yaml
+
       - run: mkdocs build
 
       - uses: rossjrw/pr-preview-action@v1
