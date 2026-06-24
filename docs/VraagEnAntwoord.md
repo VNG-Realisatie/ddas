@@ -5,10 +5,10 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
 ??? question "Wat vul ik in bij gemeentecode?"
     Gemeentecode komt twee maal voor in de uitwisselspecificatie. Gemeentecode dient als volgt gebruikt te worden: Als de aanleverende organisatie een gemeente is wordt er onder `aanleverende organisatie` de gemeentecode ingevuld, in andere gevallen is deze waarde leeg. De `schuldhulptrajecten` hebben **altijd** een gemeentecode. Dit betreft de gemeente onder wiens verantwoordelijkheid de schuldhulpverlening wordt uitgevoerd, en niet het adres van de client.   
     
-    De invulling van gemeentecode heeft een rol bij verschillende uitwisselvarianten. Dit staat onder [Uitwisselvarianten](../uitwisselspecificatie/#uitwisselvarianten) uitgelegd.
+    De invulling van gemeentecode heeft een rol bij verschillende uitwisselvarianten. Dit staat onder [Uitwisselvarianten](uitwisselspecificatie.md#uitwisselvarianten) uitgelegd.
  
 ??? question "Hoe lever ik aan voor meerdere gemeenten?"
-    Deze situatie is beschreven onder [Uitwisselvarianten](../uitwisselspecificatie/#uitwisselvarianten) bij de Uitwisselspecificatie. 
+    Deze situatie is beschreven onder [Uitwisselvarianten](uitwisselspecificatie.md#uitwisselvarianten) bij de Uitwisselspecificatie. 
 
 ??? question "Moet het aan CBS aan te leveren JSON-bestand worden versleuteld?"
     Nee, het aan CBS aan te leveren JSON-bestand hoeft niet te worden versleuteld. In een van de eerdere versie van de DPIA stond een zinsnede met de term '(versleuteld)' die tot verwarring leidde. Deze is in de DPIA aangepast. 
@@ -80,3 +80,7 @@ Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer al
 
 ??? question "Waarom is het belangrijk dat contactpersonen bij aanleverende_organisatie contactpersonen goed wordt ingevuld?"
     Bij aanlevering van gegevens via API's worden de gegevens van contactpersonen gebruikt om het 'op-orde-rapport' naartoe te sturen. Hiermee kunnen organisaties controleren of er correcte gegevens aan CBS zijn aangeboden. Hiervoor gebruikt het CBS het emailadres.  
+
+??? question "Er zijn drie velden die iets zeggen over de einddatum van het traject, hoe vul ik die in?"
+    Dat klopt: het schuldhulptraject heeft een einddatum, daarbinnen heeft "uitstroom" een einddatum en "uitstroom" heeft ook een "datumBeeindigingsbeschikking". Alle drie betreffen ze dezelfde datum; hier vul je dus ook dezelfde datum in.  
+
