@@ -80,7 +80,7 @@ components:
 
   schemas:
     Uitwisselmodel:
-      $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/main/v1.0/json_schema_Uitwisselmodel.json'
+      $ref: 'https://raw.githubusercontent.com/VNG-Realisatie/ddas-vroegsignalering/main/v1.1/json_schema_Uitwisselmodel.json'
 
     Paginering:
       type: object
