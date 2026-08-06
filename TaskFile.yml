@@ -36,6 +36,17 @@ default: full-deploy
 
 dotenv: ['.env']
 
+env:
+  # crunch_uml importeert de `translators`-library (crunch_uml/lang.py). Bij het
+  # importeren bepaalt die library via een geolocatie-call welke Google/Bing-server
+  # gebruikt moet worden. Lukt die call niet (offline, firewall, dienst down), dan
+  # valt de library terug op een interactieve input()-prompt
+  # ("Please input your server region need to visit") en blijft de build hangen.
+  # Deze variabele zet de regio vast, zodat de geolocatie-call helemaal overgeslagen
+  # wordt. De DDAS-build vertaalt niets, dus de waarde is verder niet van belang
+  # (alles behalve "China" wordt binnen translators naar regio "EN" gemapt).
+  translators_default_region: "Netherlands"
+
 vars:
   VERSION_DIR: "./{{.VERSION}}"
   XMI: "data/{{.XMI_FILE}}"
@@ -143,6 +154,8 @@ tasks:
     cmds:
       - echo "Generate JSON Schema '{{.JSON}}' from schema '{{.UM_SCHEMA_SCHULDHULP}}' using root class '{{.ROOT_CLASS_UM_SCHULDHULP}}'..."
       - crunch_uml  -sch {{.UM_SCHEMA_SCHULDHULP}} -d export -t json_schema --output_class_id {{.ROOT_CLASS_UM_SCHULDHULP}} -js_url {{.SCHULDHULP_JSON_SCHEMA_URL}} -f {{.JSON}}
+      - echo "Post-processing JSON Schema (uniqueItems verwijderen, leveringen verplicht maken)..."
+      - python3 tools/postprocess_jsonschema.py "{{.VERSION_DIR}}/json_schema_Uitwisselmodel.json"
     shell: bash
 
   generate:docs:
