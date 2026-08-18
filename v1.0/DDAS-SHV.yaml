@@ -122,9 +122,9 @@ components:
           type: string
           format: date
           example: "2025-12-31"
-        aanleverende_organisatie:
+        aanleverendeOrganisatie:
           type: string
-          example: "Gemeente Voorbeeldstad"
+          example: "Naam Gegevensleverancier"
         page:
           type: integer
           minimum: 1
