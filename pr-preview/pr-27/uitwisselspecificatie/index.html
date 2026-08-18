@@ -1,0 +1,2614 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="De uitwisselspecificatie voor de Data Delen over Armoede en Schulden (DDAS) API">
+      
+      
+        <meta name="author" content="Arjen Brienen">
+      
+      
+        <link rel="canonical" href="https://ddas-api.nl/uitwisselspecificatie/">
+      
+      
+        <link rel="prev" href="../uitleg_Model%20Schuldhulpverlening/">
+      
+      
+        <link rel="next" href="../Hoofdlijnen_Model%20Schuldhulpverlening/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Uitwisselspecificatie - Data Delen Armoede en Schulden (DDAS)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uitwisselmodel" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-header__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Delen Armoede en Schulden (DDAS)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Uitwisselspecificatie
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VNG-Realisatie/ddas" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Delen Armoede en Schulden (DDAS)" class="md-nav__button md-logo" aria-label="Data Delen Armoede en Schulden (DDAS)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Data Delen Armoede en Schulden (DDAS)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VNG-Realisatie/ddas" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uitleg_Model%20Schuldhulpverlening/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uitwisselspecificatie uitgelegd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uitwisselspecificatie
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uitwisselspecificatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inleiding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitwisselvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitwisselvarianten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uitwisselvarianten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-door-de-gemeente-zelf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering door de gemeente zelf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-een-gemeente-door-een-derde-partij" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering voor één gemeente door een derde partij
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-meerdere-gemeenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering voor meerdere gemeenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanvullende-gegevens-softwareleverancier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanvullende gegevens softwareleverancier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gebruik-gemeentecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gebruik gemeentecode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitwisselspecificatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitwisselspecificatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeelden
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voorbeelden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enkelvoudig-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enkelvoudig voorbeeld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meervoudig-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meervoudig voorbeeld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop voorbeeld
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Samenloop voorbeeld">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-bestand-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop bestand 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-bestand-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop bestand 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorbeeld-meerdere-leveringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeld meerdere leveringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testen-uitwisselspecificatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testen Uitwisselspecificatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Informatiemodel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Informatiemodel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoofdlijnen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../definities/Detail_Model%20Schuldhulpverlening/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailspecificatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Koppelvlakspecificatie API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Koppelvlakspecificatie API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inleiding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/uitgangspunten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uitgangspunten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/overzicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overzicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportlaag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identificatie, authenticatie en autorisatie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/signing-encryptie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ondertekenen en versleutelen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/berichten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berichten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/non-functionals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Niet-functionele eisen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Achtergrond/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Achtergrond DDAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VraagEnAntwoord/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vraag en antwoord
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inleiding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inleiding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitwisselvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitwisselvarianten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uitwisselvarianten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-door-de-gemeente-zelf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering door de gemeente zelf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-een-gemeente-door-een-derde-partij" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering voor één gemeente door een derde partij
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanlevering-voor-meerdere-gemeenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanlevering voor meerdere gemeenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aanvullende-gegevens-softwareleverancier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aanvullende gegevens softwareleverancier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gebruik-gemeentecode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gebruik gemeentecode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitwisselspecificatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uitwisselspecificatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeelden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeelden
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voorbeelden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enkelvoudig-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enkelvoudig voorbeeld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meervoudig-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meervoudig voorbeeld
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-voorbeeld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop voorbeeld
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Samenloop voorbeeld">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-bestand-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop bestand 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samenloop-bestand-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Samenloop bestand 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voorbeeld-meerdere-leveringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeld meerdere leveringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testen-uitwisselspecificatie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testen Uitwisselspecificatie
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="uitwisselmodel">Uitwisselmodel</h1>
+<h2 id="inleiding">Inleiding</h2>
+<p>De uitwisselspecificatie specificeert welke gegevens en in welke vorm de gegevens aan het CBS aangeleverd dienen te worden. Hiertoe is een specificatie in <a href="https://json-schema.org">JSON-schema</a> gespecificeerd. De inhoud van deze JSON-schema is afgeleid van het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/">informatiemodel schuldhulpverlening</a>. </p>
+<p>De uitwisselspecificatie kent de volgende opbouw: </p>
+<ol>
+<li>Op het hoofdniveau is het Uitwisselmodel gedefinieerd. Dit met een aantal attributen die informatie geven over de levering: start- en einddatum van de levering en de aanleverdattum en tijd;</li>
+<li>Op het tweede niveau is het mogelijk gemaakt meerdere leveringen in te voegen. Dit maakt het mogelijk voor cloud-leveranciers voor meerdere schuldhulpverlenende organisaties in 1 bestand aan te leveren, <strong>mits daar natuurlijk toestemming voor is afgegeven</strong>. </li>
+<li>Op het derde niveau wordt per levering de aanleverende <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#organisaties">schuldhulporganisatie</a> met de bijbehorende schuldhultrajecten aangeleverd. Er wordt vanuit gegaan dat er per levering steeds door precies één schuldhulporganisatie gegevens worden aangeleverd. Steeds worden alle lopende trajecten met overlap met de periode tussen startdatum en einddatum van de uitvraag aangeboden.</li>
+<li>Op detailniveau wordt een aantal schuldhulptrajecten aangeleverd. Dit met de verschillende fases die de trajecten hebben doorlopen volgens het <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#processen">procesmodel</a>, en de <a href="../Hoofdlijnen_Model%20Schuldhulpverlening/#clienten">client(en)</a> die het betreft. Per schuldhulptraject worden de schulden opgegeven die binnen de scope van het traject vallen. Per traject wordt ook de gemeente opgegeven die verantwoordelijk is voor de uitvoering van het schuldhulptraject. In veel gevallen is dit dezelfde gemeente als waar de cliënt woont, maar dat hoeft niet. Na een verhuizing kan een cliënt in een andere gemeente zijn gaan wonen, terwijl de uitvoering nog bij de oorspronkelijke gemeente (van voor de verhuizing) ligt. </li>
+</ol>
+<p>Vanuit verschillende aanleveringen kunnen gegevens worden aangeleverd die hetzelfde traject betreffen. De trajecten worden dan uitgebreid met de nieuwe gegevens. Het gaat om hetzelfde traject als:</p>
+<ol>
+<li>Er overlap is in de looptijd; EN</li>
+<li>Het dezelfde clienten betreft (clienten kunnen maar 1 traject tegelijk hebben gedurende 1 periode. Wel kunnen zij sequentieel meerdere trajecten hebben)</li>
+</ol>
+<p>Aan het eind van de specficatie staan de gebruikte datatypes en waardenlijsten (enumeraties) die worden gebruikt opgenomen. </p>
+<h2 id="uitwisselvarianten">Uitwisselvarianten</h2>
+<p>De uitwisselspecificatie bevat mogelijkheden om voor één gemeente aan te leveren, maar ook in één keer voor meerdere gemeenten. Bijvoorbeeld door een softwareleverancier die meerdere gemeenten op het Cloud-platform heeft, of voor samenwerkingsorganisaties die uitvoering geven aan schuldhulpverlening voor meerdere gemeenten. Hieronder wordt toegelicht hoe de uitwisselspecificatie hiervoor op de juiste manier wordt gevuld.</p>
+<p>Om voorgaande varianten vanuit de uitwisselspecificatie te ondersteunen kent deze het concept <code>leveringen</code>. Hiermee kan in één aanlevering (= 1 JSON-bestand) voor meerdere organisaties de schuldhulpverleningstrajecten worden aangeleverd.</p>
+<p><a href="../images/Leveringen.jpg"><img alt="Leveringen in het uitwisselschema" src="../images/Leveringen.jpg" /></a></p>
+<p>In de volgende paragrafen wordt uitgelegd hoe je het concept <code>leveringen</code> bij verschillende uitwisselvarianten kunt gebruiken.</p>
+<h3 id="aanlevering-door-de-gemeente-zelf">Aanlevering door de gemeente zelf</h3>
+<p>Dit is de eenvoudigste variant. Hier levert de gemeente zelf haar eigen schuldhulptrajecten aan. In dit geval wordt er één <code>levering</code> aangemaakt, voor deze gemeente, met daarin tenminste de volgende waardes:</p>
+<ol>
+<li><strong>teller</strong>: 1</li>
+<li><strong>aanleverende organisatie</strong>:<ol>
+<li>(Statutaire) naam: gemeentenaam</li>
+<li>KvK-nummer: geen waarde</li>
+<li>gemeentecode: code van de gemeente </li>
+</ol>
+</li>
+<li><strong>schuldhulptrajecten</strong> Eén schuldhulptraject met daarin:<ol>
+<li>gemeentecode: code van de gemeente (zelfde als onder "aanleverende organisatie")</li>
+<li>alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.</li>
+</ol>
+</li>
+</ol>
+<h3 id="aanlevering-voor-een-gemeente-door-een-derde-partij">Aanlevering voor één gemeente door een derde partij</h3>
+<p>In deze uitwisselvariant wordt voor één gemeente de schuldhulptrajecten aangeboden, maar door een andere partij dan deze gemeente. In dit geval wordt er één <code>levering</code> aangemaakt met daarin tenminste de volgende waardes:</p>
+<ol>
+<li><strong>teller</strong>: 1</li>
+<li><strong>aanleverende organisatie</strong>:<ol>
+<li>(Statutaire) naam: naam van de aanleverende organisatie</li>
+<li>KvK-nummer: kvk-nummer van de aanleverende organisatie</li>
+<li>gemeentecode: geen waarde </li>
+</ol>
+</li>
+<li><strong>schuldhulptrajecten</strong> Eén schuldhulptraject met daarin:<ol>
+<li>gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd</li>
+<li>alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.</li>
+</ol>
+</li>
+</ol>
+<h3 id="aanlevering-voor-meerdere-gemeenten">Aanlevering voor meerdere gemeenten</h3>
+<p>Dit is een ingewikkelder variant waar de werking van het concept <code>leveringen</code> tot zijn recht komt. Het kan hier gaan om een softwareleverancier die in één keer voor meerdere gemeenten aanlevert, of om een samenwerkingsorganisatie die schuldhulpverlening voor meerdere gemeenten uitvoert. Voorbeelden van dit laatste zijn kredietbanken en gemeentelijke samenwerkingen.</p>
+<p>In het geval voor aanlevering voor meerdere gemeenten wordt per gemeente één <code>levering</code> gemaakt die als volgt wordt gevuld: </p>
+<ol>
+<li><strong>teller</strong>: volgnummer van de levering in het bestand (1, 2, 3, …) </li>
+<li><strong>aanleverende organisatie</strong>:<ol>
+<li>(Statutaire) naam: naam van de aanleverende organisatie (softwareleverancier of samenwerkingsorganisatie) </li>
+<li>KvK-nummer: kvk-nummer van de aanleverende organisatie (softwareleverancier of samenwerkingsorganisatie)</li>
+<li>gemeentecode: geen waarde </li>
+</ol>
+</li>
+<li><strong>schuldhulptrajecten</strong> Meerdere schuldhulptrajecten met daarin:<ol>
+<li>gemeentecode: code van de gemeente onder wiens verantwoordelijkheid de schuldhulpverleningstrajecten worden uitgevoerd. Binnen één levering behoren de trajecten tot dezelfde verantwoordelijke gemeente; daarom is de gemeentecode in die trajecten gelijk.</li>
+<li>alle gevraagde gegevens zoals beschreven in de uitwisselspecificatie.</li>
+</ol>
+</li>
+</ol>
+<p>Het kan voorkomen dat meerdere leveringen dezelfde <code>aanleverende organisatie</code> organisatie hebben. </p>
+<h3 id="aanvullende-gegevens-softwareleverancier">Aanvullende gegevens softwareleverancier</h3>
+<p>In alle gevallen geeft de softwareleverancier de code van haar organisatie mee in het veld <code>codeGegevensleverancier</code>. Hier wordt de naam van de leverancier meegegeven met daarna het versienummer van het aanleverende pakket. </p>
+<h3 id="gebruik-gemeentecode">Gebruik gemeentecode</h3>
+<p>Als de aanleverende organisatie een gemeente is wordt er onder <code>aanleverende organisatie</code> de gemeentecode ingevuld, in andere gevallen is deze waarde leeg. De <code>schuldhulptrajecten</code> hebben <strong>altijd</strong> een gemeentecode. Dit betreft de gemeente onder wiens verantwoordelijkheid de schuldhulpverlening wordt uitgevoerd, en niet het adres van de client. </p>
+<h2 id="encoding">Encoding</h2>
+<p>Alle bestanden dienen te worden aangeleverd in <a href="https://www.forumstandaardisatie.nl/open-standaarden/utf-8">UTF-8-formaat</a>. </p>
+<h2 id="uitwisselspecificatie">Uitwisselspecificatie</h2>
+<p>Onderstaand de definitie van de uitwisselspecificatie. Van deze definitie is ook een <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json">downloadversie</a> beschikbaar.</p>
+<div class="highlight"><pre><span></span><code>{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/json_schema_Uitwisselmodel.json",
+    "title": "Uitwisselmodel",
+    "type": "object",
+    "description": "Het uitwisselmodel is een model dat de gegevens bevat die uitgewisseld worden tussen de verschillende partijen.",
+    "properties": {
+        "startdatumLevering": {
+            "$ref": "#/$defs/datum"
+        },
+        "einddatumLevering": {
+            "$ref": "#/$defs/datum"
+        },
+        "aanleverdatumEnTijd": {
+            "$ref": "#/$defs/datum-tijd"
+        },
+        "codeGegevensleverancier": {
+            "description": "Code van de gegevensleverancier (softwareleverancier of hosting partij) die de gegevens voor 1 of meer partijen levert.",
+            "type": "string"
+        },
+        "leveringen": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "description": "Een levering is steeds een schuldhulporganisatie met daarbij een verzameling van schuldhulptrajecten die op een bepaald moment worden aangeleverd.",
+                "properties": {
+                    "teller": {
+                        "description": "Teller van het aantal leveringen dat in het bestand is opgenomen.",
+                        "type": "integer"
+                    },
+                    "aanleverende_organisatie": {
+                        "type": "object",
+                        "description": "Een schuldhulporganisatie is een instantie die individuen en gezinnen helpt met het beheren, verminderen en oplossen van hun schulden door middel van advies, begeleiding en bemiddeling.\nHet betreft een gemeenten of een SHV-organisatie die de gemeentelijke schuldhulpverleningstaak vanuit een gemeente gemandateerd of gedelegeerd heeft. \n",
+                        "properties": {
+                            "(Statutaire) Naam": {
+                                "description": "Naam van de niet-natuurlijke persoon zoals deze is vastgelegd in de statuten (rechtspersoon) of in de vennootschapsovereenkomst is overeengekomen (Vennootschap onder firma of Commanditaire vennootschap).",
+                                "type": "string"
+                            },
+                            "KvK-nummer": {
+                                "description": "Landelijk uniek identificerend administratienummer van een MAATSCHAPPELIJKE ACTIVITEIT behorend bij een SUBJECT zoals toegewezen door de Kamer van Koophandel (KvK).",
+                                "type": "string"
+                            },
+                            "postcode": {
+                                "type": "string"
+                            },
+                            "gemeentecode": {
+                                "description": "De gemeentecode als de aanleverende organisatie een gemeente is.",
+                                "type": "string"
+                            },
+                            "contactpersonen": {
+                                "type": "array",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "description": "Contactpersoon van de organisatie waarvan de gegevens worden aangeleverd.",
+                                    "properties": {
+                                        "email": {
+                                            "$ref": "#/$defs/email"
+                                        },
+                                        "functietitel": {
+                                            "type": "string"
+                                        },
+                                        "naam": {
+                                            "type": "string"
+                                        },
+                                        "telefoonnummer": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "schuldhulptrajecten": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "description": "Samenstel van achtereenvolgens uit te voeren en onderling samenhangende deelhandelingen of van opeenvolgende stadia in een proces, voorgesteld als een route die via opeenvolgende bestemmingen naar de eindbestemming voert.",
+                            "properties": {
+                                "einddatum": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "omschrijving": {
+                                    "type": "string"
+                                },
+                                "startdatum": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "toekenningsdatum": {
+                                    "$ref": "#/$defs/datum"
+                                },
+                                "totaalSchuldbedragBijAanvangSchuld": {
+                                    "description": "Bedrag in hele euro's nauwkeurig voor elke schuld die meegaat in de schuldregeling. Per schuldeiser kunnen er meerdere openstaande schulden zijn. Deze afzonderlijk meenemen.",
+                                    "$ref": "#/$defs/bedrag"
+                                },
+                                "gemeentecode": {
+                                    "description": "De gemeentecode van de gemeente onder wiens verantwoordelijkheid het schuldhulptraject wordt uitgevoerd.",
+                                    "type": "string"
+                                },
+                                "aanmelding": {
+                                    "type": "object",
+                                    "description": "Moment dat een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ",
+                                    "properties": {
+                                        "crisisinterventie": {
+                                            "description": "Is er sprake van een crisisinterventie? Indicator crisisinterventie. \"Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&amp;#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n\u25a0 gedwongen woningontruiming;\n\u25a0 be&amp;#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n\u25a0 opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n\u25a0 aangekondigde boedelverkoop of verkoop van de eigen woning;\n\u25a0 loon- of bankbeslag;\n\u25a0 een faillissementsaanvraag.\nEn voor ondernemers:\n\u25a0 beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n\u25a0 opzegging van het bankkrediet.\"",
+                                            "type": "boolean"
+                                        },
+                                        "einddatum": {
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "startdatum": {
+                                            "description": "Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. ",
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "begeleiding": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Begeleiding voor clienten in het kader van schuldhulpdienstverlening, die kan bestaan uit:\n1. budgetbeheer\n2. beschermingsbewind\n3. budgetcoaching\n",
+                                        "properties": {
+                                            "einddatum": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "soort": {
+                                                "$ref": "#/$defs/EnumBegeleidingssoort"
+                                            },
+                                            "startdatum": {
+                                                "$ref": "#/$defs/datum"
+                                            }
+                                        }
+                                    }
+                                },
+                                "client": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "maxItems": 2,
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente binnen de sociaal domein.",
+                                        "properties": {
+                                            "Burgerservicenummer": {
+                                                "type": "string"
+                                            },
+                                            "Geboortedatum": {
+                                                "description": "De datum waarop de ander natuurlijk persoon is geboren.",
+                                                "type": "string"
+                                            },
+                                            "Geslachtsaanduiding": {
+                                                "description": "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.",
+                                                "type": "string"
+                                            },
+                                            "Postcode": {
+                                                "type": "string"
+                                            },
+                                            "Huisnummer": {
+                                                "type": "string"
+                                            },
+                                            "Huisnummertoevoeging": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "crisisinterventies": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&amp;#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n\u25a0 gedwongen woningontruiming;\n\u25a0 be&amp;#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n\u25a0 opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n\u25a0 aangekondigde boedelverkoop of verkoop van de eigen woning;\n\u25a0 loon- of bankbeslag;\n\u25a0 een faillissementsaanvraag.\nEn voor ondernemers:\n\u25a0 beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n\u25a0 opzegging van het bankkrediet.\n",
+                                        "properties": {
+                                            "einddatum": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "startdatum": {
+                                                "$ref": "#/$defs/datum"
+                                            }
+                                        }
+                                    }
+                                },
+                                "informatieEnAdvies": {
+                                    "type": "object",
+                                    "properties": {
+                                        "einddatum": {
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "startdatum": {
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "intake": {
+                                    "type": "object",
+                                    "description": "Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de\nintakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel\nevenwicht te bereiken.",
+                                    "properties": {
+                                        "beschikkingsdatum": {
+                                            "description": "De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking. ",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "beschikkingssoort": {
+                                            "$ref": "#/$defs/EnumBeschikkingssoort"
+                                        },
+                                        "einddatum": {
+                                            "description": "De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. ",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "startdatum": {
+                                            "description": "Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken. \n\n",
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "moratoria": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Het gaat hier om de datum waarop een verzoek tot een moratorium (ex art. 287 b Fw) is ingediend bij de rechter.\n\nEr kan een verzoek tot een moratorium bij de rechter worden gedaan om te voorkomen dat een schuldeiser zijn specifieke inningsmogelijkheden gebruikt, terwijl een aanvraag voor een minnelijke schuldregeling in behandeling is. Het moratorium is bedoeld om het minnelijke traject te kunnen voortzetten.\n\nHet moratorium kan in de volgende situaties worden ingezet:\n- gedwongen woningontruiming;\n- be&amp;#235;indiging van de levering van gas, water elektriciteit of stadsverwarming;\n- opzegging dan wel ontbinding van de zorgverzekering.\n\nHet moratorium duurt maximaal zes maanden.",
+                                        "properties": {
+                                            "datumAanvraag": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "datumGoedkeuring": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "einddatum": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "startdatum": {
+                                                "$ref": "#/$defs/datum"
+                                            }
+                                        }
+                                    }
+                                },
+                                "nazorg": {
+                                    "type": "object",
+                                    "description": "Ondersteuning die een persoon ontvangt n&amp;#225; een schuldhulptraject, om zo bij de start van een schuldenvrij leven zelfredzaamheid verder te bevorderen &amp;#233;n recidive (terugval) te voorkomen.",
+                                    "properties": {
+                                        "einddatum": {
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "startdatum": {
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "oplossing": {
+                                    "type": "object",
+                                    "description": "De Oplossing beschrijft in 5 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules: \n- submodule Herfinanciering;\n- submodule Betalingsregeling;\n- submodule Saneringskrediet;\n- submodule Schuldbemiddeling.\nHet kan ook gaan om een 0%-aanbod",
+                                    "properties": {
+                                        "einddatum": {
+                                            "description": "Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk eindigt. Dit kan zijn na de formele afgesproken periode of een voortijdige beeindiging.",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "soort": {
+                                            "$ref": "#/$defs/EnumOplossingssoort"
+                                        },
+                                        "startdatum": {
+                                            "description": "Het gaat om het moment dat een schuldregeling (saneringskrediet/schuldbemiddeling) of volledige afbetalingsregeling (betalingsregeling/herfinanciering) daadwerkelijk start na goedkeuring van de aanvraag.",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "vtlb": {
+                                            "description": "Het \u201cVrij te laten bedrag\u201d (VTLB) is het bedrag (in hele euro's per maand) dat een persoon of huishouden met schulden mag behouden om in de basisbehoeften te voorzien. Dit bedrag wordt vastgesteld tijdens schuldhulpverleningstrajecten. Het VTLB zorgt ervoor dat iemand niet verder in de problemen komt door schulden af te lossen en tegelijkertijd nog kan voorzien in noodzakelijke kosten van levensonderhoud.",
+                                            "$ref": "#/$defs/bedrag"
+                                        }
+                                    }
+                                },
+                                "planVanAanpak": {
+                                    "type": "object",
+                                    "description": "Een document waarin in elk geval het volgende staat:\n\u25a0 de hulpvraag van de persoon;\n\u25a0 de voorgestelde ondersteuning;\n\u25a0 eventueel de organisatie(s) waarnaar je hebt doorverwezen;\n\u25a0 de voorwaarden voor schuldhulpverlening (bijvoorbeeld dat de persoon geen nieuwe schulden mag maken).\n\nDe hoogte van beslagvrije voet voor de persoon (zie artikel 4a:5 van de Wgs) moet in acht worden genomen.",
+                                    "properties": {
+                                        "datumAfronding": {
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "schulden": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "description": "Een schuld is een financi&amp;#235;le verplichting waarbij een persoon nu of in de toekomst een bedrag moet betalen aan een derde. In het kader van schuldhulpverlening wordt over een schuld gesproken als de persoon niet aan deze verplichting kan voldoen. . ",
+                                        "properties": {
+                                            "bedrag": {
+                                                "description": "Bedrag in hele euro's nauwkeurig",
+                                                "$ref": "#/$defs/bedrag"
+                                            },
+                                            "peildatum": {
+                                                "description": "Peildatum dat de schuld is vastgesteld.",
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "schuldsoort": {
+                                                "$ref": "#/$defs/EnumSchuldensoort"
+                                            },
+                                            "zakelijkeSchuld": {
+                                                "description": "Betreft het een zakelijke schuld",
+                                                "type": "boolean"
+                                            },
+                                            "schuldeiser": {
+                                                "type": "object",
+                                                "description": "Een schuldeiser is bedrijf of persoon die recht heeft op een prestatie van een ander, de schuldenaar. In de meeste gevallen is de prestatie het betalen van geld. Dit geldbedrag is dan de schuld die de schuldenaar aan de schuldeiser moet betalen. De schuld is meestal het gevolg van het niet nakomen van een verplichting uit een overeenkomst tussen de partijen. De schuldeiser kan de schuldenaar dwingen om de schuld te voldoen.",
+                                                "properties": {
+                                                    "naam": {
+                                                        "type": "string"
+                                                    },
+                                                    "kvknummer": {
+                                                        "type": "string"
+                                                    },
+                                                    "Naam": {
+                                                        "description": "De benaming van het SUBJECT",
+                                                        "type": "string"
+                                                    },
+                                                    "postcode": {
+                                                        "type": "string"
+                                                    },
+                                                    "privepersoon": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "schuldregeling": {
+                                    "type": "object",
+                                    "description": "De schuldregeling heeft als doel een overeenkomst te sluiten tussen iemand met problematische schulden en zijn schuldeisers. Op basis van eventueel ingezet vermogen en de berekende afloscapaciteit (of op andere wijze vastgestelde minimale afdracht) lost de schuldenaar in maximaal 18 maanden zo veel mogelijk van de schuld af. Daarna schelden de schuldeisers de rest van hun vordering kwijt. Voordat de schuldregeling start, sluit je een schuldregelingsovereenkomst met de schuldenaar. Daarin staan de rechten en plichten van beide partijen. Een schuldregeling kan met een saneringskrediet of een schuldbemiddeling gerealiseerd worden. Als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregeling, informeer je de schuldenaar over mogelijke vervolgstappen, zoals het aanvragen van een dwangakkoord (artikel 287a Fw) of toelating tot de Wsnp.",
+                                    "properties": {
+                                        "afgewezen": {
+                                            "description": "Datum waarop afwijzingheeft plaatgevonden. Leeg betekent: (nog) geen afwijzing plaatgevonden \n",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "datum": {
+                                            "description": "Datum dat schuldregeling is ingediend.",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "datumVerzoekDwangakkoord": {
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "dwangakkoord": {
+                                            "description": "Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).",
+                                            "type": "boolean"
+                                        },
+                                        "ingetrokken": {
+                                            "description": "Datum waarop schuldregeling is ingetrokken. Leeg betekent: (nog) geen intrekking plaatgevonden \n",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "toegekend": {
+                                            "description": "Datum waarop toekenning heeft plaatgevonden. Leeg betekent: (nog) geen toekenning plaatgevonden ",
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                },
+                                "voorlopigeVoorzieningen": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "einddatum": {
+                                                "$ref": "#/$defs/datum"
+                                            },
+                                            "startdatum": {
+                                                "$ref": "#/$defs/datum"
+                                            }
+                                        }
+                                    }
+                                },
+                                "uitstroom": {
+                                    "type": "object",
+                                    "description": "Motivatie voor uitstroom",
+                                    "properties": {
+                                        "datum": {
+                                            "description": "Datum dat clienten uit het schuldhulptraject zijn uitgestroomd",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "datumBeeindigingsbeschikking": {
+                                            "description": "Datum dat de Be&amp;#235;indigingsbeschikking is afgegeven.",
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "omschrijving": {
+                                            "type": "string"
+                                        },
+                                        "reden": {
+                                            "description": "Reden dat de hulpverlening op enig moment na aanmelding bij schuldhulpverlening eindigt.  ",
+                                            "$ref": "#/$defs/EnumUitstroomreden"
+                                        }
+                                    }
+                                },
+                                "stabilisatie": {
+                                    "type": "object",
+                                    "description": "Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van\nwerkzaamheden uit het integrale plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst. In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financi&amp;#235;le probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.",
+                                    "properties": {
+                                        "einddatum": {
+                                            "$ref": "#/$defs/datum"
+                                        },
+                                        "startdatum": {
+                                            "$ref": "#/$defs/datum"
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "gemeentecode"
+                            ],
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "required": [
+                    "teller",
+                     "aanleverende_organisatie"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "startdatumLevering",
+        "einddatumLevering",
+        "aanleverdatumEnTijd",
+        "codeGegevensleverancier",
+        "leveringen"
+    ],        
+    "additionalProperties": false,
+    "$defs": {
+        "datum": {
+            "type": "string",
+            "format": "date",
+            "description": "Een datum in het formaat YYYY-MM-DD."
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Een emailadres."
+        },
+        "tijd": {
+            "type": "string",
+            "format": "time",
+            "description": "De tijd in het formaat HH:MM:SS (ISO 8601)."
+        },
+        "datum-tijd": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Datum en tijd in het formaat YYYY-MM-DDTHH:MM:SSZ (ISO 8601)."
+        },
+        "bedrag": {
+            "type": "integer",
+            "description": "Een geldbedrag in hele euros nauwkweurig."
+        },
+        "EnumBeschikkingssoort": {
+            "type": "string",
+            "enum": [
+                "Afwijzingsbeschikking",
+                "Toelatingsbeschikking"
+            ]
+        },
+        "geslacht": {
+            "type": "string",
+            "enum": [
+                "Man",
+                "Vrouw",
+                "Onbekend",
+                "Leeg"
+            ]
+        },
+        "EnumBegeleidingssoort": {
+            "type": "string",
+            "enum": [
+                "Budgetcoaching",
+                "Budgetbeheer",
+                "Beschermingsbewind",
+                "Lange Termijn Begeleiding (DFD)",
+                "Budgetbegeleiding"
+            ]
+        },
+        "EnumUitstroomreden": {
+            "type": "string",
+            "enum": [
+                "Overleden",
+                "Verhuisd",
+                "Nietverschenen",
+                "Ingetrokken",
+                "Niet passend",
+                "Overig",
+                "Voldoet niet",
+                "Afgerond",
+                "Zelf"
+            ]
+        },
+        "EnumSchuldensoort": {
+            "type": "string",
+            "enum": [
+                "Zorg",
+                "Publiek",
+                "Nuts",
+                "Overig"
+            ]
+        },
+        "EnumOplossingssoort": {
+            "type": "string",
+            "enum": [
+                "Betalingsregeling",
+                "Herfinanciering",
+                "Saneringskrediet",
+                "Schuldbemiddeling",
+                "0%-aanbod"
+            ]
+        }
+    }
+}
+</code></pre></div>
+<h2 id="voorbeelden">Voorbeelden</h2>
+<h3 id="enkelvoudig-voorbeeld">Enkelvoudig voorbeeld</h3>
+<p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij slechts 1 traject wordt aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/enkelvoudigVoorbeeld.json">downloaden</a>.</p>
+<div class="highlight"><pre><span></span><code>{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL987654",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie X",
+          "KvK-nummer": "12345678",
+          "postcode": "1234AB",
+          "gemeentecode": "GM001",
+          "contactpersonen": [
+            {
+              "email": "jan.jansen@schuldhulporganisatiex.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject om schulden af te lossen",
+            "startdatum": "2024-01-10",
+            "toekenningsdatum": "2024-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM001",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-01-15",
+              "startdatum": "2024-01-01"
+            },
+            "begeleiding": [
+              {
+                "einddatum": "2024-11-30",
+                "soort": "Budgetbeheer",
+                "startdatum": "2024-02-01"
+              }
+            ],
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1980-05-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678CD",
+                "Huisnummer": "10",
+                "Huisnummertoevoeging": "A"
+              }
+            ],
+            "schuldregeling": {
+              "datum": "2024-06-01",
+              "datumVerzoekDwangakkoord": "2024-06-10",
+              "dwangakkoord": true,
+              "toegekend": "2024-06-20"
+            }
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h3 id="meervoudig-voorbeeld">Meervoudig voorbeeld</h3>
+<p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meervoudigVoorbeeld.json">downloaden</a>.</p>
+<div class="highlight"><pre><span></span><code>{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL123456",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie Z",
+          "KvK-nummer": "87654321",
+          "postcode": "5678EF",
+          "gemeentecode": "GM002",
+          "contactpersonen": [
+            {
+              "email": "info@schuldhulporganisatiez.nl",
+              "functietitel": "Coördinator",
+              "naam": "Klaas de Vries",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 1",
+            "startdatum": "2024-01-10",
+            "toekenningsdatum": "2024-01-05",
+            "totaalSchuldbedragBijAanvangSchuld": 12000,
+            "gemeentecode": "GM002",
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678CD",
+                "Huisnummer": "10"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-08-31",
+            "omschrijving": "Traject 2",
+            "startdatum": "2024-02-15",
+            "toekenningsdatum": "2024-02-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM002",
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1990-02-10",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "1234AB",
+                "Huisnummer": "25"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 3",
+            "startdatum": "2024-03-20",
+            "toekenningsdatum": "2024-03-15",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM003",
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1985-03-15",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "2345CD",
+                "Huisnummer": "15"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject 4",
+            "startdatum": "2024-04-10",
+            "toekenningsdatum": "2024-04-05",
+            "totaalSchuldbedragBijAanvangSchuld": 21000,
+            "gemeentecode": "GM004",
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1975-07-20",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3456DE",
+                "Huisnummer": "20"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject 5",
+            "startdatum": "2024-05-05",
+            "toekenningsdatum": "2024-05-01",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "gemeentecode": "GM005",
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1988-08-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "4567EF",
+                "Huisnummer": "30"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-07-31",
+            "omschrijving": "Traject 6",
+            "startdatum": "2024-06-15",
+            "toekenningsdatum": "2024-06-10",
+            "totaalSchuldbedragBijAanvangSchuld": 30000,
+            "gemeentecode": "GM006",
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1995-09-05",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678GH",
+                "Huisnummer": "40"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 7",
+            "startdatum": "2024-07-10",
+            "toekenningsdatum": "2024-07-05",
+            "totaalSchuldbedragBijAanvangSchuld": 35000,
+            "gemeentecode": "GM007",
+            "client": [
+              {
+                "Burgerservicenummer": "678901234",
+                "Geboortedatum": "1980-10-20",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "6789IJ",
+                "Huisnummer": "50"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-06-30",
+            "omschrijving": "Traject 8",
+            "startdatum": "2024-05-01",
+            "toekenningsdatum": "2024-04-25",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM008",
+            "client": [
+              {
+                "Burgerservicenummer": "789012345",
+                "Geboortedatum": "1970-12-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "7890KL",
+                "Huisnummer": "60"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-05-31",
+            "omschrijving": "Traject 9",
+            "startdatum": "2024-02-20",
+            "toekenningsdatum": "2024-02-15",
+            "totaalSchuldbedragBijAanvangSchuld": 17000,
+            "gemeentecode": "GM009",
+            "client": [
+              {
+                "Burgerservicenummer": "890123456",
+                "Geboortedatum": "1990-11-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "8901MN",
+                "Huisnummer": "70"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 10",
+            "startdatum": "2024-09-15",
+            "toekenningsdatum": "2024-09-10",
+            "totaalSchuldbedragBijAanvangSchuld": 22000,
+            "gemeentecode": "GM010",
+            "client": [
+              {
+                "Burgerservicenummer": "901234567",
+                "Geboortedatum": "1982-05-30",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "9012OP",
+                "Huisnummer": "80"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h3 id="samenloop-voorbeeld">Samenloop voorbeeld</h3>
+<p>Het komt voor dat gemeenten een deel van de dienstverlening aan een schuldhulpverlenende partij heeft uitbesteed. In een dergelijk geval worden er door meerdere schuldhulpverleners aanleveringen gedaan over dezelfde clienten in dezelfde periode. Onderstaand twee voorbeeld JSON-bestanden conform de uitwisselspecificatie, waarbij meerdere trajecten worden aangeleverd. Deze voorbeeld kun je ook <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/samenloopVoorbeeldDeel1.json">downloaden deel 1</a> en <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/samenloopVoorbeeldDeel2.json">downloaden deel 2</a>.</p>
+<h4 id="samenloop-bestand-1">Samenloop bestand 1</h4>
+<div class="highlight"><pre><span></span><code>{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "SL001",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Samenloop Organisatie X",
+          "KvK-nummer": "11112222",
+          "postcode": "1111AA",
+          "gemeentecode": "GM111",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiex.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "John Doe",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-07-31",
+            "omschrijving": "Traject 1",
+            "startdatum": "2024-01-01",
+            "toekenningsdatum": "2023-12-15",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM111",
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "12"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-06-30",
+            "omschrijving": "Traject 2",
+            "startdatum": "2024-02-01",
+            "toekenningsdatum": "2024-01-25",
+            "totaalSchuldbedragBijAanvangSchuld": 10000,
+            "gemeentecode": "GM111",
+            "client": [
+              {
+                "Burgerservicenummer": "987654321",
+                "Geboortedatum": "1975-02-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678CD",
+                "Huisnummer": "34"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-08-31",
+            "omschrijving": "Traject 3",
+            "startdatum": "2024-03-15",
+            "toekenningsdatum": "2024-02-25",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "gemeentecode": "GM111",
+            "client": [
+              {
+                "Burgerservicenummer": "654321987",
+                "Geboortedatum": "1988-03-20",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "7890EF",
+                "Huisnummer": "56"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 4",
+            "startdatum": "2024-04-10",
+            "toekenningsdatum": "2024-03-25",
+            "totaalSchuldbedragBijAanvangSchuld": 12000,
+            "gemeentecode": "GM111",
+            "client": [
+              {
+                "Burgerservicenummer": "543219876",
+                "Geboortedatum": "1995-05-25",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "1234GH",
+                "Huisnummer": "78"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject 5",
+            "startdatum": "2024-05-05",
+            "toekenningsdatum": "2024-04-25",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "gemeentecode": "GM111",
+            "client": [
+              {
+                "Burgerservicenummer": "432198765",
+                "Geboortedatum": "1983-06-30",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "3456IJ",
+                "Huisnummer": "90"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h4 id="samenloop-bestand-2">Samenloop bestand 2</h4>
+<div class="highlight"><pre><span></span><code>{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "SL002",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Samenloop Organisatie Y",
+          "KvK-nummer": "22223333",
+          "postcode": "2222BB",
+          "gemeentecode": "GM222",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiey.nl",
+              "functietitel": "Coördinator",
+              "naam": "Piet Pietersen",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject 1",
+            "startdatum": "2024-01-20",
+            "toekenningsdatum": "2024-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 14000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1978-07-12",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "2345KL",
+                "Huisnummer": "45"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject 2",
+            "startdatum": "2024-02-05",
+            "toekenningsdatum": "2024-01-30",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1992-03-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "3456MN",
+                "Huisnummer": "67"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject 3",
+            "startdatum": "2024-03-01",
+            "toekenningsdatum": "2024-02-20",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1990-04-20",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "4567OP",
+                "Huisnummer": "89"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-08-31",
+            "omschrijving": "Traject 4",
+            "startdatum": "2024-04-15",
+            "toekenningsdatum": "2024-04-05",
+            "totaalSchuldbedragBijAanvangSchuld": 16000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1985-05-10",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "5678QR",
+                "Huisnummer": "56"
+              }
+            ]
+          },
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject 5",
+            "startdatum": "2024-05-20",
+            "toekenningsdatum": "2024-05-10",
+            "totaalSchuldbedragBijAanvangSchuld": 13000,
+            "gemeentecode": "GM222",
+            "client": [
+              {
+                "Burgerservicenummer": "678901234",
+                "Geboortedatum": "1975-06-30",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "6789ST",
+                "Huisnummer": "78"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h3 id="voorbeeld-meerdere-leveringen">Voorbeeld meerdere leveringen</h3>
+<p>Onderstaand een voorbeeld JSON-bestand conform de uitwisselspecificatie, waarbij meerdere leveringen in 1 bestand zitten. Dit voorbeeld kun je ook <a href="https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/meerdereLeveringenVoorbeeld.json">downloaden</a>.</p>
+<div class="highlight"><pre><span></span><code>{
+    "startdatumLevering": "2024-01-01",
+    "einddatumLevering": "2024-12-31",
+    "aanleverdatumEnTijd": "2024-12-31T23:59:59Z",
+    "codeGegevensleverancier": "GL123456",
+    "leveringen": [
+      {
+        "teller": 1,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie A",
+          "KvK-nummer": "11112222",
+          "postcode": "1111AA",
+          "gemeentecode": "GM111",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiea.nl",
+              "functietitel": "Coördinator",
+              "naam": "Jan Jansen",
+              "telefoonnummer": "0612345678"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-09-30",
+            "omschrijving": "Traject A1",
+            "startdatum": "2024-01-15",
+            "toekenningsdatum": "2024-01-10",
+            "totaalSchuldbedragBijAanvangSchuld": 15000,
+            "gemeentecode": "GM111",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-01-20",
+              "startdatum": "2024-01-10"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "123456789",
+                "Geboortedatum": "1980-01-01",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "1234AB",
+                "Huisnummer": "12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 2,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie B",
+          "KvK-nummer": "22223333",
+          "postcode": "2222BB",
+          "gemeentecode": "GM222",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatienb.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Piet Pietersen",
+              "telefoonnummer": "0623456789"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-10-31",
+            "omschrijving": "Traject B1",
+            "startdatum": "2024-02-10",
+            "toekenningsdatum": "2024-01-30",
+            "totaalSchuldbedragBijAanvangSchuld": 18000,
+            "gemeentecode": "GM222",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-02-15",
+              "startdatum": "2024-02-01"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "234567890",
+                "Geboortedatum": "1990-02-15",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "2345KL",
+                "Huisnummer": "45"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 3,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie C",
+          "KvK-nummer": "33334444",
+          "postcode": "3333CC",
+          "gemeentecode": "GM333",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiec.nl",
+              "functietitel": "Manager",
+              "naam": "Klaas de Vries",
+              "telefoonnummer": "0634567890"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-11-30",
+            "omschrijving": "Traject C1",
+            "startdatum": "2024-03-15",
+            "toekenningsdatum": "2024-03-05",
+            "totaalSchuldbedragBijAanvangSchuld": 20000,
+            "gemeentecode": "GM333",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-03-20",
+              "startdatum": "2024-03-10"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "345678901",
+                "Geboortedatum": "1985-03-25",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "3456MN",
+                "Huisnummer": "78"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 4,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie D",
+          "KvK-nummer": "44445555",
+          "postcode": "4444DD",
+          "gemeentecode": "GM444",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatied.nl",
+              "functietitel": "Coördinator",
+              "naam": "Anneke Janssen",
+              "telefoonnummer": "0645678901"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-12-31",
+            "omschrijving": "Traject D1",
+            "startdatum": "2024-04-01",
+            "toekenningsdatum": "2024-03-25",
+            "totaalSchuldbedragBijAanvangSchuld": 25000,
+            "gemeentecode": "GM444",
+            "aanmelding": {
+              "crisisinterventie": true,
+              "einddatum": "2024-04-05",
+              "startdatum": "2024-03-30"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "456789012",
+                "Geboortedatum": "1990-04-20",
+                "Geslachtsaanduiding": "Vrouw",
+                "Postcode": "4567OP",
+                "Huisnummer": "89"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "teller": 5,
+        "aanleverende_organisatie": {
+          "(Statutaire) Naam": "Schuldhulporganisatie E",
+          "KvK-nummer": "55556666",
+          "postcode": "5555EE",
+          "gemeentecode": "GM555",
+          "contactpersonen": [
+            {
+              "email": "contact@organisatiee.nl",
+              "functietitel": "Schuldhulpverlener",
+              "naam": "Martijn de Boer",
+              "telefoonnummer": "0656789012"
+            }
+          ]
+        },
+        "schuldhulptrajecten": [
+          {
+            "einddatum": "2024-07-31",
+            "omschrijving": "Traject E1",
+            "startdatum": "2024-05-10",
+            "toekenningsdatum": "2024-04-30",
+            "totaalSchuldbedragBijAanvangSchuld": 30000,
+            "gemeentecode": "GM555",
+            "aanmelding": {
+              "crisisinterventie": false,
+              "einddatum": "2024-05-15",
+              "startdatum": "2024-05-01"
+            },
+            "client": [
+              {
+                "Burgerservicenummer": "567890123",
+                "Geboortedatum": "1995-05-30",
+                "Geslachtsaanduiding": "Man",
+                "Postcode": "5678QR",
+                "Huisnummer": "123"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+</code></pre></div>
+<h2 id="testen-uitwisselspecificatie">Testen Uitwisselspecificatie</h2>
+<p>Om te testen hoe JSON-bestanden voldoen aan de uitwisselspecificatie kun je de <a href="https://ddas.divosa.nl">DDAS-Invoerapp</a> gebruiken. Deze app heeft de mogelijkheid bestanden conform de uitwisselspecificatie in te lezen, en zo kun je zien hoe de data in het bestand geïnterpreteerd wordt. Gebruik hiervoor de optie <code>Inladen eerder opgeslagen gegevens</code> in de app. Uiteraard heb je al eerder vastgesteld dat je JSON-bestand een valide bestand is conform de uitwisselspecificatie.</p>
+<p><a href="../images/InvoerApp.png"><img alt="JSON-Bestand laden in DDAS-Invoerapp" src="../images/InvoerApp.png" /></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
