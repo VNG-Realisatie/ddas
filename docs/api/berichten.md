@@ -44,7 +44,7 @@ Parameters die meegestuurd kunnen worden (allemaal optioneel):
 
 - aanleverperiodeEinddatum (date - startdatum van rapportageperiode, default leeg: gegevensleverancier bepaalt dan einddatum<sup>*</sup>)
 
-- Aanleverende_organisatie (string - organisatie waarvan de gegevens geleverd worden, default alle; alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)
+- aanleverende_organisatie (string - organisatie waarvan de gegevens geleverd worden, default alle; alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)
 
 - page (integer - de gewenste pagina, als er meerdere pagina's aan gegevens zijn; zie ook [niet-functionele eisen](non-functionals.md#performance), default de eerste pagina)
 
