@@ -747,6 +747,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paginering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -876,6 +904,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paginering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -934,6 +990,7 @@ Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (schuldhul
 </tr>
 </tbody>
 </table>
+<h3 id="paginering">Paginering</h3>
 <p>Als het maximaal aantal records overschreven dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht moeten dan de velden in het object <strong>paginering</strong> gevuld worden.<br />
 Dit gebeurt conform de volgende definities:</p>
 <table>
@@ -948,7 +1005,7 @@ Dit gebeurt conform de volgende definities:</p>
 <tr>
 <td><strong>pageSize</strong></td>
 <td>Het aantal records (schuldhulptrajecten) per pagina</td>
-<td>integer [min: 1, max: 25.000 of 50.000 (zie hierboven)]</td>
+<td>integer [min: 1, max: 25.000 (zie hierboven)]</td>
 </tr>
 <tr>
 <td><strong>currentPage</strong></td>
@@ -993,6 +1050,7 @@ In het request-bericht van CBS worden dan ook de volgende paginering velden meeg
 </tr>
 </tbody>
 </table>
+<h3 id="cache">Cache</h3>
 <p>Om belasting van de productiesystemen te beperken mag een cache gebruikt worden, onder de volgende voorwaarden:</p>
 <ul>
 <li>
