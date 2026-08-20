@@ -1,7 +1,7 @@
 Dit deel van de documentatie bevat de koppelvlakspecificatie voor de API waarmee schuldhulporganisaties gegevens beschikbaar kunnen stellen aan het CBS.  
 
 De koppelvlakspecificatie bestaat uit de volgende onderdelen:  
-- [Uitgangspunten](uitgangspunten.md): de kaders die gevolgd zijn en de 10 keuzes die gemaakt zijn;  
+- [Uitgangspunten](uitgangspunten.md): de kaders die gevolgd zijn en de keuzes die gemaakt zijn;  
 - [Overzicht](overzicht.md): overzicht van de oplossing met de relevante componenten;  
 - [Transportlaag](transport.md): specificatie van de transportlaag - de inrichting van het koppelvlak, endpoints van de centrale directory en naamsconventie voor de services;  
 - [Identificatie, Authenticatie en Autorisatie](iam.md): afspraken rond identificatie, authenticatie en autorisatie;  
