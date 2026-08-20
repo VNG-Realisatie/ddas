@@ -919,7 +919,7 @@
 De services moeten beschikbaar zijn op de momenten dat CBS de gegevens verzameld. Hierover moeten nog afspraken gemaakt worden.</p>
 <h2 id="performance">Performance</h2>
 <p>De berichtenuitwisseling is synchroon. De API moet daarom binnen de "time-out" tijd reageren op een request. Er is nog te weinig ervaring met het koppelvlak om een goed onderbouwde maximale response-tijd en daaraan gekoppeld een maximaal aantal records.
-Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (vroegsignalen/schuldhulptrajecten):  </p>
+Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (schuldhulptrajecten):  </p>
 <table>
 <thead>
 <tr>
@@ -931,10 +931,6 @@ Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (vroegsign
 <tr>
 <td>Schuldhulptrajecten</td>
 <td><strong>25.000</strong></td>
-</tr>
-<tr>
-<td>Vroegsignalen</td>
-<td><strong>50.000</strong></td>
 </tr>
 </tbody>
 </table>
@@ -951,7 +947,7 @@ Dit gebeurt conform de volgende definities:</p>
 <tbody>
 <tr>
 <td><strong>pageSize</strong></td>
-<td>Het aantal records (schuldhulptrajecten/vroegsignalen) per pagina</td>
+<td>Het aantal records (schuldhulptrajecten) per pagina</td>
 <td>integer [min: 1, max: 25.000 of 50.000 (zie hierboven)]</td>
 </tr>
 <tr>
@@ -966,7 +962,7 @@ Dit gebeurt conform de volgende definities:</p>
 </tr>
 <tr>
 <td><strong>totalRecords</strong></td>
-<td>Het totaal aantal te versturen records (schuldhulptrajecten/vroegsignalen)</td>
+<td>Het totaal aantal te versturen records (schuldhulptrajecten)</td>
 <td>integer [min: 0]</td>
 </tr>
 </tbody>
@@ -991,7 +987,7 @@ In het request-bericht van CBS worden dan ook de volgende paginering velden meeg
 </tr>
 <tr>
 <td><strong>pageSize</strong></td>
-<td>Het aantal records (schuldhulptrajecten/vroegsignalen) dat in het response-bericht opgenomen mag worden</td>
+<td>Het aantal records (schuldhulptrajecten) dat in het response-bericht opgenomen mag worden</td>
 <td>integer [min: 1, max: zie hierboven]</td>
 <td>Als PageSize in het request-bericht zit en er meer records verstuurd moeten worden, <strong>moet</strong> er gebruik gemaakt worden van paginering</td>
 </tr>
