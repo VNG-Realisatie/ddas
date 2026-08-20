@@ -1,6 +1,6 @@
 # Berichten
 
-## Schuldhulpverleningsgegevens
+## OAS beschrijving
 
 De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:
 
@@ -19,7 +19,7 @@ Hieronder worden de berichten die in het OAS-bestand technisch beschreven zijn, 
 
 ## Encoding
 
-Conform de specificaties voor de bestandsuitwisseling voor [schuldhulpverlening](https://vng-realisatie.github.io/ddas/v1.0/uitwisselspecificatie/) is de encoding van de berichten UTF-8.
+Conform de specificaties voor de bestandsuitwisseling voor [schuldhulpverlening](https://vng-realisatie.github.io/ddas/latest/uitwisselspecificatie/) is de encoding van de berichten UTF-8.
 
 
 ## Vraagbericht (request)
