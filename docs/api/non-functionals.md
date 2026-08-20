@@ -18,12 +18,14 @@ Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (schuldhul
 |-------|----------------------------|
 | Schuldhulptrajecten | **25.000** |
 
+### Paginering
+
 Als het maximaal aantal records overschreven dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht moeten dan de velden in het object **paginering** gevuld worden.  
 Dit gebeurt conform de volgende definities:
 
 | Veld | Betekenis | Waarde |
 |------|-----------|--------|
-| **pageSize** | Het aantal records (schuldhulptrajecten) per pagina | integer [min: 1, max: 25.000 of 50.000 (zie hierboven)] |
+| **pageSize** | Het aantal records (schuldhulptrajecten) per pagina | integer [min: 1, max: 25.000 (zie hierboven)] |
 | **currentPage** | De huidige pagina | integer [min: 1] |
 | **totalPages** | Het totaal aantal beschikbare pagina's | integer [min: 1] |
 | **totalRecords** | Het totaal aantal te versturen records (schuldhulptrajecten) | integer [min: 0] |
@@ -36,6 +38,7 @@ In het request-bericht van CBS worden dan ook de volgende paginering velden meeg
 | **page** | De opgevraagde pagina | integer [min: 1] | Als een niet bestaande pagina opgevraagd wordt, wordt de eerste pagina in het response-bericht teruggestuurd, met paginering-gegevens. Als er geen page in het request-bericht zit, maar er wel gepagineerd moet worden, wordt de eerste pagina in het response-bericht gestuurd. |
 | **pageSize** | Het aantal records (schuldhulptrajecten) dat in het response-bericht opgenomen mag worden | integer [min: 1, max: zie hierboven] | Als PageSize in het request-bericht zit en er meer records verstuurd moeten worden, **moet** er gebruik gemaakt worden van paginering |
 
+### Cache
 
 Om belasting van de productiesystemen te beperken mag een cache gebruikt worden, onder de volgende voorwaarden:
 
