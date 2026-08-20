@@ -1,6 +1,6 @@
 # Berichten
 
-## OAS beschrijving
+## OpenAPI beschrijving
 
 De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:
 
