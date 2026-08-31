@@ -20,7 +20,7 @@ Vooralsnog wordt uitgegaan van de volgende maximale aantallen records (schuldhul
 
 ### Paginering
 
-Als het maximaal aantal records overschreven dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht moeten dan de velden in het object **paginering** gevuld worden.  
+Als het maximaal aantal records overschreden dreigt te worden, moeten de gegevens over verschillende berichten verdeeld worden. In het response-bericht moeten dan de velden in het object **paginering** gevuld worden.  
 Dit gebeurt conform de volgende definities:
 
 | Veld | Betekenis | Waarde |
