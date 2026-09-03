@@ -889,57 +889,25 @@
 
 <h1 id="ondertekenen-en-versleuteling">Ondertekenen en Versleuteling</h1>
 <h2 id="ondertekenen-signing">Ondertekenen (Signing)</h2>
-<p>Alle berichten moeten ge-signed worden om de authenticiteit, integriteit
-en bewijsbaarheid van herkomst van het berichtenverkeer te garanderen.</p>
-<p>Signing gebeurt op basis van <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/">ADR-HTTP Message and payload signing with
-JAdES</a> -
-zie <a href="../uitgangspunten/#gebruik-jades-voor-signen">Uitgangspunten</a> voor
-de onderbouwing hiervoor.</p>
-<p>Het signeren van het bericht gebeurt met de privé sleutel van de
-verzender van het bericht, zodat de controle met de publieke sleutel van
-de verzender kan gebeuren en iedere partij met toegang tot de
-PKIoverheid trust anchors de handtekening kan verifiëren. Iedere
-deelnemer van het DDAS-stelsel heeft dus een certificaat nodig voor het
-ondertekenen van de berichten. Dit moet een ander certificaat zijn dan
-welke voor het transport gebruikt wordt! Ook dit certificaat is een
-"services" certificaat, maar met EKU (Extended Key Usage) "Digital
-Signature". Er is gekozen voor het gebruik van PKIo certificaten - zie
-<a href="../uitgangspunten/#gebruik-pkioverheid-certificaten-voor-authenticatie-signing-en-encryptie">Uitgangspunten</a>
-voor de onderbouwing hiervan.</p>
-<p>Voor de ondertekening is gekozen om enkel de <strong>payload</strong> te ondertekenen
-conform de <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/#payload-signing">richtlijnen van
-ADR</a>.
-Volledige message ondertekening is niet nodig voor DDAS.</p>
-<p>Conform de richtlijnen van ADR wordt het <strong>PS256</strong> algoritme gebruikt.
-Voor payload signing wordt eerst met SHA-256 een digest van de HTTP-body
-berekend. Deze digest wordt opgenomen in de HTTP-header <code>Digest</code>:</p>
-<p><div class="highlight"><pre><span></span><code>&lt;pre&gt;&lt;code&gt;Digest: SHA-256=[base64-gecodeerde SHA-256 digest van de HTTP-body]&lt;/code&gt;&lt;/pre&gt;
+<p>Alle berichten moeten ge-signed worden om de authenticiteit, integriteit en bewijsbaarheid van herkomst van het berichtenverkeer te garanderen.</p>
+<p>Signing gebeurt op basis van <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/">ADR-HTTP Message and payload signing with JAdES</a> - zie <a href="../uitgangspunten/#gebruik-jades-voor-signen">Uitgangspunten</a> voor de onderbouwing hiervoor.</p>
+<p>Het signeren van het bericht gebeurt met de privé sleutel van de verzender van het bericht, zodat de controle met de publieke sleutel van de verzender kan gebeuren en iedere partij met toegang tot de PKIoverheid trust anchors de handtekening kan verifiëren. Iedere deelnemer van het DDAS-stelsel heeft dus een certificaat nodig voor het ondertekenen van de berichten. Dit moet een ander certificaat zijn dan welke voor het transport gebruikt wordt! Ook dit certificaat is een "services" certificaat, maar met EKU (Extended Key Usage) "Digital Signature". Er is gekozen voor het gebruik van PKIo certificaten - zie <a href="../uitgangspunten/#gebruik-pkioverheid-certificaten-voor-authenticatie-signing-en-encryptie">Uitgangspunten</a> voor de onderbouwing hiervan.</p>
+<p>Voor de ondertekening is gekozen om enkel de <strong>payload</strong> te ondertekenen conform de <a href="https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/#payload-signing">richtlijnen van ADR</a>. Volledige message ondertekening is niet nodig voor DDAS.</p>
+<p>Conform de richtlijnen van ADR wordt het <strong>PS256</strong> algoritme gebruikt. Voor payload signing wordt eerst met SHA-256 een digest van de HTTP-body berekend. Deze digest wordt opgenomen in de HTTP-header <code>Digest</code>:</p>
+<div class="highlight"><pre><span></span><code>Digest: SHA-256=[base64-gecodeerde SHA-256 digest van de HTTP-body]
 </code></pre></div>
-De JAdES-handtekening ondertekent vervolgens conform het JAdES
-<code>HttpHeaders</code>-mechanisme deze <code>Digest</code>-header. Hiermee wordt de
-integriteit van de HTTP-body cryptografisch beschermd.</p>
-<p>Er is gekozen voor een zo eenvoudig mogelijke JAdES payload signing
-conform de ADR, zonder trusted timestamp of ingebedde
-validatie-informatie. Zwaardere JAdES-profielen zijn voor DDAS niet
-nodig.</p>
-<p>De publieke sleutel om de ondertekening te controleren wordt meegestuurd
-via het veld <code>x5c</code> in de protected header van de JWS. <code>x5c</code> bevat het
-signingcertificaat, gevolgd door de CA-certificaten die nodig zijn om
-het certificatiepad op te bouwen. Het signingcertificaat staat als
-eerste element. De PKIoverheid trust anchor wordt niet ontleend aan
-<code>x5c</code>, maar aan de lokaal vertrouwde trust store van de ontvanger.</p>
+<p>De JAdES-handtekening ondertekent vervolgens conform het JAdES <code>HttpHeaders</code>-mechanisme deze <code>Digest</code>-header. Hiermee wordt de integriteit van de HTTP-body cryptografisch beschermd.</p>
+<p>Er is gekozen voor een zo eenvoudig mogelijke JAdES payload signing conform de ADR, zonder trusted timestamp of ingebedde validatie-informatie. Zwaardere JAdES-profielen zijn voor DDAS niet nodig.</p>
+<p>De publieke sleutel om de ondertekening te controleren wordt meegestuurd via het veld <code>x5c</code> in de protected header van de JWS. <code>x5c</code> bevat het signingcertificaat, gevolgd door de CA-certificaten die nodig zijn om het certificatiepad op te bouwen. Het signingcertificaat staat als eerste element. De PKIoverheid trust anchor wordt niet ontleend aan <code>x5c</code>, maar aan de lokaal vertrouwde trust store van de ontvanger.</p>
 <p>De handtekening wordt opgenomen in de HTTP-header:</p>
-<p><div class="highlight"><pre><span></span><code>&lt;pre&gt;&lt;code&gt;nlgov-adr-payload-sig: [JWS Compact Serialization]&lt;/code&gt;&lt;/pre&gt;
+<div class="highlight"><pre><span></span><code>nlgov-adr-payload-sig: [JWS Compact Serialization]
 </code></pre></div>
-Waarin <em>JWS Compact Serialization</em> de base64url-gecodeerde waarden
-conform <a href="https://www.rfc-editor.org/rfc/rfc7515">RFC 7515</a> van de
-protected header en de ondertekening bevat:</p>
-<p><div class="highlight"><pre><span></span><code>&lt;pre&gt;&lt;code&gt;BASE64URL(ProtectedHeader)..BASE64URL(Signature)&lt;/code&gt;&lt;/pre&gt;
+<p>Waarin <em>JWS Compact Serialization</em> de base64url-gecodeerde waarden conform <a href="https://www.rfc-editor.org/rfc/rfc7515">RFC 7515</a> van de protected header en de ondertekening bevat:</p>
+<div class="highlight"><pre><span></span><code>BASE64URL(ProtectedHeader)..BASE64URL(Signature)
 </code></pre></div>
-<em>(Let op de dubbele punt (<code>..</code>): het payload-gedeelte is leeg in de
-verzonden JWS, omdat gebruik wordt gemaakt van een detached payload.)</em></p>
+<p><em>(Let op de dubbele punt (<code>..</code>): het payload-gedeelte is leeg in de verzonden JWS, omdat gebruik wordt gemaakt van een detached payload.)</em></p>
 <p>De protected header bevat voor DDAS in elk geval de volgende velden:</p>
-<p><div class="highlight"><pre><span></span><code>&lt;pre&gt;&lt;code&gt;{
+<div class="highlight"><pre><span></span><code>{
   "alg": "PS256",
   "b64": false,
   "crit": ["sigD", "b64"],
@@ -952,56 +920,41 @@ verzonden JWS, omdat gebruik wordt gemaakt van een detached payload.)</em></p>
     "mId": "http://uri.etsi.org/19182/HttpHeaders",
     "pars": ["digest"]
   }
-}&lt;/code&gt;&lt;/pre&gt;
-</code></pre></div>
-De velden <code>sigD</code>, <code>b64</code> en <code>crit</code> zijn onderdeel van de
-JAdES-constructie voor detached payload signing:</p>
-<ul>
-<li><code>sigD</code> geeft aan welk mechanisme wordt gebruikt om de detached data
-    in de ondertekening te betrekken.</li>
-<li><code>mId</code> heeft voor DDAS de door de ADR voorgeschreven waarde
-    <code>http://uri.etsi.org/19182/HttpHeaders</code>.</li>
-<li><code>pars</code> bevat uitsluitend <code>digest</code>. Daarmee wordt aangegeven dat de
-    HTTP-header <code>Digest</code> in de JWS payload wordt opgenomen.</li>
-<li><code>b64</code> staat op <code>false</code>, omdat de volgens het
-    <code>HttpHeaders</code>-mechanisme opgebouwde JWS payload niet eerst met
-    Base64URL wordt gecodeerd.</li>
-<li><code>crit</code> geeft aan dat een ontvanger <code>sigD</code> en <code>b64</code> moet begrijpen om
-    de handtekening geldig te kunnen verwerken.</li>
-<li><code>kid</code> identificeert de gebruikte sleutel.</li>
-<li><code>x5c</code> bevat het signingcertificaat en de benodigde certificaatketen.</li>
-</ul>
-<p>Er wordt geen <code>jku</code> of JWKS gebruikt voor het ophalen van de publieke
-sleutel.</p>
-<p>Bij ontvangst moet de ontvanger het volgende doen om de ondertekening te
-controleren:</p>
-<ul>
-<li>Lees de <code>Digest</code>-header en bereken zelf de SHA-256 digest over de
-    ontvangen HTTP-body.</li>
-<li>Controleer of de berekende digest overeenkomt met de waarde in de
-    <code>Digest</code>-header.</li>
-<li>Decodeer de protected header uit <code>nlgov-adr-payload-sig</code>.</li>
-<li>Controleer dat <code>alg</code>, <code>b64</code>, <code>crit</code> en <code>sigD</code> voldoen aan het
-    DDAS-profiel.</li>
-<li>Haal het signingcertificaat uit het eerste element van <code>x5c</code>.</li>
-<li>Bouw en valideer de certificaatketen tot een vertrouwde PKIoverheid
-    trust anchor uit de lokale trust store.</li>
-<li>Controleer de geldigheidsduur van het certificaat en voer OCSP- of
-    CRL-validatie uit.</li>
-<li>Reconstrueer conform <code>sigD</code> het te verifiëren JWS payload-gedeelte
-    uit de <code>Digest</code>-header.</li>
-<li>Verifieer de PS256-handtekening met de publieke sleutel uit het
-    signingcertificaat.</li>
-</ul>
-<p>Zowel requests als responses met een payload bevatten dus de volgende
-twee headers:</p>
-<div class="highlight"><pre><span></span><code>&lt;pre&gt;&lt;code&gt;Digest: SHA-256=[base64-gecodeerde digest]
-nlgov-adr-payload-sig: [detached JWS]&lt;/code&gt;&lt;/pre&gt;
+}
+```De velden `sigD`, `b64` en `crit` zijn onderdeel van de JAdES-constructie voor detached payload signing:
+
+-   `sigD` geeft aan welk mechanisme wordt gebruikt om de detached data in de ondertekening te betrekken.
+-   `mId` heeft voor DDAS de door de ADR voorgeschreven waarde `http://uri.etsi.org/19182/HttpHeaders`.
+-   `pars` bevat uitsluitend `digest`. Daarmee wordt aangegeven dat de HTTP-header `Digest` in de JWS payload wordt opgenomen.
+-   `b64` staat op `false`, omdat de volgens het `HttpHeaders`-mechanisme opgebouwde JWS payload niet eerst met
+    Base64URL wordt gecodeerd.
+-   `crit` geeft aan dat een ontvanger `sigD` en `b64` moet begrijpen om de handtekening geldig te kunnen verwerken.
+-   `kid` identificeert de gebruikte sleutel.
+-   `x5c` bevat het signingcertificaat en de benodigde certificaatketen.
+
+Er wordt geen `jku` of JWKS gebruikt voor het ophalen van de publieke
+sleutel.
+
+Bij ontvangst moet de ontvanger het volgende doen om de ondertekening te controleren:
+
+-   Lees de `Digest`-header en bereken zelf de SHA-256 digest over de ontvangen HTTP-body.
+-   Controleer of de berekende digest overeenkomt met de waarde in de `Digest`-header.
+-   Decodeer de protected header uit `nlgov-adr-payload-sig`.
+-   Controleer dat `alg`, `b64`, `crit` en `sigD` voldoen aan het DDAS-profiel.
+-   Haal het signingcertificaat uit het eerste element van `x5c`.
+-   Bouw en valideer de certificaatketen tot een vertrouwde PKIoverheid trust anchor uit de lokale trust store.
+-   Controleer de geldigheidsduur van het certificaat en voer OCSP- of CRL-validatie uit.
+-   Reconstrueer conform `sigD` het te verifiëren JWS payload-gedeelte uit de `Digest`-header.
+-   Verifieer de PS256-handtekening met de publieke sleutel uit het signingcertificaat.
+
+Zowel requests als responses met een payload bevatten dus de volgende twee headers:
+
+```{=html}
+Digest: SHA-256=[base64-gecodeerde digest]
+nlgov-adr-payload-sig: [detached JWS]
 </code></pre></div>
 <h2 id="versleuteling-encryptie">Versleuteling (Encryptie)</h2>
-<p>De inhoud van de berichten wordt niet versleuteld. Zie
-<a href="../uitgangspunten/#berichten-worden-niet-versleuteld">Uitgangspunten</a>
-voor de onderbouwing hiervan.</p>
+<p>De inhoud van de berichten wordt niet versleuteld. Zie <a href="../uitgangspunten/#berichten-worden-niet-versleuteld">Uitgangspunten</a> voor de onderbouwing hiervan.</p>
 
 
 
