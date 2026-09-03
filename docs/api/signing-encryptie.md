@@ -4,7 +4,7 @@
 
 Alle berichten moeten ge-signed worden om de authenticiteit, integriteit en bewijsbaarheid van herkomst van het berichtenverkeer te garanderen.
 
-Signing gebeurt op basis van [ADR-HTTP Message and payload signing with JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) - zie [Uitgangspunten](uitgangspunten.md#gebruik-jades-voor-signen) voor de onderbouwing hiervoor.
+Signing gebeurt op basis van [ADR-HTTP Message and payload signing with JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) - zie [Uitgangspunten](uitgangspunten.md#gebruik-jades-voor-signen) voor de onderbouwing hiervoor. De standaard wordt niet strikt gevolgd om een eenvoudige implementatie mogelijk te maken. In een volgende versie wordt strakker naar de standaard toegewerkt.
 
 Het signeren van het bericht gebeurt met de privé sleutel van de verzender van het bericht, zodat de controle met de publieke sleutel van de verzender kan gebeuren en iedere partij met toegang tot de PKIoverheid trust anchors de handtekening kan verifiëren. Iedere deelnemer van het DDAS-stelsel heeft dus een certificaat nodig voor het ondertekenen van de berichten. Dit moet een ander certificaat zijn dan welke voor het transport gebruikt wordt! Ook dit certificaat is een "services" certificaat, maar met EKU (Extended Key Usage) "Digital Signature".
 Er is gekozen voor het gebruik van PKIo certificaten - zie [Uitgangspunten](uitgangspunten.md#gebruik-pkioverheid-certificaten-voor-authenticatie-signing-en-encryptie) voor de onderbouwing hiervan.
@@ -42,15 +42,15 @@ De header bevat in elk geval de volgende velden:
 
 Bij ontvangst moet de ontvanger het volgende doen om de ondertekening te controleren:
 
-- Decode protected header
+- Decodeer protected header
 
 - Haal eerste certificaat uit x5c
 
 - Valideer certificaatketen tot PKIoverheid root
 
 - Controleer:
-  - Geldigheid certificaat
-  - OCSP of CRL
+    - Geldigheid certificaat
+    - OCSP of CRL
 
 - Verifieer signature over HTTP body
 

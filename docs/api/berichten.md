@@ -1,6 +1,6 @@
 # Berichten
 
-## Schuldhulpverleningsgegevens
+## OpenAPI beschrijving
 
 De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:
 
@@ -13,25 +13,13 @@ De technische beschrijving van de API is in het volgende OAS3-bestand beschreven
 - [Klik hier om het bestand te downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-SHV.yaml)  
 
 
-## Vroegsignaleringsgegevens
-
-De technische beschrijving van de API is in het volgende OAS3-bestand beschreven:  
-
-<details><summary>Toon OAS3 beschrijving</summary>
-``` { .yaml .copy }
-{!../v1.0/DDAS-VS.yaml!}
-```
-</details>
-
-- [Klik hier om het bestand te downloaden](https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/v1.0/DDAS-VS.yaml)  
-
 
 Hieronder worden de berichten die in het OAS-bestand technisch beschreven zijn, toegelicht.
 
 
 ## Encoding
 
-Conform de specificaties voor de bestandsuitwisseling voor [schuldhulpverlening](https://vng-realisatie.github.io/ddas/v1.0/uitwisselspecificatie/) en [vroegsignalering](https://vng-realisatie.github.io/ddas-vroegsignalering/v1.1/uitwisselspecificatie/), is de encoding van de berichten UTF-8.
+Conform de specificaties voor de bestandsuitwisseling voor [schuldhulpverlening](https://vng-realisatie.github.io/ddas/latest/uitwisselspecificatie/) is de encoding van de berichten UTF-8.
 
 
 ## Vraagbericht (request)
@@ -44,7 +32,7 @@ Parameters die meegestuurd kunnen worden (allemaal optioneel):
 
 - aanleverperiodeEinddatum (date - startdatum van rapportageperiode, default leeg: gegevensleverancier bepaalt dan einddatum<sup>*</sup>)
 
-- Aanleverende_organisatie (string - organisatie waarvan de gegevens geleverd worden, default alle; alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)
+- aanleverende_organisatie (string - organisatie waarvan de gegevens geleverd worden, default alle; alleen relevant als over meer dan 1 organisatie (gemeente/ schuldhulpverlener) gegevens aangeleverd worden)
 
 - page (integer - de gewenste pagina, als er meerdere pagina's aan gegevens zijn; zie ook [niet-functionele eisen](non-functionals.md#performance), default de eerste pagina)
 
@@ -60,9 +48,9 @@ Het bericht wordt met [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-m
 ## Antwoordbericht (response)
 
 Dit is het antwoordbericht van de gegevensbeheerder (systeem dat de bron beheert) met de gewenste gegevens in JSON formaat.
-De payload is gebaseerd op het uitwisselformaat zoals dat is beschreven voor [schuldhulpgegevens](https://vng-realisatie.github.io/ddas/v1.0/uitwisselspecificatie/) en [vroegsignaleringsgegevens](https://vng-realisatie.github.io/ddas-vroegsignalering/v1.0/uitwisselspecificatie/).
+De payload is gebaseerd op het uitwisselformaat zoals dat is beschreven voor [schuldhulpgegevens](https://vng-realisatie.github.io/ddas/v1.0/uitwisselspecificatie/).
 
-Naast de vroegsignalen worden gegevens voor de **paginering** meegegeven. Deze zijn nodig als niet alle gegevens in één responsebericht passen - zie de [niet-functionele eisen](non-functionals.md#performance) voor meer uitleg. Als alle gegevens in één responsebericht passen, hoeven de paginering gegevens niet in het bericht opgenomen te worden.
+Naast de schuldhulpgegevens worden gegevens voor de **paginering** meegegeven. Deze zijn nodig als niet alle gegevens in één responsebericht passen - zie de [niet-functionele eisen](non-functionals.md#performance) voor meer uitleg. Als alle gegevens in één responsebericht passen, hoeven de paginering gegevens niet in het bericht opgenomen te worden.
 
 Ook dit bericht wordt ondertekend met [JAdES](https://geonovum.github.io/KP-APIs/API-strategie-modules/signing-jades/) met gebruik van de eigen private sleutel. Zie het hoofdstuk [Signing en Versleuteling](signing-encryptie.md) voor de specificaties van de ondertekening.
 Versleutelen van de payload is niet nodig.

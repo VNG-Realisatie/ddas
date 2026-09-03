@@ -8,7 +8,7 @@ Het transport van de berichten verloopt volgens de [FSC-standaard](https://fsc-s
 
 - Gebruik van PKIo certificaten. Deze zijn aan te vragen bij door [Logius geautoriseerde aanbieders](https://www.logius.nl/domeinen/toegang/pkioverheid/pkioverheidcertificaat-aanvragen).
 
-- De autorisatie van verbindingen wordt gedaan met een specifieke FSC-header: Fsc-Authorization. Hierin is een aantal componenten opgenomen die specifiek zijn voor FSC (o.a. de grant hash die in de transactielogging opgenomen wordt).  
+- De autorisatie van verbindingen wordt gedaan met een specifieke FSC-header: Fsc-Authorization. Hierin zitten enkele componenten die specifiek zijn voor FSC (o.a. de grant hash die in de transactielogging opgenomen wordt).  
 Deze specifieke header geeft de ruimte om eventueel een extra autorisatie toe te voegen bijvoorbeeld op basis van een ingelogde gebruiker.
 
 - Berichten lopen via FSC-componenten "outway" van de afnemer (CBS) en "inway" van de gegevensleverancier met de API.
@@ -32,7 +32,7 @@ De inrichting van de transportlaag volgt de stappen die in de [FSC standaard](ht
 Er wordt gebruik gemaakt van de directory die RINIS beheert. Hier worden de services gepubliceerd, zodat CBS deze vindt en kan gebruiken.
 Om gebruik te maken van de directory moeten de volgende stappen doorlopen worden:
 
-- Aanmelden bij de groep [acc-digikoppeling](https://fsc-standaard.nl/groepen#digikoppeling-acceptatie) van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor zijn geen PKIo certificaten nodig, maar kunnen ["self-signed" certificaten](https://certportal.demo.open-fsc.nl/) gebruikt worden.
+- Aanmelden bij de groep [acc-digikoppeling](https://fsc-standaard.nl/groepen#digikoppeling-acceptatie) van RINIS en publiceren van acceptatie versie van de service. NB: hiervoor is een [PKIo certificaat](https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid/pkioverheidcertificaat-aanvragen) nodig - hiervoor is gekozen om de acceptatieomgeving zoveel mogelijk te laten lijken op de productieomgeving.
 
 
 - Testen van verbinding en service in overleg met CBS. Zij moeten een contract afsluiten met de gegevensleverancier via de FSC Manager, die de service in de directory opzoekt.
@@ -49,10 +49,7 @@ Om gebruik te maken van de directory moeten de volgende stappen doorlopen worden
 
 Gebruik voor het publiceren van services een duidelijke naam, die de functie en afzender van de services bevat. De afspraak is als volgt:
 
-- Voor schuldhulpverleningsgegevens: **DDAS-schuldhulpverlening-ophaal-[gegevensleverancier]**  
-  [gegevensleverancier] is de naam van de leverancier van gegevens (om er zeker van te zijn dat dit tot een unieke naam leidt, is het verstandig dit met het programma DDAS af te stemmen)  
-
-- Voor vroegsignaleringsgegevens: **DDAS-vroegsignalering-ophaal-[gegevensleverancier]**  
+- **DDAS-schuldhulpverlening-ophaal-[gegevensleverancier]**  
   [gegevensleverancier] is de naam van de leverancier van gegevens (om er zeker van te zijn dat dit tot een unieke naam leidt, is het verstandig dit met het programma DDAS af te stemmen)  
 
 NB: het versienummer van de service zit niet in de naam, om te voorkomen dat er bij ieder nieuwe versie opnieuw een contract afgesloten moet worden. We gaan ervan uit dat met nieuwe versies er geen nieuwe functionaliteit of gegevens beschikbaar worden gesteld. Als dat wel gebeurt, moet er een nieuwe service met een andere naam gepubliceerd worden.  
