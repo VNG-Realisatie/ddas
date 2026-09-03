@@ -8,9 +8,9 @@ info:
     KP-APIs signing-jades module (header: nlgov-adr-payload-sig, PS256, detached,
     alleen digest getekend, key meegestuurd via x5c).
 
-    Error handling is FSC-compatibel (Logius FSC Core 1.0.0): bij FSC-gerelateerde fouten
+    Error handling is FSC-compatibel (Logius FSC Core 1.1.2): bij FSC-gerelateerde fouten
     wordt de header `Fsc-Error-Code` meegegeven met een geldige ERROR_CODE_... waarde.
-  version: 1.0.0
+  version: 2.0.0
   contact:
     name: DDAS-beheer
     url: https://divosa.nl/ddas
@@ -34,37 +34,91 @@ components:
           scopes:
             read: Toegang om SHV-gegevens op te halen
 
-  headers:
-    Digest:
-      description: SHA-256 digest van de payload (conform RFC 3230). Verplicht bij berichten met body.
+  parameters:
+    DigestHeader:
+      name: Digest
+      in: header
+      required: true
+      description: |
+        SHA-256 digest van de HTTP-payload. De digest wordt betrokken in de JAdES signing input
+        doordat de protected header `sigD.pars` exact `["digest"]` bevat.
       schema:
         type: string
         pattern: '^SHA-256=[A-Za-z0-9+/=]{43,44}$'
+        example: 'SHA-256=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+
+    NlgovAdrPayloadSigHeader:
+      name: nlgov-adr-payload-sig
+      in: header
+      required: true
+      description: |
+        Detached JWS voor de payload, conform de DDAS-invulling van de Geonovum ADR.
+        Zie `components.headers.NlgovAdrPayloadSig` voor de vereiste protected-headerparameters
+        en validatieregels.
+      schema:
+        type: string
+        pattern: '^[A-Za-z0-9_-]+\.\.[A-Za-z0-9_-]+$'
+        example: 'eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsic2lnRCIsImI2NCJdLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIkJBU0U2NERFUkVOREVOVElUWUNFUlRJRklDQVRFIiwiQkFTRTY0REVSSU5URVJNRURJQVRFQ0VSVElGSUNBVEUiXSwic2lnRCI6eyJtSWQiOiJodHRwOi8vdXJpLmV0c2kub3JnLzE5MTgyL0h0dHBIZWFkZXJzIiwicGFycyI6WyJkaWdlc3QiXX19..aWxsdXN0cmF0aXZlLXNpZ25hdHVyZS12YWx1ZQ'
+
+  headers:
+    Digest:
+      description: |
+        SHA-256 digest van de HTTP-payload. Verplicht bij een request of response met een body
+        die conform ADR payload signing wordt ondertekend. De waarde wordt opgenomen in de
+        JAdES signing input via `sigD.pars: ["digest"]`.
+      schema:
+        type: string
+        pattern: '^SHA-256=[A-Za-z0-9+/=]{43,44}$'
+        example: 'SHA-256=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
       required: true
 
     NlgovAdrPayloadSig:
       required: true
-      description: >
-        De protected header bevat minimaal:
-        - alg: PS256
-        - kid: key identifier
-        - x5c: volledige X.509 certificaatketen (PKIoverheid)
-        - typ: "JOSE"
+      description: |
+        Detached JWS Compact Serialization voor payload signing conform de Geonovum ADR
+        "HTTP Message and payload signing with JAdES".
 
-        De publieke sleutel wordt afgeleid uit het eerste certificaat in de x5c-array.
-        Bij validatie dient:
-        - de certificaatketen gevalideerd te worden tot PKIoverheid root
-        - OCSP of CRL controle plaats te vinden
-        - geldigheidsduur gecontroleerd te worden
+        DDAS gebruikt een zo beperkt mogelijk profiel:
+        - `alg`: `PS256`;
+        - `b64`: `false`, zoals vereist voor het JAdES HttpHeaders-mechanisme;
+        - `crit`: bevat minimaal `sigD` en `b64`;
+        - `sigD.mId`: exact `http://uri.etsi.org/19182/HttpHeaders`;
+        - `sigD.pars`: exact `["digest"]`;
+        - `kid`: identifier van de gebruikte signing key / het signingcertificaat;
+        - `x5c`: X.509-certificaatketen, met het signingcertificaat als eerste element.
+
+        `jku` en JWKS worden niet gebruikt. De publieke sleutel wordt afgeleid uit het eerste
+        certificaat in `x5c`. Het meegestuurde certificaat creëert op zichzelf geen vertrouwen:
+        de ontvanger valideert de certificaatketen tegen een lokaal vertrouwde PKIoverheid
+        trust anchor en controleert geldigheidsduur en intrekkingsstatus (OCSP of CRL).
+
+        Omdat sprake is van een detached JWS, is het payloadsegment in de verzonden Compact
+        Serialization leeg: `BASE64URL(ProtectedHeader)..BASE64URL(Signature)`.
+
+        Voorbeeld van de gedecodeerde protected header:
+        `{
+          "alg": "PS256",
+          "b64": false,
+          "crit": ["sigD", "b64"],
+          "kid": "shv-cert-2026",
+          "x5c": [
+            "<BASE64_DER_END_ENTITY_CERTIFICATE>",
+            "<BASE64_DER_INTERMEDIATE_CERTIFICATE>"
+          ],
+          "sigD": {
+            "mId": "http://uri.etsi.org/19182/HttpHeaders",
+            "pars": ["digest"]
+          }
+        }`
       schema:
         type: string
-        description: JWS Compact Serialization (detached payload)
-        example: >
-          eyJhbGciOiJQUzI1NiIsInR5cCI6IkpPU0UiLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIk1JSURvakNDQW9xZ0F3SUJBZ0lVTzRkR2Vtb0V4YW1wbGVDZXJ0aWZpY2F0ZTEiLCJNSUlEbXpDQ0FvZ2dBd0lCQWdJVUJjQ2hhaW5DZXJ0MiJdfQ.. [BASE64URL_SIGNATURE]
+        description: JWS Compact Serialization met detached payload.
+        pattern: '^[A-Za-z0-9_-]+\.\.[A-Za-z0-9_-]+$'
+        example: 'eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsic2lnRCIsImI2NCJdLCJraWQiOiJzaHYtY2VydC0yMDI2IiwieDVjIjpbIkJBU0U2NERFUkVOREVOVElUWUNFUlRJRklDQVRFIiwiQkFTRTY0REVSSU5URVJNRURJQVRFQ0VSVElGSUNBVEUiXSwic2lnRCI6eyJtSWQiOiJodHRwOi8vdXJpLmV0c2kub3JnLzE5MTgyL0h0dHBIZWFkZXJzIiwicGFycyI6WyJkaWdlc3QiXX19..aWxsdXN0cmF0aXZlLXNpZ25hdHVyZS12YWx1ZQ'
 
     Fsc-Error-Code:
       description: |
-        Verplichte FSC-header bij fouten conform FSC Core 1.0.0 (Inway/Outway).
+        Verplichte FSC-header bij fouten conform FSC Core 1.1.2 (Inway/Outway).
         Bevat een ERROR_CODE_... uit de FSC-standaard (bijv. ERROR_CODE_ACCESS_TOKEN_INVALID).
       schema:
         type: string
@@ -195,10 +249,15 @@ paths:
       operationId: postGegevens
       description: |
         Stuurt een verzoek om SHV-gegevens over een bepaalde periode / organisatie.
-        Het verzoek én het antwoord worden beschermd met een nlgov-adr-payload-sig
-        header (JAdES payload signing, PS256, alleen digest getekend).
+        Het verzoek én het antwoord worden beschermd met een `Digest` header en een
+        `nlgov-adr-payload-sig` header. DDAS gebruikt JAdES payload signing conform de
+        Geonovum ADR: PS256, detached JWS en het HttpHeaders-mechanisme waarbij uitsluitend
+        de `digest` van de payload in de signing input wordt betrokken.
       security:
         - OAuth2: [read]
+      parameters:
+        - $ref: '#/components/parameters/DigestHeader'
+        - $ref: '#/components/parameters/NlgovAdrPayloadSigHeader'
       requestBody:
         required: true
         content:
