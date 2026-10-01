@@ -1,0 +1,22 @@
+.md-typeset a img {
+    cursor: zoom-in;
+  }
+  
+  .md-typeset a img:active {
+    cursor: zoom-out;
+  }
+  
+/* Optioneel: stel een transparante achtergrond in voor de hoofdcontainer zodat tekst beter leesbaar is */
+.md-container {
+  background: rgba(255, 255, 255, 1.0); /* Witte achtergrond met 80% transparantie */
+  padding: 20px; /* Ruimte rondom de inhoud */
+  border-radius: 10px; /* Ronde hoeken */
+}
+
+  /* Alle pre- en codeblokken met .code-scroll krijgen een scrollbalk */
+.md-typeset pre.code-scroll {
+  max-height: 28rem;     /* kies je eigen hoogte */
+  overflow: auto;        /* toont verticale/horizontale slider indien nodig */
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;      /* geen wrap; houd horizontale scroll mogelijk */
+}
