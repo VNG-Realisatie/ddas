@@ -1,0 +1,42 @@
+name: Docs check
+
+# Bouwt bij elke pull request de documentatie als controle en biedt de gebouwde site
+# aan als downloadbaar artifact. Deze workflow schrijft bewust NIET naar gh-pages:
+# publiceren gebeurt alleen bewust, met `task publish:github`.
+#
+# Preview bekijken: PR -> Checks -> Docs check -> Summary -> Artifacts, download
+# `site-pr-<nummer>`, pak uit, start in die map `python3 -m http.server` en open
+# http://localhost:8000.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: docs-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Build documentation (strict)
+        run: mkdocs build --strict
+
+      - name: Upload site as preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-pr-${{ github.event.pull_request.number }}
+          path: site/
+          retention-days: 14
