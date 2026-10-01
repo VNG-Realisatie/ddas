@@ -19,7 +19,7 @@ Attributen van objecttype Aanmelding:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| startdatum | Datum | Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden, en het eerste contact met schuldhulpverlening is geweest. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. |
+| startdatum | Datum | Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn. |
 | einddatum | Datum |  |
 | crisisinterventie | boolean | Is er sprake van een crisisinterventie? Indicator crisisinterventie. "Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te creëren om de klant te helpen via de reguliere schuldhulpverlening.<br>Volgens de Wgs gaat het in elk geval om de volgende situaties:<br>- gedwongen woningontruiming;<br>- beëindiging van de levering van gas, water, elektriciteit of stadsverwarming;<br>- opzegging of ontbinding van de zorgverzekering.<br>Gemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:<br>- aangekondigde boedelverkoop of verkoop van de eigen woning;<br>- loon- of bankbeslag;<br>- een faillissementsaanvraag.<br>En voor ondernemers:<br>- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;<br>- opzegging van het bankkrediet." |
 
@@ -28,7 +28,12 @@ Attributen van objecttype Aanmelding:
 ### Begeleiding
 > **Definitie Begeleiding:** 
 >
-> Begeleiding voor clienten in het kader van schuldhulpdienstverlening.
+> 
+> Begeleiding voor clienten in het kader van schuldhulpdienstverlening, die kan bestaan uit:
+>
+> 1. budgetbeheer
+> 2. beschermingsbewind
+> 3. budgetcoaching
 
 Het objecttype Begeleiding kent de volgende eigenschappen:
 
@@ -74,7 +79,7 @@ Attributen van objecttype Begeleidingssoort:
 ### Client
 > **Definitie Client:** 
 >
-> Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente.
+> Een ingeschreven persoon die gebruik maakt van producten en diensten van de gemeente binnen de sociaal domein.
 
 Het objecttype Client kent de volgende eigenschappen:
 
@@ -166,7 +171,7 @@ Attributen van objecttype Crisisinterventie:
 ### InformatieEnAdvies
 > **Definitie InformatieEnAdvies:** 
 >
-> Het betreft hier de activiteiten die in het kader van Informatie en advies worden uitgevoerd. Het doel van Informatie en Advies is inwoners zelf in staat te stellen een duurzaam financieel evenwicht te bereiken. Het kan een beroep op uitgebreidere vormen van dienstverlening overbodig maken.
+> Geen Definitie
 
 Het objecttype InformatieEnAdvies kent de volgende eigenschappen:
 
@@ -216,7 +221,10 @@ Attributen van objecttype Inkomen:
 ### Intake
 > **Definitie Intake:** 
 >
-> Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel evenwicht te bereiken.
+> 
+> Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de
+> intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel
+> evenwicht te bereiken.
 
 Het objecttype Intake kent de volgende eigenschappen:
 
@@ -233,7 +241,7 @@ Attributen van objecttype Intake:
 | :--- | :--- | :--- | :--- |
 | startdatum | Datum | Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken. |
 | einddatum | Datum | De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking. |
-| beschikkingsdatum | Datum | De datum waarop de beschikking is afgegeven. |
+| beschikkingsdatum | Datum | De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking. |
 | beschikkingssoort | EnumBeschikkingssoort |  |
 
 
@@ -346,7 +354,15 @@ Attributen van objecttype Ondernemer:
 ### Oplossing
 > **Definitie Oplossing:** 
 >
-> In de schuldhulpverlening verwijst een “oplossing” naar een regeling waarbij schulden op een beheersbare manier worden afgelost of kwijtgescholden, met als doel de financiële situatie van de schuldenaar te stabiliseren. Er worden verschillende oplossingsvormen onderscheiden, waaronder saneringskrediet, schuldbemiddeling, herfinanciering, betalingsregelingen en schuldregelingen zonder afloscapaciteit. Bij een saneringskrediet ontvangt de schuldenaar een lening om alle schuldeisers in één keer af te betalen, waarna hij deze lening aflost aan de kredietverstrekker. Schuldbemiddeling houdt in dat de schuldenaar gedurende een afgesproken periode periodiek bedragen aflost aan de schuldeisers. Herfinanciering betreft het vervangen van bestaande schulden door een nieuwe lening met gunstigere voorwaarden. Een betalingsregeling is een afspraak tussen schuldenaar en schuldeiser om de schuld in termijnen af te lossen. Bij een schuldregeling zonder afloscapaciteit wordt vastgesteld dat de schuldenaar geen financiële ruimte heeft om af te lossen, wat kan leiden tot kwijtschelding van de schuld. Deze oplossingsvormen worden ingezet afhankelijk van de specifieke situatie van de schuldenaar en zijn gericht op een duurzame oplossing van de schuldenproblematiek.
+> 
+> De Oplossing beschrijft in 5 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:
+>
+> * submodule Herfinanciering;
+> * submodule Betalingsregeling;
+> * submodule Saneringskrediet;
+> * submodule Schuldbemiddeling.
+>
+> Het kan ook gaan om een 0%-aanbod
 
 Het objecttype Oplossing kent de volgende eigenschappen:
 
@@ -466,7 +482,7 @@ Attributen van objecttype Schuld:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | bedrag | Bedrag | Bedrag in hele euro's nauwkeurig |
-| peildatum | Date | Datum dat de schuld is vastgesteld. Het betreft hier het moment dat de vaststelling door de schuldhulpverlener in het kader van het schuldhulptraject is gedaan. |
+| peildatum | Date | Peildatum dat de schuld is vastgesteld. |
 | zakelijkeSchuld | boolean | Betreft het een zakelijke schuld |
 | schuldsoort | EnumSchuldensoort |  |
 
@@ -567,7 +583,7 @@ Attributen van objecttype Schuldregeling:
 
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
-| datum | Datum | Datum dat schuldregeling door de schuldhulpverlener is ingediend. |
+| datum | Datum | Datum dat schuldregeling is ingediend. |
 | toegekend | Datum | Datum waarop toekenning heeft plaatgevonden. Leeg betekent: (nog) geen toekenning plaatgevonden |
 | afgewezen | Datum | Datum waarop afwijzingheeft plaatgevonden. Leeg betekent: (nog) geen afwijzing plaatgevonden |
 | ingetrokken | Datum | Datum waarop schuldregeling is ingetrokken. Leeg betekent: (nog) geen intrekking plaatgevonden |
@@ -580,8 +596,8 @@ Attributen van objecttype Schuldregeling:
 > **Definitie Stabilisatie:** 
 >
 > 
-> Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van werkzaamheden uit het plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst.
-> In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
+> Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van
+> werkzaamheden uit het integrale plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst. In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
 
 Het objecttype Stabilisatie kent de volgende eigenschappen:
 
@@ -604,7 +620,7 @@ Attributen van objecttype Stabilisatie:
 ### Uitstroom
 > **Definitie Uitstroom:** 
 >
-> Het betreft hier de gegevens die worden vastgelegd bij uitstroom en dus beëindiging van een schuldhulptraject.
+> Motivatie voor uitstroom
 
 Het objecttype Uitstroom kent de volgende eigenschappen:
 
@@ -620,7 +636,7 @@ Attributen van objecttype Uitstroom:
 | Attribuut | Datatype | Omschrijving | Verplicht |
 | :--- | :--- | :--- | :--- |
 | omschrijving | text |  |
-| datum | date | Datum dat clienten uit het schuldhulptraject zijn uitgestroomd. Deze datum is gelijk aan de datum beëindigingsbeschikking. |
+| datum | date | Datum dat clienten uit het schuldhulptraject zijn uitgestroomd |
 | reden | EnumUitstroomreden | Reden dat de hulpverlening op enig moment na aanmelding bij schuldhulpverlening eindigt. |
 | datumBeeindigingsbeschikking | Datum | Datum dat de Beëindigingsbeschikking is afgegeven. |
 
@@ -629,15 +645,7 @@ Attributen van objecttype Uitstroom:
 ### VoorlopigeVoorziening 
 > **Definitie VoorlopigeVoorziening :** 
 >
-> 
-> Een voorlopige voorziening is een tijdelijke regeling die de hulpvrager beschermt tegen verslechtering van zijn financiële situatie of het verlies van essentiële voorzieningen (zoals energie, woning, zorg), totdat een schuldregelingstraject is gestart of er meer duidelijkheid is over de vervolgstappen.
->
-> Voorbeelden van voorlopige voorzieningen:
->  • Tijdelijke betalingsregelingen met schuldeisers
->  • Een moratorium (tijdelijke opschorting van afbetalingen)
->  • Het aanvragen van uitstel van betaling bij woningcorporaties of energiebedrijven
->  • Hulp bij het voorkomen van afsluiting van gas, water, licht of ontruiming
->  • Budgetbeheer of beschermingsbewind als tijdelijke maatregel
+> Geen Definitie
 
 Het objecttype VoorlopigeVoorziening  kent de volgende eigenschappen:
 
@@ -736,7 +744,7 @@ Attributen van objecttype WSNP-verklaring:
 ### EnumBegeleidingssoort
 > **Definitie EnumBegeleidingssoort:** 
 >
-> Lijst met alle soorten begeleiding die worden onderkend.
+> Geen Definitie
 
 Het enumeratie EnumBegeleidingssoort kent de volgende waarden:
 
@@ -760,7 +768,7 @@ De enumeratie EnumBegeleidingssoort heeft de volgende kenmerken:
 ### EnumBeschikkingssoort
 > **Definitie EnumBeschikkingssoort:** 
 >
-> Lijst met alle soorten beschikkingen die worden onderkend.
+> Geen Definitie
 
 Het enumeratie EnumBeschikkingssoort kent de volgende waarden:
 
@@ -781,7 +789,7 @@ De enumeratie EnumBeschikkingssoort heeft de volgende kenmerken:
 ### EnumOplossingssoort
 > **Definitie EnumOplossingssoort:** 
 >
-> Lijst met alle soorten oplossingen in het kader van schuldhulpverleniung die worden onderkend.
+> Geen Definitie
 
 Het enumeratie EnumOplossingssoort kent de volgende waarden:
 
@@ -805,7 +813,7 @@ De enumeratie EnumOplossingssoort heeft de volgende kenmerken:
 ### EnumSchuldensoort
 > **Definitie EnumSchuldensoort:** 
 >
-> Lijst met alle cattegoriën van soorten schulden die worden onderkend in het kader van schuldhulpverlening.
+> Geen Definitie
 
 Het enumeratie EnumSchuldensoort kent de volgende waarden:
 
@@ -828,7 +836,7 @@ De enumeratie EnumSchuldensoort heeft de volgende kenmerken:
 ### EnumUitstroomreden
 > **Definitie EnumUitstroomreden:** 
 >
-> Lijst met alle soorten uitstroom die bij schuldhulptrajecten worden onderkend.
+> Geen Definitie
 
 Het enumeratie EnumUitstroomreden kent de volgende waarden:
 
