@@ -27,7 +27,7 @@ Er kunnen minimaal één en maximaal twee personen per traject worden opgevoerd.
 Voor elke schuld die in het schuldhulptraject wordt meegenomen:
 
 - Bedrag
-- Peildatum <button onclick="alert('Definitie peildatum: Datum dat de schuld is vastgesteld. Het betreft hier het moment dat de vaststelling door de schuldhulpverlener in het kader van het schuldhulptraject is gedaan.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Peildatum <button onclick="alert('Definitie peildatum: Peildatum dat de schuld is vastgesteld.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Soort schuld (we houden de volgende waarden aan: Zorg, Publiek, Nuts, Overig - dit is gelijk aan het Schuldenknooppunt)
 - Is het een zakelijke schuld? (ja/nee)
 - Gegevens van de schuldeiser (naam, KvK-nummer, postcode, privépersoon ja/nee)
@@ -52,7 +52,7 @@ Naast de gegevens van de verschillende fases zijn per schuldhulptraject een aant
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden, en het eerste contact met schuldhulpverlening is geweest. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Startdatum van de aanmelding <button onclick="alert('Definitie startdatum: Datum waarop een persoon met een hulpvraag komt rondom (dreigende) schulden. Dit kan een persoonlijke, schriftelijke, digitale of telefonische vraag zijn.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de aanmeldfase (optioneel)
 - Is er sprake van crisisinterventie? (ja/nee + start- en einddatum crisisinterventie) <button onclick="alert('Definitie crisisinterventie: Is er sprake van een crisisinterventie? Indicator crisisinterventie. &#34;Het afwenden van een crisis- of dreigende situatie om zo de mogelijkheid te cre&#235;ren om de klant te helpen via de reguliere schuldhulpverlening.\nVolgens de Wgs gaat het in elk geval om de volgende situaties:\n- gedwongen woningontruiming;\n- be&#235;indiging van de levering van gas, water, elektriciteit of stadsverwarming;\n- opzegging of ontbinding van de zorgverzekering.\nGemeenten kunnen extra situaties toevoegen aan hun crisisprotocol, zoals:\n- aangekondigde boedelverkoop of verkoop van de eigen woning;\n- loon- of bankbeslag;\n- een faillissementsaanvraag.\nEn voor ondernemers:\n- beslag op (on)roerende zaken dat het voortbestaan van de onderneming bedreigt;\n- opzegging van het bankkrediet.&#34;')" style="background:none;border:none;cursor:pointer;">❓</button>
 
@@ -60,13 +60,16 @@ Hiervan worden de volgende zaken vastgelegd:
 ### Intake
 
 ??? note "Definitie Intake"
-    Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel evenwicht te bereiken.
+    
+> Dit is de fase tussen het eerste gesprek en het Plan van Aanpak. Tijdens de
+> intakefase wordt geinventariseerd welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een duurzaam financieel
+> evenwicht te bereiken.
 
 Hiervan worden de volgende zaken vastgelegd:
 
 - Startdatum van het intakegesprek  <button onclick="alert('Definitie startdatum: Het gesprek dat plaatsvindt na aanmelding of na ontvangst hulpvraag (bijv. bij doorverwijzing vanuit vroegsignalering). Doel van dit gesprek is om de hulpvraag vast te stellen en te beoordelen welke instrumenten, ondersteuning, activiteiten en gegevens nodig zijn om een persoon te helpen om een duurzaam financieel evenwicht te bereiken.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Einddatum van de intake  <button onclick="alert('Definitie einddatum: De datum van afronding van de intake. Een klant ontvangt een gemotiveerde afwijzing of een toelatingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button>
-- Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Beschikkingsdatum  <button onclick="alert('Definitie beschikkingsdatum: De datum waarop de beschikking is afgegeven. Het kan hierom verschillende typen beschikking gaan, zoals: afwijzings- toewijsings- of beeindigingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Soort beschikking  (mogelijke waarden: Afwijzingsbeschikking, Toelatingsbeschikking)
 
 
@@ -92,8 +95,8 @@ Hiervan worden de volgende zaken vastgelegd:
 
 ??? note "Definitie Stabilisatie"
     
-> Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van werkzaamheden uit het plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst.
-> In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
+> Fase van het schuldhulpverleningstraject met als doel de inkomsten en uitgaven van een persoon in evenwicht te brengen. De stabilisatie van inkomen en uitgaven is een resultaat van
+> werkzaamheden uit het integrale plan van aanpak. Als stabilisatie bereikt is kan een betalingsregeling, herfinanciering of schuldregeling worden opgezet. Een belangrijk tweede doel is om de hulpvrager hierbij schuldenrust te bieden: stress wegnemen en tijd maken voor oplossingen naar een schuldenzorgvrije toekomst. In de stabilisatiefase kan een schuldhulpverlener andere instrumenten, activiteiten of ondersteuning inzetten, die bijdragen aan de duurzame oplossing van het financiële probleem, zoals budgetcoaching, budgetbeheer, beschermingsbewind of flankerende hulp.
 
 Hiervan worden de volgende zaken vastgelegd:
 
@@ -107,7 +110,7 @@ Hiervan worden de volgende zaken vastgelegd:
 
 Hiervan worden de volgende zaken vastgelegd:
 
-- Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling door de schuldhulpverlener is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Datum aanvraag <button onclick="alert('Definitie datum: Datum dat schuldregeling is ingediend.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Afgewezen, toegekend of ingetrokken? Geef de juiste datum
 - Is er een dwangakkoord aangevraagd? (ja/nee) <button onclick="alert('Definitie dwangakkoord: Een vervolgstap die mogelijk is als een of meer schuldeisers blijven weigeren in te stemmen met de minnelijke schuldregelingaanvragen. Dit verzoek wordt ingediend bij de rechtbank (artikel 287a Fw).')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Datum verzoek dwangakkoord
@@ -116,7 +119,15 @@ Hiervan worden de volgende zaken vastgelegd:
 ### Oplossing
 
 ??? note "Definitie Oplossing"
-    In de schuldhulpverlening verwijst een “oplossing” naar een regeling waarbij schulden op een beheersbare manier worden afgelost of kwijtgescholden, met als doel de financiële situatie van de schuldenaar te stabiliseren. Er worden verschillende oplossingsvormen onderscheiden, waaronder saneringskrediet, schuldbemiddeling, herfinanciering, betalingsregelingen en schuldregelingen zonder afloscapaciteit. Bij een saneringskrediet ontvangt de schuldenaar een lening om alle schuldeisers in één keer af te betalen, waarna hij deze lening aflost aan de kredietverstrekker. Schuldbemiddeling houdt in dat de schuldenaar gedurende een afgesproken periode periodiek bedragen aflost aan de schuldeisers. Herfinanciering betreft het vervangen van bestaande schulden door een nieuwe lening met gunstigere voorwaarden. Een betalingsregeling is een afspraak tussen schuldenaar en schuldeiser om de schuld in termijnen af te lossen. Bij een schuldregeling zonder afloscapaciteit wordt vastgesteld dat de schuldenaar geen financiële ruimte heeft om af te lossen, wat kan leiden tot kwijtschelding van de schuld. Deze oplossingsvormen worden ingezet afhankelijk van de specifieke situatie van de schuldenaar en zijn gericht op een duurzame oplossing van de schuldenproblematiek.
+    
+> De Oplossing beschrijft in 5 submodules wat de schuldhulpverlener doet om een oplossing te realiseren, en kent de volgende submodules:
+>
+> * submodule Herfinanciering;
+> * submodule Betalingsregeling;
+> * submodule Saneringskrediet;
+> * submodule Schuldbemiddeling.
+>
+> Het kan ook gaan om een 0%-aanbod
 
 Hiervan worden de volgende zaken vastgelegd:
 
@@ -128,7 +139,12 @@ Hiervan worden de volgende zaken vastgelegd:
 ### Financiële begeleiding
 
 ??? note "Definitie Begeleiding"
-    Begeleiding voor clienten in het kader van schuldhulpdienstverlening.
+    
+> Begeleiding voor clienten in het kader van schuldhulpdienstverlening, die kan bestaan uit:
+>
+> 1. budgetbeheer
+> 2. beschermingsbewind
+> 3. budgetcoaching
 
 Voor elke vorm van financiële begeleiding:
 
@@ -139,11 +155,11 @@ Voor elke vorm van financiële begeleiding:
 ### Uitstroom
 
 ??? note "Definitie Uitstroom"
-    Het betreft hier de gegevens die worden vastgelegd bij uitstroom en dus beëindiging van een schuldhulptraject.
+    Motivatie voor uitstroom
 
 Het gaat hier over de gegevens ten aanzien van de uitstroom uit het schuldhulptraject. Hievan worden de volgende zaken vastgelegd:
 
-- Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd. Deze datum is gelijk aan de datum beëindigingsbeschikking.')" style="background:none;border:none;cursor:pointer;">❓</button>
+- Datum uitstroom <button onclick="alert('Definitie datum: Datum dat clienten uit het schuldhulptraject zijn uitgestroomd')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Datum beëindigingsbeschikking <button onclick="alert('Definitie datumBeeindigingsbeschikking: Datum dat de Beëindigingsbeschikking is afgegeven.')" style="background:none;border:none;cursor:pointer;">❓</button>
 - Reden van uitstroom (mogelijke waarden: Overleden, Verhuisd, Nietverschenen, Ingetrokken, Niet passend, Overig, Voldoet niet, Afgerond, Zelf)
 
@@ -182,7 +198,7 @@ Is er sprake geweest van één of meer crisisinterventies? Hiervan worden de vol
 ### Informatie en advies
 
 ??? note "Definitie Informatie En Advies"
-    Het betreft hier de activiteiten die in het kader van Informatie en advies worden uitgevoerd. Het doel van Informatie en Advies is inwoners zelf in staat te stellen een duurzaam financieel evenwicht te bereiken. Het kan een beroep op uitgebreidere vormen van dienstverlening overbodig maken.
+    Geen Definitie
 
 Wordt er voor de cliënt(en) informatie en advies ingezet? Hiervan worden de volgende zaken vastgelegd:
 
@@ -215,15 +231,7 @@ Is er sprake van één of meer moratoria? Hiervan worden de volgende zaken vastg
 ### Voorlopige voorziening
 
 ??? note "Definitie Voorlopige Voorziening "
-    
-> Een voorlopige voorziening is een tijdelijke regeling die de hulpvrager beschermt tegen verslechtering van zijn financiële situatie of het verlies van essentiële voorzieningen (zoals energie, woning, zorg), totdat een schuldregelingstraject is gestart of er meer duidelijkheid is over de vervolgstappen.
->
-> Voorbeelden van voorlopige voorzieningen:
->  • Tijdelijke betalingsregelingen met schuldeisers
->  • Een moratorium (tijdelijke opschorting van afbetalingen)
->  • Het aanvragen van uitstel van betaling bij woningcorporaties of energiebedrijven
->  • Hulp bij het voorkomen van afsluiting van gas, water, licht of ontruiming
->  • Budgetbeheer of beschermingsbewind als tijdelijke maatregel
+    Geen Definitie
 
 Is er binnen het schuldhulptraject sprake van één of meer voorlopige voorzieningen? Hiervan worden de volgende zaken vastgelegd:
 

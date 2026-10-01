@@ -1,6 +1,7 @@
 # Taskfile for automating the GGM deployment process
 #
 # This Taskfile defines tasks for:
+# - Installing the Python tooling (crunch_uml, mkdocs, mike) in a local virtualenv
 # - Validating required tools and variables
 # - Importing an XMI file into Crunch UML and transforming it naar een informatiemodel en uitwisselmodel
 # - Generating a JSON Schema from the uitwisselmodel
@@ -9,15 +10,22 @@
 # - Publishing documentation to GitHub Pages
 #
 # Usage:
+# - Run `task install` once to create the .venv with the tooling (other tasks do this automatically)
 # - Run `task` to execute the default task (full-deploy)
 # - Run `task --list` to see all available tasks
 # - Run `task <taskname>` to execute a specific task
 #
 # Environment:
 # - A `.env` file is used to load configuration variables like VERSION, XMI_FILE, etc.
-# - Ensure required tools are installed before running (`task prepare:check-tools`)
+# - Python tooling runs from `.venv` (see `requirements-tools.txt`), never from a global installation.
+#
+# Versiebeheer:
+# - Het JSON-schema wordt bij elke deploy opnieuw gegenereerd uit het model. Met dezelfde data
+#   (XMI, plugins, tooling-versies) moet dat exact hetzelfde schema opleveren; een uitgebracht
+#   schema mag na een deploy dus geen git-diff tonen.
 #
 # Examples:
+# - To install the tooling: `task install`
 # - To check preconditions: `task prepare:check-tools && task prepare:check-vars`
 # - To import the XMI file and transform the model: `task import:model`
 # - To generate the JSON schema: `task generate:json-schema`
@@ -27,7 +35,7 @@
 # - To perform the entire deployment sequence: `task full-deploy`
 #
 # Author: Arjen Brienen
-# Last Updated: 28 april 2026
+# Last Updated: 1 oktober 2026
 version: '3'
 
 # Default task wordt uitgevoerd bij 'task' zonder argument
@@ -46,6 +54,10 @@ env:
   # wordt. De DDAS-build vertaalt niets, dus de waarde is verder niet van belang
   # (alles behalve "China" wordt binnen translators naar regio "EN" gemapt).
   translators_default_region: "Netherlands"
+  # crunch_uml ordent keys en `required`-waarden in het JSON-schema via Python-sets. Met een
+  # willekeurige hash-seed verschilt die volgorde per run; een vaste seed maakt de output
+  # reproduceerbaar (dezelfde data levert hetzelfde schema op). Zie ook tools/postprocess_jsonschema.py.
+  PYTHONHASHSEED: "0"
 
 vars:
   VERSION_DIR: "./{{.VERSION}}"
@@ -55,38 +67,69 @@ vars:
   DEFS: "./docs/definities"
   PUBLISH: "false"
   JSON: "{{.VERSION_DIR}}/{{.JSON_SCHEMA}}"
+  # Python-tooling uit de lokale virtualenv; crunch_uml ondersteunt Python < 3.14.
+  PYTHON_VERSION: "3.13"
+  VENV_BIN: "{{.ROOT_DIR}}/.venv/bin"
+  # Deze URL staat hier en niet in .env: zodra de Taskfile een `env:`-blok heeft, worden
+  # template-variabelen in .env-waarden niet meer geëxpandeerd. {{.VERSION}} werd dan leeg
+  # en de $id van het schema werd ".../main//json_schema_Uitwisselmodel.json".
+  SCHULDHULP_JSON_SCHEMA_URL: "https://raw.githubusercontent.com/VNG-Realisatie/ddas/main/{{.VERSION}}/json_schema_Uitwisselmodel.json"
 
 tasks:
+  # ==========================================================================
+  # Install — Python-tooling in .venv
+  # ==========================================================================
+  install:
+    desc: "Create the Python virtualenv (.venv) and install the tooling from requirements-tools.txt (crunch_uml, mkdocs, mike)."
+    cmds:
+      - |
+        if command -v uv &> /dev/null; then
+          echo "Creating .venv with uv (Python {{.PYTHON_VERSION}})..."
+          uv venv --allow-existing --python {{.PYTHON_VERSION}} .venv
+          uv pip install --python .venv/bin/python -r requirements-tools.txt
+        elif command -v python{{.PYTHON_VERSION}} &> /dev/null; then
+          echo "Creating .venv with python{{.PYTHON_VERSION}} -m venv..."
+          python{{.PYTHON_VERSION}} -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements-tools.txt
+        else
+          echo "Error: uv (aanbevolen) of python{{.PYTHON_VERSION}} is nodig om de .venv aan te maken."
+          echo "crunch_uml ondersteunt Python < 3.14. Installeer uv via https://docs.astral.sh/uv/"
+          exit 1
+        fi
+      - '"{{.VENV_BIN}}/python" -c "import importlib.metadata as m; print(\"Installed: \" + \", \".join(p + \" \" + m.version(p) for p in (\"crunch_uml\", \"mkdocs\", \"mike\")))"'
+    shell: bash
+    sources:
+      - requirements.txt
+      - requirements-tools.txt
+    generates:
+      - .venv/bin/crunch_uml
+      - .venv/bin/mkdocs
+      - .venv/bin/mike
+
   # ==========================================================================
   # Prepare — Voorwaarden valideren
   # ==========================================================================
   prepare:check-tools:
-    desc: "Check for pre conditions. Verify required tools are installed."
+    desc: "Check for pre conditions. Verify required tools are installed (Python tooling in .venv)."
+    deps: [install]
     cmds:
       - |
-        # Lijst van vereiste tools en hun download-URLs
-        declare -A tools=(
-          ["crunch_uml"]="https://github.com/brienen/crunch_uml"
-          ["mkdocs"]="https://www.mkdocs.org"
-          ["mike"]="https://github.com/jimporter/mike"
-          ["jq"]="https://stedolan.github.io/jq"
-        )
-
-        # Controleer of tools geïnstalleerd zijn
+        # Python-tooling moet uit de .venv komen, niet uit een (verouderde) globale installatie
         missing_tools=()
-        for tool in "${!tools[@]}"; do
-          if ! command -v $tool &> /dev/null; then
-            missing_tools+=($tool)
+        for tool in python crunch_uml mkdocs mike; do
+          if [ ! -x "{{.VENV_BIN}}/$tool" ]; then
+            missing_tools+=("$tool (.venv)")
           fi
         done
+        if ! command -v git &> /dev/null; then
+          missing_tools+=("git")
+        fi
 
         # Meld ontbrekende tools en geef installatie-instructies
         if [ ${#missing_tools[@]} -ne 0 ]; then
-          echo "Error: The following tools are not installed:"
-          for tool in "${missing_tools[@]}"; do
-            echo "- $tool: ${tools[$tool]}"
-          done
-          echo "Please install the missing tools and try again."
+          echo "Error: The following tools are not installed: ${missing_tools[*]}"
+          echo "Run 'task install' (or 'task install --force') to (re)create the .venv."
           exit 1
         else
           echo "All required tools are installed."
@@ -106,6 +149,10 @@ tasks:
         fi
         if [[ ! "{{.VERSION}}" =~ ^v[0-9]+\.[0-9]+(\.[0-9]+)*$ ]]; then
           echo "Error: Invalid VERSION format. Use v{number}.{number}, e.g., v1.0"
+          exit 1
+        fi
+        if [ "./{{.VERSION}}" != "{{.VERSION_DIR}}" ]; then
+          echo "Error: VERSION ({{.VERSION}}) does not match VERSION_DIR ({{.VERSION_DIR}}). Set VERSION in .env, not on the command line."
           exit 1
         fi
         if [ ! -d "{{.VERSION_DIR}}" ]; then
@@ -130,17 +177,18 @@ tasks:
           exit 1
         fi
       - echo "Importing XMI file '{{.XMI}}' into Crunch UML..."
-      - crunch_uml import -f "{{.XMI}}" -t eaxmi -db_create
+      - '"{{.VENV_BIN}}/crunch_uml" import -f "{{.XMI}}" -t eaxmi -db_create'
       - echo "Extracting and tranforming schuldhulp datamodel..."
-      - crunch_uml transform -ttp plugin -sch_to {{.IM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_SCHULDHULP}}
+      - '"{{.VENV_BIN}}/crunch_uml" transform -ttp plugin -sch_to {{.IM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.IM_TRANSFORMER_CLASS_SCHULDHULP}} --plugin_file_name {{.IM_TRANSFORMER_SCHULDHULP}}'
       - echo "Extracting and tranforming schuldhulp uitwisselmodel..."
-      - crunch_uml transform -ttp plugin -sch_from {{.IM_SCHEMA_SCHULDHULP}} -sch_to {{.UM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.UM_TRANSFORMER_SCHULDHULP_CLASS}} --plugin_file_name {{.UM_TRANSFORMER_SCHULDHULP}}
+      - '"{{.VENV_BIN}}/crunch_uml" transform -ttp plugin -sch_from {{.IM_SCHEMA_SCHULDHULP}} -sch_to {{.UM_SCHEMA_SCHULDHULP}} -rt_pkg "{{.ROOT_IM_SCHULDHULP}}" --plugin_class_name {{.UM_TRANSFORMER_SCHULDHULP_CLASS}} --plugin_file_name {{.UM_TRANSFORMER_SCHULDHULP}}'
       - echo "Crunch database successfully created and setup..."
     shell: bash
     sources:
       - "{{.XMI}}"
       - "{{.IM_TRANSFORMER_SCHULDHULP}}"
       - "{{.UM_TRANSFORMER_SCHULDHULP}}"
+      - requirements-tools.txt
     generates:
       - "{{.CRUNCH_UML_DB}}"
     run: when_changed
@@ -149,13 +197,13 @@ tasks:
   # Generate — Artifacts genereren uit het model
   # ==========================================================================
   generate:json-schema:
-    desc: "Generate JSON Schema from uitwisselmodel {{.UM_SCHEMA_SCHULDHULP}}...'"
+    desc: "Generate JSON Schema from uitwisselmodel {{.UM_SCHEMA_SCHULDHULP}}."
     deps: [import:model]
     cmds:
-      - echo "Generate JSON Schema '{{.JSON}}' from schema '{{.UM_SCHEMA_SCHULDHULP}}' using root class '{{.ROOT_CLASS_UM_SCHULDHULP}}'..."
-      - crunch_uml  -sch {{.UM_SCHEMA_SCHULDHULP}} -d export -t json_schema --output_class_id {{.ROOT_CLASS_UM_SCHULDHULP}} -js_url {{.SCHULDHULP_JSON_SCHEMA_URL}} -f {{.JSON}}
+      - echo "Generate JSON Schema '{{.JSON}}' from schema '{{.UM_SCHEMA_SCHULDHULP}}' using root class '{{.ROOT_CLASS_UM_SCHULDHULP}}' with \$id '{{.SCHULDHULP_JSON_SCHEMA_URL}}'..."
+      - '"{{.VENV_BIN}}/crunch_uml" -sch {{.UM_SCHEMA_SCHULDHULP}} -d export -t json_schema --output_class_id {{.ROOT_CLASS_UM_SCHULDHULP}} -js_url {{.SCHULDHULP_JSON_SCHEMA_URL}} -f {{.JSON}}'
       - echo "Post-processing JSON Schema (uniqueItems verwijderen, leveringen verplicht maken)..."
-      - python3 tools/postprocess_jsonschema.py "{{.VERSION_DIR}}/json_schema_Uitwisselmodel.json"
+      - '"{{.VENV_BIN}}/python" tools/postprocess_jsonschema.py "{{.VERSION_DIR}}/json_schema_Uitwisselmodel.json"'
     shell: bash
 
   generate:docs:
@@ -165,9 +213,9 @@ tasks:
       - echo "Generating Markdown documentation..."
       - mkdir -p "{{.DEFS}}"
       - rm -rf "{{.DEFS}}"/*.md
-      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/
+      - '"{{.VENV_BIN}}/crunch_uml" -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template ddas_markdown.j2 -f "{{.DEFS}}/{{.MD}}" --output_jinja2_templatedir ./tools/'
       - echo "Generating uitleg documentation using jinja template..."
-      - crunch_uml -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template uitleg.j2 -f "{{.DOCS}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/
+      - '"{{.VENV_BIN}}/crunch_uml" -sch {{.IM_SCHEMA_SCHULDHULP}} export -t jinja2 --output_jinja2_template uitleg.j2 -f "{{.DOCS}}/{{.UITLEG}}" --output_jinja2_templatedir ./tools/'
       - |
         # Vervang de versies in de uitwisselspecificatie-templates
         # Loop door alle .template-bestanden in de directory en submappen
@@ -192,7 +240,7 @@ tasks:
     deps: [generate:docs]
     cmds:
       - echo "Validating MkDocs documentation..."
-      - mkdocs build --strict --site-dir /tmp/ddas-site
+      - '"{{.VENV_BIN}}/mkdocs" build --strict --site-dir /tmp/ddas-site'
       - echo "Documentation validation passed."
     shell: bash
 
@@ -201,15 +249,16 @@ tasks:
     deps: [generate:docs]
     cmds:
       - echo "Building MkDocs site..."
-      - mkdocs build --clean
+      - '"{{.VENV_BIN}}/mkdocs" build --clean'
       - echo "Site built successfully."
     shell: bash
 
   build:serve:
     desc: "Start the local MkDocs development server (snelle preview, genereert geen docs vooraf — draai zo nodig eerst 'task generate:docs')."
+    deps: [install]
     cmds:
       - echo "Starting MkDocs development server..."
-      - mkdocs serve
+      - '"{{.VENV_BIN}}/mkdocs" serve'
     shell: bash
 
   # ==========================================================================
@@ -220,10 +269,10 @@ tasks:
     deps: [generate:docs, generate:json-schema]
     cmds:
       - echo "Building and deploying MkDocs and Mike..."
-      - mkdocs build --clean
-      - mike deploy "{{.VERSION}}" latest --update-aliases
-      - mike set-default "{{.VERSION}}"
-      - echo "Documentation deployed. Use 'mike serve' to view results..."
+      - '"{{.VENV_BIN}}/mkdocs" build --clean'
+      - '"{{.VENV_BIN}}/mike" deploy "{{.VERSION}}" latest --update-aliases'
+      - '"{{.VENV_BIN}}/mike" set-default "{{.VERSION}}"'
+      - echo "Documentation deployed. Use '.venv/bin/mike serve' to view results..."
     shell: bash
 
   publish:github:

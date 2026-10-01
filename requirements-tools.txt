@@ -1,0 +1,5 @@
+# Lokale tooling voor het genereren van JSON-schema en documentatie.
+# `task install` installeert dit in .venv. CI (preview.yml) gebruikt alleen requirements.txt.
+# crunch_uml is exact gepind: een andere versie kan andere output geven.
+-r requirements.txt
+crunch_uml==0.7.0
