@@ -28,7 +28,6 @@ TRAJECTEN_SORT_ORDER = [
 ]
 
 
-
 class DDASPluginUitwisselmodel(Plugin):
     def transformLogic(self, args, root_package, schema_from, schema_to):
         logger.info("Starting DDAS Uitwisselmodel Plugin")
@@ -101,7 +100,6 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De begindatum van de periode waarover gerapperteerd wordt binnen de levering",
         )
         einddatumLevering = Attribute(
             id=util.getEAGuid(),
@@ -109,14 +107,14 @@ class DDASPluginUitwisselmodel(Plugin):
             schema_id=schema_to.schema_id,
             primitive="Datum",
             verplicht=True,
-            definitie="De einddatum van de periode waarover gerapperteerd wordt binnen de levering",)
+        )
         aanleverdatumEnTijd = Attribute(
             id=util.getEAGuid(),
             name="aanleverdatumEnTijd",
             schema_id=schema_to.schema_id,
             primitive="datumtijd",
             verplicht=True,
-            definitie="De datum en tijd waarop de gegevens zijn aangeleverd.",)
+        )
         codeGegevensleverancier = Attribute(
             id=util.getEAGuid(),
             name="codeGegevensleverancier",
@@ -196,6 +194,92 @@ class DDASPluginUitwisselmodel(Plugin):
         levering.uitgaande_associaties.append(assoc_levering_to_trajecten)
 
         kopie.classes.append(uitwisselmodel)
+
+        # DDAS-scoped: structuurverschillen die uit de gedeelde GGM-kern komen
+        # (casing, datatypes, verwijderde velden, multipliciteiten) terugzetten naar v1.0.
+        self.restore_v1_0_structure(kopie, schema_to)
+
         schema_to.add(kopie, recursive=True)
 
         logger.info("DDAS Uitwisselmodel Plugin finished.")
+
+    def restore_v1_0_structure(self, kopie, schema_to):
+        """Zet DDAS-scoped de structuurverschillen terug die uit de gedeelde GGM-kern komen.
+
+        Veldnaam-casing, datatypes en eerder verwijderde velden zitten op GGM-superklassen
+        (NatuurlijkPersoon, Rechtspersoon, MaatschappelijkeActiviteit, ...) en worden via
+        ``materialize_generalizations`` in DDAS ingevouwen. Ze hier op de (gematerialiseerde)
+        kopie corrigeren raakt alleen het uitwisselmodel, niet het gedeelde GGM-model.
+        Definities/descriptions horen niet hier maar in het model (XMI).
+        """
+        sid = schema_to.schema_id
+
+        # --- Veldnaam-casing terug naar v1.0 + datatype/enum terug naar string ---
+        client = kopie.get_class_by_name("Client")
+        if client is not None:
+            bsn = client.get_attribute_by_name("burgerservicenummer")
+            if bsn is not None:
+                bsn.name = "Burgerservicenummer"
+            geboortedatum = client.get_attribute_by_name("Geboortedatum")
+            if geboortedatum is not None:
+                geboortedatum.primitive = "AN17"  # alfanumeriek -> "type": "string"
+            geslacht = client.get_attribute_by_name("geslachtsaanduiding")
+            if geslacht is not None:
+                geslacht.name = "Geslachtsaanduiding"
+                geslacht.enumeration_id = None  # enum-koppeling weg -> "type": "string"
+
+        schuldeiser = kopie.get_class_by_name("Schuldeiser")
+        if schuldeiser is not None:
+            kvk = schuldeiser.get_attribute_by_name("KVKnummer")
+            if kvk is not None:
+                kvk.name = "kvknummer"
+            # Verwijderd veld (zat op GGM-superklasse) weer toevoegen.
+            schuldeiser.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="Naam",
+                    schema_id=sid,
+                    primitive="AN200",
+                    definitie="De benaming van het SUBJECT",
+                )
+            )
+
+        # --- Verwijderde velden op de aanleverende organisatie weer toevoegen ---
+        org = kopie.get_class_by_name("Schuldhulporganisatie")
+        if org is not None:
+            org.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="(Statutaire) Naam",
+                    schema_id=sid,
+                    primitive="AN200",
+                    definitie=(
+                        "Naam van de niet-natuurlijke persoon zoals deze is vastgelegd in de statuten"
+                        " (rechtspersoon) of in de vennootschapsovereenkomst is overeengekomen"
+                        " (Vennootschap onder firma of Commanditaire vennootschap)."
+                    ),
+                )
+            )
+            org.attributes.append(
+                Attribute(
+                    id=util.getEAGuid(),
+                    name="KvK-nummer",
+                    schema_id=sid,
+                    primitive="AN200",
+                    definitie=(
+                        "Landelijk uniek identificerend administratienummer van een MAATSCHAPPELIJKE"
+                        " ACTIVITEIT behorend bij een SUBJECT zoals toegewezen door de Kamer van Koophandel (KvK)."
+                    ),
+                )
+            )
+            # Multipliciteit: contactpersonen weer verplicht (0..* -> 1..*).
+            for association in org.uitgaande_associaties:
+                if str(association.src_role).strip() == "contactpersonen":
+                    association.dst_mult_start = "1"
+
+        # --- Multipliciteit: schuldeiser niet langer verplicht (1..1 -> 0..1) ---
+        schuld = kopie.get_class_by_name("Schuld")
+        if schuld is not None and schuldeiser is not None:
+            for association in schuld.uitgaande_associaties:
+                if association.dst_class_id == schuldeiser.id:
+                    association.dst_mult_start = "0"
