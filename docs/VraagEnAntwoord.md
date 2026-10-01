@@ -1,7 +1,10 @@
 # Vraag en Antwoord 
 
 Kijk hier voor vragen en verduidelijkingen rond het uitwisselmodel. Voor meer algemene vragen over DDAS-project,  kijk hier: https://www.divosa.nl/projecten/data-delen-armoede-en-schulden 
- 
+
+??? question "Hoe wordt de aanmelddatum gehanteerd als er door meer partijen wordt aangeleverd?"
+    In sommige gevallen voeren meerdere partijen schuldhulpverlening uit voor één gemeente. Iedere partij kan dan de eigen aanmelddatum opsturen. Bij het samenvoegen van deze informatie tot schuldhulptrajecten wordt voor het de vroegste aanmelddatum gehanteerd.   
+
 ??? question "Wat vul ik in bij gemeentecode?"
     Gemeentecode komt twee maal voor in de uitwisselspecificatie. Gemeentecode dient als volgt gebruikt te worden: Als de aanleverende organisatie een gemeente is wordt er onder `aanleverende organisatie` de gemeentecode ingevuld, in andere gevallen is deze waarde leeg. De `schuldhulptrajecten` hebben **altijd** een gemeentecode. Dit betreft de gemeente onder wiens verantwoordelijkheid de schuldhulpverlening wordt uitgevoerd, en niet het adres van de client.   
     
